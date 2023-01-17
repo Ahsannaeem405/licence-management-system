@@ -188,7 +188,7 @@ footer .btn:visited {
     width     : 100% !important;
     background: #fff;
 }
-
+.price_section .btn,
 #contact form button {
     background   : #0086be;
     border       : 0;
@@ -399,13 +399,6 @@ footer a {
     border-radius: 6px;
 }
 
-.parent {
-    width   : 608px;
-    height  : 204px;
-    margin  : 20px auto;
-    overflow: hidden
-}
-
 .work_video {
     width: 100%;
 
@@ -484,6 +477,77 @@ footer a {
     height: 100px;
     width : 250px;
 }
+
+/* price table */
+.price_section .row .card{
+    box-shadow: 0 0 6px 0px rgb(0 134 190 / 30%);
+    border-radius: 5px !important;
+}
+
+
+  .price_section .card {
+    border: none;
+    border-radius: 1rem;
+    transition: all 0.2s;
+  }
+  
+  .price_section hr {
+    margin: 1.5rem 0;
+  }
+  
+  .price_section .card-title {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+  }
+  
+  .price_section .card-price {
+    font-size: 3rem;
+    margin: 0;
+  }
+  
+  .price_section .card-price .period {
+    font-size: 0.8rem;
+  }
+  
+  .price_section ul li {
+    margin-bottom: 1rem;
+  }
+  
+  .price_section .text-muted {
+    opacity: 0.7;
+  }
+  
+ .section_faq .container{
+    border       : 1px solid #0086be;
+    box-shadow   : 0 0 6px 0px rgb(0 134 190 / 30%);
+    border-radius: 12px;
+    overflow: hidden;
+ }
+ .section_faq .accordion-button:focus {
+    box-shadow: unset !important;
+}
+.section_faq .accordion-button:not(.collapsed) {
+    color: #fff;
+    background-color: #0086be;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+
+}
+.accordion-button:not(.collapsed)::after {
+   filter: brightness(0) !important;
+}
+  @media (min-width: 992px) {
+    .price_section .card:hover {
+      margin-top: -.25rem;
+      margin-bottom: .25rem;
+      box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+    }
+  
+    .price_section .card:hover .btn {
+      opacity: 1;
+    }
+  }
 
 @media only screen and (min-width: 300px) and (max-width: 1185px) {
     .header_section .text-box {

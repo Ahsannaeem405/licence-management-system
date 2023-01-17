@@ -21,9 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-light position-absolute w-100 nav_main">
         <div class="container">
             <a class="navbar-brand" href="#"><img class="img-fluid" src="{{asset('assets/asset/img/logo.png')}}" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -41,15 +39,14 @@
                         <li class="nav-item btn-2 btn_hover_0">
                             <a class="nav-link  py-md-2 py-1  px-0" href="#">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn_hover_0 text-white p-0 dropdown-toggle"
-                                        data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <button type="button" class="btn btn_hover_0 text-white p-0 dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                         <i class="fas fa-globe"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                                         <li>
                                             <button class="dropdown-item" type="button">English</button>
                                         </li>
-                                        
+
                                         <li>
                                             <button class="dropdown-item" type="button">French </button>
                                         </li>
@@ -64,8 +61,7 @@
                     </ul>
 
                 </div>
-                <div class="ms-lg-5 nav-item btn-2 login_btn"><a
-                        class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="#">Login</a></div>
+                <div class="ms-lg-5 nav-item btn-2 login_btn"><a class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="#">Login</a></div>
             </div>
 
         </div>
@@ -126,66 +122,148 @@
             </div>
         </div>
     </section>
+    <!-- Price section -->
+    <section class="price_section py-md-5 py-3 ">
+        <div class="container" data-aos="fade-left">
+            <h2 class="section_heading text-center position-relative mb-5 fw-bold">Our Prices</h2>
+            <div class="container">
+                <div class="row">
+                    <!-- Free Tier -->
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body">
+                                <h5 class="card-title text_primary fw-bolder text-uppercase text-center">Free</h5>
+                                <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Unlimited
+                                        Private Projects</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Dedicated
+                                        Phone Support</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Free
+                                        Subdomain
+                                    </li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status
+                                        Reports</li>
+                                </ul>
+                                <div class="d-grid">
+                                    <a href="#" class="btn bg_primary text-uppercase">Subscribe Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plus Tier -->
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body">
+                                <h5 class="card-title text_primary fw-bolder text-uppercase text-center">Plus</h5>
+                                <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong>
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>50GB Storage</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private
+                                        Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Subdomain</li>
+                                    <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Monthly Status
+                                        Reports</li>
+                                </ul>
+                                <div class="d-grid">
+                                    <a href="#" class="btn bg_primary text-uppercase">Subscribe Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pro Tier -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text_primary fw-bolder text-uppercase text-center">Pro</h5>
+                                <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited
+                                            Users</strong>
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>150GB Storage</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Private
+                                        Projects</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Dedicated Phone Support
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited</strong> Free
+                                        Subdomains</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Monthly Status Reports
+                                    </li>
+                                </ul>
+                                <div class="d-grid">
+                                    <a href="#" class="btn bg_primary text-uppercase">Subscribe Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5 py-3">
-        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Customor Logs</h2>
+        <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customor Logs</h2>
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                        alt="" />
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
                 </div>
             </div>
         </div>
@@ -196,7 +274,7 @@
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">About Us</h2>
             <div class="row gy-4">
                 <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-                    
+
                     <img src="{{asset('assets/asset/img/header_main.jpg')}}" class="img-fluid rounded-3" alt=""></a>
                 </div>
                 <div class="col-lg-6 content order-last order-lg-first">
@@ -204,23 +282,20 @@
                         Sit quia molestiae quia quas qui magnam itaque veritatis dolores. Corrupti totam ut eius
                         incidunt reiciendis veritatis asperiores placeat.</p>
                     <ul>
-                        <li data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate"> <i
-                                class="bi bi-diagram-3"></i>
+                        <li data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate"> <i class="bi bi-diagram-3"></i>
                             <div>
                                 <h5>Ullamco laboris nisi ut aliquip consequat</h5>
                                 <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
                             </div>
                         </li>
-                        <li data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate"> <i
-                                class="bi bi-fullscreen-exit"></i>
+                        <li data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate"> <i class="bi bi-fullscreen-exit"></i>
                             <div>
                                 <h5>Magnam soluta odio exercitationem reprehenderi</h5>
                                 <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata
                                     redi</p>
                             </div>
                         </li>
-                        <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
-                                class="bi bi-broadcast"></i>
+                        <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i class="bi bi-broadcast"></i>
                             <div>
                                 <h5>Voluptatem et qui exercitationem</h5>
                                 <p>Et velit et eos maiores est tempora et quos dolorem autem tempora incidunt maxime
@@ -249,8 +324,7 @@
 
                 <div class="client-single active position-1" data-position="position-1">
                     <div class="client-img">
-                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299"
-                            alt="">
+                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299" alt="">
                     </div>
                     <div class="client-comment ">
                         <h3 class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -267,8 +341,7 @@
 
                 <div class="client-single inactive position-2" data-position="position-2">
                     <div class="client-img">
-                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299"
-                            alt="">
+                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299" alt="">
                     </div>
                     <div class="client-comment">
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -284,8 +357,7 @@
 
                 <div class="client-single inactive position-3" data-position="position-3">
                     <div class="client-img">
-                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299"
-                            alt="">
+                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299" alt="">
                     </div>
                     <div class="client-comment">
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -301,8 +373,7 @@
 
                 <div class="client-single inactive position-4" data-position="position-4">
                     <div class="client-img">
-                        <img src="https://media.licdn.com/dms/image/C4E03AQFbvYtvSeyw-g/profile-displayphoto-shrink_100_100/0?e=1574294400&v=beta&t=49_VH9HRvqymP-VLETlFhFt4idmunZPhIQfALwaTrmA"
-                            alt="">
+                        <img src="https://media.licdn.com/dms/image/C4E03AQFbvYtvSeyw-g/profile-displayphoto-shrink_100_100/0?e=1574294400&v=beta&t=49_VH9HRvqymP-VLETlFhFt4idmunZPhIQfALwaTrmA" alt="">
                     </div>
                     <div class="client-comment">
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -318,8 +389,7 @@
 
                 <div class="client-single inactive position-5" data-position="position-5">
                     <div class="client-img">
-                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299"
-                            alt="">
+                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299" alt="">
                     </div>
                     <div class="client-comment">
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -335,8 +405,7 @@
 
                 <div class="client-single inactive position-6" data-position="position-6">
                     <div class="client-img">
-                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299"
-                            alt="">
+                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299" alt="">
                     </div>
                     <div class="client-comment">
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -352,8 +421,7 @@
 
                 <div class="client-single inactive position-7" data-position="position-7">
                     <div class="client-img">
-                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299"
-                            width="40px" alt="">
+                        <img src="https://cdn.dribbble.com/users/2132253/avatars/small/1799e2c9badff08058551384763e284c.jpg?1568268299" width="40px" alt="">
                     </div>
                     <div class="client-comment">
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -370,71 +438,101 @@
             </div>
         </div>
     </section>
-  <!-- customor logos -->
-  <section id="product-slider" class="py-md-5 py-3">
-    <h2 class="section_heading text-center position-relative mb-5 fw-bold">Partner logs</h2>
-    <div class="slider">
-        <div class="slide-track">
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
-                    alt="" />
-            </div>
-            <div class="slide">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
-                    alt="" />
+    <!-- customor logos -->
+    <section id="product-slider" class="py-md-5 py-3">
+        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Partner logs</h2>
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                </div>
             </div>
         </div>
+    </section>
+    <!-- FAQ -->
+    <section class="section_faq" class="py-md-5 py-3">
+        <h2 class="section_heading text-center position-relative mb-5 fw-bold">FAQ</h2>
+        <div class="container px-0">
+           
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          License Management
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                          Management System 
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                        which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class. This is the first item's accordion body.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                          How can we help you
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class content for this accordion, which is intended to demonstrate the class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
+            </div>
+        
     </div>
-</section>
+    </section>
 
+
+    <!-- contact us -->
     <section id="contact" class="contact section_contact py-md-5 py-4">
         <div class="container aos-init aos-animate" data-aos="fade-up">
             <div class="section-title text-center">
@@ -455,24 +553,17 @@
                         <div class="phone"> <i class="bi bi-phone"></i>
                             <h4>Call:</h4>
                             <p>+1 5589 55488 55s</p>
-                        </div> <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                            frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen=""></iframe>
+                        </div> <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen=""></iframe>
                     </div>
                 </div>
                 <div class="col-md-7  d-flex ">
                     <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                         <div class="row">
-                            <div class="form-group col-md-6"> <label for="name">Your Name</label> <input type="text"
-                                    name="name" class="form-control" id="name" required=""></div>
-                            <div class="form-group col-md-6"> <label for="name">Your Email</label> <input type="email"
-                                    class="form-control" name="email" id="email" required=""></div>
+                            <div class="form-group col-md-6"> <label for="name">Your Name</label> <input type="text" name="name" class="form-control" id="name" required=""></div>
+                            <div class="form-group col-md-6"> <label for="name">Your Email</label> <input type="email" class="form-control" name="email" id="email" required=""></div>
                         </div>
-                        <div class="form-group"> <label for="name">Subject</label> <input type="text"
-                                class="form-control" name="subject" id="subject" required=""></div>
-                        <div class="form-group"> <label for="name">Message</label><textarea class="form-control"
-                                name="message" rows="10" required="" data-gramm="false"
-                                wt-ignore-input="true"></textarea></div>
+                        <div class="form-group"> <label for="name">Subject</label> <input type="text" class="form-control" name="subject" id="subject" required=""></div>
+                        <div class="form-group"> <label for="name">Message</label><textarea class="form-control" name="message" rows="10" required="" data-gramm="false" wt-ignore-input="true"></textarea></div>
 
                         <div class="text-center mt-4"><button type="submit" class="btn">Send Message</button></div>
                     </form>
@@ -488,11 +579,11 @@
             <section class="">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                       <div class="footer_logo">
+                        <div class="footer_logo">
 
-                           <img src="{{asset('assets/asset/img/logo.png')}}" alt="" srcset="">
-                       </div>
-                        
+                            <img src="{{asset('assets/asset/img/logo.png')}}" alt="" srcset="">
+                        </div>
+
                         <!-- <div class="mb-2">
                             Here you can use rows and columns to organize your footer
                             content. Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -561,17 +652,13 @@
 
                     <div class="col-md-5 col-lg-4 ml-lg-0 d-flex justify-content-center text-center text-md-end">
 
-                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i
-                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i class="fab fa-facebook-f"></i></a>
 
-                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i
-                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i class="fab fa-twitter"></i></a>
 
-                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i
-                                class="fab fa-google"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i class="fab fa-google"></i></a>
 
-                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i
-                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </section>
@@ -585,9 +672,9 @@
 
 </html>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        $('.client-single').on('click', function (event) {
+        $('.client-single').on('click', function(event) {
             event.preventDefault();
 
             var active = $(this).hasClass('active');
@@ -601,7 +688,8 @@
 
                 var newPos = activeBlock.attr('data-position');
 
-                activeBlock.removeClass('active').removeClass(newPos).addClass('inactive').addClass(currentPos);
+                activeBlock.removeClass('active').removeClass(newPos).addClass('inactive').addClass(
+                    currentPos);
                 activeBlock.attr('data-position', currentPos);
 
                 $(this).addClass('active').removeClass('inactive').removeClass(currentPos).addClass(newPos);

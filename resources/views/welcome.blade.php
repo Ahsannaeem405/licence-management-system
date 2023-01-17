@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>licence management system</title>
+    <title>License management system</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,11 +81,11 @@
 
         <div class="text-box  text-white">
             <h1 class="heading-primary heading_header mb-md-5  mb-3">
-                Licence Management <span class="d-block">System</span>
+                License Management <span class="d-block">System</span>
             </h1>
             <p class="mb-md-5 mb-3 fs-4">
-                We’re working respectfully and sincerely alongside clients on Licence Management System</p>
-            <a href="#" class="btn  btn-animated fw-bold">Get Licence</a>
+                We’re working respectfully and sincerely alongside clients on License Management System</p>
+            <a href="#" class="btn  btn-animated fw-bold">Get License</a>
         </div>
     </header>
     <!-- how it work -->
@@ -126,9 +126,9 @@
             </div>
         </div>
     </section>
-    <!-- custmor logos -->
+    <!-- customor logos -->
     <section id="product-slider" class="py-md-5 py-3">
-        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Custmor Logs</h2>
+        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Customor Logs</h2>
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
@@ -370,7 +370,7 @@
             </div>
         </div>
     </section>
-  <!-- custmor logos -->
+  <!-- customor logos -->
   <section id="product-slider" class="py-md-5 py-3">
     <h2 class="section_heading text-center position-relative mb-5 fw-bold">Partner logs</h2>
     <div class="slider">
@@ -504,10 +504,10 @@
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
                         <div class="mb-2">
-                            <a class="text-white" href="#">Licence</a>
+                            <a class="text-white" href="#">License</a>
                         </div>
                         <div class="mb-2">
-                            <a class="text-white" href="#">Licence Management System</a>
+                            <a class="text-white" href="#">License Management System</a>
                         </div>
                         <div class="mb-2">
                             <a class="text-white" href="#">BrandFlow</a>
@@ -537,9 +537,9 @@
                         </div>
                     </div>
                     <hr class="w-100 clearfix d-md-none" />
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <div class="mb-2"><i class="fas fa-home mr-3"></i> New York, NY 10012, US</div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 col-5  mx-auto mt-3 contact_footer text-start">
+                        <h6 class="text-uppercase text-md-start text-center mb-4 font-weight-bold">Contact</h6>
+                        <div class="mb-2"><i class="fas fa-home mr-3"></i> New York, NY 112,US</div>
                         <div class="mb-2"><i class="fas fa-envelope mr-3"></i> info@gmail.com</div>
                         <div class="mb-2"><i class="fas fa-phone mr-3"></i> + 01 234 567 88</div>
                         <div class="mb-2"><i class="fas fa-print mr-3"></i> + 01 234 567 89</div>
@@ -549,17 +549,17 @@
 
             <hr class="my-3">
 
-            <section class="p-3 pt-0 footer_bottom">
+            <section class="py-3 pt-0 footer_bottom">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-7 col-lg-8 text-center text-md-start">
 
-                        <div class="p-3">
+                        <div class="py-3">
                             © 2023 Copyright:
                             <a class="text-white" href="#" href="https://browntech.com/">browntech.com</a>
                         </div>
                     </div>
 
-                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                    <div class="col-md-5 col-lg-4 ml-lg-0 d-flex justify-content-center text-center text-md-end">
 
                         <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white" role="button"><i
                                 class="fab fa-facebook-f"></i></a>

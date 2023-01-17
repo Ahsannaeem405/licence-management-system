@@ -113,14 +113,20 @@ header.header {
 
 }
 
-.btn:link,
-.btn:visited {
+footer .btn:link,
+footer .btn:visited {
     text-decoration: none;
-    padding        : 10px 20px;
-    display        : inline-block;
-    border-radius  : 100px;
-    transition     : all .2s;
-    position       : relative;
+    padding: 10px 20px;
+    display: flex;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+    width: 40px;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+
 }
 
 .btn:hover {
@@ -201,7 +207,15 @@ header.header {
 /*########### header section end ########### */
 /*########### Testinoial section start ########### */
 
-
+.testimonial_section {
+    background-image:
+        linear-gradient(to right bottom,
+            rgb(0 19 24 / 80%),
+            rgba(34, 101, 195, 0.584)),
+        url('../img/testimonial.jpg');
+    background-size      : 100% 100%;
+    background-attachment: fixed;
+}
 
 .testi-wrap {
     position  : relative;
@@ -361,6 +375,10 @@ header.header {
     cursor         : pointer;
 }
 
+
+/*########### Testinoial section end ########### */
+
+
 footer {
     background-color: #0086be;
 }
@@ -430,7 +448,7 @@ footer a {
     margin       : auto;
     overflow     : hidden;
     position     : relative;
-    width        : 960px;
+    max-width        : 960px;
 }
 
 .slider::before,
@@ -474,10 +492,6 @@ footer a {
 }
 
 @media only screen and (min-width: 300px) and (max-width: 991px) {
-    .header_section .text-box {
-        /* top       : 32%; */
-    }
-
     .heading_header {
         font-size: 20px !important;
     }
@@ -599,6 +613,12 @@ footer a {
     }
 }
 
+@media only screen and (min-width: 300px) and (max-width: 493px) {
+    .contact_footer {
+      width: 71% ;
+      padding-left: 35px;
+    }
+}
 @media only screen and (min-width: 360px) and (max-width: 479px) {
     #testimonial-area .section-heading h2 {
         font-size  : 30px;
@@ -728,15 +748,4 @@ footer a {
     .testi-wrap {
         height: 550px;
     }
-}
-
-/*########### Testinoial section end ########### */
-.testimonial_section {
-    background-image:
-        linear-gradient(to right bottom,
-            rgb(0 19 24 / 80%),
-            rgba(34, 101, 195, 0.584)),
-        url('../img/testimonial.jpg');
-    background-size      : 100% 100%;
-    background-attachment: fixed;
 }

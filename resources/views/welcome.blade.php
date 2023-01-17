@@ -128,7 +128,7 @@
     </section>
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5 py-3">
-        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Customor Logs</h2>
+        <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customor Logs</h2>
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">

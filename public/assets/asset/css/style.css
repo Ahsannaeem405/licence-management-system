@@ -611,12 +611,27 @@ footer a {
     .testi-wrap {
         height: 630px;
     }
+    .section_heading::after {
+        width: 80px;
+        height: 3px;
+    }
 }
 
 @media only screen and (min-width: 300px) and (max-width: 493px) {
+    .section_heading::after {
+        width: 70px;
+        height: 2px;
+    }
     .contact_footer {
       width: 71% ;
       padding-left: 35px;
+    }
+    .slider .slide {
+        width: 121px;
+    }
+    .slider .slide img{
+        height: auto !important;
+        width: 121px !important;
     }
 }
 @media only screen and (min-width: 360px) and (max-width: 479px) {

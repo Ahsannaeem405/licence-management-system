@@ -14,38 +14,46 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a href="{{route('superadmin-dashbaord')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2"></span></a>
-                   
-                </li>
-               
-                <li class=" nav-item"><a href="{{route('superadmin-subcription')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Subcriptions</span></a>
-                </li>
-                <li class=" nav-item"><a href="{{route('superadmin->customers')}}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">Customers</span></a>
-                </li>
-                <li class=" nav-item"><a href="{{route('superadmin-package')}}"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Email">Packages</span></a>
+                <li class=" nav-item"><a href="{{ route('superadmin-dashbaord') }}"><i
+                            class="feather icon-home"></i><span class="menu-title"
+                            data-i18n="Dashboard">Dashboard</span><span
+                            class="badge badge badge-warning badge-pill float-right mr-2"></span></a>
+
                 </li>
 
-                <li class=" nav-item"><a href="{{route('superadmin-transaction')}}"><i class="fa fa-dollar"></i><span class="menu-title" data-i18n="Email">Transactions</span></a>
+                <li class=" nav-item"><a href="{{ route('superadmin-subcription') }}"><i
+                            class="feather icon-mail"></i><span class="menu-title"
+                            data-i18n="Email">Subcriptions</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('superadmin->customers') }}"><i
+                            class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">Customers</span></a>
+                </li>
+                <li class=" nav-item"><a href="{{ route('superadmin-package') }}"><i class="feather icon-list"></i><span
+                            class="menu-title" data-i18n="Email">Packages</span></a>
                 </li>
 
-                <li class=" nav-item"><a href="{{route('superadmin-license')}}"><i class="fa fa-drivers-license-o"></i><span class="menu-title" data-i18n="Email">License</span></a>
+                <li class=" nav-item"><a href="{{ route('superadmin-transaction') }}"><i class="fa fa-dollar"></i><span
+                            class="menu-title" data-i18n="Email">Transactions</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{route('superadmin-multi-lang')}}"><i class="fa fa-drivers-license-o"></i><span class="menu-title" data-i18n="Email">Multi Language</span></a>
+
+                <li class=" nav-item"><a href="{{ route('superadmin-license') }}"><i
+                            class="fa fa-drivers-license-o"></i><span class="menu-title"
+                            data-i18n="Email">License</span></a>
                 </li>
-                
-                <li class=" nav-item"><a href="{{route('superadmin-setting')}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Account Settings</span></a>
+                <li class=" nav-item"><a href="{{ route('superadmin-multi-lang') }}"><i
+                            class="fa fa-drivers-license-o"></i><span class="menu-title" data-i18n="Email">Multi
+                            Language</span></a>
                 </li>
-                
-              
-               
-              
-               
-               
-               
-               
-               
-                
-                
+
+                <li class=" nav-item"><a href="{{ route('superadmin-analytics') }}"> <i
+                            class="feather icon-list"></i><span class="menu-title"
+                            data-i18n="Account Settings">Analytics</span></a>
+                </li>
+
+                <li class=" nav-item"><a href="{{ route('superadmin-setting') }}"><i
+                            class="feather icon-settings"></i><span class="menu-title"
+                            data-i18n="Account Settings">Account Settings</span></a>
+                </li>
             </ul>
         </div>
     </div>

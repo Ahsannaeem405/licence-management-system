@@ -31,6 +31,7 @@ Route::get('/', function () {
      Route::get('/license',[SuperAdminController::class,'license'])->name('superadmin-license');
      Route::get('/view-license',[SuperAdminController::class,'view'])->name('superadmin-view-license');
      Route::get('multi-lang',[SuperAdminController::class,'lang'])->name('superadmin-multi-lang');
+     Route::get('/analytics',[SuperAdminController::class,'analytics'])->name('superadmin-analytics');
      Route::get('/setting',[SuperAdminController::class,'setting'])->name('superadmin-setting');
    
  });

@@ -46,10 +46,12 @@
             class="feather icon-user"></i><span class="menu-title"
             data-i18n="Chat">Department</span></a>
 </li>
-{{-- 
-                    </ul>
-                </li> --}}
 
+<li class=" nav-item"><a href="#"><i
+    class="feather icon-user"></i><span class="menu-title"
+    data-i18n="Chat">Analytics</span></a>
+</li>
+  
                 
               
 

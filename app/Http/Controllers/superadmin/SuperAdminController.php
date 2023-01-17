@@ -73,6 +73,13 @@ class SuperAdminController extends Controller
         return view('superadmin.company.lang');
     }
 
+    public function analytics()
+    {
+        return view('superadmin.company.analytics');
+    }
+
+
+
     public function setting()
     {
         return view('superadmin.company.setting');

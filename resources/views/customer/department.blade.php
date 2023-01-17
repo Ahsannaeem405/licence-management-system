@@ -28,7 +28,7 @@
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb float-right m-0">
                                         <li class="breadcrumb-item"><a href="{{route('customer-add-department') }}"
-                                                class="btn btn-primary fa fa-plus"> Add Deaprtment</a></li>
+                                                class="btn btn-primary fa fa-plus"> Add Department</a></li>
                                     </ol>
                                 </div>
                                 <div class="content-body">

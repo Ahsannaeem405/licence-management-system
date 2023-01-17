@@ -1,0 +1,32 @@
+.main-menu.menu-light {
+    color: white !important;
+    background: #263d72!important;
+}
+
+.main-menu.menu-light .navigation {
+    color: white !important;
+    background: #263d72!important;
+}
+
+.main-menu.menu-light .navigation li a {
+    color: white !important;
+}
+
+.navbar-collapse {
+    color: white !important;
+    background: #263d72!important;
+}
+
+.navbar-container {
+    color: white !important;
+    background: #263d72!important;
+}
+
+.main-menu.menu-light .navigation>li.open>a,
+.main-menu.menu-light .navigation>li.sidebar-group-active>a {
+    background: none !important;
+}
+
+.main-menu.menu-light .navigation>li>ul {
+    background: none !important;
+}

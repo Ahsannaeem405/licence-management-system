@@ -115,3 +115,10 @@
 </div>
 
   @endsection
+{{-- 
+  <div class="breadcrumb-wrapper col-12">
+    <ol class="breadcrumb float-right m-0">
+        <li class="breadcrumb-item"><a href="{{route('customer-add-license') }}"
+                class="btn btn-primary fa fa-plus"> Add License</a></li>
+    </ol>
+</div> --}}

@@ -29,10 +29,10 @@
                                             <div class="col-12">
                                                 <div class="form-group row">
                                                     <div class="col-md-2">
-                                                        <span>Start-Date</span>
+                                                        <span>No of Entity</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="text"   class="form-control" name="startdate" placeholder="">
+                                                        <input type="number"   class="form-control" name="startdate" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>

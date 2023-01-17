@@ -736,7 +736,7 @@ footer a {
         linear-gradient(to right bottom,
             rgb(0 19 24 / 80%),
             rgba(34, 101, 195, 0.584)),
-        url('/asset/img/testimonial.jpg');
+        url('../img/testimonial.jpg');
     background-size      : 100% 100%;
     background-attachment: fixed;
 }

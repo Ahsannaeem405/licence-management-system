@@ -74,7 +74,8 @@ header.header {
         linear-gradient(to right bottom,
             rgb(0 19 24 / 80%),
             rgb(34 101 195 / 80%)),
-        url('/asset/img/header_main.jpg');
+        url('../img/header_main.jpg');
+        /* url('/asset/img/header_main.jpg'); */
 
     background-size    : cover;
     background-position: top;

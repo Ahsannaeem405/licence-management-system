@@ -196,7 +196,8 @@
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">About Us</h2>
             <div class="row gy-4">
                 <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-                    <img src="./asset/img/header_main.jpg" class="img-fluid" alt=""></a>
+                    
+                    <img src="{{asset('assets/asset/img/header_main.jpg')}}" class="img-fluid rounded-3" alt=""></a>
                 </div>
                 <div class="col-lg-6 content order-last order-lg-first">
                     <p> Dolor iure expedita id fuga asperiores qui sunt consequatur minima. Quidem voluptas deleniti.

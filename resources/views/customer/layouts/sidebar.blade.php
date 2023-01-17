@@ -26,20 +26,34 @@
                 </li>
 
 
-                <li class=" nav-item"><a href="{{ route('customer-department') }}"><i
+              
+
+                {{-- <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title" data-i18n="Data List">Manage</span></a>
+                    <ul class="menu-content"> --}}
+                        <li class=" nav-item"><a href="#"><i
                             class="feather icon-user"></i><span class="menu-title"
-                            data-i18n="Chat">Department</span></a>
+                            data-i18n="Email">Manage</span></a>
                 </li>
-                
-                <li class=" nav-item"><a href="{{ route('customer-license') }}"><i class="feather icon-list"></i><span
+
+                        <li class=" nav-item"><a href="{{ route('customer-license') }}"><i class="feather icon-list"></i><span
                             class="menu-title" data-i18n="Email">License</span></a>
                 </li>
 
                 <li class=" nav-item"><a href="{{ route('customer-management') }}"><i class="feather icon-list"></i><span
                     class="menu-title" data-i18n="Email">Management</span></a>
         </li>
+        <li class=" nav-item"><a href="{{ route('customer-department') }}"><i
+            class="feather icon-user"></i><span class="menu-title"
+            data-i18n="Chat">Department</span></a>
+</li>
+{{-- 
+                    </ul>
+                </li> --}}
 
-        <li class=" nav-item"><a href="{{ route('customer-setting') }}"><i class="feather icon-list"></i><span
+                
+              
+
+        <li class=" nav-item"><a href="{{ route('customer-setting') }}"><i class="feather icon-settings"></i><span
             class="menu-title" data-i18n="Email">Setting</span></a>
 </li>
 

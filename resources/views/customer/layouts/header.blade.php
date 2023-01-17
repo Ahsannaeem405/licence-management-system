@@ -39,6 +39,7 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/style.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/custom-css/custom.css')}}">
     <!-- END:Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/plugins/forms/validation/form-validation.css')}}">
 </head>

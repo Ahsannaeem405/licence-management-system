@@ -13,6 +13,16 @@ p {
     font-family: Roboto, sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+}
+
 .bg_primary {
     background-color: #0086be;
 }
@@ -50,23 +60,6 @@ p {
     box-shadow: 0 10px 20px rgb(0 0 0 / 32%);
 }
 
-/* .nav_main .nav-item:hover::after {
-    content         : "";
-    position        : absolute;
-    height          : 2px;
-    background-color: #fff;
-    left            : 0;
-    right           : 0;
-    margin          : auto;
-    bottom          : -5px;
-    border-radius   : 17px;
-    transition      : all 280ms ease-in-out;
-
-} */
-
-
-
-
 /*########### header section start ########### */
 header.header {
     height: 100vh;
@@ -75,13 +68,9 @@ header.header {
             rgb(0 19 24 / 80%),
             rgb(34 101 195 / 80%)),
         url('../img/header_main.jpg');
-        /* url('/asset/img/header_main.jpg'); */
-
     background-size    : cover;
     background-position: top;
     position           : relative;
-
-    /* clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); */
 }
 
 .header_section .container {
@@ -104,53 +93,45 @@ header.header {
 
     filter     : blur(0px) !important;
     text-shadow: black 1px 1px 2px, rgb(155 207 230) 0px 0px 25px, rgb(2 185 247) 0px 0px 5px !important;
-
     font-size  : 50px;
     font-weight: 700;
     line-height: 1.1;
     margin     : 0 0 15px;
     font-family: 'Poppins', sans-serif;
-
 }
-
 footer .btn:link,
 footer .btn:visited {
     text-decoration: none;
-    padding: 10px 20px;
-    display: flex;
-    border-radius: 100px;
-    transition: all .2s;
-    position: relative;
-    width: 40px;
-    place-items: center;
-    align-items: center;
+    padding        : 10px 20px;
+    display        : flex;
+    border-radius  : 100px;
+    transition     : all .2s;
+    position       : relative;
+    width          : 40px;
+    place-items    : center;
+    align-items    : center;
     justify-content: center;
-    height: 40px;
+    height         : 40px;
 
 }
-
 .btn:hover {
     transform : translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-
 .btn_hover_0 {
     transform       : unset !important;
     box-shadow      : unset !important;
     background-color: transparent;
 }
-
 .btn:active {
     transform : translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-
 .btn-white {
     background-color: #fff;
     color           : #777;
     font-size       : 14px;
 }
-
 .header_section .text-box {
     position  : absolute;
     top       : 40%;
@@ -188,6 +169,7 @@ footer .btn:visited {
     width     : 100% !important;
     background: #fff;
 }
+
 .price_section .btn,
 #contact form button {
     background   : #0086be;
@@ -441,7 +423,7 @@ footer a {
     margin       : auto;
     overflow     : hidden;
     position     : relative;
-    max-width        : 960px;
+    max-width    : 960px;
 }
 
 .slider::before,
@@ -479,75 +461,242 @@ footer a {
 }
 
 /* price table */
-.price_section .row .card{
-    box-shadow: 0 0 6px 0px rgb(0 134 190 / 30%);
-    border-radius: 5px !important;
+.price_section .row .card {
+    box-shadow   : 0 0 6px 0px rgb(0 134 190 / 30%);
+    border-radius: 0.7rem !important;
 }
 
 
-  .price_section .card {
-    border: none;
+.price_section .card {
+    border       : none;
     border-radius: 1rem;
-    transition: all 0.2s;
-  }
-  
-  .price_section hr {
+    transition   : all 0.2s;
+}
+
+.price_section hr {
     margin: 1.5rem 0;
-  }
-  
-  .price_section .card-title {
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
+}
+
+.price_section .card-title {
+    margin        : 0.5rem 0;
+    font-size     : 0.9rem;
     letter-spacing: .1rem;
-    font-weight: bold;
-  }
-  
-  .price_section .card-price {
+    font-weight   : bold;
+}
+
+.price_section .card-price {
     font-size: 3rem;
-    margin: 0;
-  }
-  
-  .price_section .card-price .period {
+    margin   : 0;
+}
+
+.price_section .card-price .period {
     font-size: 0.8rem;
-  }
-  
-  .price_section ul li {
+}
+
+.price_section ul li {
     margin-bottom: 1rem;
-  }
-  
-  .price_section .text-muted {
+}
+
+.price_section .text-muted {
     opacity: 0.7;
-  }
-  
- .section_faq .container{
+}
+
+.section_faq .container {
     border       : 1px solid #0086be;
     box-shadow   : 0 0 6px 0px rgb(0 134 190 / 30%);
     border-radius: 12px;
-    overflow: hidden;
- }
- .section_faq .accordion-button:focus {
+    overflow     : hidden;
+}
+
+.section_faq .accordion-button:focus {
     box-shadow: unset !important;
 }
+
 .section_faq .accordion-button:not(.collapsed) {
-    color: #fff;
+    color           : #fff;
     background-color: #0086be;
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+    box-shadow      : inset 0 -1px 0 rgb(0 0 0 / 13%);
 
 }
+
 .accordion-button:not(.collapsed)::after {
-   filter: brightness(0) !important;
+    filter: brightness(0) !important;
 }
-  @media (min-width: 992px) {
+
+/*########### benifits  start###########*/
+.section_our_solution .row {
+    align-items: center;
+}
+
+.our_solution_category {
+    display       : flex;
+    flex-direction: row;
+    flex-wrap     : wrap;
+}
+
+.our_solution_category .solution_cards_box {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+}
+
+.solution_cards_box .solution_card {
+    flex         : 0 50%;
+    background   : #fff;
+    box-shadow   : 0 0 6px 0px rgb(0 134 190 / 30%);
+    border-radius: 15px;
+    padding      : 10px 15px;
+    position     : relative;
+    z-index      : 1;
+    overflow     : hidden;
+    min-height   : 265px;
+    transition   : 0.7s;
+}
+
+.solution_cards_box .solution_card:hover {
+    background: #0086be;
+    color     : #fff;
+    transform : scale(1.0.1);
+    z-index   : 9;
+}
+
+.solution_cards_box .solution_card:hover::before {
+    background: rgb(85 108 214 / 10%);
+}
+
+.solution_cards_box .solution_card:hover .solu_title h3,
+.solution_cards_box .solution_card:hover .solu_description p {
+    color: #fff;
+}
+
+.solution_cards_box .solution_card:before {
+    content      : "";
+    position     : absolute;
+    background   : rgb(85 108 214 / 5%);
+    width        : 170px;
+    height       : 400px;
+    z-index      : -1;
+    transform    : rotate(42deg);
+    right        : -56px;
+    top          : -23px;
+    border-radius: 35px;
+}
+
+.solution_cards_box .solution_card:hover .solu_description button {
+    background: #fff !important;
+    color     : #0086be;
+}
+
+.solution_card .so_top_icon {}
+
+.solution_card .solu_title h3 {
+    /* color: #212121;
+    font-size: 1.3rem; */
+    margin-top   : 13px;
+    margin-bottom: 13px;
+}
+
+.solution_card .solu_description p {
+    font-size    : 15px;
+    margin-bottom: 15px;
+}
+
+.solution_card .solu_description button {
+    border       : 0;
+    border-radius: 15px;
+    color        : #fff;
+    font-weight  : 500;
+    font-size    : 1rem;
+    padding      : 5px 16px;
+}
+
+.our_solution_content h1 {
+    text-transform: capitalize;
+    margin-bottom : 1rem;
+    font-size     : 2.5rem;
+}
+
+.our_solution_content p {}
+
+.hover_color_bubble {
+    position     : absolute;
+    background   : rgb(54 81 207 / 15%);
+    width        : 100rem;
+    height       : 100rem;
+    left         : 0;
+    right        : 0;
+    z-index      : -1;
+    top          : 16rem;
+    border-radius: 50%;
+    transform    : rotate(-36deg);
+    left         : -18rem;
+    transition   : 0.7s;
+}
+
+.solution_cards_box .solution_card:hover .hover_color_bubble {
+    top: 0rem;
+}
+
+.solution_cards_box .solution_card .so_top_icon {
+    width          : 60px;
+    height         : 60px;
+    border-radius  : 50%;
+    background     : #fff;
+    overflow       : hidden;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.solution_cards_box .solution_card .so_top_icon img {
+    width     : 40px;
+    height    : 50px;
+    object-fit: contain;
+}
+
+/*start media query*/
+@media screen and (min-width: 320px) {
+
+    .our_solution_category {
+        width : 100%;
+        margin: 0 auto;
+    }
+
+    .our_solution_category .solution_cards_box {
+        flex: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .our_solution_category .solution_cards_box {
+        flex: 1;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .sol_card_top_3 {
+        position: relative;
+    }
+
+    .our_solution_category {
+        margin: 0 auto;
+    }
+}
+
+/*########### benifits end###########*/
+
+
+@media (min-width: 992px) {
     .price_section .card:hover {
-      margin-top: -.25rem;
-      margin-bottom: .25rem;
-      box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+        margin-top   : -.25rem;
+        margin-bottom: .25rem;
+        box-shadow   : 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
     }
-  
+
     .price_section .card:hover .btn {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
 @media only screen and (min-width: 300px) and (max-width: 1185px) {
     .header_section .text-box {
@@ -675,29 +824,34 @@ footer a {
     .testi-wrap {
         height: 630px;
     }
+
     .section_heading::after {
-        width: 80px;
+        width : 80px;
         height: 3px;
     }
 }
 
 @media only screen and (min-width: 300px) and (max-width: 493px) {
     .section_heading::after {
-        width: 70px;
+        width : 70px;
         height: 2px;
     }
+
     .contact_footer {
-      width: 71% ;
-      padding-left: 35px;
+        width       : 71%;
+        padding-left: 35px;
     }
+
     .slider .slide {
         width: 121px;
     }
-    .slider .slide img{
+
+    .slider .slide img {
         height: auto !important;
-        width: 121px !important;
+        width : 121px !important;
     }
 }
+
 @media only screen and (min-width: 360px) and (max-width: 479px) {
     #testimonial-area .section-heading h2 {
         font-size  : 30px;

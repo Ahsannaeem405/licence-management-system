@@ -223,8 +223,8 @@
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">Benifits</h2>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="our_solution_category">
-                        <div class="solution_cards_box">
+                    <div class="our_solution_category gap-3">
+                        <div class="solution_cards_box gap-3">
                             <div class="solution_card">
                                 <div class="hover_color_bubble"></div>
                                 <div class="so_top_icon">
@@ -341,7 +341,7 @@
                             </div>
                         </div>
                         <!--  -->
-                        <div class="solution_cards_box sol_card_top_3">
+                        <div class="solution_cards_box gap-3 sol_card_top_3">
                             <div class="solution_card">
                                 <div class="hover_color_bubble"></div>
                                 <div class="so_top_icon">
@@ -465,7 +465,7 @@
     </section>
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5 py-3">
-        <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customor Logs</h2>
+        <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customer Logs</h2>
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
@@ -685,7 +685,7 @@
     </section>
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5 py-3">
-        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Partner logs</h2>
+        <h2 class="section_heading text-center position-relative mb-5 fw-bold">Partner Logs</h2>
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
@@ -734,7 +734,7 @@
         </div>
     </section>
     <!-- FAQ -->
-    <section class="section_faq" class="py-md-5 py-3">
+    <section class="section_faq" class="py-md-5 py-3 px-2">
         <h2 class="section_heading text-center position-relative mb-5 fw-bold">FAQ</h2>
         <div class="container px-0">
 

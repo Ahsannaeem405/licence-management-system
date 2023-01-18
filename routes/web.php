@@ -1,9 +1,13 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\superadmin\SuperAdminController;
 use App\Http\Controllers\customer\CustomerController;
 use App\Http\Controllers\manager\ManagerController;
+use App\Http\Controllers\LogoutController;
+
+use GuzzleHttp\Middleware;
+
 /*
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +23,11 @@ use App\Http\Controllers\manager\ManagerController;
 Route::get('/', function () {
     return view('welcome');
 });
- Route::group(['prefix' => 'superadmin'],function(){
+
+Route::get('logout',[LogoutController::class,'logout'])->name('logout');
+
+ Route::group(['prefix' => 'superadmin' , 'middleware' => 'SuperAdmin'],function(){
+
 
     Route::get('/dashboard',[SuperAdminController::class,'index'])->name('superadmin-dashbaord');
     Route::get('/subcription',[SuperAdminController::class,'create'])->name('superadmin-subcription');
@@ -36,7 +44,7 @@ Route::get('/', function () {
    
  });
 
- Route::group(['prefix' => 'customer'],function(){
+ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'],function(){
     Route::get('/dashboard',[CustomerController::class,'index'])->name('customer-dashboard');
     Route::get('/subcription',[CustomerController::class,'subcripton'])->name('customer-subcription');
     Route::get('/department',[CustomerController::class,'department'])->name('customer-department');
@@ -53,7 +61,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix' => 'manager'],function(){
+Route::group(['prefix' => 'manager', 'middleware' => 'Manager'],function(){
     Route::get('/dashboard',[ManagerController::class,'index'])->name('manager-dashbaord');
     Route::get('/company-info',[ManagerController::class,'companyinfo'])->name('manager-company-info');
     Route::get('/license',[ManagerController::class,'license'])->name('manager-license');
@@ -63,3 +71,9 @@ Route::group(['prefix' => 'manager'],function(){
 
 
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// });

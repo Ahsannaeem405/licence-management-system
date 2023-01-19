@@ -63,39 +63,27 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                            <form novalidate>
+                                            <form novalidate action="{{route('superadmin-profile-update',$user->id)}}"  method="POST" enctype="multipart/form-data">
+                                                @csrf
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-username">Username</label>
-                                                                <input type="text" class="form-control" id="account-username" placeholder="Username" value="hermione007" required data-validation-required-message="This username field is required">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <div class="controls">
                                                                 <label for="account-name">Name</label>
-                                                                <input type="text" class="form-control" id="account-name" placeholder="Name" value="Hermione Granger" required data-validation-required-message="This name field is required">
+                                                                <input type="text" class="form-control" id="account-name" name="name" placeholder="Name"   required data-validation-required-message="This name field is required" value="{{$user->name}}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-e-mail">E-mail</label>
-                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                                <label for="account-e-mail">Email</label>
+                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" name="email" required data-validation-required-message="This email field is required" value="{{$user->email}}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="account-company">Company</label>
-                                                            <input type="text" class="form-control" id="account-company" placeholder="Company name">
-                                                        </div>
-                                                    </div>
+                                                   
                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                         <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                             changes</button>

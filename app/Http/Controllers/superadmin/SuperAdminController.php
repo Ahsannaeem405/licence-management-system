@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers\superadmin;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+use App\mail\CustomerMail;
+// use App\Mail\CustomerMail as MailCustomerMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SuperAdminController extends Controller
 {
@@ -28,10 +35,17 @@ class SuperAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function customer()
-    {
-        return view('superadmin.company.customers');
-    }
+    // public function customer()
+    // {
+    //     return view('superadmin.company.customers');
+    // }
+
+    //     public function customer()
+    //      {
+
+    //         $admin = User::where('role','customer')->get();
+    //          return view('superadmin.company.customers',compact('admin'));
+    //  }
 
 
     public function transaction()
@@ -47,6 +61,8 @@ class SuperAdminController extends Controller
      */
     public function addcustomer()
     {
+
+
         return view('superadmin.company.add-customers');
     }
 
@@ -80,8 +96,14 @@ class SuperAdminController extends Controller
 
 
 
-    public function setting()
-    {
-        return view('superadmin.company.setting');
-    }
+    // public function setting()
+    // {
+    //     $user = User::where('role','superadmin')->where('id', Auth::user()->id)->first();
+    //     return view('superadmin.company.setting',compact('user'));
+    // }
+
+
+
+
+
 }

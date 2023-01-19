@@ -25,7 +25,7 @@
                             class="feather icon-mail"></i><span class="menu-title"
                             data-i18n="Email">Subcriptions</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('superadmin->customers') }}"><i
+                <li class=" nav-item"><a href="{{ route('superadmin-customers') }}"><i
                             class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">Customers</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('superadmin-package') }}"><i class="feather icon-list"></i><span

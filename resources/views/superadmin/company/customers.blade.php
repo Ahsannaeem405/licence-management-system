@@ -66,7 +66,6 @@
                                                                         <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
                                                                     </form>
                                                                 </span>
-                                                                {{-- <a href="delete/{{ $item->id }}"><i class="fa fa-trash text-danger btndelete"></i></a> --}}
                                                             </td>
                                                         </tr>
                                                     @endforeach

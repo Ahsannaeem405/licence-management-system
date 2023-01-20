@@ -3,3 +3,4 @@
  @include('superadmin.layouts.sidebar')
  @yield('content')
  @include('superadmin.layouts.footer')
+ @yield('js')

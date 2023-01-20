@@ -59,8 +59,14 @@
                                                             <td>{{ $item->address }}</td>
                                                             <td>{{ $item->phone }}</td>
                                                             <td>
-                                                                <a href="edit/{{ $item->id }}"><i class="fa fa-edit text-warning"></i></a>
-                                                                <a href="delete/{{ $item->id }}"><i class="fa fa-trash text-danger btndelete"></i></a>
+                                                                <span class="d-flex">
+                                                                    <a href="edit/{{ $item->id }}"><i class="fa fa-edit text-warning"></i></a>
+                                                                    <form action="{{route('superadmin-delete-customer',$item->id)}}" method="POST">
+                                                                        <input type="hidden" value="GET" name="_method">
+                                                                        <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
+                                                                    </form>
+                                                                </span>
+                                                                {{-- <a href="delete/{{ $item->id }}"><i class="fa fa-trash text-danger btndelete"></i></a> --}}
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -78,4 +84,26 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            form.submit();
+        }
+        });
+    });
+</script>
 @endsection

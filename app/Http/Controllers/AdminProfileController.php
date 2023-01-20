@@ -21,14 +21,13 @@ class AdminProfileController extends Controller
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id . ''],
-
-
         ]);
         $user->name = $request->name;
         $user->email = $request->email;
-    
-         $user->save();
+       
+        $user->save();
 
-    return redirect()->route('superadmin-setting')->with('success', 'AdminPorfile Updated Successfully');
-}  
+        return redirect()->route('superadmin-setting')->with('success', 'AdminPorfile Updated Successfully');
+    }
+     
 }

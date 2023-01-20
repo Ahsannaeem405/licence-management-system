@@ -48,7 +48,7 @@ Route::get('logout',[LogoutController::class,'logout'])->name('logout');
     Route::POST('/superadmin-store',[AdminCustomerController::class,'store'])->name('superadmin-store');
     Route::get('/edit/{id}',[AdminCustomerController::class,'edit'])->name('superadmin-edit');
     Route::POST('/update-customer/{id}',[AdminCustomerController::class,'update_customer'])->name('superadmin-update-customer');
-    Route::get('/delete/{id}',[AdminCustomerController::class,'destroy'])->name('superadmin-delete');
+    Route::get('/delete/{id}',[AdminCustomerController::class,'destroy'])->name('superadmin-delete-customer');
     // AdminProfileController
     Route::get('/setting',[AdminProfileController::class,'setting'])->name('superadmin-setting');
     Route::POST('/update-admin/{id}',[AdminProfileController::class,'updateadmin'])->name('superadmin-profile-update');

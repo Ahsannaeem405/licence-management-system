@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\superadmin;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
-class AdminProfileController extends Controller
+class SettingController extends Controller
 {
     public function setting()
     {
@@ -29,5 +30,4 @@ class AdminProfileController extends Controller
 
         return redirect()->route('superadmin-setting')->with('success', 'AdminPorfile Updated Successfully');
     }
-     
 }

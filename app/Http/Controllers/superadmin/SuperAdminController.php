@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\superadmin;
-
+use MyHelper;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -162,20 +162,14 @@ class SuperAdminController extends Controller
         $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
         return view('superadmin.settings.setting', compact('user'));
     }
-    public function update_admin(Request $request)
+    public function admin_update_profile(Request $request)
     {
-        $user = User::find($request->id);
+       return MyHelper::update_profile($request);
+    }
 
-        $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id . ''],
-        ]);
-        $user->name = $request->name;
-        $user->email = $request->email;
-       
-        $user->save();
-
-        return redirect()->route('superadmin-setting')->with('success', 'AdminPorfile Updated Successfully');
+    public function admin_update_password(Request $request)
+    {
+       return MyHelper::update_password($request);
     }
     //------------------------------------ Super-Admin Account Setting End ------------------------------------//
 

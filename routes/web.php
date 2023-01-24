@@ -46,8 +46,8 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::get('multi-lang', [SuperAdminController::class, 'lang'])->name('superadmin-multi-lang');
     Route::get('/analytics', [SuperAdminController::class, 'analytics'])->name('superadmin-analytics');
     Route::get('/admin-setting', [SuperAdminController::class, 'setting'])->name('superadmin-setting');
-    Route::POST('/update-admin/{id}', [SuperAdminController::class, 'update_admin'])->name('superadmin-profile-update');
-});
+    Route::POST('/update-admin-profile/{id}', [SuperAdminController::class, 'admin_update_profile'])->name('superadmin-profile-update');
+}); Route::POST('/update-admin-password/{id}', [SuperAdminController::class, 'admin_update_password'])->name('superadmin-password-update');
 
 Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer-dashboard');

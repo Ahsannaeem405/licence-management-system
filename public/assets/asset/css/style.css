@@ -31,12 +31,6 @@ h6 {
     color: #0086be;
 }
 
-.btn-link:hover {
-    color: #0056b3;
-    text-decoration: none !important;
-    box-shadow: unset !important;
-}
-
 .bg_light {
     background-color: #dce0ff36;
 }
@@ -71,9 +65,13 @@ header.header {
     height: 100vh;
     /* background-image: linear-gradient(to right bottom, rgb(0 19 24 / 80%), rgb(34 101 195 / 80%)), url('../img/header_main.jpg'); */
     background-image: url('../img/banner.jpg');
-    background-size: cover;
-    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
     position: relative;
+}
+
+section {
+    overflow: hidden;
 }
 
 .header_section .container {
@@ -94,8 +92,8 @@ header.header {
 
 .heading_header {
     filter: blur(0px) !important;
-    /* text-shadow: black 1px 1px 2px, rgb(155 207 230) 0px 0px 25px, rgb(2 185 247) 0px 0px 5px !important; */
-    font-size: 40px;
+    text-shadow: black 1px 1px 2px, rgb(155 207 230) 0px 0px 25px, rgb(2 185 247) 0px 0px 5px !important;
+    font-size: 50px;
     font-weight: 700;
     line-height: 1.1;
     margin: 0 0 15px;
@@ -140,13 +138,9 @@ footer .btn:visited {
 }
 
 .header_section .text-box {
-    position: absolute;
-    top: 20%;
     max-width: 40%;
-    /* margin: auto; */
-    left: 0;
-    right: 0;
-    text-align: center;
+    margin: 49px 0px 0px 38px;
+    float: left;
 }
 
 .section_heading::after {
@@ -709,9 +703,9 @@ footer a {
     .heading_header {
         font-size: 20px !important;
     }
-    header.header {
+    /* header.header {
         height: unset !important;
-    }
+    } */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

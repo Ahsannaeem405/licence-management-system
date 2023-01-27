@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GesCle</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -19,11 +17,11 @@
 
 </head>
 
-<body class="position-relative">
+<body class="position-relative  ">
 
     <nav class="navbar navbar-expand-lg navbar-light  w-100 nav_main sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><img class="img-fluid" src="{{ asset('lay.png') }}"
+            <a class="navbar-brand" href="#"><img class="img-fluid" src="{{ asset('img.png') }}"
                     alt="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -34,16 +32,36 @@
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 gap-md-1 gap-2 mb-lg-0">
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page"
-                                href="#">Home</a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page" href="#">How it
+                                Works
+                            </a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">About us</a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">Pricing </a>
+                        </li>
+                        <li class="nav-item btn-2">
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">Benefits </a>
+                        </li>
+                        <li class="nav-item btn-2">
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">Customers </a>
+                        </li>
+                        <li class="nav-item btn-2">
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">About Us </a>
                         </li>
                         <li class="nav-item btn-2">
                             <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">Contact Us</a>
                         </li>
-                        <li class="nav-item btn-2 btn_hover_0">
+                        <li class="nav-item btn-2">
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">Language </a>
+                        </li>
+                        <li class="nav-item btn-2">
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">Login </a>
+                        </li>
+                        {{-- <li class="nav-item btn-2">
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">Contact Us</a>
+                        </li> --}}
+
+                        {{-- <li class="nav-item btn-2 btn_hover_0">
                             <a class="nav-link  py-md-2 py-1  px-0" href="#">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn_hover_0 text-white p-0 dropdown-toggle"
@@ -64,62 +82,50 @@
                                     </ul>
                                 </div>
                             </a>
-                        </li>
+                        </li> --}}
 
                     </ul>
 
                 </div>
-                <div class="ms-lg-5 nav-item btn-2 login_btn"><a
+                {{-- <div class="ms-lg-5 nav-item btn-2 login_btn"><a
                         class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="#">Login</a>
-                </div>
+                </div> --}}
             </div>
 
         </div>
     </nav>
 
-    <header class="header_section header position-relative  ">
-        {{-- <div class="overflow-hidden">
-            <canvas id="nokey" width="1200" height="500">
-            </canvas>
-        </div> --}}
+    <header class="header_section header position-relative ">
         <div class="text-box  text-white">
-            <h3 class="heading-primary heading_header mb-md-5  mb-3">
+            <h3 class="heading-primary heading_header text-center mb-md-5  mb-3">
                 <u>CRM SOFTWARE</u>
-                
-                {{-- <span class="d-block"></span> --}}
+
             </h3>
-            <p>Say goodbye to manual license tracking and 
-                hello to streamlined success with our License 
-                Management Application. Our user-friendly 
-                interface and powerful features make it easy to 
-                manage and track all your licenses in one central
-                location, saving you time and increasing 
-                efficiency. Sign up now and take advantage of 
-                our free 3-month trial to experience the benefits for yourself.</p>
-            <p class="mb-md-5 mb-3 fs-4">
-                {{-- Say goodbye to manual license tracking and 
-                hello to streamlined success with our License 
-                Management Application. Our user-friendly 
-                interface and powerful features make it easy to 
-                manage and track all your licenses in one central
-                location, saving you time and increasing 
-                efficiency. Sign up now and take advantage of 
-                our free 3-month trial to experience the benefits for yourself.</p> --}}
-                {{-- <a href="#" class="btn  btn-animated fw-bold" data-target="#modelId">Book a Demo</a> --}}
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+            <div class="pl-md-5 pl-3 text-left">
+                <p class="text-start">Say goodbye to manual license tracking and
+                    hello to streamlined success with our License
+                    Management Application. Our user-friendly
+                    interface and powerful features make it easy to
+                    manage and track all your licenses in one central
+                    location, saving you time and increasing
+                    efficiency. Sign up now and take advantage of
+                    our free 3-month trial to experience the benefits for yourself.</p>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Book a Demo
                 </button>
+            </div>
+
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" action="{{ route('store-client') }}" method="POST" novalidate>
@@ -196,11 +202,13 @@
                             <h6>Preferred mode of contact</h6>
                             <span class="d-flex">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="mode" value="phone" required>
+                                    <input class="form-check-input" type="radio" name="mode" value="phone"
+                                        required>
                                     <label class="form-check-label" for="flexRadioDefault1">Phone</label>
                                 </div>&nbsp;&nbsp;&nbsp;
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="mode" value="email" required>
+                                    <input class="form-check-input" type="radio" name="mode" value="email"
+                                        required>
                                     <label class="form-check-label" for="flexRadioDefault2">Email</label>
                                 </div>
                             </span>
@@ -210,7 +218,6 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -224,19 +231,18 @@
 
             <div class="row align-items-center">
                 <div class="col-md-6 mt-2 mt-md-0    d-flex flex-column gap-4">
-                    <div class="box p-md-3 p-2">
-                        <h3 class="">Choose Your Subscription:</h3>
+                    <div  id="video1" class="box p-md-3 p-2">
+                        <h3>Choose Your Subscription:</h3>
                         <p class="mb-0">"Find the perfect plan for your business:</p>
                         <p class="mb-0">Compare our subscription options"</p>
                     </div>
                     <div class="box p-md-3 p-2">
-                        <h3 class="">Create Your Account:</h3>
+                        <h3 id="video2">Create Your Account:</h3>
                         <p class="mb-0">"Easily set up your account in minutes: Sign
                             up now"</p>
                     </div>
                     <div class="box p-md-3 p-2">
-                        <h3 class="">
-                            Manage Your Licences</h3>
+                        <h3 id="video3"> Manage Your Licences</h3>
                         <p class="mb-0">Depart conveniently from Orlando, Houston, or Los Angeles</p>
                     </div>
 
@@ -244,9 +250,31 @@
 
                 <div class="col-md-6 mt-2 mt-md-0">
 
-                    <div class="work_video">
+                    <div class="work_video ved1">
                         <video controls>
-                            <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}" type="video/mp4">
+                            <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}"  type="video/mp4">
+                            <!-- <source src="movie.ogg" type="video/ogg"> -->
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                </div>
+                <div class="col-md-6 mt-2 mt-md-0">
+
+                    <div   class="work_video ved2">
+                        <video controls>
+                            <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}"  type="video/mp4">
+                            <!-- <source src="movie.ogg" type="video/ogg"> -->
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                </div>
+                <div class="col-md-6 mt-2 mt-md-0">
+
+                    <div  class="work_video ved3">
+                        <video controls>
+                            <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}"  type="video/mp4">
                             <!-- <source src="movie.ogg" type="video/ogg"> -->
                             Your browser does not support the video tag.
                         </video>
@@ -818,16 +846,18 @@
     <!-- about us -->
     <section id="about-us" class="about py-md-5 py-4 ">
         <div class="container aos-init aos-animate" data-aos="fade-right">
-            <h2 class="section_heading text-center position-relative mb-5 fw-bold">About US Text</h2>
+            <h2 class="section_heading text-center position-relative mb-5 fw-bold">About US </h2>
             <div class="row gy-4">
 
                 <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-                   
-                    <img src="{{ asset('assets/asset/img/header_main.jpg') }}" class="img-fluid rounded-3" alt=""></a>
+
+                    <img src="{{ asset('assets/asset/img/header_main.jpg') }}" class="img-fluid rounded-3"
+                        alt=""></a>
                 </div>
 
                 <div class="col-lg-6 content order-last order-lg-first">
-                    <h6>Experience the benefits of our license management application through the words of satisfied customers</h6>
+                    <h6>Experience the benefits of our license management application through the words of satisfied
+                        customers</h6>
                     <p>Welcome to our license management application! We are a dedicated team of
                         professionals who are passionate about helping businesses and organizations
                         streamline and simplify their license management processes..</p>
@@ -852,29 +882,29 @@
                                     ensure that it meets the changing needs of our customers.</p>
                             </div>
                         </li>
-                        <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
+                        {{-- <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
                                 class="bi bi-broadcast"></i>
                             <div>
                                 <p>Thank you for choosing our license management application. We are committed to
                                     providing you with the best service and support possible.</p>
                             </div>
-                        </li>
-                        <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
+                        </li> --}}
+                        {{-- <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
                                 class="bi bi-broadcast"></i>
                             <div>
                                 <p> "We were looking for a solution that would help us to manage our licenses more
                                     efficiently and your application exceeded our expectations. It is so easy to use and
                                     has helped us to stay organized and on top of renewals." </p>
                             </div>
-                        </li>
-                        <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
+                        </li> --}}
+                        {{-- <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
                                 class="bi bi-broadcast"></i>
                             <div>
                                 <p> "As a business that operates in multiple states, managing our licenses was
                                     becoming a real headache. Your application has made it so easy for us to keep track
                                     of all of our licenses, no matter where they are located."</p>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -886,9 +916,8 @@
 
                 <div class="col-md-8 offset-md-2 text-center">
                     <h2 class="section_heading  position-relative mb-5 fw-bold">A Word From Our Customers</h2>
-                    <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt
-                        ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+                    <p class="pb-3">Thank you for choosing our license management application. We are committed to
+                                    providing you with the best service and support possible. </p>
 
                 </div>
 
@@ -901,10 +930,9 @@
                             alt="">
                     </div>
                     <div class="client-comment ">
-                        <h3 class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3 class="text-white">"We were looking for a solution that would help us to manage our licenses more
+                            efficiently and your application exceeded our expectations. It is so easy to use and
+                            has helped us to stay organized and on top of renewals."  </h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info ">
@@ -919,9 +947,9 @@
                             alt="">
                     </div>
                     <div class="client-comment">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3>"As a business that operates in multiple states, managing our licenses was
+                            becoming a real headache. Your application has made it so easy for us to keep track
+                            of all of our licenses, no matter where they are located."</h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info">
@@ -936,9 +964,9 @@
                             alt="">
                     </div>
                     <div class="client-comment">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3>"We were looking for a solution that would help us to manage our licenses more
+                            efficiently and your application exceeded our expectations. It is so easy to use and
+                            has helped us to stay organized and on top of renewals." </h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info">
@@ -953,9 +981,9 @@
                             alt="">
                     </div>
                     <div class="client-comment">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3>"We were looking for a solution that would help us to manage our licenses more
+                            efficiently and your application exceeded our expectations. It is so easy to use and
+                            has helped us to stay organized and on top of renewals." </h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info">
@@ -970,9 +998,9 @@
                             alt="">
                     </div>
                     <div class="client-comment">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3>"As a business that operates in multiple states, managing our licenses was
+                            becoming a real headache. Your application has made it so easy for us to keep track
+                            of all of our licenses, no matter where they are located."</h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info">
@@ -987,9 +1015,9 @@
                             alt="">
                     </div>
                     <div class="client-comment">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3>"As a business that operates in multiple states, managing our licenses was
+                            becoming a real headache. Your application has made it so easy for us to keep track
+                            of all of our licenses, no matter where they are located." </h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info">
@@ -1004,9 +1032,9 @@
                             width="40px" alt="">
                     </div>
                     <div class="client-comment">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h3>
+                        <h3>"We were looking for a solution that would help us to manage our licenses more
+                            efficiently and your application exceeded our expectations. It is so easy to use and
+                            has helped us to stay organized and on top of renewals." </h3>
                         <span><i class="fa fa-quote-left"></i></span>
                     </div>
                     <div class="client-info">
@@ -1024,66 +1052,80 @@
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
-                   <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"> <img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"> <img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"> <img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
                 <div class="slide">
-                     <a href="https://www.google.com/"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100"
-                        width="250" alt="" /></a>
+                    <a href="https://www.google.com/"><img
+                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100"
+                            width="250" alt="" /></a>
                 </div>
             </div>
         </div>
     </section>
     <!-- FAQ -->
-    <section class="section_faq" class="py-md-5 py-3 px-2">
+    {{-- <section class="section_faq" class="py-md-5 py-3 px-2">
         <h2 class="section_heading text-center position-relative mb-5 fw-bold">FAQ</h2>
         <div class="accordion" id="accordionExample">
             <div class="card">
@@ -1223,6 +1265,147 @@
               </div>
             </div>
           </div>
+    </section> --}}
+    <section class="section_faq" class="py-md-5 py-3 px-2">
+        <h2 class="section_heading text-center position-relative mb-5 fw-bold">FAQ</h2>
+        <div class="container px-0">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                            aria-controls="flush-collapseOne">
+                            Q: What is your license management application?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body"> A: Our license management application is a software that helps businesses and
+                            organizations manage, track, and renew all of their licenses in one convenient
+                            and secure location. Our user-friendly interface and powerful features allow users
+                            to stay on top of their licensing needs, so they can focus on running their
+                            business.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                            aria-controls="flush-collapseTwo">
+                            Q: How does your application work?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingTwo" data-bs-parent="#flush-headingTwo">
+                        <div class="accordion-body">
+                            A: Our application allows users to upload and store all of their licenses in one
+                            central location. Users can set reminders for renewal dates, track the status of
+                            their licenses, and easily renew them when necessary. The application also
+                            generates reports to help users stay compliant with licensing requirements.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Q: How can your application help my business?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#flush-headingThree">
+                        <div class="accordion-body"> A: Our application can help your business by streamlining and simplifying the
+                            license management process. It can save you time and resources, and ensure
+                            that you stay compliant with all licensing requirements. Additionally, it can help
+                            you   to   avoid   penalties   and   fines   associated   with   expired   or   non-compliant
+                            licenses.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingfour">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-headingfour" aria-expanded="false"
+                            aria-controls="flush-headingfour">
+                            Q: Can I use your application for licenses from multiple states or countries?
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingfour" data-bs-parent="#flush-headingfour">
+                        <div class="accordion-body"> A: Yes, our application can be used to manage licenses from multiple states or
+                            countries. It allows users to track and renew licenses from different locations in
+                            one central place.
+                            </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingfive">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Q: How secure is your application?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#flush-headingfive">
+                        <div class="accordion-body"> A: We take security very seriously and have implemented strict measures to
+                            protect the data stored on our application. All data is encrypted and stored on
+                            secure   servers.   Additionally,   we   comply   with   all   industry-standard   security
+                            protocols to ensure that our application is as secure as possible.
+                             </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingsix">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Q: Do you offer customer support?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#flush-headingsix">
+                        <div class="accordion-body">A: Yes, we offer customer support to our users. Our customer support team is
+                            available to assist you with any questions or issues you may have. They can help
+                            you to get started with the application, troubleshoot any problems you may
+                            encounter, and provide guidance on how to use the application's features.
+                             </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingseven">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Q: Can I try your application before purchasing it?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#flush-headingseven">
+                        <div class="accordion-body"> A: Yes, we offer a free trial of our license management application. During the
+                            trial, you will have access to all the features of the application and you can use it
+                            to manage your licenses. After the trial period, you can decide if you want to
+                            purchase the application.
+                             </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingeight">
+                        <button class="accordion-button fw-bold text_primary collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Q: Is there any setup fee?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#flush-headingeight">
+                        <div class="accordion-body">A: No, there is no setup fee for using our license management application. You 
+                            can start using it right away after signing up.
+                            </div>
+                    </div>
+                </div>
+                 
+            </div>
+        </div>
     </section>
 
 
@@ -1294,7 +1477,7 @@
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                         <div class="footer_logo">
 
-                            <img src="{{ asset('lay.png') }}" alt="" srcset="">
+                            <img src="{{ asset('img.png') }}" alt="" srcset="">
                         </div>
 
                         <!-- <div class="mb-2">
@@ -1384,22 +1567,15 @@
     <!-- Button trigger modal -->
 
     <script>
-        $('#exampleModal').on('show.bs.modal', event => {
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            // Use above variables to manipulate the DOM
-
-        });
+       
     </script>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-</script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('assets/asset/js/ani-particals.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1407,7 +1583,32 @@
 </html>
 <script>
     $(document).ready(function() {
+        $('#video1').click(function() {
+       
+        $('.ved1').toggle();
 
+        });
+        $('.ved2').hide('ved2');
+        $('.ved3').hide('ved3');
+
+        $('#video2').click(function() {
+            //$('.ved1').hide();
+            $('.ved1').toggle();
+            
+         $('.ved3').removeClass('ved3');
+
+        });
+        $('#video3').click(function() {
+            $('.ved1').toggle();
+       
+
+        });
+        $('#exampleModal').on('show.bs.modal', event => {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            // Use above variables to manipulate the DOM
+
+        });
         $('.client-single').on('click', function(event) {
             event.preventDefault();
 
@@ -1431,11 +1632,15 @@
                 $(this).attr('data-position', newPos);
 
             }
+             
+ 
         });
 
     }(jQuery));
 </script>
-
+{{-- video  --}}
+ 
+{{-- end video  --}}
 <!-- aos animation -->
 <script>
     AOS.init();

@@ -64,7 +64,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
 
 Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer-dashboard');
-    Route::get('/subcription', [CustomerControllerUS::class, 'subcripton'])->name('customer-subcription');
+    Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
     Route::get('/add-department', [CustomerController::class, 'adddepartment'])->name('customer-add-department');
     Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');

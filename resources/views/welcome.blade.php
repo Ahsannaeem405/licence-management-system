@@ -70,7 +70,7 @@
 
                 </div>
                 <div class="ms-lg-5 nav-item btn-2 login_btn"><a
-                        class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="#">Login</a>
+                        class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="{{route('login')}}">Login</a>
                 </div>
             </div>
 
@@ -82,33 +82,26 @@
             <canvas id="nokey" width="1200" height="500">
             </canvas>
         </div> --}}
-        <div class="text-box  text-white">
+        <div class="text-box text-white">
             <h3 class="heading-primary heading_header mb-md-5  mb-3">
                 <u>CRM SOFTWARE</u>
-                
-                {{-- <span class="d-block"></span> --}}
+                <span class="d-block"></span>
             </h3>
-            <p>Say goodbye to manual license tracking and 
+
+            <p class="banner-text mb-md-5 mb-3"> 
+                Say goodbye to manual license tracking and 
                 hello to streamlined success with our License 
                 Management Application. Our user-friendly 
                 interface and powerful features make it easy to 
                 manage and track all your licenses in one central
                 location, saving you time and increasing 
                 efficiency. Sign up now and take advantage of 
-                our free 3-month trial to experience the benefits for yourself.</p>
-            <p class="mb-md-5 mb-3 fs-4">
-                {{-- Say goodbye to manual license tracking and 
-                hello to streamlined success with our License 
-                Management Application. Our user-friendly 
-                interface and powerful features make it easy to 
-                manage and track all your licenses in one central
-                location, saving you time and increasing 
-                efficiency. Sign up now and take advantage of 
-                our free 3-month trial to experience the benefits for yourself.</p> --}}
-                {{-- <a href="#" class="btn  btn-animated fw-bold" data-target="#modelId">Book a Demo</a> --}}
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
-                    Book a Demo
-                </button>
+                our free 3-month trial to experience the benefits for yourself.
+            </p>
+           
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+                Book a Demo
+            </button>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

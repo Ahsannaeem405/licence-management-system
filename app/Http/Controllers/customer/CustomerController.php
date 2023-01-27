@@ -11,7 +11,7 @@ class CustomerController extends Controller
     {
         return view('customer.dashboard');
     }
-    public function subcripton()
+    public function subscripton()
     {
         return view('customer.subcription');
     }

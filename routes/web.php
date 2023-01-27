@@ -6,6 +6,7 @@ use App\Http\Controllers\superadmin\SuperAdminController;
 use App\Http\Controllers\customer\CustomerController;
 use App\Http\Controllers\manager\ManagerController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\superadmin\SettingController;
 
 
@@ -26,6 +27,11 @@ use GuzzleHttp\Middleware;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::POST('/store-client',[HomeController::class,'store'])->name('store-client');
+Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
+
+
+
 
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
@@ -42,12 +48,19 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::get('/add-Package', [SuperAdminController::class, 'add_package'])->name('superadmin-add-package');
     Route::get('/transaction', [SuperAdminController::class, 'transaction'])->name('superadmin-transaction');
     Route::get('/license', [SuperAdminController::class, 'license'])->name('superadmin-license');
-    Route::get('/view-license', [SuperAdminController::class, 'view'])->name('superadmin-view-license');
+    Route::get('/view-license/{id}', [SuperAdminController::class,'license_view'])->name('superadmin-view-license');
+    Route::get('/license-delete/{id}', [SuperAdminController::class,'delete_license'])->name('license-delete');
     Route::get('multi-lang', [SuperAdminController::class, 'lang'])->name('superadmin-multi-lang');
     Route::get('/analytics', [SuperAdminController::class, 'analytics'])->name('superadmin-analytics');
     Route::get('/admin-setting', [SuperAdminController::class, 'setting'])->name('superadmin-setting');
     Route::POST('/update-admin-profile/{id}', [SuperAdminController::class, 'admin_update_profile'])->name('superadmin-profile-update');
-}); Route::POST('/update-admin-password/{id}', [SuperAdminController::class, 'admin_update_password'])->name('superadmin-password-update');
+    Route::POST('superadmin-store-package', [SuperAdminController::class, 'admin_store_package'])->name('superadmin-store-package');
+    Route::get('/superadmin-edit-package/{id}', [SuperAdminController::class, 'admin_edit_package'])->name('superadmin-edit-package');
+    Route::POST('/superadmin-update-package/{id}', [SuperAdminController::class, 'admin_update_package'])->name('superadmin-update-package');
+    Route::get('/superadmin-delete-package/{id}', [SuperAdminController::class, 'admin_delete_package'])->name('superadmin-delete-package');
+}); 
+ 
+
 
 Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer-dashboard');

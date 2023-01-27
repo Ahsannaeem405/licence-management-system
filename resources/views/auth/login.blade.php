@@ -112,7 +112,7 @@
                                                     </fieldset>
 
                                                     <fieldset class="form-label-group position-relative has-icon-left">
-                                                        <input type="password "class="form-control @error('password') is-invalid @enderror" name="password" id="user-password" placeholder="Password" required>
+                                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="user-password" placeholder="Password" required>
                                                         @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>

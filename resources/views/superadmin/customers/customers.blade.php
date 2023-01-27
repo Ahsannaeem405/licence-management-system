@@ -41,7 +41,7 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                       
+                                                      
                                                         <th>Name</th>
                                                         <th>Email</th>
                                                         <th>Address</th>
@@ -59,13 +59,7 @@
                                                             <td>{{ $item->address }}</td>
                                                             <td>{{ $item->phone }}</td>
                                                             <td>
-                                                                <span class="d-flex">
-                                                                    <a href="edit/{{ $item->id }}"><i class="fa fa-edit text-warning"></i></a>
-                                                                    <form action="{{route('superadmin-delete-customer',$item->id)}}" method="POST">
-                                                                        <input type="hidden" value="GET" name="_method">
-                                                                        <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
-                                                                    </form>
-                                                                </span>
+                                                              
                                                             </td>
                                                         </tr>
                                                     @endforeach

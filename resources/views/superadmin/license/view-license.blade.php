@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">View</h2>
+                            <h2 class="content-header-title float-left mb-0">Department Licenses</h2>
 
                         </div>
                     </div>
@@ -41,334 +41,35 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                         
                                                         <th>Name</th>
-                                                        <th>Key</th>
+                                                        <th>Department</th>
+                                                        <th class="key">Key</th>
                                                         <th>Date of Issue</th>
                                                         <th>Date of Expiry</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>San Francisco</td>
-                                                        <td>Edinburgh</td>
-
-                                                        <td>03207984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Garrett Winters</td>
-                                                        <td> San </td>
-                                                        <td>Tokyo</td>
-
-                                                        <td>03307984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ashton Cox</td>
-                                                        <td>Garrett Winters</td>
-                                                        <td>San Francisco</td>
-                                                        <td>03107984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cedric Kelly</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>Edinburgh</td>
-
-                                                        <td>03407984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Airi Satou</td>
-                                                        <td>Airi Satou</td>
-                                                        <td>Tokyo</td>
-
-                                                        <td>03407984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Brielle Williamson</td>
-                                                        <td>Brielle Williamson</td>
-                                                        <td>New York</td>
-
-                                                        <td>03307984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Herrod Chandler</td>
-                                                        <td>Herrod Chandler</td>
-                                                        <td>San Francisco</td>
-
-                                                        <td>03207984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Rhona Davidson</td>
-                                                        <td>Rhona Davidson</td>
-                                                        <td>Tokyo</td>
-
-                                                        <td>03207984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Colleen Hurst</td>
-                                                        <td>sonya88@gmail.com</td>
-                                                        <td>San Francisco</td>
-
-                                                        <td>03107984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sonya Frost</td>
-                                                        <td>jena88@gmail.com</td>
-                                                        <td>Edinburgh</td>
-
-                                                        <td>03407984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Jena Gaines</td>
-                                                        <td>flynn77@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03307984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Quinn Flynn</td>
-                                                        <td>edinburugh55@gmail.com</td>
-                                                        <td>Edinburgh</td>
-
-                                                        <td>03207984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Charde Marshall</td>
-                                                        <td>haley66@gmail.com</td>
-                                                        <td>San Francisco</td>
-
-                                                        <td>03107984063</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Haley Kennedy</td>
-                                                        <td>tatyana44@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03107984568</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tatyana Fitzpatrick</td>
-                                                        <td>silva1@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03107980563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Michael Silva</td>
-                                                        <td>byrud33@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03127984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Paul Byrd</td>
-                                                        <td>little44@gmail.com</td>
-                                                        <td>New York</td>
-
-                                                        <td>03187984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Gloria Little</td>
-                                                        <td>greer33@gmail.com</td>
-                                                        <td>New York</td>
-
-                                                        <td>03147984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bradley Greer</td>
-                                                        <td>caldwel7@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03177984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Dai Rios</td>
-                                                        <td>berry33@gmail.com</td>
-                                                        <td>Edinburgh</td>
-
-                                                        <td>03177984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Jenette Caldwell</td>
-                                                        <td>steven1@gmail.com</td>
-                                                        <td>New York</td>
-
-                                                        <td>03197984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Yuri Berry</td>
-                                                        <td>butler2@gmail.com</td>
-                                                        <td>New York</td>
-
-                                                        <td>03137984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cara Stevens</td>
-                                                        <td>ahmed@gmail.com</td>
-                                                        <td>New York</td>
-
-                                                        <td>03109984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hermione Butler</td>
-                                                        <td>rahul3@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03117984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Lael Greer</td>
-                                                        <td>angel5093@gmail.com</td>
-                                                        <td>London</td>
-
-                                                        <td>03107980563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Jonas Alexander</td>
-                                                        <td>ahmed3@gmail.com</td>
-                                                        <td>San Francisco</td>
-
-                                                        <td>03147984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Shad Decker</td>
-                                                        <td>taha93@gmail.com</td>
-                                                        <td>Edinburgh</td>
-
-                                                        <td>03137984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Michael Bruce</td>
-                                                        <td>shiekh@gmail.com</td>
-                                                        <td>Singapore</td>
-
-                                                        <td>03127984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Donna Snider</td>
-                                                        <td>talha93@gmail.com</td>
-                                                        <td>New York</td>
-
-                                                        <td>03117984563</td>
-                                                        <td>
-                                                            {{-- <a href="#"><i class="fa fa-edit text-warning"></i></a> --}}
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($license as $item)
+                                                        <tr>
+                                                            <td>{{ $item->name }}</td>
+                                                            <td>{{ $item->department->department_name }}</td>
+                                                            <td class="key">{{ $item->key }}</td>
+                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d',$item->date_of_issue)->format('d-F-Y')}}</td>
+                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d' ,$item->date_of_expiry)->format('d-F-Y') }}</td>
+                                                            <td>
+                                                                
+                                                               <span class="d-flex">
+                                                                <form action="{{route('license-delete',$item->id)}}" method="POST">
+                                                                    <input type="hidden" value="GET" name="_method">
+                                                                    <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
+                                                                </form>
+                                                                <a href="#" class="open" data-key={{$item->key}}><i class="fa fa-copy"  ></i></a>
+                                                            </span>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -383,4 +84,45 @@
             </div>
         </div>
     </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  @endsection
+  
+@section('js')
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            form.submit();
+        }
+        });
+    });
+
+    $(document).ready(function(){
+
+    $('.key').hide();
+    $('#open').on('click',function(){
+        $('.key').show();
+    })
+
+    });
+    $('.open').click(function(){
+        var copytext = $(this).attr('data-key');
+      
+        copytext.select();
+        navigator.clipboard.writeText(copytext.value);
+    });
+    
+</script>
+
 @endsection

@@ -11,7 +11,8 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" action="{{route('superadmin-store-package')}} " method="POST">
+                                    @csrf
                                     <div class="form-body">
                                         <div class="row">
                                             
@@ -21,7 +22,7 @@
                                                         <span>Package</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="text"   class="form-control" name="package" placeholder="">
+                                                        <input type="text" class="form-control" name="package" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -32,7 +33,7 @@
                                                         <span>No of Entity</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="number"   class="form-control" name="startdate" placeholder="">
+                                                        <input type="number" name="entity"  class="form-control"   placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -43,7 +44,7 @@
                                                         <span>Price</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="text"   class="form-control" name="Price"  >
+                                                        <input type="text"   class="form-control" name="price"  >
                                                     </div>
                                                 </div>
                                             </div>
@@ -53,7 +54,7 @@
                                                         <span>Description</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <textarea type="text"   class="form-control" name="Price"  ></textarea>
+                                                        <textarea type="text"   class="form-control" name="description"  ></textarea>
                                                     </div>
                                                 </div>
                                             </div>

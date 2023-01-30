@@ -206,16 +206,20 @@ class SuperAdminController extends Controller
 
     public function license()
     {
-        $department = Department::all();
+        $users = User::where('role','customer')->get();
         
-        return view('superadmin.license.license',compact('department'));
+        return view('superadmin.license.license',compact('users'));
     }
 
+    public function departments($id)
+    {
+        $departments = Department::where('user_id','=',$id)->get();
+        return view('superadmin.license.view-departments',compact('departments'));
+    }
+    
     public function license_view($id)
     {
-        
-        $license = license::where('id',$id)->get();
-       
+        $license = license::where('department_id',$id)->get();
         return view('superadmin.license.view-license',compact('license'));
     }
 
@@ -248,7 +252,7 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Account Setting Start ------------------------------------//
     public function setting()
     {
-     $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
+        $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
         return view('superadmin.settings.setting', compact('user'));
     }
     public function admin_update_profile(Request $request)

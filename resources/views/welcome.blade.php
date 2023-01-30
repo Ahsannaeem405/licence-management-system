@@ -92,8 +92,8 @@
         {{-- <div class="row">
             <div class="col-lg-6 col-md-6 "> --}}
                 <div class="text-box text-white">
-                    <h3 class="heading-primary heading_header mb-md-5  mb-3">
-                        <u>CRM SOFTWARE</u>
+                    <h3 class="heading-primary heading_header mb-md-5  mb-3" >
+                        Simplify your license management, amplify your efficiency
                         <span class="d-block"></span>
                     </h3>
         
@@ -107,10 +107,12 @@
                         efficiency. Sign up now and take advantage of 
                         our free 3-month trial to experience the benefits for yourself.
                     </p>
-                   
-                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Book a Demo
-                    </button>
+                   <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Book a Demo
+                        </button>
+                   </div>
+                    
                 {{-- </div>
             </div> --}}
         </div>
@@ -218,25 +220,26 @@
     </header>
 
     <!-- how it work -->
-    <section class="how-it-works py-md-5 py-3 overflow-hidden" >
+    <section class="how-it-works py-md-5 py-3 overflow-hidden">
         <div class="container" data-aos="fade-left">
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">How It Work</h2>
+            <h5 class="text-center position-relative mb-5">Get Started with 3 easy steps</h5>
             <div class="row align-items-center">
                 <div class="col-md-6 mt-2 mt-md-0 d-flex flex-column gap-4">
                     <div id="video1" class="box p-md-3 p-2 work-block-active">
                         <h3>Choose Your Subscription</h3>
-                        <p class="mb-0">"Find the perfect plan for your business:</p>
-                        <p class="mb-0">Compare our subscription options"</p>
+                        <p class="mb-0">Find the perfect plan for your business:</p>
+                        <p class="mb-0">Compare our subscription options</p>
                     </div>
                     <div class="box p-md-3 p-2 work-block" id="video2">
                         <h3 >Create Your Account</h3>
-                        <p class="mb-0">"Easily set up your account in minutes: Sign
-                            up now"</p>
+                        <p class="mb-0">Easily set up your account in minutes: Sign
+                            up now</p>
                     </div>
                     <div class="box p-md-3 p-2 work-block" id="video3">
                         <h3> Manage Your Licences</h3>
-                        <p class="mb-0">"Streamline licence management: Organize 
-                            and monitor usage with ease"</p>
+                        <p class="mb-0">Streamline licence management: Organize 
+                            and monitor usage with ease</p>
                     </div>
                 </div>
                 <div class="col-md-6 mt-2 mt-md-0">

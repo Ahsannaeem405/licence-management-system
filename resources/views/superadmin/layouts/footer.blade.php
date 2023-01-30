@@ -38,6 +38,9 @@
 <script src="{{asset('assets/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
+    <!-- BEGIN: Page JS-->
+    <script src="{{asset('assets/app-assets/vendors/js/scripts/pages/dashboard-analytics.js')}}"></script>
+    <!-- END: Page JS-->
 <!-- BEGIN: Page JS-->
 <script src="{{asset('assets/app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
 {{-- <script src="{{asset('assets/app-assets/js/scripts/pages/dashboard-analytics.js')}}"></script> --}}

@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('department_id')->nullable()->constrained('departments')->references('id')->cascadeOnDelete();
-            $table->string('name');
+            $table->string('title');
+            $table->string('service')->nullable();
             $table->string('key');
             $table->date('date_of_issue');
             $table->date('date_of_expiry');
+            
             $table->timestamps();
         });
     }

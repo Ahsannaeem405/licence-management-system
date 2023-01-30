@@ -33,13 +33,14 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal" novalidate>
+                                        <form class="form-horizontal" novalidate method="POST" action="{{route('license-store-license')}}">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label> Title</label>
                                                         <div class="controls">
-                                                            <input type="text" name="text" class="form-control"
+                                                            <input type="text" name="title" class="form-control"
                                                                 data-validation-required-message="This field is required"
                                                                 placeholder="Enter Title">
                                                         </div>
@@ -47,7 +48,7 @@
                                                     <div class="form-group">
                                                         <label> Issue of Date</label>
                                                         <div class="controls">
-                                                            <input type="date" name="date" class="form-control"
+                                                            <input type="date" name="issue" class="form-control"
                                                                 required data-validation-containsnumber-regex="(\d)+"
                                                                 data-validation-containsnumber-message="The numeric field may only contain numeric characters."
                                                                 placeholder="Enter Issue of Date">
@@ -56,18 +57,22 @@
                                                    
                                                     <div class="form-group">
                                                         <label>Departments</label>
-                                                        <select class="form-control">
-                                                            <option name="">IT</option>
+                                                        <select class="form-control" name="department">
+                                                            <option selected disabled>Please Select Department</option>
+                                                            @foreach($departments as $department)
+                                                            <option value="{{$department->id}}">{{$department->department_name}}</option>
+                                                            @endforeach
+                                                            {{-- <option name="">IT</option>
                                                             <option name="">Electrical Engeneering</option>
                                                             <option name="">Data Sceince</option>
-                                                            <option name="">Mass Comunication</option>
+                                                            <option name="">Mass Comunication</option> --}}
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Services</label>
-                                                        <select class="form-control">
+                                                        <select class="form-control" name="service">
                                                             <option name="">Auto Cat</option>
                                                             <option name="">Mass Communication</option>
                                                             <option name="">Data Sceince</option>
@@ -85,7 +90,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Key</label>
-                                                        <textarea type="text" class="form-control" name="Price"></textarea>
+                                                        <textarea type="text" class="form-control" name="key"></textarea>
                                                     </div>
 
                                                 </div>

@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/dashboard-analytics.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/card-analytics.css')}}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/plugins/tour/tour.css')}}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/plugins/tour/tour.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->

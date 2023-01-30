@@ -69,6 +69,10 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/add-department', [CustomerController::class, 'adddepartment'])->name('customer-add-department');
     Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');
     Route::get('/addlicense', [CustomerController::class, 'addlicense'])->name('customer-add-license');
+    Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('license-store-license');
+    Route::get('/customer-edit-license/{id}', [CustomerController::class,'customer_edit_license'])->name('customer-edit-license');
+    Route::get('/customer-update-license/{id}', [CustomerController::class,'customer_update_license'])->name('customer-update-license');
+    Route::get('/customer-delete-license/{id}', [CustomerController::class, 'customer_license_delete'])->name('customer-delete-license');
     Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
     Route::get('/add-management', [CustomerController::class, 'addmanagement'])->name('customer-add-management');
     Route::get('/setting', [CustomerController::class, 'setting'])->name('customer-setting');

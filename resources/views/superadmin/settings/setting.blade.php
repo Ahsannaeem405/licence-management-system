@@ -115,7 +115,7 @@
                                             </div>
                                             <div class="tab-pane fade " id="account-vertical-password" role="tabpanel"
                                                 aria-labelledby="account-pill-password" aria-expanded="false">
-                                                <form  action="{{ route('superadmin-password-update', $user->id) }}" method="POST" novalidate>
+                                                <form  action="{{ route('superadmin-admin-password', $user->id) }}" method="POST" novalidate>
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-12">

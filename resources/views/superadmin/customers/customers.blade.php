@@ -58,9 +58,12 @@
                                                             <td>{{ $item->email }}</td>
                                                             <td>{{ $item->address }}</td>
                                                             <td>{{ $item->phone }}</td>
-                                                            <td>
-                                                              
-                                                            </td>
+                                                             
+                                                                <td>
+                                                                    <a href="{{route('superadmin-edit-customer',$item->id)}}"><i class="fa fa-edit text-warning"></i></a>
+                                                                    <a href="{{route('superadmin-delete-customer',$item->id)}}"><i class="fa fa-trash text-danger"></i></a>
+                                                                 </td>
+                                                            
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

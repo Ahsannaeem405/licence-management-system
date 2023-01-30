@@ -12,5 +12,10 @@ class License extends Model
     public function department(){
         return $this->belongsTo(Department::class,'department_id','id');
     }
+
+    public function customer(){
+        return $this->belongsTo(Customer::class,'customer_id','id');
+    }
+  
   
 }

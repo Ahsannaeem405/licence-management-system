@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('department_id')->nullable()->constrained('departments')->references('id')->cascadeOnDelete();
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->references('id')->cascadeOnDelete();
             $table->string('title');
             $table->string('service')->nullable();
             $table->string('key');

@@ -248,7 +248,7 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Account Setting Start ------------------------------------//
     public function setting()
     {
-        $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
+     $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
         return view('superadmin.settings.setting', compact('user'));
     }
     public function admin_update_profile(Request $request)

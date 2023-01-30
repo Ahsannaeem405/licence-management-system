@@ -53,7 +53,7 @@
                                                 <tbody>
                                                     @foreach ($license as $item)
                                                         <tr>
-                                                            <td>{{ $item->name }}</td>
+                                                            <td>{{ $item->title }}</td>
                                                             <td>{{ $item->department->department_name }}</td>
                                                             <td class="key">{{ $item->key }}</td>
                                                             <td>{{ \Carbon\carbon::createFromFormat('Y-m-d',$item->date_of_issue)->format('d-F-Y')}}</td>

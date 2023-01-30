@@ -5,8 +5,8 @@
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="#">
                         {{-- <div class="brand-logo"></div> --}}
-                        {{-- <img src="{{asset('assets/app-assets/images/myimage/download.png')}}" alt="Girl in a jacket" width="200" height="200"> --}}
-                        <h2 class="brand-text mb-0">LOGO</h2>
+                        <img src="{{asset('assets/app-assets/images/logo/Layer.png')}}" alt="Girl in a jacket" width="40" height="40">
+                        <h2 class="brand-text mb-0" style="color: #000677;">GesCle</h2>
                     </a>
                 </li>
             </ul>

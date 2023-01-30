@@ -15,7 +15,7 @@
                 </div>
                 <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                     <div class="form-group breadcrum-right">
-                       
+
                     </div>
                 </div>
             </div>
@@ -27,7 +27,8 @@
                             <div class="card">
                                 <div class="breadcrumb-wrapper col-12">
                                     <ol class="breadcrumb float-right m-0">
-                                        <li class="breadcrumb-item btn btn-primary fa fa-plus" data-toggle="modal" data-target="#inlineForm"> Add Language  </li>
+                                        <li class="breadcrumb-item btn btn-primary fa fa-plus" data-toggle="modal"
+                                            data-target="#inlineForm"> Add Language </li>
                                     </ol>
                                 </div>
                                 <div class="card-content">
@@ -37,349 +38,58 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                        
-                                                        <th>Name</th>
-                                                        <th>Key</th>
-                                                        {{-- <th>Price</th> --}}
+
+                                                        <th>Country Name</th>
+                                                        <th>Language</th>
+                                                        {{-- <th>Flag</th> --}}
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                       
-                                                        <td>System Architect</td>
-                                                        <td>Edinburgh</td>
-                                                        
+
+                                                        <td>USA</td>
+                                                        <td>English</td>
                                                         {{-- <td>$320,800</td> --}}
                                                         <td>
-                                                           <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                           <a href="#"><i class="fa fa-trash text-danger"></i></a>
+                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
+                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                     
+
+                                                        <td>France</td>
+                                                        <td>French</td>
                                                         {{-- <td>$170,750</td> --}}
                                                         <td>
                                                             <a href="#"><i class="fa fa-edit text-warning"></i></a>
                                                             <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
+                                                        </td>
                                                     </tr>
                                                     <tr>
-                                                     
-                                                        <td>Junior Technical Author</td>
-                                                        <td>San Francisco</td>
-{{--                                                       
-                                                        <td>$86,000</td> --}}
+
+                                                        <td>China</td>
+                                                        <td>chinese</td>
+                                                        {{-- <td>San Francisco</td> --}}
+
                                                         <td>
                                                             <a href="#"><i class="fa fa-edit text-warning"></i></a>
                                                             <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
+                                                        </td>
                                                     </tr>
                                                     <tr>
-                                                        
-                                                        <td>Senior Javascript Developer</td>
-                                                        <td>Edinburgh</td>
-                                                      
+
+                                                        <td>South Koria</td>
+                                                        <td>Korian</td>
+
                                                         {{-- <td>$433,060</td> --}}
                                                         <td>
                                                             <a href="#"><i class="fa fa-edit text-warning"></i></a>
                                                             <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                         
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                       
-                                                        {{-- <td>$162,700</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        
-                                                        <td>Integration Specialist</td>
-                                                        <td>New York</td>
-                                                      
-                                                        {{-- <td>$372,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        
-                                                        <td>Sales Assistant</td>
-                                                        <td>San Francisco</td>
-                                                       
-                                                        {{-- <td>$137,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                     
-                                                        <td>Integration Specialist</td>
-                                                        <td>San Francisco</td>
-                                                        {{-- <td>$327,900</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                    
-                                                        <td>Javascript Developer</td>
-                                                        <td>San Francisco</td>
-                                                       
-                                                        {{-- <td>$205,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        
-                                                        <td>Software Engineer</td>
-                                                        <td>Edinburgh</td>
-                                                        
-                                                        {{-- <td>$103,600</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                       
-                                                        <td>Office Manager</td>
-                                                        <td>London</td>
-                                                     
-                                                        {{-- <td>$90,560</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        
-                                                        <td>Support Lead</td>
-                                                        <td>Edinburgh</td>
-                                                       
-                                                        {{-- <td>$342,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                       
-                                                        <td>Regional Director</td>
-                                                        <td>San Francisco</td>
-                                                        {{-- <td>36</td> --}}
-                                                        {{-- <td>2008/10/16</td> --}}
-                                                        {{-- <td>$470,600</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Haley Kennedy</td> --}}
-                                                        <td>Senior Marketing Designer</td>
-                                                        <td>London</td>
-                                                        {{-- <td>43</td> --}}
-                                                        {{-- <td>2012/12/18</td> --}}
-                                                        {{-- <td>$313,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Tatyana Fitzpatrick</td> --}}
-                                                        <td>Regional Director</td>
-                                                        <td>London</td>
-                                                        {{-- <td>19</td> --}}
-                                                        {{-- <td>2010/03/17</td> --}}
-                                                        {{-- <td>$385,750</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Michael Silva</td> --}}
-                                                        <td>Marketing Designer</td>
-                                                        <td>London</td>
-                                                        {{-- <td>66</td> --}}
-                                                        {{-- <td>2012/11/27</td> --}}
-                                                        {{-- <td>$198,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Paul Byrd</td> --}}
-                                                        <td>Chief Financial Officer (CFO)</td>
-                                                        <td>New York</td>
-                                                        {{-- <td>64</td> --}}
-                                                        {{-- <td>2010/06/09</td> --}}
-                                                        {{-- <td>$725,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Gloria Little</td> --}}
-                                                        <td>Systems Administrator</td>
-                                                        <td>New York</td>
-                                                        {{-- <td>59</td> --}}
-                                                        {{-- <td>2009/04/10</td> --}}
-                                                        {{-- <td>$237,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Bradley Greer</td> --}}
-                                                        <td>Software Engineer</td>
-                                                        <td>London</td>
-                                                        {{-- <td>41</td> --}}
-                                                        {{-- <td>2012/10/13</td> --}}
-                                                        {{-- <td>$132,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Dai Rios</td> --}}
-                                                        <td>Personnel Lead</td>
-                                                        <td>Edinburgh</td>
-                                                        {{-- <td>35</td> --}}
-                                                        {{-- <td>2012/09/26</td> --}}
-                                                        {{-- <td>$217,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Jenette Caldwell</td> --}}
-                                                        <td>Development Lead</td>
-                                                        <td>New York</td>
-                                                        {{-- <td>30</td> --}}
-                                                        {{-- <td>2011/09/03</td> --}}
-                                                        {{-- <td>$345,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Yuri Berry</td> --}}
-                                                        <td>Chief Marketing Officer (CMO)</td>
-                                                        <td>New York</td>
-                                                        {{-- <td>40</td> --}}
-                                                        {{-- <td>2009/06/25</td> --}}
-                                                        {{-- <td>$675,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Cara Stevens</td> --}}
-                                                        <td>Sales Assistant</td>
-                                                        <td>New York</td>
-                                                        {{-- <td>46</td> --}}
-                                                        {{-- <td>2011/12/06</td> --}}
-                                                        {{-- <td>$145,600</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Hermione Butler</td> --}}
-                                                        <td>Regional Director</td>
-                                                        <td>London</td>
-                                                        {{-- <td>47</td> --}}
-                                                        {{-- <td>2011/03/21</td> --}}
-                                                        {{-- <td>$356,250</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Lael Greer</td> --}}
-                                                        <td>Systems Administrator</td>
-                                                        <td>London</td>
-                                                        {{-- <td>21</td> --}}
-                                                        {{-- <td>2009/02/27</td> --}}
-                                                        {{-- <td>$103,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Jonas Alexander</td> --}}
-                                                        <td>Developer</td>
-                                                        <td>San Francisco</td>
-                                                        {{-- <td>30</td> --}}
-                                                        {{-- <td>2010/07/14</td> --}}
-                                                        {{-- <td>$86,500</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Shad Decker</td> --}}
-                                                        <td>Regional Director</td>
-                                                        <td>Edinburgh</td>
-                                                        {{-- <td>51</td> --}}
-                                                        {{-- <td>2008/11/13</td> --}}
-                                                        {{-- <td>$183,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Michael Bruce</td> --}}
-                                                        <td>Javascript Developer</td>
-                                                        <td>Singapore</td>
-                                                        {{-- <td>29</td> --}}
-                                                        {{-- <td>2011/06/27</td> --}}
-                                                        {{-- <td>$183,000</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {{-- <td>Donna Snider</td> --}}
-                                                        <td>Customer Support</td>
-                                                        <td>New York</td>
-                                                      
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                         </td>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
-                                                
+
                                             </table>
                                         </div>
                                     </div>
@@ -390,7 +100,8 @@
                 </section>
                 <!--/ Zero configuration table -->
                 <!-- Modal -->
-                <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
+                <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel33" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -401,20 +112,20 @@
                             </div>
                             <form action="#">
                                 <div class="modal-body">
-                                    <label>Name </label>
+                                    <label>Country Name </label>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Email Name" class="form-control">
+                                        <input type="text" placeholder="Enter Country Name" class="form-control">
                                     </div>
 
-                                    <label> Key</label>
+                                    <label>Language</label>
                                     <div class="form-group">
                                         <input type="text" placeholder="Enter Key" class="form-control">
                                     </div>
-
-                                    <label>File Upload</label>
+                                    {{-- 
+                                    <label>Flag Upload</label>
                                     <div class="form-group">
                                         <input type="file" name="file" class="form-control">
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>

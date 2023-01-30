@@ -99,6 +99,9 @@ section {
     margin: 0 0 15px;
     font-family: 'Poppins', sans-serif;
 }
+.banner-text{
+    text-align: left;
+}
 
 footer .btn:link,
 footer .btn:visited {

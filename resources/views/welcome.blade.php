@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/asset/css/style.css') }}">
 
+    <style>
+        #video1,#video2,#video3{
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
@@ -88,36 +93,38 @@
 
                 </div>
                 {{-- <div class="ms-lg-5 nav-item btn-2 login_btn"><a
-                        class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="#">Login</a>
+                        class="nav-link text-white py-md-2 px-0 py-1 bg_light rounded-pill" href="{{route('login')}}">Login</a>
                 </div> --}}
             </div>
 
         </div>
     </nav>
 
-    <header class="header_section header position-relative ">
-        <div class="text-box  text-white">
-            <h3 class="heading-primary heading_header text-center mb-md-5  mb-3">
+    <header class="header_section header position-relative  ">
+        {{-- <div class="overflow-hidden">
+            <canvas id="nokey" width="1200" height="500">
+            </canvas>
+        </div> --}}
+        <div class="text-box text-white">
+            <h3 class="heading-primary heading_header mb-md-5  mb-3">
                 <u>CRM SOFTWARE</u>
-
+                <span class="d-block"></span>
             </h3>
-            <div class="pl-md-5 pl-3 text-left">
-                <p class="text-start">Say goodbye to manual license tracking and
-                    hello to streamlined success with our License
-                    Management Application. Our user-friendly
-                    interface and powerful features make it easy to
-                    manage and track all your licenses in one central
-                    location, saving you time and increasing
-                    efficiency. Sign up now and take advantage of
-                    our free 3-month trial to experience the benefits for yourself.</p>
-            </div>
-            <div class="text-center">
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
-                    Book a Demo
-                </button>
-            </div>
 
+            <p class="banner-text mb-md-5 mb-3"> 
+                Say goodbye to manual license tracking and 
+                hello to streamlined success with our License 
+                Management Application. Our user-friendly 
+                interface and powerful features make it easy to 
+                manage and track all your licenses in one central
+                location, saving you time and increasing 
+                efficiency. Sign up now and take advantage of 
+                our free 3-month trial to experience the benefits for yourself.
+            </p>
+           
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Book a Demo
+            </button>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -232,18 +239,19 @@
             <div class="row align-items-center">
                 <div class="col-md-6 mt-2 mt-md-0    d-flex flex-column gap-4">
                     <div  id="video1" class="box p-md-3 p-2">
-                        <h3>Choose Your Subscription:</h3>
+                        <h3>Choose Your Subscription</h3>
                         <p class="mb-0">"Find the perfect plan for your business:</p>
                         <p class="mb-0">Compare our subscription options"</p>
                     </div>
                     <div class="box p-md-3 p-2">
-                        <h3 id="video2">Create Your Account:</h3>
+                        <h3 id="video2">Create Your Account</h3>
                         <p class="mb-0">"Easily set up your account in minutes: Sign
                             up now"</p>
                     </div>
                     <div class="box p-md-3 p-2">
                         <h3 id="video3"> Manage Your Licences</h3>
-                        <p class="mb-0">Depart conveniently from Orlando, Houston, or Los Angeles</p>
+                        <p class="mb-0">"Streamline licence management: Organize 
+                            and monitor usage with ease"</p>
                     </div>
 
                 </div>
@@ -251,36 +259,35 @@
                 <div class="col-md-6 mt-2 mt-md-0">
 
                     <div class="work_video ved1">
+                        
                         <video controls>
                             <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}"  type="video/mp4">
                             <!-- <source src="movie.ogg" type="video/ogg"> -->
                             Your browser does not support the video tag.
                         </video>
                     </div>
-
-                </div>
-                <div class="col-md-6 mt-2 mt-md-0">
 
                     <div   class="work_video ved2">
+                        
                         <video controls>
-                            <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}"  type="video/mp4">
+                            <source src="{{ asset('assets/asset/img/movie.mp4') }}"  type="video/mp4">
                             <!-- <source src="movie.ogg" type="video/ogg"> -->
                             Your browser does not support the video tag.
                         </video>
                     </div>
-
-                </div>
-                <div class="col-md-6 mt-2 mt-md-0">
 
                     <div  class="work_video ved3">
+                        
                         <video controls>
-                            <source src="{{ asset('assets/asset/img/work_vidio.mp4') }}"  type="video/mp4">
+                            <source src="{{ asset('assets/asset/img/flower.webm') }}"  type="video/mp4">
                             <!-- <source src="movie.ogg" type="video/ogg"> -->
                             Your browser does not support the video tag.
                         </video>
                     </div>
 
+
                 </div>
+              
 
 
             </div>
@@ -485,7 +492,7 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">User-friendly interface :</h3>
+                                    <h3 class="text_primary">User-friendly interface </h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
@@ -570,7 +577,7 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Powerful features:</h3>
+                                    <h3 class="text_primary">Powerful features</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
@@ -658,7 +665,7 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Free 3-month trial :</h3>
+                                    <h3 class="text_primary">Free 3-month trial </h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
@@ -745,7 +752,7 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Central location :</h3>
+                                    <h3 class="text_primary">Central location </h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
@@ -1583,23 +1590,31 @@
 </html>
 <script>
     $(document).ready(function() {
+        $('.ved2').hide();
+        $('.ved3').hide();
+
         $('#video1').click(function() {
        
-        $('.ved1').toggle();
+        $('.ved1').show();
+        $('.ved2').hide();
+        $('.ved3').hide();
 
         });
-        $('.ved2').hide('ved2');
-        $('.ved3').hide('ved3');
 
         $('#video2').click(function() {
             //$('.ved1').hide();
-            $('.ved1').toggle();
+             
+        $('.ved1').hide();
+        $('.ved2').show();
+        $('.ved3').hide();
             
-         $('.ved3').removeClass('ved3');
+ 
 
         });
         $('#video3').click(function() {
-            $('.ved1').toggle();
+            $('.ved1').hide();
+        $('.ved2').hide();
+        $('.ved3').show();
        
 
         });

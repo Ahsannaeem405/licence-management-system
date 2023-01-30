@@ -101,6 +101,9 @@ section {
 }
 .banner-text{
     text-align: left;
+    overflow:hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 footer .btn:link,
@@ -378,7 +381,7 @@ footer a {
 
 .how-it-works .row .box {
     border: 1px solid #0086be;
-    box-shadow: 0 0 6px 0px rgb(0 134 190 / 30%);
+    box-shadow: 0 0 8px 0px rgb(0 134 190 / 30%);
     border-radius: 6px;
 }
 
@@ -929,4 +932,31 @@ footer a {
     .testi-wrap {
         height: 550px;
     }
+}
+
+.demo-modal{
+    box-shadow: 2px 2px 12px 1px #f7b632;
+}
+.demo-btn{
+    background-color: #f7b632;
+    float: right;
+    color: white;
+}
+
+.work-block-active
+{
+    cursor: pointer;
+    box-shadow: 2px 2px 12px 1px #0086be !important;
+    overflow: hidden;
+    transform: scale(1.04);
+    
+}
+
+.work-block:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 12px 1px #0086be !important;
+    overflow: hidden;
+    transition: transform 0.25s;
+    filter: brightness(100%);
+    transform: scale(1.05);
 }

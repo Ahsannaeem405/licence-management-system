@@ -45,4 +45,9 @@ class HomeController extends Controller
     {
         return view('mail');
     }
+
+    public function stripe()
+    {
+        return view('stripe');
+    }
 }

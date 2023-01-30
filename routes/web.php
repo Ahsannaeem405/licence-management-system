@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 Route::POST('/store-client',[HomeController::class,'store'])->name('store-client');
 Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
-
+Route::get('/stripe-payment',[HomeCOntroller::class,'stripe'])->name('stripe-payment');
 
 
 

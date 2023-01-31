@@ -11,7 +11,7 @@
                <!-- Dashboard Analytics Start -->
                <section id="dashboard-analytics">
                     <div class="row">
-                       <div class="col-lg-6 col-md-12 col-sm-12">
+                       <div class="col-lg-3 col-md-12 col-sm-12">
                            <div class="card bg-analytics text-white">
                                <div class="card-content">
                                    <div class="card-body text-center" style="height: 240px;">
@@ -65,7 +65,22 @@
                             </div>
                         </div>
                     </div>
-                   </div> 
+                    <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex flex-column align-items-start pb-0">
+                                    <div class="avatar bg-rgba-success p-50 m-0">
+                                        <div class="avatar-content">
+                                            <i class="feather icon-credit-card text-success font-medium-5"></i>
+                                        </div>
+                                    </div>
+                                    <h2 class="text-bold-700 mt-1">97.5k</h2>
+                                    <p class="mb-0">Total License</p>
+                                </div>
+                                <div class="card-content">
+                                    <div id="line-area-chart-2"></div>
+                                </div>
+                            </div>
+                        </div> 
                 
                </section>
                <!-- Dashboard Analytics end -->

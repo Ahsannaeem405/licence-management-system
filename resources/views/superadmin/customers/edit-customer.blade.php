@@ -9,9 +9,9 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Update Data</h2>
+                            <h2 class="content-header-title float-left mb-0">Update User</h2>
                             
-                        </div>-
+                        </div>
                     </div>
                 </div>
                 <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">

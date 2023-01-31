@@ -20,7 +20,20 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
     {
-        return view('superadmin.dashboard.dashboard');
+        $total_customers = User::whereIn('role',['manager','tool-owner'])->count();
+        $total_packages = Package::count();
+        $total_license = License::count();
+        $total_departments = Department::count();
+        // $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
+        // $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
+        // $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+        $data = [
+            'total_customers',
+            'total_packages',
+            'total_license',
+            'total_departments'
+        ];
+        return view('superadmin.dashboard.dashboard',compact($data));
     }
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
 
@@ -41,8 +54,8 @@ class SuperAdminController extends Controller
     public function customer()
     {
 
-        $admin = User::where('role', 'customer')->get();
-        return view('superadmin.customers.customers', compact('admin'));
+        $customers = User::whereIn('role', ['manager','tool-owner'])->get();
+        return view('superadmin.customers.customers', compact('customers'));
     }
 
     public function add_customer()
@@ -69,7 +82,7 @@ class SuperAdminController extends Controller
             'password' =>  Hash::make($request->password),
             'address' =>  $request->address,
             'phone' => $request->phone,
-            'role' => 'customer',
+            'role' => 'manager',
         ]);
         $details = [
             'email' => $request->email,
@@ -120,8 +133,8 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Package Start ------------------------------------//
     public function Package()
     {
-        $pack = Package::all();
-        return view('superadmin.packages.Package', compact('pack'));
+        $packages = Package::all();
+        return view('superadmin.packages.Package', compact('packages'));
     }
     public function add_package()
     {
@@ -130,26 +143,18 @@ class SuperAdminController extends Controller
 
     public function admin_store_package(Request $request)
     {
- 
- 
-          $this->validate($request, [
-                    'package' => 'required',
-                    'entity' => 'required',
-                    'price' => 'required',
-                    'description' =>'required',
-
-                ]);
-
-
+        $this->validate($request,[
+            'package' => 'required',
+            'entity' => 'required',
+            'price' => 'required',
+            'description' =>'required',
+            ]);
         $pack = new Package();
-       
         $pack->create([
-            
             'package' => $request->package,
             'entity' =>  $request->entity,
             'price' =>  $request->price,
             'description' => $request->description,
-
         ]);
  
         return back()->with('success', 'Admin Package save successfully');
@@ -157,16 +162,12 @@ class SuperAdminController extends Controller
 
     public function admin_edit_package(Request $request, $id)
     {
-
         $pack = Package::find($id);
-
         return view('superadmin.packages.edit-package', compact('pack'));
     }
 
     public function admin_update_package(Request $request)
     {
-
-
         $pack = Package::find($request->id);
         $this->validate($request, [
             'package' => 'required',
@@ -174,13 +175,12 @@ class SuperAdminController extends Controller
             'price' => 'required',
             'description' => 'required',
         ]);
-
         $pack->package = $request->package;
         $pack->entity = $request->entity;
         $pack->price = $request->price;
         $pack->description = $request->description;
         $pack->save();
-        return redirect()->route('superadmin-package')->with('success', ' Admin Package Updated Successfully');
+        return redirect()->route('superadmin-package')->with('success','Package Updated Successfully');
     }
 
 
@@ -197,8 +197,8 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Transaction Start ------------------------------------//
     public function transaction()
     {
-        $transaction = Transaction::all();
-        return view('superadmin.transactions.transaction' ,compact('transaction'));
+        $transactions = Transaction::all();
+        return view('superadmin.transactions.transaction' ,compact('transactions'));
     }
     //------------------------------------ Super-Admin Transaction End ------------------------------------//
 

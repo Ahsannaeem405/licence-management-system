@@ -33,31 +33,23 @@
                                     <div class="table-responsive">
                                         <table class="table zero-configuration">
                                             <thead>
-                                            
-                                              
                                                 <tr>
                                                     <td>User Name</td>
                                                     <td>package</td>
                                                     <td>price</td>
                                                     <td>created_at</td>
-                                               
                                                 </tr>
-                                             
                                             </thead>
                                             <tbody>
-                                                @foreach ($transaction as $item)
-                                                    
+                                                @foreach ($transactions as $transaction)
                                                 <tr>
-                                                    <th>{{$item->user->name}}</th>
-                                                    <th>{{$item->package->package}}</th>
-                                                    <th>{{$item->package->price}}</th>
-                                                    <th>{{$item->package->created_at}}</th>
-                                                    
+                                                    <th>{{$transaction->user->name}}</th>
+                                                    <th>{{$transaction->package->package}}</th>
+                                                    <th>{{$transaction->package->price}}</th>
+                                                    <th>{{$transaction->package->created_at}}</th>
                                                 </tr>
                                                 @endforeach
-                                            
                                             </tbody>
-                                           
                                         </table>
                                     </div>
                                 </div>
@@ -67,9 +59,7 @@
                 </div>
             </section>
             <!--/ Zero configuration table -->
-
         </div>
     </div>
 </div>
-
 @endsection

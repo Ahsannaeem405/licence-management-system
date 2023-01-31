@@ -26,44 +26,39 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-
-                                <div class="breadcrumb-wrapper col-12">
-                                    <ol class="breadcrumb float-right m-0">
-                                        <li class="breadcrumb-item"><a href="{{ route('superadmin-add-customers') }}"
-                                                class="btn btn-primary fa fa-plus"> Add Customer</a></li>
-                                    </ol>
-                                </div>
-
                                 <div class="card-content">
-                                    <div class="card-body card-dashboard pt-0">
-
+                                    <div class="card-body card-dashboard">
+                                        <a href="{{ route('superadmin-add-customers') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Customer</a>
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration">
+                                            <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                      
                                                         <th>Name</th>
                                                         <th>Email</th>
+                                                        <th>Role</th>
                                                         <th>Address</th>
                                                         <th>Phone</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($admin as $item)
+                                                    @foreach ($customers as $customer)
                                                         <tr>
-
-                                                           
-                                                            <td>{{ $item->name }}</td>
-                                                            <td>{{ $item->email }}</td>
-                                                            <td>{{ $item->address }}</td>
-                                                            <td>{{ $item->phone }}</td>
-                                                             
-                                                                <td>
-                                                                    <a href="{{route('superadmin-edit-customer',$item->id)}}"><i class="fa fa-edit text-warning"></i></a>
-                                                                    <a href="{{route('superadmin-delete-customer',$item->id)}}"><i class="fa fa-trash text-danger"></i></a>
-                                                                 </td>
-                                                            
+                                                            <td>{{ $customer->name }}</td>
+                                                            <td>{{ $customer->email }}</td>
+                                                            <td>{{ $customer->role }}</td>
+                                                            <td>{{ $customer->address }}</td>
+                                                            <td>{{ $customer->phone }}</td>
+                                                            <td>
+                                                                <span class="d-flex">
+                                                                    <a href="{{route('superadmin-edit-customer',$customer->id)}}"><i class="fa fa-edit text-warning"></i></a>&nbsp;
+                                                                    <form method="POST" action="{{route('superadmin-delete-customer',$customer->id)}}">
+                                                                        @csrf
+                                                                        <input name="_method" type="hidden" value="GET">
+                                                                        <button type="submit" class="show_confirm" data-toggle="tooltip" title='Delete' style="border:none; background-color:transparent;"><i class="text-danger feather icon-trash"></i></button>
+                                                                    </form>
+                                                                </span>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

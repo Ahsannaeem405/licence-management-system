@@ -41,7 +41,7 @@
                             data-i18n="Email">License</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('superadmin-multi-lang') }}"><i
-                            class="fa fa-drivers-license-o"></i><span class="menu-title" data-i18n="Email">Multi
+                            class="fa fa-globe"></i><span class="menu-title" data-i18n="Email">Multi
                             Language</span></a>
                 </li>
 

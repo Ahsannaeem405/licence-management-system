@@ -20,7 +20,7 @@
                                              <i class="feather icon-users text-primary font-medium-5"></i>
                                          </div>
                                      </div>
-                                     <h2 class="text-bold-700 mt-1">92.6k</h2>
+                                     <h2 class="text-bold-700 mt-1">{{$total_customers}}</h2>
                                      <p class="mb-0">Total Customers</p>
                                  </div>
                                  <div class="card-content">
@@ -36,7 +36,7 @@
                                              <i class="feather icon-credit-card text-success font-medium-5"></i>
                                          </div>
                                      </div>
-                                     <h2 class="text-bold-700 mt-1">97.5k</h2>
+                                     <h2 class="text-bold-700 mt-1">{{$total_packages}}</h2>
                                      <p class="mb-0">Total Packages</p>
                                  </div>
                                  <div class="card-content">
@@ -49,10 +49,10 @@
                                  <div class="card-header d-flex flex-column align-items-start pb-0">
                                      <div class="avatar bg-rgba-danger p-50 m-0">
                                          <div class="avatar-content">
-                                             <i class="feather icon-shopping-cart text-danger font-medium-5"></i>
+                                             <i class="fa fa-drivers-license-o text-danger font-medium-5"></i>
                                          </div>
                                      </div>
-                                     <h2 class="text-bold-700 mt-1">36K</h2>
+                                     <h2 class="text-bold-700 mt-1">{{$total_license}}</h2>
                                      <p class="mb-0"> Total Licenses</p>
                                  </div>
                                  <div class="card-content">
@@ -68,8 +68,8 @@
                                              <i class="feather icon-package text-warning font-medium-5"></i>
                                          </div>
                                      </div>
-                                     <h2 class="text-bold-700 mt-1">97.5K</h2>
-                                     <p class="mb-0">Total Subscriptions</p>
+                                     <h2 class="text-bold-700 mt-1">{{$total_departments}}</h2>
+                                     <p class="mb-0">Total Departments</p>
                                  </div>
 
                                  <div class="card-content">
@@ -93,14 +93,14 @@
                                                 <p class="mb-50 text-bold-600">This Month</p>
                                                 <h2 class="text-bold-400">
                                                     <sup class="font-medium-1">$</sup>
-                                                    <span class="text-success">86,589</span>
+                                                    <span class="text-success">0</span>
                                                 </h2>
                                             </div>
                                             <div>
                                                 <p class="mb-50 text-bold-600">Last Month</p>
                                                 <h2 class="text-bold-400">
                                                     <sup class="font-medium-1">$</sup>
-                                                    <span>73,683</span>
+                                                    <span>0</span>
                                                 </h2>
                                             </div>
 

@@ -16,7 +16,7 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::User() && Auth::User()->role =='customer')
+        if(Auth::User() && Auth::User()->role =='tool-owner')
         {
             return $next($request);
         }

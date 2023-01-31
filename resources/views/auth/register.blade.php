@@ -14,6 +14,10 @@
                     <div class="card bg-authentication rounded-0 mb-0">
                         <div class="row m-0">
                             <div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
+                                <img class="mb-2" src="{{asset('assets/app-assets/images/logo/layer.png')}}" alt="logo)" style="width: 40px;">
+                                <div class="d-inline-block">
+                                    <h2 class="brand-text mb-0" style="color: #000677;">GesCle</h2>
+                                </div>
                                 <img src="{{asset('assets/app-assets/images/pages/register.jpg')}}" alt="branding logo">
                             </div>
                             <div class="col-lg-6 col-12 p-0">
@@ -59,7 +63,7 @@
                                                     </div>
                                                 </div>
                                                 <a href="{{route('login')}}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
-                                                <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
+                                                <button type="button" class="btn btn-primary float-right btn-inline mb-50">Register</a>
                                             </form>
                                         </div>
                                     </div>

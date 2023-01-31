@@ -1,21 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
- <!-- BEGIN: Content-->
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
-        </div>
-    </form>
-</div>
-</div>
-</div>
-</div>
-</div> --}}
-<!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -94,12 +79,9 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                {{-- <a href="{{route('register')}}" class="btn btn-outline-primary float-left btn-inline">Register</a> --}}
+                                                <a href="{{route('register')}}" class="btn btn-outline-primary float-left btn-inline">Register</a>
                                                 <button type="submit" class="btn btn-primary float-right btn-inline ">Login</button><br><br>
                                             </form>
-                                                    <a href="{{route('register')}}" class="btn btn-outline-primary float-left btn-inline">Register</a>
-                                                    <button type="submit" class="btn btn-primary float-right btn-inline ">Login</button><br><br>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>

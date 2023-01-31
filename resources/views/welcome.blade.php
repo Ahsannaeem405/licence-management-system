@@ -87,9 +87,7 @@
         </div>
     </nav>
 
-    <header class="header_section header position-relative  ">
-        {{-- <div class="row">
-            <div class="col-lg-6 col-md-6 "> --}}
+    <header class="header_section header position-relative">
         <div class="text-box text-white">
             <h3 class="heading-primary heading_header mb-md-5  mb-3">
                 Simplify your license management, amplify your efficiency

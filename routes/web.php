@@ -30,11 +30,9 @@ Route::get('/', function () {
 Route::POST('/store-client',[HomeController::class,'store'])->name('store-client');
 Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
 Route::get('/stripe-payment',[HomeCOntroller::class,'stripe'])->name('stripe-payment');
-
-
-
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
+//------------------------------------------------- Super-Admin Start ----------------------------------------------//
 Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function () {
     Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin-dashbaord');
     Route::get('/subcription', [SuperAdminController::class, 'subscription'])->name('superadmin-subcription');
@@ -65,16 +63,16 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::POST('/superadmin-update-package/{id}', [SuperAdminController::class, 'admin_update_package'])->name('superadmin-update-package');
     Route::get('/superadmin-delete-package/{id}', [SuperAdminController::class, 'admin_delete_package'])->name('superadmin-delete-package');
 }); 
- 
+//------------------------------------------------- Super-Admin End ----------------------------------------------//
 
-
-Route::group(['prefix' => 'customer', 'middleware' => 'Manager'], function () {
-    Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer-dashboard');
+//------------------------------------------------- Customer Start ----------------------------------------------//
+Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
+    Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('customer-dashboard');
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
-    Route::get('/add-department', [CustomerController::class, 'adddepartment'])->name('customer-add-department');
+    Route::get('/add-department', [CustomerController::class, 'add_department'])->name('customer-add-department');
     Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');
-    Route::get('/addlicense', [CustomerController::class, 'addlicense'])->name('customer-add-license');
+    Route::get('/addlicense', [CustomerController::class, 'add_license'])->name('customer-add-license');
     Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('license-store-license');
     Route::get('/customer-edit-license/{id}', [CustomerController::class,'customer_edit_license'])->name('customer-edit-license');
     Route::get('/customer-update-license/{id}', [CustomerController::class,'customer_update_license'])->name('customer-update-license');
@@ -83,18 +81,16 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Manager'], function () {
     Route::get('/add-management', [CustomerController::class, 'addmanagement'])->name('customer-add-management');
     Route::get('/setting', [CustomerController::class, 'setting'])->name('customer-setting');
 });
+//------------------------------------------------- Customer End ----------------------------------------------//
 
-
-Route::group(['prefix' => 'manager', 'middleware' => 'Customer'], function () {
+//------------------------------------------------- Manager Start ----------------------------------------------//
+Route::group(['prefix' => 'manager', 'middleware' => 'Manager'], function () {
     Route::get('/dashboard', [ManagerController::class, 'index'])->name('manager-dashbaord');
     Route::get('/company-info', [ManagerController::class, 'companyinfo'])->name('manager-company-info');
     Route::get('/license', [ManagerController::class, 'license'])->name('manager-license');
     Route::get('/addlicense', [ManagerController::class, 'addlicense'])->name('manager-add-license');
     Route::get('/setting', [ManagerController::class, 'setting'])->name('manager-setting');
 });
+//------------------------------------------------- Manager Start ----------------------------------------------//
+
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-// });

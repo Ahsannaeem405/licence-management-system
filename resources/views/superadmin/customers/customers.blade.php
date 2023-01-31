@@ -35,7 +35,6 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Email</th>
-                                                        <th>Role</th>
                                                         <th>Address</th>
                                                         <th>Phone</th>
                                                         <th>Action</th>
@@ -46,7 +45,6 @@
                                                         <tr>
                                                             <td>{{ $customer->name }}</td>
                                                             <td>{{ $customer->email }}</td>
-                                                            <td>{{ $customer->role }}</td>
                                                             <td>{{ $customer->address }}</td>
                                                             <td>{{ $customer->phone }}</td>
                                                             <td>

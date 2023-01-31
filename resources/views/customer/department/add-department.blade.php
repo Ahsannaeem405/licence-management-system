@@ -14,44 +14,28 @@
                                 <form class="form form-horizontal">
                                     <div class="form-body">
                                         <div class="row">
-                                            
                                             <div class="col-12">
                                                 <div class="form-group row">
                                                     <div class="col-md-2">
                                                         <span>Department Name</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="text"   class="form-control" name="package" placeholder="">
+                                                        <input type="text" class="form-control" name="name" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
-                                          
-                                            <div class="col-12">
-                                                <div class="form-group row">
-                                                    <div class="col-md-2">
-                                                        <span>logo</span>
-                                                    </div>
-                                                    <div class="col-md-10">
-                                                        <input type="file"   class="form-control" name="logo" placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                          
                                             <div class="col-12">
                                                 <div class="form-group row">
                                                     <div class="col-md-2">
                                                         <span>Description</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <textarea type="text"   class="form-control" name="Price"  ></textarea>
+                                                        <textarea type="text" class="form-control" name="description"  ></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                           
                                             <div class="col-md-12 ">
                                                 <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">Submit</button>
-                                               
                                             </div>
                                         </div>
                                     </div>
@@ -63,9 +47,6 @@
               
             </div>
         </section>
-     
-            
-        
     </div>
 </div>
 </div>

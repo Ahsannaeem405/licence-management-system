@@ -55,7 +55,7 @@ class SuperAdminController extends Controller
     public function customer()
     {
 
-        $customers = User::whereIn('role', ['manager','tool-owner'])->get();
+        $customers = User::where('role','customer')->get();
         return view('superadmin.customers.customers', compact('customers'));
     }
 
@@ -83,7 +83,7 @@ class SuperAdminController extends Controller
             'password' =>  Hash::make($request->password),
             'address' =>  $request->address,
             'phone' => $request->phone,
-            'role' => 'manager',
+            'role' => 'customer',
         ]);
         $details = [
             'email' => $request->email,

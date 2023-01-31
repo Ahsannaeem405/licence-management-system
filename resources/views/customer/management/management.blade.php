@@ -14,29 +14,18 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-
                 </div>
             </div>
-
             <div class="content-body">
                 <!-- Zero configuration table -->
                 <section id="basic-datatable">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-
-                                <div class="breadcrumb-wrapper col-12">
-                                    <ol class="breadcrumb float-right m-0">
-                                        <li class="breadcrumb-item"><a href="{{ route('customer-add-management') }}"
-                                                class="btn btn-primary fa fa-plus"> Add Management</a></li>
-                                    </ol>
-                                </div>
-
                                 <div class="card-content">
-                                    <div class="card-body card-dashboard pt-0">
-
+                                    <div class="card-body card-dashboard">
+                                        <a href="{{ route('customer-add-management') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>

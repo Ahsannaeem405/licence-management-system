@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departments', function (Blueprint $table) {
-                $table->id();
-                $table->string('logo');
-                $table->string('department_name');
-                $table->string('description');
-                $table->timestamps();
-            });
-      
+            $table->id();
+            $table->string('logo');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('department_name');
+            $table->string('description');
+            $table->timestamps();
+        });
     }
 
     /**

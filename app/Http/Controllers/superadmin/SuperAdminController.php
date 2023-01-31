@@ -11,6 +11,7 @@ use App\mail\CustomerMail;
 use App\Models\Department;
 use App\Models\Package;
 use App\Models\License;
+use App\Models\Language;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -225,20 +226,72 @@ class SuperAdminController extends Controller
 
     public function delete_license($id)
     {
-        // $license = license::where('id',$id)->first();
         $license = license::find($id);
         
         $license->delete();
-          return back()->with('success', 'License Deleted Successfully');
-        // return redirect()->route('superadmin.license.view-license')->with('success', 'License Deleted Successfully');
+        return back()->with('success', 'License Deleted Successfully');
     }
     //------------------------------------ Super-Admin License End ------------------------------------//
 
     //------------------------------------ Super-Admin Multi Language Start ------------------------------------//
     public function lang()
     {
-    
-        return view('superadmin.languages.lang');
+        $languages = Language::all();
+        return view('superadmin.languages.lang',compact('languages'));
+    }
+
+    public function add_language(Request $request)
+    {
+        $this->validate($request,[
+            'language' => ['required','string'],
+            'country' => ['required','string'],
+        ]);
+        $language = new Language();
+        $language->create([
+            'language' => $request->language,
+            'country' => $request->country,
+        ]);
+        return back()->with('success','Language added successfully');
+    }
+
+    public function edit_language($id)
+    {
+        $language = Language::where('id',$id)->first();
+        return view('superadmin.languages.edit-language',compact('language'));
+    }
+
+    public function update_language(Request $request)
+    {
+        $this->validate($request,[
+            'language' => ['required','string'],
+            'country' => ['required','string'],
+        ]);
+        $language = Language::where('id',$request->id)->first();
+        if($language)
+        {
+            $language->country = $request->country;
+            $language->language = $request->language;
+            $language->save();
+            return redirect()->route('superadmin-multi-lang')->with('success','Language updated successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    public function delete_language($id)
+    {
+        $language = Language::where('id',$id)->first();
+        if($language)
+        {
+            $language->delete();
+            return back()->with('success','Language deleted successfully');
+        }
+        else
+        {
+            return back()->With('error','Something went wrong');
+        }
     }
     //------------------------------------ Super-Admin Multi Language End ------------------------------------//
 

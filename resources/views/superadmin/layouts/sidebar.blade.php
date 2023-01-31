@@ -22,13 +22,13 @@
                 </li>
 
                 <li class=" nav-item"><a href="{{ route('superadmin-subcription') }}"><i
-                            class="feather icon-mail"></i><span class="menu-title"
+                            class="ficon feather icon-bell"></i><span class="menu-title"
                             data-i18n="Email">Subcriptions</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('superadmin-customers') }}"><i
                             class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">Customers</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('superadmin-package') }}"><i class="feather icon-list"></i><span
+                <li class=" nav-item"><a href="{{ route('superadmin-package') }}"><i class="feather icon-package"></i><span
                             class="menu-title" data-i18n="Email">Packages</span></a>
                 </li>
 
@@ -41,7 +41,7 @@
                             data-i18n="Email">License</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('superadmin-multi-lang') }}"><i
-                            class="fa fa-globe"></i><span class="menu-title" data-i18n="Email">Multi
+                            class="feather icon-globe"></i><span class="menu-title" data-i18n="Email">Multi
                             Language</span></a>
                 </li>
 

@@ -25,71 +25,36 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="breadcrumb-wrapper col-12">
-                                    <ol class="breadcrumb float-right m-0">
-                                        <li class="breadcrumb-item btn btn-primary fa fa-plus" data-toggle="modal"
-                                            data-target="#inlineForm"> Add Language </li>
-                                    </ol>
-                                </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-
+                                        <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#inlineForm" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Language</button>
                                         <div class="table-responsive">
-                                            <table class="table zero-configuration">
+                                            <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
-
-                                                        <th>Country Name</th>
+                                                        <th>Country</th>
                                                         <th>Language</th>
-                                                        {{-- <th>Flag</th> --}}
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach($languages as $language)
                                                     <tr>
-
-                                                        <td>USA</td>
-                                                        <td>English</td>
-                                                        {{-- <td>$320,800</td> --}}
+                                                        <td>{{$language->country}}</td>
+                                                        <td>{{$language->language}}</td>
                                                         <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
+                                                            <span class="d-flex">
+                                                                <a href="{{route('superadmin-edit-language',$language->id)}}"><i class="fa fa-edit text-warning"></i></a>
+                                                                <form method="POST" action="{{route('superadmin-delete-language',$language->id)}}">
+                                                                    @csrf
+                                                                    <input name="_method" type="hidden" value="GET">
+                                                                    <button type="submit" class="show_confirm" data-toggle="tooltip" title='Delete' style="border:none; background-color:transparent;"><i class="text-danger fa fa-trash"></i></button>
+                                                                </form>
+                                                            </span>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-
-                                                        <td>France</td>
-                                                        <td>French</td>
-                                                        {{-- <td>$170,750</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-
-                                                        <td>China</td>
-                                                        <td>chinese</td>
-                                                        {{-- <td>San Francisco</td> --}}
-
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-
-                                                        <td>South Koria</td>
-                                                        <td>Korian</td>
-
-                                                        {{-- <td>$433,060</td> --}}
-                                                        <td>
-                                                            <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                            <a href="#"><i class="fa fa-trash text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
-
                                             </table>
                                         </div>
                                     </div>
@@ -110,25 +75,20 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="#">
+                            <form action="{{route('superadmin-add-language')}}" method="POST">
+                                @csrf
                                 <div class="modal-body">
-                                    <label>Country Name </label>
+                                    <label>Country</label>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Enter Country Name" class="form-control">
+                                        <input type="text" name="country" placeholder="Enter Country Name" class="form-control">
                                     </div>
-
                                     <label>Language</label>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Enter Key" class="form-control">
+                                        <input type="text" name="language" placeholder="Enter Language" class="form-control">
                                     </div>
-                                    {{-- 
-                                    <label>Flag Upload</label>
-                                    <div class="form-group">
-                                        <input type="file" name="file" class="form-control">
-                                    </div> --}}
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -138,4 +98,25 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            form.submit();
+        }
+        });
+    });
+</script>
 @endsection

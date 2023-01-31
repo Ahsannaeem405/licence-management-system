@@ -42,27 +42,22 @@
                                                 <thead>
                                                     <tr>
                                                          
-                                                        <th>Name</th>
-                                                        <th>Date of Issue</th>
-                                                        <th>Date of Expiry</th>
+                                                        <th>Department</th>
+                                                        <th>Description</th>
+                                                        <th>Created At</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($license as $item)
+                                                    @foreach ($departments as $item)
                                                         <tr>
-                                                            <td>{{ $item->title }}</td>
-                                                            <td class="key">{{ $item->key }}</td>
-                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d',$item->date_of_issue)->format('d-F-Y')}}</td>
-                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d',$item->date_of_expiry)->format('d-F-Y')}}</td>
-
+                                                            <td>{{ $item->department_name }}</td>
+                                                            <td>{{ $item->description }}</td>
+                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d h:i:s',$item->created_at)->format('d-F-Y') }}</td>
                                                             <td>
                                                                 
                                                                <span class="d-flex">
-                                                                <form action="{{route('license-delete',$item->id)}}" method="POST">
-                                                                    <input type="hidden" value="GET" name="_method">
-                                                                    <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
-                                                                </form>
+                                                                <a href="{{route('superadmin-view-license',$item->id)}}"><i class="fa fa-eye"></i></a>
                                                             </span>
                                                             </td>
                                                         </tr>

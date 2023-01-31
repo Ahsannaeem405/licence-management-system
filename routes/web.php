@@ -48,6 +48,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::get('/add-Package', [SuperAdminController::class, 'add_package'])->name('superadmin-add-package');
     Route::get('/transaction', [SuperAdminController::class, 'transaction'])->name('superadmin-transaction');
     Route::get('/license', [SuperAdminController::class, 'license'])->name('superadmin-license');
+    Route::get('/view-departments/{id}', [SuperAdminController::class,'departments'])->name('superadmin-view-departments');
     Route::get('/view-license/{id}', [SuperAdminController::class,'license_view'])->name('superadmin-view-license');
     Route::get('/license-delete/{id}', [SuperAdminController::class,'delete_license'])->name('license-delete');
     Route::get('multi-lang', [SuperAdminController::class, 'lang'])->name('superadmin-multi-lang');

@@ -52,6 +52,10 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::get('/view-license/{id}', [SuperAdminController::class,'license_view'])->name('superadmin-view-license');
     Route::get('/license-delete/{id}', [SuperAdminController::class,'delete_license'])->name('license-delete');
     Route::get('multi-lang', [SuperAdminController::class, 'lang'])->name('superadmin-multi-lang');
+    Route::post('/add-language',[SuperAdminCOntroller::class,'add_language'])->name('superadmin-add-language');
+    Route::get('/edit-language/{id}',[SuperAdminController::class,'edit_language'])->name('superadmin-edit-language');
+    Route::get('/delete-language/{id}',[SuperAdminController::class,'delete_language'])->name('superadmin-delete-language');
+    Route::post('/update-language/{id}',[SuperAdminController::class,'update_language'])->name('superadmin-update-language');
     Route::get('/analytics', [SuperAdminController::class, 'analytics'])->name('superadmin-analytics');
     Route::get('/admin-setting', [SuperAdminController::class, 'setting'])->name('superadmin-setting');
     Route::POST('/update-admin-profile/{id}', [SuperAdminController::class,'admin_update_profile'])->name('superadmin-profile-update');
@@ -64,7 +68,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
  
 
 
-Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
+Route::group(['prefix' => 'customer', 'middleware' => 'Manager'], function () {
     Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer-dashboard');
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
@@ -81,7 +85,7 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
 });
 
 
-Route::group(['prefix' => 'manager', 'middleware' => 'Manager'], function () {
+Route::group(['prefix' => 'manager', 'middleware' => 'Customer'], function () {
     Route::get('/dashboard', [ManagerController::class, 'index'])->name('manager-dashbaord');
     Route::get('/company-info', [ManagerController::class, 'companyinfo'])->name('manager-company-info');
     Route::get('/license', [ManagerController::class, 'license'])->name('manager-license');

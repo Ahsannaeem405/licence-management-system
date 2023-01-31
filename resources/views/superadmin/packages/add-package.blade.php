@@ -7,7 +7,7 @@
                 <div class="col-md-12 col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title  ">Add Package</h4>
+                            <h4 class="card-title">Add Package</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -44,7 +44,7 @@
                                                         <span>Price</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="text"   class="form-control" name="price"  >
+                                                        <input type="text" class="form-control" name="price" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -54,7 +54,7 @@
                                                         <span>Description</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <textarea type="text"   class="form-control" name="description"  ></textarea>
+                                                        <textarea type="text" class="form-control" name="description"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

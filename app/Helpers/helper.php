@@ -30,7 +30,7 @@ class MyHelper
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
-        return redirect()->route('superadmin-setting')->with('success', 'AdminPorfile Updated Successfully');
+        return redirect()->route('superadmin-setting')->with('success', 'Porfile Updated Successfully');
     }
 
 

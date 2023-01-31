@@ -11,6 +11,7 @@ use App\mail\CustomerMail;
 use App\Models\Department;
 use App\Models\Package;
 use App\Models\License;
+use App\Models\Language;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,7 +21,20 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
     {
-        return view('superadmin.dashboard.dashboard');
+        $total_customers = User::whereIn('role',['manager','tool-owner'])->count();
+        $total_packages = Package::count();
+        $total_license = License::count();
+        $total_departments = Department::count();
+        // $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
+        // $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
+        // $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+        $data = [
+            'total_customers',
+            'total_packages',
+            'total_license',
+            'total_departments'
+        ];
+        return view('superadmin.dashboard.dashboard',compact($data));
     }
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
 
@@ -41,8 +55,8 @@ class SuperAdminController extends Controller
     public function customer()
     {
 
-        $admin = User::where('role', 'customer')->get();
-        return view('superadmin.customers.customers', compact('admin'));
+        $customers = User::whereIn('role', ['manager','tool-owner'])->get();
+        return view('superadmin.customers.customers', compact('customers'));
     }
 
     public function add_customer()
@@ -69,7 +83,7 @@ class SuperAdminController extends Controller
             'password' =>  Hash::make($request->password),
             'address' =>  $request->address,
             'phone' => $request->phone,
-            'role' => 'customer',
+            'role' => 'manager',
         ]);
         $details = [
             'email' => $request->email,
@@ -120,8 +134,8 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Package Start ------------------------------------//
     public function Package()
     {
-        $pack = Package::all();
-        return view('superadmin.packages.Package', compact('pack'));
+        $packages = Package::all();
+        return view('superadmin.packages.Package', compact('packages'));
     }
     public function add_package()
     {
@@ -130,26 +144,18 @@ class SuperAdminController extends Controller
 
     public function admin_store_package(Request $request)
     {
- 
- 
-          $this->validate($request, [
-                    'package' => 'required',
-                    'entity' => 'required',
-                    'price' => 'required',
-                    'description' =>'required',
-
-                ]);
-
-
+        $this->validate($request,[
+            'package' => 'required',
+            'entity' => 'required',
+            'price' => 'required',
+            'description' =>'required',
+            ]);
         $pack = new Package();
-       
         $pack->create([
-            
             'package' => $request->package,
             'entity' =>  $request->entity,
             'price' =>  $request->price,
             'description' => $request->description,
-
         ]);
  
         return back()->with('success', 'Admin Package save successfully');
@@ -157,16 +163,12 @@ class SuperAdminController extends Controller
 
     public function admin_edit_package(Request $request, $id)
     {
-
         $pack = Package::find($id);
-
         return view('superadmin.packages.edit-package', compact('pack'));
     }
 
     public function admin_update_package(Request $request)
     {
-
-
         $pack = Package::find($request->id);
         $this->validate($request, [
             'package' => 'required',
@@ -174,13 +176,12 @@ class SuperAdminController extends Controller
             'price' => 'required',
             'description' => 'required',
         ]);
-
         $pack->package = $request->package;
         $pack->entity = $request->entity;
         $pack->price = $request->price;
         $pack->description = $request->description;
         $pack->save();
-        return redirect()->route('superadmin-package')->with('success', ' Admin Package Updated Successfully');
+        return redirect()->route('superadmin-package')->with('success','Package Updated Successfully');
     }
 
 
@@ -197,8 +198,8 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Transaction Start ------------------------------------//
     public function transaction()
     {
-        $transaction = Transaction::all();
-        return view('superadmin.transactions.transaction' ,compact('transaction'));
+        $transactions = Transaction::all();
+        return view('superadmin.transactions.transaction' ,compact('transactions'));
     }
     //------------------------------------ Super-Admin Transaction End ------------------------------------//
 
@@ -225,20 +226,72 @@ class SuperAdminController extends Controller
 
     public function delete_license($id)
     {
-        // $license = license::where('id',$id)->first();
         $license = license::find($id);
         
         $license->delete();
-          return back()->with('success', 'License Deleted Successfully');
-        // return redirect()->route('superadmin.license.view-license')->with('success', 'License Deleted Successfully');
+        return back()->with('success', 'License Deleted Successfully');
     }
     //------------------------------------ Super-Admin License End ------------------------------------//
 
     //------------------------------------ Super-Admin Multi Language Start ------------------------------------//
     public function lang()
     {
-    
-        return view('superadmin.languages.lang');
+        $languages = Language::all();
+        return view('superadmin.languages.lang',compact('languages'));
+    }
+
+    public function add_language(Request $request)
+    {
+        $this->validate($request,[
+            'language' => ['required','string'],
+            'country' => ['required','string'],
+        ]);
+        $language = new Language();
+        $language->create([
+            'language' => $request->language,
+            'country' => $request->country,
+        ]);
+        return back()->with('success','Language added successfully');
+    }
+
+    public function edit_language($id)
+    {
+        $language = Language::where('id',$id)->first();
+        return view('superadmin.languages.edit-language',compact('language'));
+    }
+
+    public function update_language(Request $request)
+    {
+        $this->validate($request,[
+            'language' => ['required','string'],
+            'country' => ['required','string'],
+        ]);
+        $language = Language::where('id',$request->id)->first();
+        if($language)
+        {
+            $language->country = $request->country;
+            $language->language = $request->language;
+            $language->save();
+            return redirect()->route('superadmin-multi-lang')->with('success','Language updated successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    public function delete_language($id)
+    {
+        $language = Language::where('id',$id)->first();
+        if($language)
+        {
+            $language->delete();
+            return back()->with('success','Language deleted successfully');
+        }
+        else
+        {
+            return back()->With('error','Something went wrong');
+        }
     }
     //------------------------------------ Super-Admin Multi Language End ------------------------------------//
 

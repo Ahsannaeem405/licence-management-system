@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 class CustomerMiddleware
 {
     /**
@@ -16,12 +16,16 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::User() && Auth::User()->role =='tool-owner')
+        if(Auth::User() && Auth::User()->role =='customer')
         {
             return $next($request);
         }
-        else{
-            abort(403);
+        else
+        {
+            Auth::logout();
+            Session::flush();
+            Session::flash('error','Something went wrong');
+           return '/login';
         }
     }
 }

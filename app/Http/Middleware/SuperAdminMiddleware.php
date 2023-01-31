@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SuperAdminMiddleware
 {
@@ -23,7 +24,10 @@ class SuperAdminMiddleware
         }
         else
         {
-            abort(403);
+            Auth::logout();
+            Session::flush();
+            Session::flash('error','Something went wrong');
+           return '/login';
         }
        
     }

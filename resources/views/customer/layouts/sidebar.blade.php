@@ -33,7 +33,7 @@
                 <li class=" nav-item"><a href="{{ route('customer-license') }}"><i class="fa fa-address-card"></i><span class="menu-title" data-i18n="Email">License</span></a>
                 </li>
 
-                <li class=" nav-item"><a href="{{ route('customer-management') }}"><i class="fa"></i><span class="menu-title" data-i18n="Email">Management</span></a>
+                <li class=" nav-item"><a href="{{ route('customer-management') }}"><i class="fa fa-file-o"></i><span class="menu-title" data-i18n="Email">Management</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('customer-department') }}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">Department</span></a>
                 </li>

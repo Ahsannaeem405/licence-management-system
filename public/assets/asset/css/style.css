@@ -183,6 +183,7 @@ footer .btn:visited {
     background: #fff;
 }
 
+.stripe_payment .btn,
 .price_section .btn,
 #contact form button {
     background   : #0086be;
@@ -671,7 +672,16 @@ footer a {
     object-fit: contain;
 }
 
-
+.hide {
+    display: none!important;
+}
+.stripe_payment .credit-card-box{
+    box-shadow: 0 0 6px 0px rgb(0 134 190 / 22%);
+}
+.stripe_payment .form-control{
+    box-shadow: 0 0 6px 0px rgb(0 134 190 / 22%);
+    border-radius: 20px;
+}
 /*start media query*/
 
 @media screen and (min-width: 320px) {

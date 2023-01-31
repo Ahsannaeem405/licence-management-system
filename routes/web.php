@@ -68,7 +68,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
  
 
 
-Route::group(['prefix' => 'customer', 'middleware' => 'Manager'], function () {
+Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer-dashboard');
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
@@ -85,7 +85,7 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Manager'], function () {
 });
 
 
-Route::group(['prefix' => 'manager', 'middleware' => 'Customer'], function () {
+Route::group(['prefix' => 'manager', 'middleware' => 'Manager'], function () {
     Route::get('/dashboard', [ManagerController::class, 'index'])->name('manager-dashbaord');
     Route::get('/company-info', [ManagerController::class, 'companyinfo'])->name('manager-company-info');
     Route::get('/license', [ManagerController::class, 'license'])->name('manager-license');

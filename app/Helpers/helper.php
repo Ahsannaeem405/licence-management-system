@@ -24,13 +24,10 @@ class MyHelper
             $request->image = $fileName;
             $user->image = $request->image;
         }
-      
-       
-
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
-        return redirect()->route('superadmin-setting')->with('success', 'Porfile Updated Successfully');
+        return back()->with('success', 'Porfile updated successfully');
     }
 
 

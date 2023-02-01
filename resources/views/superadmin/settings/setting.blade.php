@@ -51,7 +51,7 @@
                                                 <div class="media">
                                                     <a href="javascript: void(0);">
                                                         @if($user->image)
-                                                        <img src="{{ asset('') }}/{{$user->image}}" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                                        <img src="{{ asset('profiles-images') }}/{{$user->image}}" class="rounded mr-75" alt="profile image" height="64" width="64">
                                                         @else
                                                         <img src="{{ asset('assets/app-assets/images/portrait/small/avatar-s-12.jpg') }}" class="rounded mr-75" alt="profile image" height="64" width="64">
                                                         @endif

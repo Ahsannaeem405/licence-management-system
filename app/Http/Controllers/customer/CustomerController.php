@@ -7,12 +7,20 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\License;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CustomerMail;
+use MyHelper;
 class CustomerController extends Controller
 {
     //------------------------------------ Customer-Dashboard Start ------------------------------------//
     public function dashboard()
     {
+        $total_department = Department::where('user_id',Auth::user()->id)->count();
+        $total_license = License::where('customer_id',Auth::user()->id)->count();
+
         return view('customer.dashboard.dashboard');
     }
     //------------------------------------ Customer-Dashboard End ------------------------------------//
@@ -194,19 +202,99 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-        return view('customer.management.management');
+        $owners = User::where('role','manager')->get();
+        return view('customer.management.management',compact('owners'));
     }
 
-    public function addmanagement()
+    public function add_management()
     {
         return view('customer.management.add-management');
+    }
+
+    public function store_tool_owner(Request $request)
+    {
+
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => 'required',
+            'phone' => 'required',
+
+        ]);
+
+        $owner = new User();
+        $owner->create([
+            'name' => $request->name,
+            'email' =>  $request->email,
+            'password' =>  Hash::make($request->password),
+            'address' =>  $request->address,
+            'phone' => $request->phone,
+            'role' => 'manager',
+        ]);
+        $details = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        Mail::to($request->email)->send(new CustomerMail($details));
+        return redirect()->route('customer-management')->with('success', 'Tool Owner Added Successfully');
+    }
+
+    public function edit_tool_owner(Request $request, $id)
+    {
+        $owner = User::find($id);
+        return view('customer.management.edit-management', compact('owner'));
+    }
+
+    public function update_tool_owner(Request $request)
+    {
+        $owner = User::find($request->id);
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $owner->id . ''],
+        ]);
+        if ($owner) 
+        {
+            $owner->name = $request->name;
+            $owner->email = $request->email;
+            if ($request->password) 
+            {
+                $owner->password = Hash::make($request->password);
+            }
+            $owner->address = $request->address;
+            $owner->phone = $request->phone;
+            $owner->save();
+            return redirect()->route('customer-management')->with('success', 'Tool Owner updated successfully');
+        } 
+        else 
+        {
+            return back()->with('error', 'User not found!');
+        }
+    }
+
+    public function delete_tool_owner($id)
+    {
+        $owner = User::find($id);
+        $owner->delete();
+        return redirect()->route('customer-management')->with('success', 'Tool Owner deleted successfully');
     }
     //------------------------------------ Customer-Management End ------------------------------------//
 
     //------------------------------------ Customer-Settings Start ------------------------------------//
     public function setting()
     {
-        return view('customer.settings.setting');
+        $user = User::where('role','customer')->where('id',Auth::user()->id)->first();
+        return view('customer.settings.setting',compact('user'));
+    }
+
+    public function update_customer_profile(Request $request)
+    {
+        return MyHelper::update_profile($request);
+    }
+
+    public function update_customer_password(Request $request)
+    {
+        return MyHelper::update_password($request);
     }
     //------------------------------------ Customer-Settings End ------------------------------------//
 }

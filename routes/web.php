@@ -88,8 +88,16 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::post('/customer-update-license/{id}', [CustomerController::class,'update_license'])->name('customer-update-license');
     Route::get('/customer-delete-license/{id}', [CustomerController::class, 'delete_license'])->name('customer-delete-license');
     Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
-    Route::get('/add-management', [CustomerController::class, 'addmanagement'])->name('customer-add-management');
-    Route::get('/setting', [CustomerController::class, 'setting'])->name('customer-setting');
+    Route::get('/add-management', [CustomerController::class, 'add_management'])->name('customer-add-management');
+    Route::get('/store-management/{id}', [CustomerController::class, 'store_tool_owner'])->name('customer-store-management');
+    Route::get('/edit-management/{id}', [CustomerController::class, 'edit_tool_owner'])->name('customer-edit-management');
+    Route::post('/update-management/{id}', [CustomerController::class, 'update_tool_owner'])->name('customer-update-management');
+    Route::get('/delete-management/{id}', [CustomerController::class, 'delete_tool_owner'])->name('customer-delete-management');
+    Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
+    Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
+    Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
+
+
 });
 //------------------------------------------------- Customer End ----------------------------------------------//
 

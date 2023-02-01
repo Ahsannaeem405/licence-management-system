@@ -372,6 +372,7 @@ class SuperAdminController extends Controller
         $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
         return view('superadmin.settings.setting', compact('user'));
     }
+    
     public function admin_update_profile(Request $request)
     {
         return MyHelper::update_profile($request);

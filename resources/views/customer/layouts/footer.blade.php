@@ -57,6 +57,47 @@
     });
 });
 </script>
+<!-- Toastr  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<script>
+    toastr.options = {
+    "closeButton": true,
+    "progressBar": true
+    }
+    @if(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+        @elseif(Session::has('error'))
+            toastr.error('{{ Session::get('error') }}');
+        @endif
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error('{{$error}}');
+        @endforeach
+    @endif
+ </script>
+
+<!-- Sweet alert  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+@section('js')
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            form.submit();
+        }
+        });
+    });
+</script>
 </body>
 <!-- END: Body-->
 

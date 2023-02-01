@@ -32,6 +32,10 @@
                             class="menu-title" data-i18n="Email">Packages</span></a>
                 </li>
 
+                <li class=" nav-item"><a href="{{ route('superadmin-service') }}"><i class="fa fa-wrench"></i><span
+                    class="menu-title" data-i18n="Email">Services</span></a>
+                </li>
+
                 <li class=" nav-item"><a href="{{ route('superadmin-transaction') }}"><i class="fa fa-dollar"></i><span
                             class="menu-title" data-i18n="Email">Transactions</span></a>
                 </li>

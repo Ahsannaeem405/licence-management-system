@@ -21,8 +21,6 @@
                 </div>
             </div>
             <div class="content-body">
-
-
                 <!-- Input Validation start -->
                 <section class="input-validation">
                     <div class="row">
@@ -33,73 +31,56 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal" novalidate method="POST" action="{{route('license-store-license')}}">
+                                        <form class="form-horizontal" novalidate method="POST" action="{{route('customer-store-license')}}">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label> Title</label>
                                                         <div class="controls">
-                                                            <input type="text" name="title" class="form-control"
-                                                                data-validation-required-message="This field is required"
-                                                                placeholder="Enter Title">
+                                                            <input type="text" name="title" class="form-control" placeholder="Enter Title" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Issue of Date</label>
                                                         <div class="controls">
-                                                            <input type="date" name="issue" class="form-control"
-                                                                required data-validation-containsnumber-regex="(\d)+"
-                                                                data-validation-containsnumber-message="The numeric field may only contain numeric characters."
-                                                                placeholder="Enter Issue of Date">
+                                                            <input type="date" name="issue" class="form-control" required>
                                                         </div>
                                                     </div>
-                                                   
                                                     <div class="form-group">
                                                         <label>Departments</label>
-                                                        <select class="form-control" name="department">
+                                                        <select class="form-control" name="department" required>
                                                             <option selected disabled>Please Select Department</option>
                                                             @foreach($departments as $department)
-                                                            <option value="{{$department->id}}">{{$department->department_name}}</option>
+                                                            <option value="{{$department->id}}">{{$department->name}}</option>
                                                             @endforeach
-                                                            {{-- <option name="">IT</option>
-                                                            <option name="">Electrical Engeneering</option>
-                                                            <option name="">Data Sceince</option>
-                                                            <option name="">Mass Comunication</option> --}}
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Services</label>
-                                                        <select class="form-control" name="service">
-                                                            <option name="">Auto Cat</option>
-                                                            <option name="">Mass Communication</option>
-                                                            <option name="">Data Sceince</option>
-                                                            <option name="">Data</option>
+                                                        <select class="form-control" name="service" required>
+                                                            <option selected disabled>Please Select Service</option>
+                                                            @foreach($services as $service)
+                                                            <option value="{{$service->id}}">{{$service->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label> Expiry of Date</label>
+                                                        <label>Expiry of Date</label>
                                                         <div class="controls">
-                                                            <input type="date" name="expiry" class="form-control"
-                                                                data-validation-containsnumber-regex="^([0-9]+)$"
-                                                                data-validation-containsnumber-message="The regex field format is invalid."
-                                                                placeholder="Enter Expiry of Date " required>
+                                                            <input type="date" name="expiry" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="">Key</label>
-                                                        <textarea type="text" class="form-control" name="key"></textarea>
+                                                        <label>Key</label>
+                                                        <textarea type="text" class="form-control" name="key" required></textarea>
                                                     </div>
-
                                                 </div>
                                             </div>
-
                                             <div class="col-md-12 ">
-                                                <button type="submit" class="btn btn-primary mr-1 mb-1"
-                                                    style="float: right">Submit</button>
-
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">Submit</button>
                                             </div>
                                         </form>
                                     </div>

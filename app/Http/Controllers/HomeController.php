@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\companyMail;
 use App\Models\Home;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function store(Request $request)
     {
- 
+        $admin = User::where('role','superadmin')->first();
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -33,12 +34,10 @@ class HomeController extends Controller
             'address' => $request->address,
             'mode' => $request->mode,
         ]);
-    
-    
         $details = [
             'email' => $request->email,
         ];
-        Mail::to($request->email)->send(new companyMail($details));
+        Mail::to($request->email,$admin->email)->send(new companyMail($details));
         return back()->with('success', 'Registration Successfully');
     }
     public function mail()

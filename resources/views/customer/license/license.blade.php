@@ -28,12 +28,14 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('customer-add-license') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
+                                        <a href="{{ route('customer-add-license')}}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th>Title</th>
+                                                        <th>Service</th>
                                                         <th>Department</th>
                                                         <th>Key</th>
                                                         <th>Date of Issue</th>
@@ -42,29 +44,28 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($license as $item)
+                                                    @php
+                                                        $x=1;
+                                                    @endphp
+                                                    @foreach ($licenses as $license)
                                                         <tr>
-
-                                                            <td>{{ $item->title }}</td>
-                                                            <td>{{ $item->department->department_name }}</td>
-                                                            <td>{{ $item->service }}</td>
-                                                            <td>{{ $item->key }}</td>
-                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d', $item->date_of_issue)->format('d-F-Y') }}
+                                                            <td>{{$x++}}</td>
+                                                            <td>{{ $license->title }}</td>
+                                                            <td>{{$license->service->name}}</td>
+                                                            <td>{{ $license->department->name }}</td>
+                                                            <td>{{ $license->key }}</td>
+                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d', $license->date_of_issue)->format('d-F-Y') }}
                                                             </td>
-                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d', $item->date_of_expiry)->format('d-F-Y') }}
+                                                            <td>{{ \Carbon\carbon::createFromFormat('Y-m-d', $license->date_of_expiry)->format('d-F-Y') }}
                                                             </td>
                                                             <td>
-                                                                <a href="{{route('customer-edit-license',$item->id)}}"><i class="fa fa-edit text-warning"></i></a>
-                                                                <a href="{{route('customer-delete-license',$item->id)}}"><i class="fa fa-trash text-danger"></i></a>
-                                                            </td>
-
-                                                            {{-- <span class="d-flex">
-                                                                <form action="{{route('license-delete',$item->id)}}" method="POST">
-                                                                    <input type="hidden" value="GET" name="_method">
-                                                                    <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
-                                                                </form>
-                                                                <a href="#" class="open" data-key={{$item->key}}><i class="fa fa-copy"  ></i></a>
-                                                            </span>  --}}
+                                                                <span class="d-flex">
+                                                                    <a href="{{route('customer-edit-license',$license->id)}}"><i class="fa fa-edit text-warning"></i></a>
+                                                                    <form action="{{route('customer-delete-license',$license->id)}}" method="POST">
+                                                                        <input type="hidden" value="GET" name="_method">
+                                                                        <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
+                                                                    </form>
+                                                                </span> 
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -78,7 +79,6 @@
                     </div>
                 </section>
                 <!--/ Zero configuration table -->
-
             </div>
         </div>
     </div>
@@ -86,38 +86,23 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
-        $('.show_confirm').click(function(event) {
-            var form = $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            swal({
-                    title: `Are you sure you want to delete this record?`,
-                    text: "If you delete this, it will be gone forever.",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        form.submit();
-                    }
-                });
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
         });
-
-        // $(document).ready(function(){
-
-        // $('.key').hide();
-        // $('#open').on('click',function(){
-        //     $('.key').show();
-        // })
-
-        // });
-        // $('.open').click(function(){
-        //     var copytext = $(this).attr('data-key');
-
-        //     copytext.select();
-        //     navigator.clipboard.writeText(copytext.value);
-        // });
-    </script>
+    });
+</script>
 @endsection

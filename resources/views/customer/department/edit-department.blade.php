@@ -7,11 +7,11 @@
                 <div class="col-md-12 col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title  ">Add Department</h4>
+                            <h4 class="card-title  ">Update Department</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="{{route('customer-store-department')}}" method="POST">
+                                <form class="form form-horizontal" action="{{route('customer-update-department',$department->id)}}" method="POST">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -21,7 +21,7 @@
                                                         <span>Department Name</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="name" placeholder="">
+                                                        <input type="text" class="form-control" name="name" placeholder="Department Name" value="{{$department->name}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -31,7 +31,7 @@
                                                         <span>Description</span>
                                                     </div>
                                                     <div class="col-md-10">
-                                                        <textarea type="text" class="form-control" name="description"  ></textarea>
+                                                        <textarea type="text" class="form-control" name="description">{{$department->description}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0"> Edit License</h2>
+                            <h2 class="content-header-title float-left mb-0"> Update License</h2>
 
                         </div>-
                     </div>
@@ -21,8 +21,6 @@
                 </div>
             </div>
             <div class="content-body">
-
-
                 <!-- Input Validation start -->
                 <section class="input-validation">
                     <div class="row">
@@ -34,6 +32,7 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form-horizontal" novalidate action="{{route('customer-update-license',$license->id)}}" method="POST">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -57,21 +56,21 @@
                                                     <div class="form-group">
                                                         <label>Departments</label>
                                                         <select class="form-control" name="department">
-                                                            <option value="{{$license->department}}">IT</option>
-                                                            <option value="">Electrical Engeneering</option>
-                                                            <option value="">Data Sceince</option>
-                                                            <option value="">Mass Comunication</option>
+                                                            <option selected disabled>Please Select Department</option>
+                                                            @foreach($departments as $department)
+                                                            <option value="{{$department->id}}" {{$department->id == $license->department_id ? 'selected' : ''}}>{{$department->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Services</label>
-                                                        <select class="form-control" class="service" >
-                                                            <option value="">Auto Cat</option>
-                                                            <option value="">Mass Communication</option>
-                                                            <option value="">Data Sceince</option>
-                                                            <option value="">Data</option>
+                                                        <select class="form-control" class="service" name="service">
+                                                            <option selected disabled>Please Select Service</option>
+                                                            @foreach($services as $service)
+                                                            <option value="{{$service->id}}" {{$service->id == $license->service_id ? 'selected' : ''}}>{{$service->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">

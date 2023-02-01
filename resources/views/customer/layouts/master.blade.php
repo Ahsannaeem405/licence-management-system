@@ -3,3 +3,4 @@
  @include('customer.layouts.sidebar')
  @yield('content')
  @include('customer.layouts.footer')
+ @yield('js')

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\License;
+use App\Models\Package;
+use App\Services\PaymentDeduct;
+use App\Models\User;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +31,9 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Subscription Start ------------------------------------//
     public function subscripton()
     {
-        return view('customer.subscription.subcription');
+        $packages=Package::all();
+        
+        return view('customer.subscription.subcription' ,compact('packages'));
     }
     //------------------------------------ Customer-Subscription End ------------------------------------//
 

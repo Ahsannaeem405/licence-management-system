@@ -7,6 +7,8 @@ use App\Http\Controllers\customer\CustomerController;
 use App\Http\Controllers\manager\ManagerController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StripePaymentController;
+
 use App\Http\Controllers\superadmin\SettingController;
 
 
@@ -96,8 +98,8 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
     Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
     Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
-
-
+    Route::post('/subscribe', [StripePaymentController::class, 'subscribe']);
+    Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
 });
 //------------------------------------------------- Customer End ----------------------------------------------//
 

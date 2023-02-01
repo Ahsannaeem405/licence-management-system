@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\License;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
@@ -26,28 +27,86 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Departments Start ------------------------------------//
     public function department()
     {
-        $departments = Department::where('user_id',Auth::user()->id)->get();
+        $departments = Department::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
         return view('customer.department.department',compact('departments'));
     }
 
     public function add_department()
     {
-
         return view('customer.department.add-department');
+    }
+
+    public function store_department(Request $request)
+    {
+        $this->validate($request,[
+            'name' => ['required','string'],
+            'description' => ['required','string'],
+        ]);
+        $department = new Department();
+        $department->create([
+            'user_id' => Auth::user()->id,
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('customer-department')->with('success','Department added successfully');
+    }
+
+    public function edit_department($id)
+    {
+        $department = Department::where('id',$id)->first();
+        if($department)
+        {
+            return view('customer.department.edit-department',compact('department'));
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    public function update_department(Request $request)
+    {
+        $department = Department::where('id',$request->id)->first();
+        if($department)
+        {
+            $department->name = $request->name;
+            $department->description = $request->description;
+            $department->save();
+            return redirect()->route('customer-department')->with('success','Department updated successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    public function delete_department($id)
+    {
+        $department = Department::where('id',$id)->first();
+        if($department)
+        {
+            $department->delete();
+            return back()->with('success','Department deleted successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
     }
     //------------------------------------ Customer-Departments End ------------------------------------//
 
     //------------------------------------ Customer-License Start ------------------------------------//
     public function license()
     {
-        $license = License::all();
-        return view('customer.license.license',compact('license'));
+        $licenses = License::all();
+        return view('customer.license.license',compact('licenses'));
     }
 
     public function add_license()
     {
         $departments = Department::all();
-        return view('customer.license.add-license',compact('departments'));
+        $services = Service::all();
+        return view('customer.license.add-license',compact('departments','services'));
     }
 
     public function store_license(Request $request)
@@ -55,60 +114,80 @@ class CustomerController extends Controller
         $this->validate($request, [
             'title' => ['required', 'string', 'max:255'],
             'service' => ['required'],
+            'department' => ['required'],
             'key' => ['required'],
-            'issue_date' => ['required'],
-            'expiry_date' => ['required'],
+            'issue' => ['required'],
+            'expiry' => ['required'],
         ]);
         $license = new License;
         $license->create([
             'title' => $request->title,
-            'service' =>  $request->service,
+            'customer_id' => Auth::user()->id,
+            'service_id' =>  $request->service,
+            'department_id' =>  $request->department,
             'date_of_issue' => $request->issue,
             'date_of_expiry' => $request->expiry,
-            'department_id' =>  $request->department,
             'key' =>  $request->key,
         ]);
-        return back()->with('success', 'Customer License save successfully');
+        return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
     }
 
-    public function customer_edit_license(Request $request,$id)
+    public function edit_license(Request $request,$id)
     {
-
         $license = License::find($id);
-
-        return view('customer.license.edit-license', compact('license'));
+        $departments = Department::all();
+        $services = Service::all();
+        $data = [
+            'license',
+            'departments',
+            'services',
+        ];
+        return view('customer.license.edit-license', compact($data));
     }
 
-    
-    // public function admin_update_package(Request $request)
-    // {
-
-
-    //     $license = License::find($request->id);
-    //     $this->validate($request, [
-              
-    //         'title' => $request->title,
-    //         'service' =>  $request->entity,
-    //         'issue_date' => $request->issue,
-    //         'expiry_date' => $request->expiry,
-    //         'department' =>  $request->department,
-    //         'key' =>  $request->key,
-    //     ]);
-
-    //     $license->title = $request->title;
-    //     $license->service = $request->service;
-    //     $license->issue_date = $request->issue;
-    //     $license->expiry_date = $request->expiry;
-    //     $license->department = $request->department;
-    //     $license->key = $request->key;
-    //     $license->save();
-    //     return redirect()->route('customer-license')->with('success', ' Customer License Updated Successfully');
-    // }
-    public function customer_license_delete($id)
+    public function update_license(Request $request)
     {
-        $pack = License::find($id);
-        $pack->delete();
-        return redirect()->route('customer-license')->with('success', 'Customer License Deleted Successfully');
+        $license = License::find($request->id);
+        $this->validate($request, [
+              
+            'title' => ['required'],
+            'service' =>  ['required'],
+            'issue' => ['required'],
+            'expiry' => ['required'],
+            'department' => ['required'],
+            'key' => ['required'],
+        ]);
+        if($license)
+        {
+            $license->title = $request->title;
+            $license->service_id = $request->service;
+            $license->date_of_issue = $request->issue;
+            $license->date_of_expiry = $request->expiry;
+            $license->department_id = $request->department;
+            $license->key = $request->key;
+            $license->save();
+            return redirect()->route('customer-license')->with('success', 'License updated successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+        
+    }
+
+    public function delete_license($id)
+    {
+        $license = License::find($id);
+        if($license)
+        {
+            $license->delete();
+            return redirect()->route('customer-license')->with('success', 'License Deleted Successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+        
     }
     //------------------------------------Customer-License End ------------------------------------//
 

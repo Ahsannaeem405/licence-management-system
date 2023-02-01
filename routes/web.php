@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 Route::POST('/store-client',[HomeController::class,'store'])->name('store-client');
 Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
-Route::get('/stripe-payment',[HomeCOntroller::class,'stripe'])->name('stripe-payment');
+Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-payment');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
 //------------------------------------------------- Super-Admin Start ----------------------------------------------//
@@ -42,8 +42,14 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::get('/edit-customer/{id}', [SuperAdminController::class, 'edit_customer'])->name('superadmin-edit-customer');
     Route::POST('/update-customer/{id}', [SuperAdminController::class, 'update_customer'])->name('superadmin-update-customer');
     Route::get('/delete-customer/{id}', [SuperAdminController::class, 'delete_customer'])->name('superadmin-delete-customer');
-    Route::get('Package', [SuperAdminController::class, 'Package'])->name('superadmin-package');
+    Route::get('/package', [SuperAdminController::class, 'Package'])->name('superadmin-package');
     Route::get('/add-Package', [SuperAdminController::class, 'add_package'])->name('superadmin-add-package');
+    Route::get('/service',[SuperAdminController::class,'service'])->name('superadmin-service');
+    Route::get('/add-service',[SuperAdminController::class,'add_service'])->name('superadmin-add-service');
+    Route::post('/store-service',[SuperAdminController::class,'store_service'])->name('superadmin-store-service');
+    Route::get('/edit-service/{id}',[SuperAdminController::class,'edit_service'])->name('superadmin-edit-service');
+    Route::post('/update-service/{id}',[SuperAdminController::class,'update_service'])->name('superadmin-update-service');
+    Route::get('/delete-service/{id}',[SuperAdminController::class,'delete_service'])->name('superadmin-delete-service');
     Route::get('/transaction', [SuperAdminController::class, 'transaction'])->name('superadmin-transaction');
     Route::get('/license', [SuperAdminController::class, 'license'])->name('superadmin-license');
     Route::get('/view-departments/{id}', [SuperAdminController::class,'departments'])->name('superadmin-view-departments');
@@ -71,12 +77,16 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
     Route::get('/add-department', [CustomerController::class, 'add_department'])->name('customer-add-department');
+    Route::post('/store-department', [CustomerController::class, 'store_department'])->name('customer-store-department');
+    Route::get('/edit-department/{id}', [CustomerController::class, 'edit_department'])->name('customer-edit-department');
+    Route::post('/update-department/{id}', [CustomerController::class, 'update_department'])->name('customer-update-department');
+    Route::get('/delete-department/{id}', [CustomerController::class, 'delete_department'])->name('customer-delete-department');
     Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');
-    Route::get('/addlicense', [CustomerController::class, 'add_license'])->name('customer-add-license');
-    Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('license-store-license');
-    Route::get('/customer-edit-license/{id}', [CustomerController::class,'customer_edit_license'])->name('customer-edit-license');
-    Route::get('/customer-update-license/{id}', [CustomerController::class,'customer_update_license'])->name('customer-update-license');
-    Route::get('/customer-delete-license/{id}', [CustomerController::class, 'customer_license_delete'])->name('customer-delete-license');
+    Route::get('/add-license', [CustomerController::class, 'add_license'])->name('customer-add-license');
+    Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('customer-store-license');
+    Route::get('/customer-edit-license/{id}', [CustomerController::class,'edit_license'])->name('customer-edit-license');
+    Route::post('/customer-update-license/{id}', [CustomerController::class,'update_license'])->name('customer-update-license');
+    Route::get('/customer-delete-license/{id}', [CustomerController::class, 'delete_license'])->name('customer-delete-license');
     Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
     Route::get('/add-management', [CustomerController::class, 'addmanagement'])->name('customer-add-management');
     Route::get('/setting', [CustomerController::class, 'setting'])->name('customer-setting');

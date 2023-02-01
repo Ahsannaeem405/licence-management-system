@@ -13,6 +13,7 @@ use App\Models\Package;
 use App\Models\License;
 use App\Models\Language;
 use App\Models\Transaction;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -41,12 +42,9 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Subscription Start ------------------------------------//
     public function subscription()
     {
-        $subcription = User::where('role','customer')->where('active', '1')->whereNotNull('package_id')
+        $subcription = User::where('role','customer')->where('active','1')->whereNotNull('package_id')
         ->with('package')
         ->get();
- 
-    
-       
         return view('superadmin.subscriptions.subcription',compact('subcription'));
     }
     //------------------------------------ Super-Admin Subscription End ------------------------------------//
@@ -191,9 +189,75 @@ class SuperAdminController extends Controller
         $pack->delete();
         return redirect()->route('superadmin-package')->with('success', 'Package Deleted Successfully');
     }
-
-
     //------------------------------------ Super-Admin Package End ------------------------------------//
+
+    //------------------------------------ Super-Admin Service Start ------------------------------------//
+    public function service()
+    {
+        $services = Service::orderBy('id','desc')->get();
+        return view('superadmin.service.service',compact('services'));
+    }
+
+    public function add_service()
+    {
+        return view('superadmin.service.add-service');
+    }
+
+    public function store_service(Request $request)
+    {
+        $this->validate($request,[
+            'name' => ['required'],
+        ]);
+        $service = new Service();
+        $service->create([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('superadmin-service')->with('success','Service added successfully');
+    }
+
+    public function edit_service($id)
+    {
+        $service = Service::where('id',$id)->first();
+        if($service)
+        {
+            return view('superadmin.service.edit-service',compact('service'));
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    public function update_service(Request $request)
+    {
+        $service = Service::where('id',$request->id)->first();
+        if($service)
+        {
+            $service->name = $request->name;
+            $service->save();
+            return redirect()->route('superadmin-service')->with('success','Service updated successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    public function delete_service($id)
+    {
+        $service = Service::where('id',$id)->first();
+        if($service)
+        {
+            $service->delete();
+            return back()->with('success','Service deleted successfully');
+        }
+        else
+        {
+            return back()->with('error','Something went wrong');
+        }
+    }
+
+    //------------------------------------ Super-Admin Service Start ------------------------------------//
 
     //------------------------------------ Super-Admin Transaction Start ------------------------------------//
     public function transaction()

@@ -48,8 +48,14 @@
                                                         <td>{{$department->name}}</td>
                                                         <td>{{$department->description}}</td>
                                                         <td>
-                                                           <a href="#"><i class="fa fa-edit text-warning"></i></a>
-                                                           <a href="#"><i class="fa fa-trash text-danger"></i></a>
+                                                            <span class="d-flex">
+                                                                <a href="{{route('customer-edit-department',$department->id)}}"><i class="fa fa-edit text-warning"></i></a>&nbsp;
+                                                                <form method="POST" action="{{route('customer-delete-department',$department->id)}}">
+                                                                    @csrf
+                                                                    <input name="_method" type="hidden" value="GET">
+                                                                    <button type="submit" class="show_confirm" data-toggle="tooltip" title='Delete' style="border:none; background-color:transparent;"><i class="text-danger feather icon-trash"></i></button>
+                                                                </form>
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     @endforeach
@@ -65,4 +71,25 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            form.submit();
+        }
+        });
+    });
+</script>
 @endsection

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('key');
             $table->date('date_of_issue');
             $table->date('date_of_expiry');
-            
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-@extends('superadmin.layouts.master')
+@extends('customer.layouts.master')
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">

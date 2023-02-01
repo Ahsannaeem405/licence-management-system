@@ -40,7 +40,7 @@
                                         <i class="feather icon-shopping-cart text-danger font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">36K</h2>
+                                <h2 class="text-bold-700 mt-1">{{$total_subscription}}</h2>
                                 <p class="mb-0">Total Subscriptions</p>
                             </div>
                             <div class="card-content">
@@ -56,7 +56,7 @@
                                         <i class="feather icon-package text-warning font-medium-5"></i>
                                     </div>
                                 </div>
-                                <h2 class="text-bold-700 mt-1">97.5K</h2>
+                                <h2 class="text-bold-700 mt-1">{{$total_department}}</h2>
                                 <p class="mb-0">Total Departments</p>
                             </div>
 
@@ -73,7 +73,7 @@
                                             <i class="feather icon-credit-card text-success font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5k</h2>
+                                    <h2 class="text-bold-700 mt-1">{{$total_license}}</h2>
                                     <p class="mb-0">Total License</p>
                                 </div>
                                 <div class="card-content">

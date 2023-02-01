@@ -9,8 +9,8 @@ use App\Models\License;
 use App\Models\Package;
 use App\Services\PaymentDeduct;
 use App\Models\User;
+use App\Models\Transaction;
 use App\Models\Service;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -23,8 +23,13 @@ class CustomerController extends Controller
     {
         $total_department = Department::where('user_id',Auth::user()->id)->count();
         $total_license = License::where('customer_id',Auth::user()->id)->count();
-
-        return view('customer.dashboard.dashboard');
+        $total_subscription = Transaction::where('user_id',Auth::user()->id)->count();
+        $data = [
+            'total_department',
+            'total_license',
+            'total_subscription',
+        ];
+        return view('customer.dashboard.dashboard',compact($data));
     }
     //------------------------------------ Customer-Dashboard End ------------------------------------//
 

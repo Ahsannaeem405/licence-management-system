@@ -91,7 +91,7 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
     Route::get('/customer-delete-license/{id}', [CustomerController::class, 'delete_license'])->name('customer-delete-license');
     Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
     Route::get('/add-management', [CustomerController::class, 'add_management'])->name('customer-add-management');
-    Route::get('/store-management/{id}', [CustomerController::class, 'store_tool_owner'])->name('customer-store-management');
+    Route::post('/store-management', [CustomerController::class, 'store_tool_owner'])->name('customer-store-management');
     Route::get('/edit-management/{id}', [CustomerController::class, 'edit_tool_owner'])->name('customer-edit-management');
     Route::post('/update-management/{id}', [CustomerController::class, 'update_tool_owner'])->name('customer-update-management');
     Route::get('/delete-management/{id}', [CustomerController::class, 'delete_tool_owner'])->name('customer-delete-management');

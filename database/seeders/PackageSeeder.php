@@ -25,7 +25,6 @@ class PackageSeeder extends Seeder
         Package::create([
             'name' => 'Pro',
             'price' => '49',
-
         ]);
     }
 }

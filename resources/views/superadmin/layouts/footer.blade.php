@@ -100,7 +100,15 @@
         });
     });
 </script>
-     
+<script type="text/javascript">
+  
+    var url = "{{ route('lang-change') }}";
+  
+    $(".changeLang").change(function(){
+        window.location.href = url + "?lang="+ $(this).val();
+    });
+  
+</script>
 </body>
 <!-- END: Body-->
 

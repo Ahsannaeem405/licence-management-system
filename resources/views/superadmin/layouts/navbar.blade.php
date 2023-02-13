@@ -8,8 +8,15 @@
                         <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
                     </ul>
                 </div>
+                
+                <ul class="nav navbar-nav float-right feather icon-globe ">
+                    <select  class="changeLang"  style="border: none; outline: none; scroll-behavior: smooth;">
+                        <option style="padding: 10px; !important"  value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}><i></i>US/EN</option>
+                        <option style="padding: 10px; !important"  value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>French</option>
+                        <option style="padding: 10px; !important"  value="ger" {{ session()->get('locale') == 'ger' ? 'selected' : '' }}>German</option>
+                    </select>
+                </ul>
                 <ul class="nav navbar-nav float-right">
- 
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 <span class="user-name text-bold-600">{{Auth::user()->name}}</span>
@@ -32,7 +39,6 @@
         </div>
     </div>
 </nav>
-
 <ul class="main-search-list-defaultlist-other-list d-none">
     <li class="auto-suggestion d-flex align-items-center justify-content-between cursor-pointer"><a class="d-flex align-items-center justify-content-between w-100 py-50">
             <div class="d-flex justify-content-start"><span class="mr-75 feather icon-alert-circle"></span><span>No results found.</span></div></a>

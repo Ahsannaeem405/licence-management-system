@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\PackageDetail;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PackageSeeder::class,
-            PackageDetail::class,
+            PackageDetailSeeder::class,
         ]);
         
     }

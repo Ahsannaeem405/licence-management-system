@@ -10,77 +10,107 @@
              <div class="content-body">
                  <!-- Dashboard Ecommerce Starts -->
                  <section id="dashboard-ecommerce">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            {{-- dadwad --}}
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            {{-- awdawd --}}
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="{{route('superadmin-customers')}}">
+                                        <div class="card" >
+                                            <div class="card-header d-flex flex-column align-items-start pb-0">
+                                                <div class="d-flex">
+                                                    <span class="d-flex">
+                                                        <span class="avatar-content avatar bg-rgba-success p-50" style="margin-top: -5px;"> 
+                                                            <i class="feather icon-users text-primary font-medium-5"></i>
+                                                        </span>&nbsp;&nbsp;
+                                                        <p class="mb-0">Total Customers</p>&nbsp;&nbsp;
+                                                        <h2 class="text-bold-700">{{$total_customers}}</h2>
+                                                    </span>
+                                                    
 
-                     <div class="row">
-                         <div class="col-lg-3 col-sm-6 col-12">
+                                                </div>
+                                            </div>
+                                            {{-- <div class="card-content">
+                                                <div id="line-area-chart-1"></div>
+                                            </div> --}}
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-12">
+                                    <a href="{{route('superadmin-package')}}">
+                                    <div class="card">
+                                        <div class="card-header d-flex flex-column align-items-start pb-0">
+                                            <div class="avatar bg-rgba-success p-50 m-0">
+                                                <div class="avatar-content">
+                                                    <i class="feather icon-credit-card text-success font-medium-5"></i>
+                                                </div>
+                                            </div>
+                                            <h2 class="text-bold-700 mt-1">{{$total_packages}}</h2>
+                                            <p class="mb-0">Total Packages</p>
+                                        </div>
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-2"></div>
+                                        </div> --}}
+                                    </div>
+                                    </a>
+                                </div>
+                                <div class="col-12">
+                                    <a href="{{route('superadmin-license')}}">
+                                    <div class="card">
+                                        <div class="card-header d-flex flex-column align-items-start pb-0">
+                                            <div class="avatar bg-rgba-danger p-50 m-0">
+                                                <div class="avatar-content">
+                                                    <i class="fa fa-drivers-license-o text-danger font-medium-5"></i>
+                                                </div>
+                                            </div>
+                                            <h2 class="text-bold-700 mt-1">{{$total_license}}</h2>
+                                            <p class="mb-0"> Total Licenses</p>
+                                        </div>
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-3"></div>
+                                        </div> --}}
+                                    </div>
+                                    </a>
+                                </div>
+                                <div class="col-12">
+                                    {{-- <a href="{{route('superadmin-view-departments')}}"> --}}
+                                    <div class="card">
+                                        <div class="card-header d-flex flex-column align-items-start pb-0">
+                                            <div class="avatar bg-rgba-warning p-50 m-0">
+                                                <div class="avatar-content">
+                                                    <i class="feather icon-package text-warning font-medium-5"></i>
+                                                </div>
+                                            </div>
+                                            <h2 class="text-bold-700 mt-1">{{$total_departments}}</h2>
+                                            <p class="mb-0">Total Departments</p>
+                                        </div>
+        
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-4"></div>
+                                        </div> --}}
+                                    </div>
+                                    {{-- </a> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            {{-- dadwad --}}
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            {{-- awdawd --}}
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="{{route('superadmin-subcription')}}">
                              <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-primary p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="feather icon-users text-primary font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_customers}}</h2>
-                                     <p class="mb-0">Total Customers</p>
-                                 </div>
-                                 <div class="card-content">
-                                     <div id="line-area-chart-1"></div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-success p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="feather icon-credit-card text-success font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_packages}}</h2>
-                                     <p class="mb-0">Total Packages</p>
-                                 </div>
-                                 <div class="card-content">
-                                     <div id="line-area-chart-2"></div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-danger p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="fa fa-drivers-license-o text-danger font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_license}}</h2>
-                                     <p class="mb-0"> Total Licenses</p>
-                                 </div>
-                                 <div class="card-content">
-                                     <div id="line-area-chart-3"></div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-warning p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="feather icon-package text-warning font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_departments}}</h2>
-                                     <p class="mb-0">Total Departments</p>
-                                 </div>
-
-                                 <div class="card-content">
-                                     <div id="line-area-chart-4"></div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                       <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
                                     <h4>Package Subscription</h4>
                                 </div>

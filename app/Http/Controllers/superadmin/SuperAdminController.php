@@ -17,6 +17,7 @@ use App\Models\Service;
 use App\Models\PackageDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App;
 
 class SuperAdminController extends Controller
 {
@@ -392,7 +393,16 @@ class SuperAdminController extends Controller
         }
     }
     //------------------------------------ Super-Admin Multi Language End ------------------------------------//
+//----------------------------------------Localization-------------------------------------------------------//
 
+public function lang_change(Request $request){
+    App::setLocale($request->lang);
+    // dd($request->lang);     
+    session()->put('locale', $request->lang);  
+    return redirect()->back();
+}
+
+//-----------------------------------------End Localization-------------------------------------------------
     //------------------------------------ Super-Admin Analytics Start ------------------------------------//
     public function analytics()
     {
@@ -416,7 +426,9 @@ class SuperAdminController extends Controller
     {
         return MyHelper::update_password($request);
     }
+
     //------------------------------------ Super-Admin Account Setting End ------------------------------------//
 
 
+  
 }

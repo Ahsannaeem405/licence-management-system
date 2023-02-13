@@ -1,4 +1,5 @@
  @extends('superadmin.layouts.master')
+
  @section('content')
      <!-- BEGIN: Content-->
      <div class="app-content content">
@@ -10,76 +11,93 @@
              <div class="content-body">
                  <!-- Dashboard Ecommerce Starts -->
                  <section id="dashboard-ecommerce">
-
                      <div class="row">
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-primary p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="feather icon-users text-primary font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_customers}}</h2>
-                                     <p class="mb-0">Total Customers</p>
-                                 </div>
-                                 <div class="card-content">
-                                     <div id="line-area-chart-1"></div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-success p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="feather icon-credit-card text-success font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_packages}}</h2>
-                                     <p class="mb-0">Total Packages</p>
-                                 </div>
-                                 <div class="card-content">
-                                     <div id="line-area-chart-2"></div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-danger p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="fa fa-drivers-license-o text-danger font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_license}}</h2>
-                                     <p class="mb-0"> Total Licenses</p>
-                                 </div>
-                                 <div class="card-content">
-                                     <div id="line-area-chart-3"></div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-3 col-sm-6 col-12">
-                             <div class="card">
-                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                     <div class="avatar bg-rgba-warning p-50 m-0">
-                                         <div class="avatar-content">
-                                             <i class="feather icon-package text-warning font-medium-5"></i>
-                                         </div>
-                                     </div>
-                                     <h2 class="text-bold-700 mt-1">{{$total_departments}}</h2>
-                                     <p class="mb-0">Total Departments</p>
-                                 </div>
-
-                                 <div class="card-content">
-                                     <div id="line-area-chart-4"></div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                       <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="card">
+                                <div id="bar-chart"></div>
+                            </div> 
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-12">
+                            <div class="card">
+                                <div id="chart"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header flex-column align-items-start">
+                                            <div class="d-flex">
+                                                <div class="avatar bg-rgba-primary p-50 avatar-content" style="margin-top:-5px;">
+                                                    <i class="feather icon-users text-primary font-medium-5"></i>
+                                                </div>
+                                                <p class="mb-0">Total Customers</p>&nbsp;&nbsp;
+                                                <h4 class="text-bold-700">{{$total_customers}}</h4>
+                                            </div>
+                                            
+                                        </div>
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-1"></div>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header flex-column align-items-start pb-0">
+                                            <div class="d-flex">
+                                                <div class="avatar bg-rgba-success p-50 avatar-content" style="margin-top:-5px;">
+                                                    <i class="feather icon-credit-card text-success font-medium-5"></i>
+                                                </div>
+                                                <p class="mb-0">Total Packages</p>&nbsp;&nbsp;
+                                                <h4 class="text-bold-700">{{$total_packages}}</h4>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-2"></div>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header flex-column align-items-start pb-0">
+                                            <div class="d-flex">
+                                                <div class="avatar bg-rgba-danger p-50 avatar-content" style="margin-top:-5px;">
+                                                    <i class="fa fa-drivers-license-o text-danger font-medium-5"></i>
+                                                </div>
+                                                <p class="mb-0"> Total Licenses</p>&nbsp;&nbsp;
+                                                <h4 class="text-bold-700">{{$total_license}}</h4>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-3"></div>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header flex-column align-items-start pb-0">
+                                            <div class="d-flex">
+                                                <div class="avatar bg-rgba-warning p-50 avatar-content" style="margin-top:-5px;">
+                                                    <i class="feather icon-package text-warning font-medium-5"></i>
+                                                </div>
+                                                <p class="mb-0">Total Departments</p>&nbsp;&nbsp;
+                                                <h4 class="text-bold-700">{{$total_departments}}</h4>
+                                            </div>
+                                            
+                                        </div>
+                                        {{-- <div class="card-content">
+                                            <div id="line-area-chart-4"></div>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-12">
+                        </div>
+                        {{-- <div class="col-lg-6 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
                                     <h4>Package Subscription</h4>
@@ -117,6 +135,35 @@
                                                 <i class="feather icon-arrow-down text-danger"></i>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-end">
+                                    <h4 class="card-title">Transactions</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex justify-content-start">
+                                            <div class="mr-2">
+                                                <p class="mb-50 text-bold-600">This Month</p>
+                                                <h2 class="text-bold-400">
+                                                    <sup class="font-medium-1">$</sup>
+                                                    <span class="text-success">0</span>
+                                                </h2>
+                                            </div>
+                                            <div>
+                                                <p class="mb-50 text-bold-600">Last Month</p>
+                                                <h2 class="text-bold-400">
+                                                    <sup class="font-medium-1">$</sup>
+                                                    <span>0</span>
+                                                </h2>
+                                            </div>
+
+                                        </div>
+                                        <div id="revenue-chart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -162,35 +209,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-end">
-                                    <h4 class="card-title">Transactions</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-start">
-                                            <div class="mr-2">
-                                                <p class="mb-50 text-bold-600">This Month</p>
-                                                <h2 class="text-bold-400">
-                                                    <sup class="font-medium-1">$</sup>
-                                                    <span class="text-success">0</span>
-                                                </h2>
-                                            </div>
-                                            <div>
-                                                <p class="mb-50 text-bold-600">Last Month</p>
-                                                <h2 class="text-bold-400">
-                                                    <sup class="font-medium-1">$</sup>
-                                                    <span>0</span>
-                                                </h2>
-                                            </div>
-
-                                        </div>
-                                        <div id="revenue-chart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                  </section>
                  <!-- Dashboard Ecommerce ends -->
@@ -200,6 +218,132 @@
      <!-- END: Content-->
  @endsection
 @section('js')
+<script src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+<script>
+    var options = {
+          series: [{
+            name: "Free",
+            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+          },
+          {
+            name: "Plus",
+            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+          },
+          {
+            name: 'Pro',
+            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+          }
+        ],
+          chart: {
+          height: 300,
+          type: 'line',
+          zoom: {
+            enabled: false
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        // stroke: {
+        //   width: [5, 7, 5],
+        //   curve: 'straight',
+        //   dashArray: [0, 8, 5]
+        // },
+        title: {
+          text: 'Revenue Distribution',
+          align: 'left'
+        },
+        legend: {
+          tooltipHoverFormatter: function(val, opts) {
+            return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+          }
+        },
+        markers: {
+          size: 0,
+          hover: {
+            sizeOffset: 6
+          }
+        },
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'july', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        },
+        tooltip: {
+          y: [
+            // {
+            //   title: {
+            //     formatter: function (val) {
+            //       return val + " (mins)"
+            //     }
+            //   }
+            // },
+            // {
+            //   title: {
+            //     formatter: function (val) {
+            //       return val + " per session"
+            //     }
+            //   }
+            // },
+            {
+              title: {
+                formatter: function (val) {
+                  return val;
+                }
+              }
+            }
+          ]
+        },
+        grid: {
+          borderColor: '#f1f1f1',
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+</script>
+<script>
+     var options = {
+          series: [{
+          name: 'Free',
+          data: [44, 55, 41, 67, 22, 43, 21, 49]
+        }, {
+          name: 'Plus',
+          data: [13, 23, 20, 8, 13, 27, 33, 12]
+        }, {
+          name: 'Pro',
+          data: [11, 17, 15, 15, 21, 14, 15, 13]
+        }],
+          chart: {
+          type: 'bar',
+          height: 300,
+          stacked: true,
+          stackType: '100%'
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              position: 'bottom',
+              offsetX: -10,
+              offsetY: 0
+            }
+          }
+        }],
+        xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'july', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        },
+        fill: {
+          opacity: 1
+        },
+        legend: {
+          position: 'bottom',
+          offsetX: 0,
+          offsetY: 0
+        },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#bar-chart"), options);
+        chart.render();
+</script>
 <script>
     var $primary = '#7367F0';
     var $danger = '#EA5455';
@@ -289,5 +433,6 @@
 
   customerChart.render();
 </script>
-
 @endsection
+
+

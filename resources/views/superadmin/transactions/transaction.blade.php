@@ -31,7 +31,7 @@
                                 <div class="card-body card-dashboard">
                                      
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table dataex-html5-selectors">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -68,4 +68,52 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('#dataTable').DataTable({
+            dom: "Blfrtip",
+            buttons: [{
+                    extend: 'pdfHtml5',
+                    text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-file-pdf-o mr-1 "></i> PDF</button>',
+
+                    title: 'Customer Profiles',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export)'
+                    }
+
+                },
+                {
+                    text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-copy mr-1"></i> Copy</button>',
+                    extend: 'copyHtml5',
+                    title: 'Customer Profiles',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export)'
+                    }
+                },
+                {
+                    text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-file-excel-o mr-1"></i> Excel</button>',
+                    extend: 'excelHtml5',
+                    title: 'Customer Profiles',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export)'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-print mr-1"></i> Print</button>',
+
+                    pageSize: 'A4',
+                    title: 'Customer Profiles',
+                    exportOptions: {
+                        columns: ':visible:not(.not-export)'
+                    }
+
+                },
+            ]
+        });
+
+    });
+</script>
 @endsection

@@ -87,6 +87,9 @@
     </nav>
 
     <header class="header_section header position-relative">
+        <div class="overflow-hidden">  
+            <canvas id="nokey" width="1200" height="500"></canvas>  
+        </div>
         <div class="text-box text-white">
             <h3 class="heading-primary heading_header mb-md-5  mb-3">
                 Simplify your license management, amplify your efficiency
@@ -108,9 +111,6 @@
                     Book a Demo
                 </button>
             </div>
-
-            {{-- </div>
-            </div> --}}
         </div>
 
         <!-- Modal -->

@@ -84,8 +84,12 @@ section {
     right : 0;
     margin: auto;
 }
-
+.text-box{
+    position: absolute;
+    top: 10%;
+}
 .header_section .text-box .btn {
+
     background   : #0086be;
     border       : 0;
     padding      : 12px 34px;

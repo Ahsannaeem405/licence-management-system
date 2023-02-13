@@ -4,7 +4,7 @@ var canvas = document.getElementById('nokey'),
    ctx = canvas.getContext('2d');
 
 // console.log(typeof can_w);
-var BALL_NUM = 40
+var BALL_NUM = 60
 
 var ball = {
       x: 0,
@@ -16,9 +16,9 @@ var ball = {
       phase: 0
    },
    ball_color = {
-       r: 207,
+       r: 255,
        g: 255,
-       b: 4
+       b: 0
    },
    R = 2,
    balls = [],
@@ -171,7 +171,7 @@ function renderLines(){
            if(fraction < 1){
                alpha = (1 - fraction).toString();
 
-               ctx.strokeStyle = 'rgba(150,150,150,'+alpha+')';
+               ctx.strokeStyle = 'rgba(2,95,134,'+alpha+')';
                ctx.lineWidth = link_line_width;
                
                ctx.beginPath();

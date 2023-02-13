@@ -105,15 +105,21 @@ $(document).ready(function() {
                     columns: ':visible'
                 }
             },
-            {
-                text: 'JSON',
-                action: function ( e, dt, button, config ) {
-                    var data = dt.buttons.exportData();
+            // {
+            //     text: 'JSON',
+            //     action: function ( e, dt, button, config ) {
+            //         var data = dt.buttons.exportData();
 
-                    $.fn.dataTable.fileSave(
-                        new Blob( [ JSON.stringify( data ) ] ),
-                        'Export.json'
-                    );
+            //         $.fn.dataTable.fileSave(
+            //             new Blob( [ JSON.stringify( data ) ] ),
+            //             'Export.json'
+            //         );
+            //     }
+            // },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible:not(.not-export)'
                 }
             },
             {

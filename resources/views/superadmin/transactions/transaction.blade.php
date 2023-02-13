@@ -28,6 +28,35 @@
                 </div>
                 <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                     <div class="form-group breadcrum-right">
+             </div>
+             <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                <div class="form-group breadcrum-right">
+                     
+                </div>
+            </div> 
+        </div>
+        <div class="content-body">
+             <!-- Zero configuration table -->
+             <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+                                     
+                                    <div class="table-responsive">
+                                        <table class="table dataex-html5-selectors">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <td>User Name</td>
+                                                    <td>package</td>
+                                                    <td>price</td>
+                                                    <td>created_at</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
                     </div>
                 </div>
@@ -86,6 +115,8 @@
 
 @endsection
 
+</div>
+@endsection
 @section('js')
 <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -94,10 +125,12 @@
             buttons: [{
                     extend: 'pdfHtml5',
                     text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-file-pdf-o mr-1 "></i> PDF</button>',
+
                     title: 'Customer Profiles',
                     exportOptions: {
                         columns: ':visible:not(.not-export)'
                     }
+
                 },
                 {
                     text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-copy mr-1"></i> Copy</button>',
@@ -118,6 +151,7 @@
                 {
                     extend: 'print',
                     text: '<button  class="btn  btn-primary w-100 px-3 "><i class="fa fa-print mr-1"></i> Print</button>',
+
                     pageSize: 'A4',
                     title: 'Customer Profiles',
                     exportOptions: {
@@ -129,3 +163,4 @@
     });
 </script>
 @endsection
+

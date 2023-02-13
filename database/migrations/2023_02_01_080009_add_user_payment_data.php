@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->text('next_payment')->nullable();
             $table->text('stripe_id')->nullable();
-            $table->text('pack_id')->nullable();;
-            $table->text('activated')->nullable();;
-
         });
     }
 

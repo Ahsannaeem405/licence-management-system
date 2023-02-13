@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Hash;
 
 class MyHelper
@@ -51,6 +53,5 @@ class MyHelper
             'password' => Hash::make($request->new_password)
         ]);
         return back()->with("success", "Password changed successfully!");
-
-}
+    }
 }

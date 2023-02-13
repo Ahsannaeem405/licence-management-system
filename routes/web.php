@@ -8,7 +8,8 @@ use App\Http\Controllers\manager\ManagerController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StripePaymentController;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\superadmin\SettingController;
 
 
@@ -26,16 +27,15 @@ use GuzzleHttp\Middleware;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class,'welcome'])->name('home');
 Route::POST('/store-client',[HomeController::class,'store'])->name('store-client');
 Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
-Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-payment');
+Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-payment')->middleware('auth');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
+Route::post('/subscription-login', [StripePaymentController::class, 'subscribe'])->name('login-subscription');
 
 //------------------------------------------------- Super-Admin Start ----------------------------------------------//
-Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function () {
+Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], function () {
     Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin-dashbaord');
     Route::get('/subcription', [SuperAdminController::class, 'subscription'])->name('superadmin-subcription');
     Route::get('/customers', [SuperAdminController::class, 'customer'])->name('superadmin-customers');
@@ -45,7 +45,12 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::POST('/update-customer/{id}', [SuperAdminController::class, 'update_customer'])->name('superadmin-update-customer');
     Route::get('/delete-customer/{id}', [SuperAdminController::class, 'delete_customer'])->name('superadmin-delete-customer');
     Route::get('/package', [SuperAdminController::class, 'Package'])->name('superadmin-package');
-    Route::get('/add-Package', [SuperAdminController::class, 'add_package'])->name('superadmin-add-package');
+    // Route::get('/add-Package', [SuperAdminController::class, 'add_package'])->name('superadmin-add-package');
+    // Route::POST('superadmin-store-package', [SuperAdminController::class, 'admin_store_package'])->name('superadmin-store-package');
+    Route::get('/superadmin-edit-package/{id}', [SuperAdminController::class, 'admin_edit_package'])->name('superadmin-edit-package');
+    Route::get('/superadmin-view-package/{id}', [SuperAdminController::class, 'admin_view_package'])->name('superadmin-view-package');
+    Route::POST('/superadmin-update-package/{id}', [SuperAdminController::class, 'admin_update_package'])->name('superadmin-update-package');
+    // Route::get('/superadmin-delete-package/{id}', [SuperAdminController::class, 'admin_delete_package'])->name('superadmin-delete-package');
     Route::get('/service',[SuperAdminController::class,'service'])->name('superadmin-service');
     Route::get('/add-service',[SuperAdminController::class,'add_service'])->name('superadmin-add-service');
     Route::post('/store-service',[SuperAdminController::class,'store_service'])->name('superadmin-store-service');
@@ -66,15 +71,11 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'SuperAdmin'], function 
     Route::get('/admin-setting', [SuperAdminController::class, 'setting'])->name('superadmin-setting');
     Route::POST('/update-admin-profile/{id}', [SuperAdminController::class,'admin_update_profile'])->name('superadmin-profile-update');
     Route::POST('/update-admin-password/{id}', [SuperAdminController::class,'admin_update_password'])->name('superadmin-admin-password');
-    Route::POST('superadmin-store-package', [SuperAdminController::class, 'admin_store_package'])->name('superadmin-store-package');
-    Route::get('/superadmin-edit-package/{id}', [SuperAdminController::class, 'admin_edit_package'])->name('superadmin-edit-package');
-    Route::POST('/superadmin-update-package/{id}', [SuperAdminController::class, 'admin_update_package'])->name('superadmin-update-package');
-    Route::get('/superadmin-delete-package/{id}', [SuperAdminController::class, 'admin_delete_package'])->name('superadmin-delete-package');
 }); 
 //------------------------------------------------- Super-Admin End ----------------------------------------------//
 
 //------------------------------------------------- Customer Start ----------------------------------------------//
-Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
+Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], function () {
     Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('customer-dashboard');
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
@@ -103,14 +104,30 @@ Route::group(['prefix' => 'customer', 'middleware' => 'Customer'], function () {
 });
 //------------------------------------------------- Customer End ----------------------------------------------//
 
-//------------------------------------------------- Manager Start ----------------------------------------------//
-Route::group(['prefix' => 'manager', 'middleware' => 'Manager'], function () {
-    Route::get('/dashboard', [ManagerController::class, 'index'])->name('manager-dashbaord');
+//------------------------------------------------- Manager & Tool Owner Start ----------------------------------------------//
+Route::group(['prefix' => 'manager', 'middleware' => ['Manager','auth']], function () {
+    Route::get('/dashboard', [ManagerController::class, 'dashboard'])->name('manager-dashbaord');
     Route::get('/company-info', [ManagerController::class, 'companyinfo'])->name('manager-company-info');
     Route::get('/license', [ManagerController::class, 'license'])->name('manager-license');
-    Route::get('/addlicense', [ManagerController::class, 'addlicense'])->name('manager-add-license');
-    Route::get('/setting', [ManagerController::class, 'setting'])->name('manager-setting');
+    Route::get('/add-license', [ManagerController::class, 'add_license'])->name('manager-add-license');
+    Route::get('/edit-license/{id}',[ManagerController::class, 'edit_license'])->name('manager-edit-license');
+    Route::post('/store-license', [ManagerController::class, 'store_license'])->name('manager-store-license');
+    Route::post('/update-license/{id}',[ManagerController::class, 'update_license'])->name('manager-update-license');
+    Route::get('/delete-license/{id}',[ManagerController::class, 'delete_license'])->name('manager-delete-license');
+    Route::get('/setting',[ManagerController::class, 'setting'])->name('manager-setting');
+    Route::post('/manager-update-profile/{id}', [ManagerController::class, 'update_manager_profile'])->name('manager-update-profile');
+    Route::post('/manager-update-password/{id}', [ManagerController::class, 'update_manager_password'])->name('manager-update-password');
 });
-//------------------------------------------------- Manager Start ----------------------------------------------//
 
-Auth::routes();
+Route::group(['prefix' => 'manager', 'middleware' => 'Owner'], function () {
+    Route::get('/management', [ManagerController::class, 'management'])->name('manager-management');
+    Route::get('/add-management', [ManagerController::class, 'add_management'])->name('manager-add-management');
+    Route::post('/store-management', [ManagerController::class, 'store_tool_owner'])->name('manager-store-management');
+    Route::get('/edit-management/{id}', [ManagerController::class, 'edit_tool_owner'])->name('manager-edit-management');
+    Route::post('/update-management/{id}', [ManagerController::class, 'update_tool_owner'])->name('manager-update-management');
+    Route::get('/delete-management/{id}', [ManagerController::class, 'delete_tool_owner'])->name('manager-delete-management');
+});
+
+//------------------------------------------------- Manager & Tool Owner End ----------------------------------------------//
+
+Auth::routes(['verify' => true]);

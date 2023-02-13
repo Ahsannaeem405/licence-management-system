@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
   <!-- BEGIN: Content-->
   <div class="app-content content">
@@ -30,28 +29,59 @@
                                     <p class="px-2">Fill the below form to create a new account.</p>
                                     <div class="card-content">
                                         <div class="card-body pt-0">
-                                            <form action="index.html">
+                                            <form action="{{route('register')}}" method="POST">
+                                                @csrf
                                                 <div class="form-label-group">
-                                                    <input type="text" id="inputName" class="form-control" placeholder="Name" required>
-                                                    <label for="inputName">Name</label>
+                                                    <input type="text" id="inputName" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Name *" required>
+                                                    <label for="inputName">Name *</label>
+                                                    @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-label-group">
-                                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required>
-                                                    <label for="inputEmail">Email</label>
+                                                    <input type="email" id="inputEmail" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email *" value="{{old('email')}}" required>
+                                                    <label for="inputEmail">Email *</label>
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-label-group">
-                                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                                    <label for="inputPassword">Password</label>
+                                                    <input type="password" id="inputPassword" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password *" required>
+                                                    <label for="inputPassword">Password*</label>
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-label-group">
-                                                    <input type="password" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
-                                                    <label for="inputConfPassword">Confirm Password</label>
+                                                    <input type="password" id="inputConfPassword" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirm Password *" required>
+                                                    <label for="inputConfPassword">Confirm Password *</label>
+                                                    @error('password_confirmation')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
+                                                <div class="form-label-group">
+                                                    <input type="text" id="inputPhone" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone Number *" required>
+                                                    <label for="inputPhone">Phone *</label>
+                                                    @error('phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                                <input type="hidden" name="package_id" value="{{$_GET['id']}}">
                                                 <div class="form-group row">
                                                     <div class="col-12">
-                                                        <fieldset class="checkbox">
+                                                        <fieldset class="checkbox" data-toggle="modal" data-target="#terms_conditions">
                                                             <div class="vs-checkbox-con vs-checkbox-primary">
-                                                                <input type="checkbox" checked>
+                                                                <input type="checkbox" required>
                                                                 <span class="vs-checkbox">
                                                                     <span class="vs-checkbox--check">
                                                                         <i class="vs-icon feather icon-check"></i>
@@ -61,9 +91,22 @@
                                                             </div>
                                                         </fieldset>
                                                     </div>
+                                                    <div class="col-12">
+                                                        <fieldset class="checkbox">
+                                                            <div class="vs-checkbox-con vs-checkbox-primary">
+                                                                <input type="checkbox">
+                                                                <span class="vs-checkbox">
+                                                                    <span class="vs-checkbox--check">
+                                                                        <i class="vs-icon feather icon-check"></i>
+                                                                    </span>
+                                                                </span>
+                                                                <span class=""> Newsletter offer subscription.</span>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
                                                 </div>
                                                 <a href="{{route('login')}}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
-                                                <button type="button" class="btn btn-primary float-right btn-inline mb-50">Register</a>
+                                                <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
                                             </form>
                                         </div>
                                     </div>
@@ -73,10 +116,48 @@
                     </div>
                 </div>
             </section>
-
+            <!-- Modal -->
+            <div class="modal fade text-left" id="terms_conditions" tabindex="-1" role="dialog" aria-labelledby="terms_conditions33" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="terms_conditions33"> </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <h2>Terms and Conditions</h2>
+                                <h5>Welcome to License Management !</h5>
+                                <p>These terms and conditions outline the rules and regulations for the use of GesCle's Website, located at <a href="https://license.sapphost.com/">https://license.sapphost.com/</a>.</p>
+                                <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use License Management if you do not agree to take all of the terms and conditions stated on this page.</p>
+                                <p>The following terminology applies to these Terms and Conditions, All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
+                                <h5>Cookies</h5>
+                                <p>We employ the use of cookies. By accessing License Management , you agreed to use cookies in agreement with the GesCle's Privacy Policy.</p>
+                                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+                                <h5>License</h5>
+                                <p>Unless otherwise stated, GesCle and/or its licensors own the intellectual property rights for all material on License Management . All intellectual property rights are reserved. You may access this from License Management for your own personal use subjected to restrictions set in these terms and conditions.</p>
+                                <h5>You must not:</h5>
+                                <ul>
+                                    <li>Republish material from License Management</li>
+                                    <li>Sell, rent or sub-license material from License Management</li>
+                                    <li>Reproduce, duplicate or copy material from License Management</li>
+                                    <li>Redistribute content from License Management</li>
+                                </ul>
+                                <p>This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the Free Terms and Conditions Generator.</p>
+                                <b>Thank You</b>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
         </div>
     </div>
 </div>
 <!-- END: Content-->
-
 @endsection

@@ -30,24 +30,55 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
-                                                        <th>Address</th>
-                                                        <th>Phone</th>
+                                                        <th>Role</th>
+                                                        <th>Department</th>
+                                                        <th>Added By</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
+                                                @php
+                                                    $x=1;
+                                                @endphp
                                                 <tbody>
-                                                    @foreach($owners as $owner)
+                                                    @foreach($users as $user)
                                                     <tr>
-                                                        <td>{{$owner->name}}</td>
-                                                        <td>{{$owner->email}}</td>
-                                                        <td>{{$owner->address}}</td>
-                                                        <td>{{$owner->phone}}</td>
+                                                        <td>{{$x++}}</td>
+                                                        <td>{{$user->name}}</td>
+                                                        <td>{{$user->email}}</td>
+                                                        @if($user->role == 'manager')
+                                                        <td class="product-category">
+                                                            <div class="chip chip-primary">
+                                                                <div class="chip-body" style="max-width: 100px; width:65px; padding:5px;">
+                                                                    <div class="chip-text"><strong>{{$user->role}}</strong></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        @elseif($user->role == 'owner')
+                                                        <td class="product-category">
+                                                            <div class="chip chip-info">
+                                                                <div class="chip-body" style="max-width: 100px; width:65px; padding:5px;">
+                                                                    <div class="chip-text"><strong>{{$user->role}}</strong></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        @endif
+                                                        <td>{{$user->department->name}}</td>
+                                                        @foreach ($user->addby as $addedby )
+                                                        <td class="product-category">
+                                                            <div class="chip chip-dark">
+                                                                <div class="chip-body" style="max-width: 100px; width:65px; padding:5px;">
+                                                                    <div class="chip-text"><strong>{{$addedby->name}}</strong></div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        @endforeach
                                                         <td>
                                                             <span class="d-flex">
-                                                                <a href="{{route('customer-edit-management',$owner->id)}}"><i class="fa fa-edit text-warning"></i></a>
-                                                                <form action="{{route('customer-delete-management',$owner->id)}}" method="POST">
+                                                                <a href="{{route('customer-edit-management',$user->id)}}"><i class="fa fa-edit text-warning"></i></a>
+                                                                <form action="{{route('customer-delete-management',$user->id)}}" method="POST">
                                                                     <input type="hidden" value="GET" name="_method">
                                                                     <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
                                                                 </form>

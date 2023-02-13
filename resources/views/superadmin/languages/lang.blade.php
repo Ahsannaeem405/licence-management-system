@@ -32,14 +32,19 @@
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th>Country</th>
                                                         <th>Language</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $x=1;
+                                                    @endphp
                                                     @foreach($languages as $language)
                                                     <tr>
+                                                        <td>{{$x++}}</td>
                                                         <td>{{$language->country}}</td>
                                                         <td>{{$language->language}}</td>
                                                         <td>

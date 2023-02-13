@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->string('image')->default('assets/app-assets/images/portrait/small/avatar-s-11.jpg');
             $table->string('role')->nullable();
+            $table->string('image')->nullable();
+            $table->foreignId('add_by')->nullable()->constrained('users')->references('id');
             $table->foreignId('package_id')->nullable()->constrained('packages')->references('id')->cascadeOnDelete();
             $table->string('active')->nullable();
             $table->rememberToken();

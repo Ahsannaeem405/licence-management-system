@@ -70,7 +70,6 @@
                                 </div>
                             </a>
                         </li>
-
                         <li class="nav-item btn-2">
                             <a class="nav-link py-md-2 py-1 text-white px-0" href="{{route('login')}}">Login </a>
                         </li>
@@ -82,8 +81,15 @@
 
     <div class="container stripe_payment py-md-5 py-3">
         <div class="row justify-content-center">
-            <div class="col-md-10 ">
+            <div class="col-md-10 mt-2">
                 <div class=" credit-card-box border p-md-4 p-3 rounded">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success alert-block">
+                                <strong>No fee will be charged for first 3 months, can cancel the subscription at any time.</strong>
+                            </div>
+                        </div>
+                    </div>
                     <div class="d-flex justify-content-between">
                         <h3 class="">Payment Details</h3>
                         <img src="{{asset('assets/app-assets/images/logo/visa_master_logo.png')}}" class="img-fluid" alt="..." style="height: 42px;">
@@ -96,13 +102,9 @@
                             <p>{{ Session::get('success') }}</p>
                         </div>
                         @endif
-
-                        <form role="form" action="" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                        <form role="form" action="{{route('login-subscription')}}" method="POST" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                             @csrf
-
-                            {{-- <input type="hidden" value="{{$package->id}}" name="package_id">
-                            <input type="hidden" value="{{$package->price}}" name="amount">
-                            <input type="hidden" value="{{$package->days}}" name="days"> --}}
+                            
                             <div class='form-row row mt-md-3 mt-2'>
                                 <div class='col-xs-12 form-group required'>
                                     <label class='form-label'>Name on Card</label>
@@ -113,24 +115,25 @@
                             <div class='form-row row mt-md-3 mt-2'>
                                 <div class='col-xs-12 form-group card required border-0'>
                                     <label class='form-label'>Card Number</label>
-                                    <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+                                    <input autocomplete='off' name="card_number" class='form-control card-number' size='20' type='text'>
                                 </div>
                             </div>
 
                             <div class='form-row row mt-md-3 mt-2'>
                                 <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                    <label class='form-label'>CVC</label> <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                                    <label class='form-label'>CVC</label> <input autocomplete='off' name="card_cvc" class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
                                 </div>
                                 <div class='col-xs-12 col-md-4 form-group expiration required'>
                                     <label class='form-label'>Expiration Month</label>
-                                    <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                                    <input class='form-control card-expiry-month' placeholder='MM' name="card_expiry_month" size='2' type='text'>
                                 </div>
                                 <div class='col-xs-12 col-md-4 form-group expiration required'>
                                     <label class='form-label'>Expiration Year</label>
-                                    <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                                    <input class='form-control card-expiry-year' placeholder='YYYY' name="card_expiry_year" size='4' type='text'>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="pack_id" value="{{$package->id}}">
+                            <input type="hidden" name="amount" value="{{$package->price}}">
                             <div class='form-row row mt-md-3 mt-2'>
                                 <div class='col-md-12 error form-group hide'>
                                     <div class='alert-danger alert'>Please correct the errors and try again.</div>
@@ -139,8 +142,8 @@
 
                             <div class="row">
                                 <div class="col-xs-12 text-center">
-                                    {{-- <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button> --}}
-                                    <a href="{{route('register')}}" class="btn btn-primary mt-3 bg_primary" type="submit">Pay Now</a>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ${{$package->price}}</button>
+                                    {{-- <a href="{{route('register')}}" class="btn btn-primary mt-3 bg_primary" type="submit">Pay Now</a> --}}
                                 </div>
                             </div>
 

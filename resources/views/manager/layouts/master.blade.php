@@ -1,5 +1,6 @@
  @include('manager.layouts.header')
  @include('manager.layouts.navbar')
  @include('manager.layouts.sidebar')
+ @yield('css')
  @yield('content')
  @include('manager.layouts.footer')

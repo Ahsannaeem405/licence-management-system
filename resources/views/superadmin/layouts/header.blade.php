@@ -50,6 +50,7 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/style.css')}}">
+    
     <!-- END:Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/plugins/forms/validation/form-validation.css')}}">
 </head>

@@ -8,9 +8,10 @@ use App\Models\Subsciption;
 use App\Models\User;
 use App\Models\setsession;
 use App\Models\Connect;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-use Session;
 use Redirect;
 
 class StripePaymentController extends Controller
@@ -29,7 +30,7 @@ class StripePaymentController extends Controller
     public function change_subscribe($id)
     {
         $user=User::find(Auth::user()->id);
-        $user->pack_id=$id;
+        $user->package_id=$id;
         $user->save();
         return back();
 
@@ -55,30 +56,31 @@ class StripePaymentController extends Controller
         $customer = \Stripe\Customer::create([
             'source' => $token->id,
         ]);
-        
-
-        
-
-
-
-
 
         $user=User::find(Auth::user()->id);
-        $user->pack_id=$request->input('pack_id');
+        $user->package_id=$request->input('pack_id');
         $user->stripe_id=$customer->id;
         $user->next_payment=$next_payment;
-        $user->activated=1;
+        $user->active=1;
         $user->pass=null;
         $user->save();
-        return back();
+
+
+        $trans= new Transaction();
+        $trans->package_id = $request->pack_id;
+        $trans->user_id = Auth::user()->id;
+        $trans->receipt_url = $customer->receipt_url;
+        $trans->stripe_id = $customer->id;
+        $trans->amount= $request->amount;
+        $trans->save();
+        Auth::logout();
+        Session::flush();
+        return redirect()->route('login')->with('success','Successfully Registered Continue To Login');
         
     }
 
     public function Refund(Request $request,$id)
     {
-
-
-
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         if($id !=null)
         {
@@ -87,16 +89,9 @@ class StripePaymentController extends Controller
             ]);
 
             $user=Subsciption::where('stripe_refund_id',$id)->first();
-
-
             $ref=Subsciption::find($user->id);
             $ref->refund_status=1;
             $ref->update();
-
-
-
-
-
             return response()->json(['success'=>true,'data'=>$data]);
 
         }

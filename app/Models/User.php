@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
-class User extends Authenticatable
+use App\Models\Department;
+use App\Models\Package;
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -39,7 +40,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function package(){
+    public function package()
+    {
         return $this->belongsTo(Package::class,'package_id','id');
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class,'department_id','id');
+    }
+
+    public function addby()
+    {
+        return $this->hasMany(User::class, 'id','add_by');
     }
 }

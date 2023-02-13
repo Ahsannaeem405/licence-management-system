@@ -43,7 +43,7 @@ class CustomerMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.mail',
+            view: 'emails.registration-mail',
         );
     }
 

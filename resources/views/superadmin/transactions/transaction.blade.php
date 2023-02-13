@@ -34,6 +34,7 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <td>User Name</td>
                                                     <td>package</td>
                                                     <td>price</td>
@@ -41,8 +42,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+
+                                                @php
+                                                    $x=1;
+                                                @endphp
                                                 @foreach ($transactions as $transaction)
                                                 <tr>
+                                                    <th>{{$x++}}</th>
                                                     <th>{{$transaction->user->name}}</th>
                                                     <th>{{$transaction->package->package}}</th>
                                                     <th>{{$transaction->package->price}}</th>

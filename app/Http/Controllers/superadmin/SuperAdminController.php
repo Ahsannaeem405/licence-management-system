@@ -14,6 +14,7 @@ use App\Models\License;
 use App\Models\Language;
 use App\Models\Transaction;
 use App\Models\Service;
+use App\Models\PackageDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,11 +30,24 @@ class SuperAdminController extends Controller
         // $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
         // $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
         // $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+        $free_package = Transaction::where('package_id','1')->pluck('package_id')->count();
+        $plus_package = Transaction::where('package_id','2')->pluck('package_id')->count();
+        $pro_package = Transaction::where('package_id','3')->pluck('package_id')->count();
+
+        $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->count();
+        $six_month_customers = User::whereMonth('created_at',\Carbon\Carbon::now()->subMonth(6))->count();
+        $one_year_customers = User::whereYear('created_at',\Carbon\Carbon::now()->subYear())->count();
         $data = [
             'total_customers',
             'total_packages',
             'total_license',
-            'total_departments'
+            'total_departments',
+            'free_package',
+            'plus_package',
+            'pro_package',
+            'new_customers',
+            'six_month_customers',
+            'one_year_customers',
         ];
         return view('superadmin.dashboard.dashboard',compact($data));
     }
@@ -82,6 +96,7 @@ class SuperAdminController extends Controller
             'address' =>  $request->address,
             'phone' => $request->phone,
             'role' => 'customer',
+            'add_by' => Auth::user()->id,
         ]);
         $details = [
             'email' => $request->email,
@@ -135,60 +150,79 @@ class SuperAdminController extends Controller
         $packages = Package::all();
         return view('superadmin.packages.Package', compact('packages'));
     }
-    public function add_package()
-    {
-        return view('superadmin.packages.add-package');
-    }
+    // public function add_package()
+    // {
+    //     return view('superadmin.packages.add-package');
+    // }
 
-    public function admin_store_package(Request $request)
-    {
-        $this->validate($request,[
-            'package' => 'required',
-            'entity' => 'required',
-            'price' => 'required',
-            'description' =>'required',
-            ]);
-        $pack = new Package();
-        $pack->create([
-            'package' => $request->package,
-            'entity' =>  $request->entity,
-            'price' =>  $request->price,
-            'description' => $request->description,
-        ]);
+    // public function admin_store_package(Request $request)
+    // {
+    //     $this->validate($request,[
+    //         'package' => 'required',
+    //         'entity' => 'required',
+    //         'price' => 'required',
+    //         'description' =>'required',
+    //         ]);
+    //     $pack = new Package();
+    //     $pack->create([
+    //         'package' => $request->package,
+    //         'entity' =>  $request->entity,
+    //         'price' =>  $request->price,
+    //         'description' => $request->description,
+    //     ]);
  
-        return back()->with('success', 'Admin Package save successfully');
-    }
+    //     return redirect()->route('superadmin-package')->with('success', 'Admin Package save successfully');
+    // }
 
     public function admin_edit_package(Request $request, $id)
     {
         $pack = Package::find($id);
         return view('superadmin.packages.edit-package', compact('pack'));
     }
+    public function admin_view_package($id)
+    {
+        $package = Package::find($id);
+        return view('superadmin.packages.view-package', compact('package'));
+    }
 
     public function admin_update_package(Request $request)
     {
         $pack = Package::find($request->id);
         $this->validate($request, [
-            'package' => 'required',
-            'entity' => 'required',
+            'name' => 'required',
             'price' => 'required',
-            'description' => 'required',
         ]);
-        $pack->package = $request->package;
-        $pack->entity = $request->entity;
+        $pack->name = $request->name;
         $pack->price = $request->price;
-        $pack->description = $request->description;
         $pack->save();
+        if(isset($request->point_name))
+        {
+            for($i = 0; $i < count($request->point_name); $i++)
+                {
+                    $package_detail = PackageDetail::where('id',$request->detail_id[$i])->first();
+                    $package_detail->point_name = $request->point_name[$i];
+                    if(isset($request->status[$i]))
+                    {
+                        $package_detail->status = 1;
+                    }
+                    else
+                    {
+                        $package_detail->status = 0;
+
+                    }
+                    $package_detail->update();
+                }
+        }
         return redirect()->route('superadmin-package')->with('success','Package Updated Successfully');
     }
 
 
-    public function admin_delete_package($id)
-    {
-        $pack = Package::find($id);
-        $pack->delete();
-        return redirect()->route('superadmin-package')->with('success', 'Package Deleted Successfully');
-    }
+    // public function admin_delete_package($id)
+    // {
+    //     $pack = Package::find($id);
+    //     $pack->delete();
+    //     return redirect()->route('superadmin-package')->with('success', 'Package Deleted Successfully');
+    // }
     //------------------------------------ Super-Admin Package End ------------------------------------//
 
     //------------------------------------ Super-Admin Service Start ------------------------------------//

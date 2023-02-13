@@ -18,6 +18,11 @@ use App\Mail\CustomerMail;
 use MyHelper;
 class CustomerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
     //------------------------------------ Customer-Dashboard Start ------------------------------------//
     public function dashboard()
     {
@@ -37,7 +42,6 @@ class CustomerController extends Controller
     public function subscripton()
     {
         $packages=Package::all();
-        
         return view('customer.subscription.subcription' ,compact('packages'));
     }
     //------------------------------------ Customer-Subscription End ------------------------------------//
@@ -212,13 +216,14 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-        $owners = User::where('role','manager')->get();
-        return view('customer.management.management',compact('owners'));
+        $users = User::whereIn('role',['manager','owner'])->get();
+        return view('customer.management.management',compact('users'));
     }
 
     public function add_management()
     {
-        return view('customer.management.add-management');
+        $departments = Department::all();
+        return view('customer.management.add-management',compact('departments'));
     }
 
     public function store_tool_owner(Request $request)
@@ -228,8 +233,10 @@ class CustomerController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => 'required',
-            'phone' => 'required',
+            'address' => ['required'],
+            'phone' => ['required'],
+            'role' => ['required'],
+            'department' => ['required'],
 
         ]);
 
@@ -240,20 +247,24 @@ class CustomerController extends Controller
             'password' =>  Hash::make($request->password),
             'address' =>  $request->address,
             'phone' => $request->phone,
-            'role' => 'manager',
+            'role' => $request->role,
+            'department_id' => $request->department,
+            'add_by' => Auth::user()->id,
         ]);
         $details = [
             'email' => $request->email,
             'password' => $request->password,
+            'role' => $request->role,
         ];
         Mail::to($request->email)->send(new CustomerMail($details));
-        return redirect()->route('customer-management')->with('success', 'Tool Owner Added Successfully');
+        return redirect()->route('customer-management')->with('success', ''.$request->role.' added successfully mail sent');
     }
 
     public function edit_tool_owner(Request $request, $id)
     {
         $owner = User::find($id);
-        return view('customer.management.edit-management', compact('owner'));
+        $departments = Department::all();
+        return view('customer.management.edit-management', compact('owner','departments'));
     }
 
     public function update_tool_owner(Request $request)
@@ -262,6 +273,8 @@ class CustomerController extends Controller
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $owner->id . ''],
+            'role' => ['required'],
+            'department' => ['required'],
         ]);
         if ($owner) 
         {
@@ -273,6 +286,8 @@ class CustomerController extends Controller
             }
             $owner->address = $request->address;
             $owner->phone = $request->phone;
+            $owner->role = $request->role;
+            $owner->department_id = $request->department;
             $owner->save();
             return redirect()->route('customer-management')->with('success', 'Tool Owner updated successfully');
         } 

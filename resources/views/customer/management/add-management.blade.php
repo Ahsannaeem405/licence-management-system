@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Add Tool Owner</h2>
+                            <h2 class="content-header-title float-left mb-0">Add Manage / Tool Owner</h2>
                             
                         </div>
                     </div>
@@ -61,8 +61,16 @@
                                                                 placeholder="Password" >
                                                         </div>
                                                     </div>
-
-
+                                                    <div class="form-group">
+                                                        <label>Role</label>
+                                                        <div class="controls">
+                                                            <select name="role" class="form-control">
+                                                                <option selected disabled> Please Select Role</option>
+                                                                <option value="manager">Manager</option>
+                                                                <option value="owner">Tool Owner</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> 
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -91,10 +99,19 @@
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
                                                                 data-validation-containsnumber-message="The regex field format is invalid."
                                                                 placeholder="" required>
-                                                                
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Department</label>
+                                                        <div class="controls">
+                                                            <select name="department" class="form-control">
+                                                                <option selected disabled> Please Select Department</option>
+                                                                @foreach($departments as $department)
+                                                                <option value="{{$department->id}}">{{$department->name}}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div> 
-
                                                 </div>
                                             </div>
 

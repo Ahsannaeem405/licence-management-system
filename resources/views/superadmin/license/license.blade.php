@@ -46,13 +46,16 @@
                                                         <th>Email</th>
                                                         <th >Address</th>
                                                         <th>Phone</th>
-                                                       
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $x=1;
+                                                    @endphp
                                                     @foreach ($users as $item)
                                                         <tr>
+                                                            <td>{{$x++}}</td>
                                                             <td>{{ $item->name }}</td>
                                                             <td>{{ $item->email }}</td>
                                                             <td>{{ $item->address }}</td>

@@ -5,8 +5,6 @@ namespace App\Services;
 use App\Models\User;
 use App\Models\Package;
 use App\Models\Transaction;
-
-
 use Stripe;
 
 
@@ -33,7 +31,7 @@ class PaymentDeduct
 
 	        $update=User::find($get_user->id);
 	        $update->next_payment=$next_date_payment;
-	        $user->activated=2;
+	        $user->active=2;
 	        $user->pass=null;
         	$user->update();
 
@@ -42,7 +40,7 @@ class PaymentDeduct
         	$trans->package_id=$get_user->pack_id;
         	$trans->user_id=$get_user->id;
         	$trans->receipt_url=$charge->receipt_url;
-        	$trans->transactions_id=$charge->id;
+        	$trans->stripe_id=$charge->id;
         	$trans->amount=$Package->price;
         	$trans->save();
         	\Log::info($next_date_payment);

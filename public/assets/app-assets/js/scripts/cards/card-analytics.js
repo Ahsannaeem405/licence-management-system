@@ -27,37 +27,37 @@ $(window).on("load", function(){
     // Session Chart
     // ----------------------------------
 
-    var sessionChartoptions = {
-        chart: {
-            type: 'donut',
-            height: 315,
-            toolbar: {
-                show: false
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        series: [58.6, 34.9, 6.5],
-        legend: { show: false },
-        comparedResult: [2, -3, 8],
-        labels: ['Desktop', 'Mobile', 'Tablet'],
-        stroke: { width: 0 },
-        colors: [$primary, $warning, $danger],
-        fill: {
-            type: 'gradient',
-            gradient: {
-                gradientToColors: [$primary_light, $warning_light, $danger_light]
-            }
-        }
-    }
+//     var sessionChartoptions = {
+//         chart: {
+//             type: 'donut',
+//             height: 315,
+//             toolbar: {
+//                 show: false
+//             }
+//         },
+//         dataLabels: {
+//             enabled: false
+//         },
+//         series: [58.6, 34.9, 6.5],
+//         legend: { show: false },
+//         comparedResult: [2, -3, 8],
+//         labels: ['Desktop', 'Mobile', 'Tablet'],
+//         stroke: { width: 0 },
+//         colors: [$primary, $warning, $danger],
+//         fill: {
+//             type: 'gradient',
+//             gradient: {
+//                 gradientToColors: [$primary_light, $warning_light, $danger_light]
+//             }
+//         }
+//     }
 
-   var sessionChart = new ApexCharts(
-        document.querySelector("#session-chart"),
-        sessionChartoptions
-    );
+//    var sessionChart = new ApexCharts(
+//         document.querySelector("#session-chart"),
+//         sessionChartoptions
+//     );
 
-    sessionChart.render();
+//     sessionChart.render();
 
     // Product Order Chart
     // -----------------------------
@@ -130,45 +130,45 @@ $(window).on("load", function(){
     // Customer Chart
     // -----------------------------
 
-    var customerChartoptions = {
-        chart: {
-            type: 'pie',
-            height: 325,
-            dropShadow: {
-                enabled: false,
-                blur: 5,
-                left: 1,
-                top: 1,
-                opacity: 0.2
-            },
-            toolbar: {
-                show: false
-            }
-        },
-        labels: ['New', 'Returning', 'Referrals'],
-        series: [690, 258, 149],
-        dataLabels: {
-            enabled: false
-        },
-        legend: { show: false },
-        stroke: {
-            width: 5
-        },
-        colors: [$primary, $warning, $danger],
-        fill: {
-            type: 'gradient',
-            gradient: {
-                gradientToColors: [$primary_light, $warning_light, $danger_light]
-            }
-        }
-    }
+    // var customerChartoptions = {
+    //     chart: {
+    //         type: 'pie',
+    //         height: 325,
+    //         dropShadow: {
+    //             enabled: false,
+    //             blur: 5,
+    //             left: 1,
+    //             top: 1,
+    //             opacity: 0.2
+    //         },
+    //         toolbar: {
+    //             show: false
+    //         }
+    //     },
+    //     labels: ['New', 'Returning', 'Referrals'],
+    //     series: [690, 258, 149],
+    //     dataLabels: {
+    //         enabled: false
+    //     },
+    //     legend: { show: false },
+    //     stroke: {
+    //         width: 5
+    //     },
+    //     colors: [$primary, $warning, $danger],
+    //     fill: {
+    //         type: 'gradient',
+    //         gradient: {
+    //             gradientToColors: [$primary_light, $warning_light, $danger_light]
+    //         }
+    //     }
+    // }
 
-    var customerChart = new ApexCharts(
-        document.querySelector("#customer-chart"),
-        customerChartoptions
-    );
+    // var customerChart = new ApexCharts(
+    //     document.querySelector("#customer-chart"),
+    //     customerChartoptions
+    // );
 
-    customerChart.render();
+    // customerChart.render();
 
     // Sales Chart
     // -----------------------------

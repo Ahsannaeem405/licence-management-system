@@ -26,31 +26,35 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{route('superadmin-add-package') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Package</a>
+                                        {{-- <a href="{{route('superadmin-add-package') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Package</a> --}}
                                         <div class="table-responsive">
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th>Package</th>
-                                                        <th>Entity</th>
                                                         <th>Price</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $x=1;
+                                                    @endphp
                                                     @foreach($packages as $package)
                                                     <tr>
-                                                        <td>{{$package->package}}</td>
-                                                        <td>{{$package->entity}}</td>
+                                                        <td>{{$x++}}</td>
+                                                        <td>{{$package->name}}</td>
                                                         <td>${{$package->price}}</td>
                                                         <td>
                                                             <span class="d-flex">
-                                                                <a href="{{route('superadmin-edit-package',$package->id)}}"><i class="fa fa-edit text-warning"></i></a>
-                                                                <form method="POST" action="{{route('superadmin-update-package',$package->id)}}">
+                                                                <a href="{{route('superadmin-edit-package',$package->id)}}"><i class="fa fa-edit text-warning"></i></a> &nbsp;
+                                                                <a href="{{route('superadmin-view-package',$package->id)}}"><i class="fa fa-eye text-primary"></i></a>
+                                                                {{-- <form method="POST" action="{{route('superadmin-update-package',$package->id)}}">
                                                                     @csrf
                                                                     <input name="_method" type="hidden" value="GET">
                                                                     <button type="submit" class="show_confirm" data-toggle="tooltip" title='Delete' style="border:none; background-color:transparent;"><i class="text-danger fa fa-trash"></i></button>
-                                                                </form>
+                                                                </form> --}}
                                                             </span>
                                                         </td>
                                                     </tr>

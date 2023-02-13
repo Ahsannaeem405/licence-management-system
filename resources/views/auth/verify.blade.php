@@ -1,11 +1,18 @@
 @extends('layouts.app')
-
+<style>
+    .verify-block{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+</style>
 @section('content')
-<div class="container">
+<div class="container verify-block">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+            <div class="card" style="padding:50px;">
+                <div class="card-header"><h2>{{ __('Please Verify Your Email Address') }}</h2></div>
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -18,7 +25,7 @@
                     {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to send another verify link') }}</button>.
                     </form>
                 </div>
             </div>

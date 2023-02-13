@@ -34,7 +34,15 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .toast-error {
+     background-color: #E54040 !important;
+     }
+     .toast-success {
+         background-color: #1bba1b !important;
+     }
+     </style>
 </head>
 <!-- END: Head-->
 
@@ -42,7 +50,7 @@
 
 <body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     @yield('content')
-
+    @yield('js')
      <!-- BEGIN: Vendor JS-->
      <script src="{{asset('assets/app-assets/vendors/js/vendors.min.js')}}"></script>
      <!-- BEGIN Vendor JS-->
@@ -58,7 +66,24 @@
  
      <!-- BEGIN: Page JS-->
      <!-- END: Page JS-->
- 
+    <!-- Toastr  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<script>
+    toastr.options = {
+    "closeButton": true,
+    "progressBar": true
+    }
+    @if(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+        @elseif(Session::has('error'))
+            toastr.error('{{ Session::get('error') }}');
+        @endif
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error('{{$error}}');
+        @endforeach
+    @endif
+ </script>
  </body>
  <!-- END: Body-->
  

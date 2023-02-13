@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ManagerMiddleware
 {
@@ -17,10 +18,19 @@ class ManagerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-         if(Auth::User() && Auth::User()->role =='manager')
+        if(Auth::User())
         {
-            return $next($request);
-
+            if(Auth::User()->role =='manager' || Auth::User()->role =='owner')
+            {
+                return $next($request);
+            }
+            else
+            {
+                Auth::logout();
+                Session::flush();
+                Session::flash('error','Something went wrong');
+                return '/login';
+            }
         }
         else
         {

@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\PackageDetail;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,19 +30,12 @@ class DatabaseSeeder extends Seeder
             'role' => 'customer',
         ]);
 
-        User::create([
-            'name' => 'manager',
-            'email' => 'manager@gmail.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'manager',
+        $this->call([
+            PackageSeeder::class,
+            PackageDetail::class,
         ]);
         
     }
-
-
-
-
-
 
         // \App\Models\User::factory(10)->create();
 

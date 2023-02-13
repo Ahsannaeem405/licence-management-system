@@ -38,8 +38,6 @@ class PaymentCron extends Command
             $add=new PaymentDeduct();
             $add->payment($row);
         }
-
-
         return Command::SUCCESS;
     }
 }

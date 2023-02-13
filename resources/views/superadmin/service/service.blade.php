@@ -33,15 +33,19 @@
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th>Name</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $x=1;
+                                                    @endphp
                                                     @foreach ($services as $service)
                                                         <tr>
+                                                            <td>{{$x++}}</td>
                                                             <td>{{ $service->name }}</td>
-                                                           
                                                             <td>
                                                                 <span class="d-flex">
                                                                     <a href="{{route('superadmin-edit-service',$service->id)}}"><i class="fa fa-edit text-warning"></i></a>&nbsp;

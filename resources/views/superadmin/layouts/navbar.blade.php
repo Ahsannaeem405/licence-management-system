@@ -16,7 +16,11 @@
                                 <span class="user-status"></span>
                             </div>
                             <span>
-                                <img class="round" src="{{asset('')}}{{Auth::user()->image}}" alt="avatar" height="40" width="40">
+                                @isset(Auth::user()->image)
+                                <img class="round" src="{{asset('profile-images')}}/{{Auth::user()->image}}" alt="avatar" height="40" width="40">
+                                @else
+                                <img class="round" src="{{asset('assets/app-assets/images/portrait/small/avatar-s-12.jpg')}}" alt="avatar" height="40" width="40">
+                                @endisset
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('superadmin-setting')}}"><i class="feather icon-user"></i> Edit Profile</a>   

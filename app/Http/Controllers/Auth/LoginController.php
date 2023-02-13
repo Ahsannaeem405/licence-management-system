@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+// use Illuminate\Contracts\Session\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     /*
@@ -36,13 +38,9 @@ class LoginController extends Controller
         {
             return '/customer/dashboard';
         }
-        else if(Auth::User() && Auth::User()->role =='manager')
+        else if(Auth::User() && Auth::User()->role =='manager' || Auth::user()->role == 'owner')
         {
              return '/manager/dashboard';
-        }
-        else
-        {
-            return '/login';
         }
     }
 

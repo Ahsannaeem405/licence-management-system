@@ -33,20 +33,35 @@
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
+                                                        <th>#</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
                                                         <th>Address</th>
                                                         <th>Phone</th>
+                                                        <th>Added By</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $x=1;
+                                                    @endphp
                                                     @foreach ($customers as $customer)
                                                         <tr>
+                                                            <td>{{$x++}}</td>
                                                             <td>{{ $customer->name }}</td>
                                                             <td>{{ $customer->email }}</td>
                                                             <td>{{ $customer->address }}</td>
                                                             <td>{{ $customer->phone }}</td>
+                                                            @foreach ($customer->addby as $addedby )
+                                                            <td class="product-category">
+                                                                <div class="chip chip-dark">
+                                                                    <div class="chip-body" style="max-width: 100px; width:auto; padding:5px;">
+                                                                        <div class="chip-text"><strong>{{$addedby->name}}</strong></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            @endforeach
                                                             <td>
                                                                 <span class="d-flex">
                                                                     <a href="{{route('superadmin-edit-customer',$customer->id)}}"><i class="fa fa-edit text-warning"></i></a>&nbsp;

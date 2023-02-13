@@ -28,49 +28,36 @@
 
     <div class="content-body">
       <div class="row">
-        @foreach($packages as $row)
+        @foreach($packages as $package)
         <div class="col-lg-4 col-md-12 mb-4">
           <div class="card h-100 subcard_shadow">
             <div class="card-body">
-              <h5 class="card-title text_primary fw-bolder text-uppercase text-center">{{$row->package}} </h5>
-              <h6 class="card-price text-center">$ {{$row->price}}<span class="period">/month</span></h6>
+              <h5 class="card-title text_primary fw-bolder text-uppercase text-center">{{$package->package}} </h5>
+              <h6 class="card-price text-center">$ {{$package->price}}<span class="period">/month</span></h6>
               <hr>
               <ul class="fa-ul">
-                <li><span class="fa-li"><i class="fa text-success fa-check"></i></span>{{$row->entity}} user </li>
-                <li><span class="fa-li"><i class="fa text-success fa-check"></i></span>1 department /Service
-                  (Manage multiple teams
-                  or departments)</li>
-                <li><span class="fa-li"><i class="fa text-success fa-check"></i></span>10 Licenses
+                @foreach($package->package_details as $details)
+                <li>
+                    <span class="fa-li">
+                        @if($details->status == 1)
+                        <i class="fa fa-check text-success"></i>
+                        @elseif ($details->status == 0)
+                        <i class="fa fa-close text-danger"></i>
+                        @endif
+                    </span>{{$details->point_name}} 
                 </li>
-                <li><span class="fa-li"><i class="fa text-success fa-check"></i></span>Basic reporting
-                </li>
-                <li><span class="fa-li"><i class="fa fa-close text-danger"></i></span>NA : Direct reports
-                  sharing
-                </li>
-                <li><span class="fa-li"><i class="fa fa-close text-danger"></i></span>NA : Monthly Status
-                  Report
-                </li>
-                <li><span class="fa-li"><i class="fa text-success fa-check"></i></span>Email Support
-
-                </li>
-                <li><span class="fa-li"><i class="fa fa-close text-danger "></i></span>NA: On-site training and
-                  consultation
-
-                </li>
-
+                @endforeach
               </ul>
-
             </div>
-
             <div class="card-body text-center">
-              @if(Auth::user()->pack_id ==$row->id)
-                <button class="btn btn-outline-primary btn-lg bg_primary sub_btn text-white" pack_id="{{$row->id}}" style="border-radius:30px;color: #263d72 !important;" disabled>Activated</button>
+              @if( Auth::user()->package_id == $package->id)
+                <button class="btn btn-outline-success btn-lg bg-success sub_btn text-white" pack_id="{{$package->id}}" id="subs_btns" style="border-radius:30px; font-weight:bold;" disabled>Activated</button>
               @else
                 @if(Auth::user()->stripe_id !=null)
-                  <a href="{{url('customer/change_subscribe/' .$row->id)}}">
-                  <button class="btn btn-outline-primary  btn-lg bg_primary sub_btn text-white" pack_id="{{$row->id}}" style="border-radius:30px">Subscribe</button></a>
+                  <a href="{{url('customer/change_subscribe/' .$package->id)}}">
+                  <button class="btn btn-outline-primary  btn-lg bg_primary sub_btn text-white" pack_id="{{$package->id}}" style="border-radius:30px">Subscribe</button></a>
                 @else
-                  <button class="btn btn-outline-primary add_subscription btn-lg bg_primary sub_btn text-white" pack_id="{{$row->id}}" style="border-radius:30px">Select</button>
+                  <button class="btn btn-outline-primary add_subscription btn-lg bg_primary sub_btn text-white" pack_id="{{$package->id}}" style="border-radius:30px">Select</button>
                 @endif  
               @endif
             </div>
@@ -78,7 +65,6 @@
         </div>
         @endforeach
       </div>
-
     </div>
   </div>
 </div>
@@ -155,10 +141,6 @@
                                           again.</div>
                                   </div>
                               </div>
-          
-                              
-                                  
-                          
                       </div>
                     </div>    
                 </div>
@@ -171,13 +153,6 @@
 </div>
 <!-- Modal -->
 @endsection
-{{--
-  <div class="breadcrumb-wrapper col-12">
-    <ol class="breadcrumb float-right m-0">
-        <li class="breadcrumb-item"><a href="{{route('customer-add-license') }}"
-class="btn btn-primary fa fa-plus"> Add License</a></li>
-</ol>
-</div> --}}
 
 @section('js')
 <script type="text/javascript">
@@ -185,10 +160,7 @@ $(document).ready(function(){
   $(document).on('click','.add_subscription',function(){
     var pack_id=$(this).attr('pack_id');
     $('.pack_id_append').val(pack_id);
-
-
     $('.payment_model').modal('show');
-
 
   });
 });

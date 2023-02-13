@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GesCle</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/logo/Layer.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/logo/layer.png')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -26,7 +26,6 @@
 </head>
 
 <body class="position-relative  ">
-
     <nav class="navbar navbar-expand-lg navbar-light  w-100 nav_main sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img class="img-fluid" src="{{ asset('img.png') }}" alt="logo"></a>
@@ -37,18 +36,18 @@
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 gap-md-1 gap-2 mb-lg-0">
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page" href="#">How it
+                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page" href="#how-it-work">How it
                                 Works
                             </a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">Pricing </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#subscription">Pricing </a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">Benefits </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#benifits">Benefits </a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">Customers </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#product-slider">Customers </a>
                         </li>
                         <li class="nav-item btn-2">
                             <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">About Us </a>
@@ -147,8 +146,6 @@
 
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-4">
@@ -158,7 +155,6 @@
 
                                         </div>
                                     </div>
-
                                     <div class="form-group mt-4 mb-4">
                                         <label>Company</label>
                                         <div class="controls">
@@ -199,8 +195,8 @@
     </header>
 
     <!-- how it work -->
-    <section class="how-it-works py-md-5 py-3 overflow-hidden">
-        <div class="container" data-aos="fade-left">
+    <section class="how-it-works py-md-5 py-3 overflow-hidden" id="how-it-work">
+        <div class="container mt-4" data-aos="fade-left">
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">How It Work</h2>
             <h5 class="text-center position-relative mb-5">Get Started with 3 easy steps</h5>
             <div class="row align-items-center">
@@ -247,123 +243,43 @@
         </div>
     </section>
     <!-- Price section -->
-    <section class="price_section py-md-5 py-3 ">
-        <div class="container" data-aos="fade-left">
+    <section class="price_section py-md-5 py-3 " id="subscription">
+        <div class="container mt-4" data-aos="fade-left">
             <h2 class="section_heading text-center position-relative mb-5 fw-bold"> Subscriptions</h2>
             <div class="row">
                 <!-- Free Tier -->
+                @foreach($packages as $package)
                 <div class="col-lg-4">
                     <div class="card mb-5 mb-lg-0">
                         <div class="card-body">
-                            <h5 class="card-title text_primary fw-bolder text-uppercase text-center">Free</h5>
-                            <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+                            <h5 class="card-title text_primary fw-bolder text-uppercase text-center">{{$package->name}}</h5>
+                            <h6 class="card-price text-center">${{$package->price}}<span class="period">/month</span></h6>
                             <hr>
                             <ul class="fa-ul">
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>1 user </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>1 department /Service
-                                    (Manage multiple teams
-                                    or departments)</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>10 Licenses
+                                @foreach($package->package_details as $details)
+                                <li>
+                                    <span class="fa-li">
+                                        @if($details->status == 1)
+                                        <i class="fas fa-check text-success"></i>
+                                        @elseif ($details->status == 0)
+                                        <i class="fas fa-close text-danger"></i>
+                                        @endif
+                                    </span>{{$details->point_name}} 
                                 </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Basic reporting
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-close text-danger"></i></span>NA : Direct reports
-                                    sharing
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-close text-danger"></i></span>NA : Monthly Status
-                                    Report
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Email Support
-
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-close text-danger"></i></span>NA: On-site training and
-                                    consultation
-
-                                </li>
-
+                                @endforeach
                             </ul>
                             <div class="d-grid">
-                                <a href="{{route('stripe-payment')}}" class="btn bg_primary text-uppercase">Subscribe Now</a>
+                                <a href="{{route('register')}}?id={{encrypt($package->id)}}" class="btn bg_primary text-uppercase">Subscribe Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Plus Tier -->
-                <div class="col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="card-title text_primary fw-bolder text-uppercase text-center">Plus</h5>
-                            <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span><strong>1 user </strong>
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>50GB Storage</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>10 department /Service
-                                    (Manage multiple teams
-                                    or departments)
-
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>50 Licenses </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Advanced reporting </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Direct reports sharing
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Monthly Status Report</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Email and phone Support
-                                </li>
-
-                                <li><span class="fa-li"><i class="fas fa-close text-danger"></i></span>NA: On-site training and
-                                    consultation
-                                </li>
-
-                            </ul>
-                            <div class="d-grid">
-                                <a href="{{route('stripe-payment')}}" class="btn bg_primary text-uppercase">Subscribe Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Pro Tier -->
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text_primary fw-bolder text-uppercase text-center">Pro</h5>
-                            <h6 class="card-price text-center">$49<span class="period">/month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span><strong>1 user
-                                    </strong>
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>100 department /Service
-                                    (Manage multiple teams
-                                    or departments)</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>1000 Licenses
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Advanced reporting</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Direct reports sharing
-                                    Projects</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>Monthly Status Report
-                                </li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span><strong>Email
-                                        Support</strong>
-                                    Free
-                                    Subdomains</li>
-                                <li><span class="fa-li"><i class="fas fa-check text-success"></i></span>On-site training and
-                                    consultation
-                                </li>
-                            </ul>
-                            <div class="d-grid">
-                                <a href="{{route('stripe-payment')}}" class="btn bg_primary text-uppercase">Subscribe Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
     </section>
     <!-- Benifits section -->
-    <section class="section_our_solution py-md-5 py-3">
-        <div class="container" data-aos="fade-left">
+    <section class="section_our_solution py-md-5 py-3" id="benifits">
+        <div class="container mt-4" data-aos="fade-left">
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">Benefits</h2>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -733,7 +649,8 @@
 
     </section>
     <!-- customor logos -->
-    <section id="product-slider" class="py-md-5 py-3">
+    <section id="product-slider" class="py-md-5  py-3">
+        <div class="container mt-4">
         <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customers</h2>
         <div class="slider">
             <div class="slide-track">
@@ -782,10 +699,11 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
     <!-- about us -->
     <section id="about-us" class="about py-md-5 py-4 ">
-        <div class="container aos-init aos-animate" data-aos="fade-right">
+        <div class="container mt-4 aos-init aos-animate" data-aos="fade-right">
             <h2 class="section_heading text-center position-relative mb-5 fw-bold">About Us </h2>
             <h6 class="text-center ">Experience the benefits of our license management application through the words of satisfied customers</h6>
             <div class="row gy-4 mt-2">
@@ -1150,7 +1068,7 @@
     </section>
     <!-- contact us -->
     <section id="contact" class="contact section_contact py-md-5 py-4">
-        <div class="container aos-init aos-animate" data-aos="fade-up">
+        <div class="container aos-init aos-animate mt-4" data-aos="fade-up">
             <div class="section-title text-center">
                 <h2 class="section_heading text-center  position-relative mb-5 fw-bold">Contact Us</h2>
 

@@ -44,6 +44,10 @@
     background-color: #fff  !important;
     color: #263d72 !important;
 }
+#subs_btns:hover{
+    color: white !important;
+
+}
 .subcard_shadow .card-body .fa-ul li{
     margin-top: 9px !important;
     border-bottom: 1px solid #e4e9f3bd !important;

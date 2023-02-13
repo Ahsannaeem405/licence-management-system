@@ -61,7 +61,16 @@
                                                                 placeholder="Password" >
                                                         </div>
                                                     </div>
-
+                                                    <div class="form-group">
+                                                        <label>Role</label>
+                                                        <div class="controls">
+                                                            <select name="role" class="form-control">
+                                                                <option selected disabled> Please Select Role</option>
+                                                                <option value="manager" {{$owner->role == 'manager' ? 'selected' : ''}}>Manager</option>
+                                                                <option value="owner" {{$owner->role == 'owner' ? 'selected' : ''}}>Tool Owner</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                                 <div class="col-md-6">
@@ -90,11 +99,20 @@
                                                             <input type="password" name="password_confirmation" class="form-control" 
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
                                                                 data-validation-containsnumber-message="The regex field format is invalid."
-                                                                placeholder="" required>
-                                                                
+                                                                placeholder="" required>  
                                                         </div>
                                                     </div> 
-
+                                                    <div class="form-group">
+                                                        <label>Department</label>
+                                                        <div class="controls">
+                                                            <select name="department" class="form-control">
+                                                                <option selected disabled> Please Select Department</option>
+                                                                @foreach($departments as $department)
+                                                                <option value="{{$department->id}}" {{$department->id == $owner->department_id ? 'selected':''}}>{{$department->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 

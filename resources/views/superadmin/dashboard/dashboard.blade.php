@@ -229,15 +229,15 @@
     var options = {
           series: [{
             name: "Free",
-            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+            data: [<?php foreach($free_packages as $sum) {echo $sum.',';}?>]
           },
           {
             name: "Plus",
-            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+            data: [<?php foreach($plus_packages as $sum) {echo $sum.',';}?>]
           },
           {
             name: 'Pro',
-            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+            data: [<?php foreach($pro_packages as $sum) {echo $sum.',';}?>]
           }
         ],
           chart: {

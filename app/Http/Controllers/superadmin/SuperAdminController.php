@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Service;
 use App\Models\PackageDetail;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
@@ -42,6 +44,69 @@ class SuperAdminController extends Controller
         $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->count();
         $six_month_customers = User::whereMonth('created_at',\Carbon\Carbon::now()->subMonth(6))->count();
         $one_year_customers = User::whereYear('created_at',\Carbon\Carbon::now()->subYear())->count();
+        /////////////////////////////////////////////////////////////////Packges_chart//////////////////////////
+        $data = [];
+
+        // Circle trough all 12 months
+        for ($month = 1; $month <= 12; $month++) {
+            // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
+            $date = Carbon::create(date('Y'), $month);
+        
+            // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
+            $date_end = $date->copy()->endOfMonth();
+        
+            $transaksi = Transaction::where('package_id',1)
+                // the creation date must be between the start of the month and the end of the month
+                ->where('created_at', '>=', $date)
+                ->where('created_at', '<=', $date_end)
+                // ->Where('status','!=','Menunggu')
+                ->sum('amount');
+       
+            // Save the count of transactions for the current month in the output array
+            $free_packages[$month] = $transaksi;
+        }
+
+        $data = [];
+
+        // Circle trough all 12 months
+        for ($month = 1; $month <= 12; $month++) {
+            // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
+            $date = Carbon::create(date('Y'), $month);
+        
+            // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
+            $date_end = $date->copy()->endOfMonth();
+        
+            $transaksi = Transaction::where('package_id',2)
+                // the creation date must be between the start of the month and the end of the month
+                ->where('created_at', '>=', $date)
+                ->where('created_at', '<=', $date_end)
+                // ->Where('status','!=','Menunggu')
+                ->sum('amount');
+       
+            // Save the count of transactions for the current month in the output array
+            $plus_packages[$month] = $transaksi;
+        }
+        $data = [];
+
+        // Circle trough all 12 months
+        for ($month = 1; $month <= 12; $month++) {
+            // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
+            $date = Carbon::create(date('Y'), $month);
+        
+            // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
+            $date_end = $date->copy()->endOfMonth();
+        
+            $transaksi = Transaction::where('package_id',3)
+                // the creation date must be between the start of the month and the end of the month
+                ->where('created_at', '>=', $date)
+                ->where('created_at', '<=', $date_end)
+                // ->Where('status','!=','Menunggu')
+                ->sum('amount');
+       
+            // Save the count of transactions for the current month in the output array
+            $pro_packages[$month] = $transaksi;
+        }
+            //dd($plus_packages);
         $data = [
             'total_customers',
             'total_packages',
@@ -54,7 +119,7 @@ class SuperAdminController extends Controller
             'six_month_customers',
             'one_year_customers',
         ];
-        return view('superadmin.dashboard.dashboard',compact($data));
+        return view('superadmin.dashboard.dashboard',compact($data,'free_packages','plus_packages','pro_packages'));
     }
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
 

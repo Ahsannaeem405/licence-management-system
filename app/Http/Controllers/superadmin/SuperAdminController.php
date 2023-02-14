@@ -21,17 +21,14 @@ use App\Models\PackageDetail;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 
 class SuperAdminController extends Controller
 {
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
-    {    // $graph_dates = User::where('role','client')
-        //    ->select( DB::raw('count(*) as total'),DB::raw("DATE_FORMAT(created_at, '%d') as date"),)
-        //    ->whereMonth('created_at',\Carbon\Carbon::now())
-        //    ->groupBy('date')
-        //    ->pluck('date');
+    {   
         $total_customers = User::whereIn('role',['manager','tool-owner'])->count();
         $total_packages = Package::count();
         $total_license = License::count();
@@ -50,9 +47,6 @@ class SuperAdminController extends Controller
         $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->count();
         $six_month_customers = User::whereMonth('created_at',\Carbon\Carbon::now()->subMonth(6))->count();
         $one_year_customers = User::whereYear('created_at',\Carbon\Carbon::now()->subYear())->count();
-
-        $free_jan = Transaction::where('package_id','1')->get();
-        // dd($free_jan);
         $data = [
             'total_customers',
             'total_packages',

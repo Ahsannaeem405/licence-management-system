@@ -307,14 +307,52 @@
      var options = {
           series: [{
           name: 'Free',
-
-          data: [44, 55, 41, 67, 22, 43, 21, 49, 90, 76, 89, 33]
+          data: [
+          {{MyHelper::pointt(1, '1')}}, 
+          {{MyHelper::pointt(2, '1')}}, 
+          {{MyHelper::pointt(3, '1')}}, 
+          {{MyHelper::pointt(4, '1')}}, 
+          {{MyHelper::pointt(5, '1')}}, 
+          {{MyHelper::pointt(6, '1')}}, 
+          {{MyHelper::pointt(7, '1')}}, 
+          {{MyHelper::pointt(8, '1')}}, 
+          {{MyHelper::pointt(9, '1')}}, 
+          {{MyHelper::pointt(10, '1')}}, 
+          {{MyHelper::pointt(11, '1')}}, 
+          {{MyHelper::pointt(12, '1')}},
+        ]
         }, {
           name: 'Plus',
-          data: [13, 23, 20, 8, 13, 27, 33, 12, 90, 76, 89, 33]
+          data: [
+          {{MyHelper::pointt(1, '2')}}, 
+          {{MyHelper::pointt(2, '2')}}, 
+          {{MyHelper::pointt(3, '2')}}, 
+          {{MyHelper::pointt(4, '2')}}, 
+          {{MyHelper::pointt(5, '2')}}, 
+          {{MyHelper::pointt(6, '2')}}, 
+          {{MyHelper::pointt(7, '2')}}, 
+          {{MyHelper::pointt(8, '2')}}, 
+          {{MyHelper::pointt(9, '2')}}, 
+          {{MyHelper::pointt(10, '2')}}, 
+          {{MyHelper::pointt(11, '2')}}, 
+          {{MyHelper::pointt(12, '2')}},
+          ]
         }, {
           name: 'Pro',
-          data: [11, 17, 15, 15, 21, 14, 15, 13, 90, 76, 89, 33]
+          data: [
+          {{MyHelper::pointt(1, '3')}}, 
+          {{MyHelper::pointt(2, '3')}}, 
+          {{MyHelper::pointt(3, '3')}}, 
+          {{MyHelper::pointt(4, '3')}}, 
+          {{MyHelper::pointt(5, '3')}}, 
+          {{MyHelper::pointt(6, '3')}}, 
+          {{MyHelper::pointt(7, '3')}}, 
+          {{MyHelper::pointt(8, '3')}}, 
+          {{MyHelper::pointt(9, '3')}}, 
+          {{MyHelper::pointt(10, '3')}}, 
+          {{MyHelper::pointt(11, '3')}}, 
+          {{MyHelper::pointt(12, '3')}},
+          ]
         }],
           chart: {
           type: 'bar',

@@ -8,14 +8,28 @@
                         <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
                     </ul>
                 </div>
-                
-                <ul class="nav navbar-nav float-right feather icon-globe ">
+                <ul class="nav navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                    <a class="dropdown-item" href="{{route('lang.switch',$lang)}}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                            @endif
+                        @endforeach
+                        </div>
+                    </li>
+                </ul>
+
+                {{-- <ul class="nav navbar-nav float-right feather icon-globe ">
                     <select  class="changeLang"  style="border: none; outline: none; scroll-behavior: smooth;">
-                        <option style="padding: 10px; !important"  value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}><i></i>US/EN</option>
+                        <option style="padding: 10px; !important"  value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>US/EN</option>
                         <option style="padding: 10px; !important"  value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>French</option>
                         <option style="padding: 10px; !important"  value="ger" {{ session()->get('locale') == 'ger' ? 'selected' : '' }}>German</option>
                     </select>
-                </ul>
+                </ul> --}}
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">

@@ -13,9 +13,13 @@ use App\Models\Package;
 use App\Models\License;
 use App\Models\Language;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\Service;
 use App\Models\PackageDetail;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
 
@@ -395,11 +399,13 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Multi Language End ------------------------------------//
 //----------------------------------------Localization-------------------------------------------------------//
 
-public function lang_change(Request $request){
-    App::setLocale($request->lang);
-    // dd($request->lang);     
-    session()->put('locale', $request->lang);  
-    return redirect()->back();
+public function switchLang($lang)
+{
+    if (array_key_exists($lang, Config::get('languages'))) 
+    {
+        Session::put('applocale', $lang);
+    }
+    return Redirect::back();
 }
 
 //-----------------------------------------End Localization-------------------------------------------------

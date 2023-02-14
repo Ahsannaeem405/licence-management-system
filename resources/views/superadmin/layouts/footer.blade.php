@@ -101,7 +101,7 @@
         });
     });
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   
     var url = "{{ route('lang-change') }}";
   
@@ -109,7 +109,7 @@
         window.location.href = url + "?lang="+ $(this).val();
     });
   
-</script>
+</script> --}}
 </body>
 <!-- END: Body-->
 

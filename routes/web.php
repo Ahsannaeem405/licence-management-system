@@ -73,7 +73,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], 
     Route::POST('/update-admin-password/{id}', [SuperAdminController::class,'admin_update_password'])->name('superadmin-admin-password');
 }); 
     //-----------------------------------------Localization------------------------------------------//
- Route::get('lang_change',[SuperAdminController::class,'lang_change'])->name('lang-change');
+    Route::get('lang/{lang}',[SuperAdminController::class, 'switchLang'])->name('lang.switch');
 //------------------------------------------------- Super-Admin End ----------------------------------------------//
 
 //------------------------------------------------- Customer Start ----------------------------------------------//

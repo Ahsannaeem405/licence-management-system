@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Subcriptions</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.subscription')}}</h2>
                             
                         </div>
                     </div>
@@ -37,10 +37,10 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                        <th>Package</th>
-                                                        <th>Entity</th>
-                                                        <th>Price</th>
-                                                        <th>Description</th>
+                                                        <th>{{__('messages.th package')}}</th>
+                                                        <th>{{__('messages.th entity')}}</th>
+                                                        <th>{{__('messages.th price')}}</th>
+                                                        <th>{{__('messages.th description')}}</th>
                                                          
                                                     </tr>
                                                 </thead>

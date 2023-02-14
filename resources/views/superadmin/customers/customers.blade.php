@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">{{__('messages.title')}}</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.customer')}}</h2>
 
                         </div>
                         {{-- {{ Config::get('app.locale') }} --}}
@@ -29,18 +29,18 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('superadmin-add-customers') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Customer</a>
+                                        <a href="{{ route('superadmin-add-customers') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp;{{__('messages.th add')}}</a>
                                         <div class="table-responsive">
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Address</th>
-                                                        <th>Phone</th>
-                                                        <th>Added By</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.th name')}}</th>
+                                                        <th>{{__('messages.th email')}}</th>
+                                                        <th>{{__('messages.th address')}}</th>
+                                                        <th>{{__('messages.th phone')}}</th>
+                                                        <th>{{__('messages.th added')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

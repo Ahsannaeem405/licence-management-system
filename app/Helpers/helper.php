@@ -54,4 +54,11 @@ class MyHelper
         ]);
         return back()->with("success", "Password changed successfully!");
     }
+
+    public static function pointt($month, $package_id)
+    {
+        $total = Transaction::whereMonth('created_at', $month)->where('package_id', $package_id)->sum('amount');
+        return $total;
+
+    }
 }

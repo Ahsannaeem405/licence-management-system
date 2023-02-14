@@ -13,14 +13,10 @@
                  <section id="dashboard-ecommerce">
                      <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="card">
-                                <div id="bar-chart"></div>
-                            </div> 
+                          <div class="card" id="bar-chart"></div>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-12">
-                            <div class="card">
-                                <div id="chart"></div>
-                            </div>
+                          <div class="card" id="chart"></div>
                         </div>
                         
                         <div class="col-lg-3 col-md-3 col-sm-12">
@@ -33,7 +29,7 @@
                                                     <div class="avatar bg-rgba-primary p-50 avatar-content" style="margin-top:-5px;">
                                                         <i class="feather icon-users text-primary font-medium-5"></i>
                                                     </div>
-                                                    <p class="mb-0">Total Customers</p>&nbsp;&nbsp;
+                                                    <p class="mb-0">Customers</p>&nbsp;&nbsp;
                                                     <h4 class="text-bold-700">{{$total_customers}}</h4>
                                                 </div>
                                                 
@@ -52,7 +48,7 @@
                                                     <div class="avatar bg-rgba-success p-50 avatar-content" style="margin-top:-5px;">
                                                         <i class="feather icon-credit-card text-success font-medium-5"></i>
                                                     </div>
-                                                    <p class="mb-0">Total Packages</p>&nbsp;&nbsp;
+                                                    <p class="mb-0">Packages</p>&nbsp;&nbsp;
                                                     <h4 class="text-bold-700">{{$total_packages}}</h4>
                                                 </div>
                                             </div>
@@ -70,7 +66,7 @@
                                                     <div class="avatar bg-rgba-danger p-50 avatar-content" style="margin-top:-5px;">
                                                         <i class="fa fa-drivers-license-o text-danger font-medium-5"></i>
                                                     </div>
-                                                    <p class="mb-0"> Total Licenses</p>&nbsp;&nbsp;
+                                                    <p class="mb-0">Licenses</p>&nbsp;&nbsp;
                                                     <h4 class="text-bold-700">{{$total_license}}</h4>
                                                 </div>
                                             </div>
@@ -87,7 +83,7 @@
                                                 <div class="avatar bg-rgba-warning p-50 avatar-content" style="margin-top:-5px;">
                                                     <i class="feather icon-package text-warning font-medium-5"></i>
                                                 </div>
-                                                <p class="mb-0">Total Departments</p>&nbsp;&nbsp;
+                                                <p class="mb-0">Departments</p>&nbsp;&nbsp;
                                                 <h4 class="text-bold-700">{{$total_departments}}</h4>
                                             </div>
                                             
@@ -103,48 +99,6 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-12">
                         </div>
-                        {{-- <div class="col-lg-6 col-md-6 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-end">
-                                    <h4>Package Subscription</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body pt-0">
-                                        <div id="session-chart" class="mb-1"></div>
-                                        <div class="chart-info d-flex justify-content-between mb-1">
-                                            <div class="series-info d-flex align-items-center">
-                                                <i class="fa fa-circle font-small-3 text-primary"></i>
-                                                <span class="text-bold-600 mx-50">Free</span>
-                                            </div>
-                                            <div class="series-result">
-                                                <span>{{$free_package}}</span>
-                                                <i class="feather icon-arrow-up text-success"></i>
-                                            </div>
-                                        </div>
-                                        <div class="chart-info d-flex justify-content-between mb-1">
-                                            <div class="series-info d-flex align-items-center">
-                                                <i class="fa fa-circle font-small-3 text-warning"></i>
-                                                <span class="text-bold-600 mx-50">Plus</span>
-                                            </div>
-                                            <div class="series-result">
-                                                <span>{{$plus_package}}</span>
-                                                <i class="feather icon-arrow-up text-success"></i>
-                                            </div>
-                                        </div>
-                                        <div class="chart-info d-flex justify-content-between mb-50">
-                                            <div class="series-info d-flex align-items-center">
-                                                <i class="fa fa-circle font-small-3 text-danger"></i>
-                                                <span class="text-bold-600 mx-50">Pro</span>
-                                            </div>
-                                            <div class="series-result">
-                                                <span>{{$pro_package}}</span>
-                                                <i class="feather icon-arrow-down text-danger"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
@@ -157,14 +111,14 @@
                                                 <p class="mb-50 text-bold-600">This Month</p>
                                                 <h2 class="text-bold-400">
                                                     <sup class="font-medium-1">$</sup>
-                                                    <span class="text-success">0</span>
+                                                    <span class="text-success">{{$current_month}}</span>
                                                 </h2>
                                             </div>
                                             <div>
                                                 <p class="mb-50 text-bold-600">Last Month</p>
                                                 <h2 class="text-bold-400">
                                                     <sup class="font-medium-1">$</sup>
-                                                    <span>0</span>
+                                                    <span>{{$last_month}}</span>
                                                 </h2>
                                             </div>
 
@@ -215,6 +169,48 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- <div class="col-lg-6 col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-end">
+                                    <h4>Package Subscription</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body pt-0">
+                                        <div id="session-chart" class="mb-1"></div>
+                                        <div class="chart-info d-flex justify-content-between mb-1">
+                                            <div class="series-info d-flex align-items-center">
+                                                <i class="fa fa-circle font-small-3 text-primary"></i>
+                                                <span class="text-bold-600 mx-50">Free</span>
+                                            </div>
+                                            <div class="series-result">
+                                                <span>{{$free_package}}</span>
+                                                <i class="feather icon-arrow-up text-success"></i>
+                                            </div>
+                                        </div>
+                                        <div class="chart-info d-flex justify-content-between mb-1">
+                                            <div class="series-info d-flex align-items-center">
+                                                <i class="fa fa-circle font-small-3 text-warning"></i>
+                                                <span class="text-bold-600 mx-50">Plus</span>
+                                            </div>
+                                            <div class="series-result">
+                                                <span>{{$plus_package}}</span>
+                                                <i class="feather icon-arrow-up text-success"></i>
+                                            </div>
+                                        </div>
+                                        <div class="chart-info d-flex justify-content-between mb-50">
+                                            <div class="series-info d-flex align-items-center">
+                                                <i class="fa fa-circle font-small-3 text-danger"></i>
+                                                <span class="text-bold-600 mx-50">Pro</span>
+                                            </div>
+                                            <div class="series-result">
+                                                <span>{{$pro_package}}</span>
+                                                <i class="feather icon-arrow-down text-danger"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
                     </div>
                  </section>
                  <!-- Dashboard Ecommerce ends -->
@@ -229,15 +225,15 @@
     var options = {
           series: [{
             name: "Free",
-            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+            data: [<?php foreach($free_packages as $sum) {echo $sum.',';}?>]
           },
           {
             name: "Plus",
-            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+            data: [<?php foreach($plus_packages as $sum) {echo $sum.',';}?>]
           },
           {
             name: 'Pro',
-            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+            data: [<?php foreach($pro_packages as $sum) {echo $sum.',';}?>]
           }
         ],
           chart: {
@@ -257,7 +253,7 @@
         // },
         title: {
           text: 'Revenue Distribution',
-          align: 'left'
+          align: 'center'
         },
         legend: {
           tooltipHoverFormatter: function(val, opts) {
@@ -306,17 +302,57 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 </script>
+{{--------------------------- Subcription Distribution  ---------------------------------}}
 <script>
      var options = {
           series: [{
           name: 'Free',
-          data: [44, 55, 41, 67, 22, 43, 21, 49]
+          data: [
+          {{MyHelper::pointt(1, '1')}}, 
+          {{MyHelper::pointt(2, '1')}}, 
+          {{MyHelper::pointt(3, '1')}}, 
+          {{MyHelper::pointt(4, '1')}}, 
+          {{MyHelper::pointt(5, '1')}}, 
+          {{MyHelper::pointt(6, '1')}}, 
+          {{MyHelper::pointt(7, '1')}}, 
+          {{MyHelper::pointt(8, '1')}}, 
+          {{MyHelper::pointt(9, '1')}}, 
+          {{MyHelper::pointt(10, '1')}}, 
+          {{MyHelper::pointt(11, '1')}}, 
+          {{MyHelper::pointt(12, '1')}},
+        ]
         }, {
           name: 'Plus',
-          data: [13, 23, 20, 8, 13, 27, 33, 12]
+          data: [
+          {{MyHelper::pointt(1, '2')}}, 
+          {{MyHelper::pointt(2, '2')}}, 
+          {{MyHelper::pointt(3, '2')}}, 
+          {{MyHelper::pointt(4, '2')}}, 
+          {{MyHelper::pointt(5, '2')}}, 
+          {{MyHelper::pointt(6, '2')}}, 
+          {{MyHelper::pointt(7, '2')}}, 
+          {{MyHelper::pointt(8, '2')}}, 
+          {{MyHelper::pointt(9, '2')}}, 
+          {{MyHelper::pointt(10, '2')}}, 
+          {{MyHelper::pointt(11, '2')}}, 
+          {{MyHelper::pointt(12, '2')}},
+          ]
         }, {
           name: 'Pro',
-          data: [11, 17, 15, 15, 21, 14, 15, 13]
+          data: [
+          {{MyHelper::pointt(1, '3')}}, 
+          {{MyHelper::pointt(2, '3')}}, 
+          {{MyHelper::pointt(3, '3')}}, 
+          {{MyHelper::pointt(4, '3')}}, 
+          {{MyHelper::pointt(5, '3')}}, 
+          {{MyHelper::pointt(6, '3')}}, 
+          {{MyHelper::pointt(7, '3')}}, 
+          {{MyHelper::pointt(8, '3')}}, 
+          {{MyHelper::pointt(9, '3')}}, 
+          {{MyHelper::pointt(10, '3')}}, 
+          {{MyHelper::pointt(11, '3')}}, 
+          {{MyHelper::pointt(12, '3')}},
+          ]
         }],
           chart: {
           type: 'bar',
@@ -345,11 +381,17 @@
           offsetX: 0,
           offsetY: 0
         },
+        title: {
+          text: 'Subscription Distribution',
+          align: 'center'
+        },
         };
 
         var chart = new ApexCharts(document.querySelector("#bar-chart"), options);
         chart.render();
 </script>
+{{--------------------------- Subcription Distribution  ---------------------------------}}
+
 <script>
     var $primary = '#7367F0';
     var $danger = '#EA5455';
@@ -364,80 +406,172 @@
     var $label_color = '#e7eef7';
     var $purple = '#df87f2';
     var $white = '#fff';
-    var sessionChartoptions = {
-    chart: {
-      type: 'donut',
-      height: 325,
-      toolbar: {
-        show: false
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    // series: [58, 34, 10],
-    series: [<?php echo $free_package;?>,<?php echo $plus_package;?>,<?php echo $pro_package;?>],
-    legend: { show: false },
-    comparedResult: [2, -3, 8],
-    labels: ['Free', 'Plus', 'Pro'],
-    stroke: { width: 0 },
-    colors: [$primary, $warning, $danger],
-    fill: {
-      type: 'gradient',
-      gradient: {
-        gradientToColors: [$primary_light, $warning_light, $danger_light]
-      }
-    }
-  }
-
-  var sessionChart = new ApexCharts(
-    document.querySelector("#session-chart"),
-    sessionChartoptions
-  );
-
-  sessionChart.render();
-
-  //------------------------ Customer Chart -------------------//
-  var customerChartoptions = {
-    chart: {
-      type: 'pie',
-      height: 330,
-      dropShadow: {
-        enabled: false,
-        blur: 5,
-        left: 1,
-        top: 1,
-        opacity: 0.2
+    var sessionChartoptions = 
+    {
+      chart: {
+        type: 'donut',
+        height: 325,
+        toolbar: {
+          show: false
+        }
       },
-      toolbar: {
-        show: false
-      }
-    },
-    labels: ['New', 'Six Months', 'One Year'],
-    // series: [690, 258, 149],
-    series: [<?php echo $new_customers;?>,<?php echo $six_month_customers;?>,<?php echo $one_year_customers;?>],
-    dataLabels: {
-      enabled: false
-    },
-    legend: { show: false },
-    stroke: {
-      width: 5
-    },
-    colors: [$primary, $warning, $danger],
-    fill: {
-      type: 'gradient',
-      gradient: {
-        gradientToColors: [$primary_light, $warning_light, $danger_light]
+      dataLabels: {
+        enabled: false
+      },
+      // series: [58, 34, 10],
+      series: [<?php echo $free_package;?>,<?php echo $plus_package;?>,<?php echo $pro_package;?>],
+      legend: { show: false },
+      comparedResult: [2, -3, 8],
+      labels: ['Free', 'Plus', 'Pro'],
+      stroke: { width: 0 },
+      colors: [$primary, $warning, $danger],
+      fill: {
+        type: 'gradient',
+        gradient: {
+          gradientToColors: [$primary_light, $warning_light, $danger_light]
+        }
       }
     }
-  }
+    var sessionChart = new ApexCharts(
+      document.querySelector("#session-chart"),
+      sessionChartoptions
+    );
+    sessionChart.render();
 
-  var customerChart = new ApexCharts(
-    document.querySelector("#customer-chart"),
-    customerChartoptions
-  );
+    //------------------------ Customer Chart -------------------//
+    var customerChartoptions = 
+    {
+      chart: {
+        type: 'pie',
+        height: 330,
+        dropShadow: {
+          enabled: false,
+          blur: 5,
+          left: 1,
+          top: 1,
+          opacity: 0.2
+        },
+        toolbar: {
+          show: false
+        }
+      },
+      labels: ['New', 'Six Months', 'One Year'],
+      // series: [690, 258, 149],
+      series: [<?php echo $new_customers;?>,<?php echo $six_month_customers;?>,<?php echo $one_year_customers;?>],
+      dataLabels: {
+        enabled: false
+      },
+      legend: { show: false },
+      stroke: {
+        width: 5
+      },
+      colors: [$primary, $warning, $danger],
+      fill: {
+        type: 'gradient',
+        gradient: {
+          gradientToColors: [$primary_light, $warning_light, $danger_light]
+        }
+      }
+    }
 
-  customerChart.render();
+    var customerChart = new ApexCharts(
+      document.querySelector("#customer-chart"),
+      customerChartoptions
+    );
+    customerChart.render();
+
+    //------------------------ Revenue Chart -------------------//
+    var revenueChartoptions = 
+    {
+      chart: {
+        height: 270,
+        toolbar: { show: false },
+        type: 'line',
+      },
+      stroke: {
+        curve: 'smooth',
+        dashArray: [0, 8],
+        width: [4, 2],
+      },
+      grid: {
+        borderColor: $label_color,
+      },
+      legend: {
+        show: false,
+      },
+      colors: [$danger_light, $strok_color],
+  
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          inverseColors: false,
+          gradientToColors: [$primary, $strok_color],
+          shadeIntensity: 1,
+          type: 'horizontal',
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 100, 100, 100]
+        },
+      },
+      markers: {
+        size: 0,
+        hover: {
+          size: 5
+        }
+      },
+      xaxis: {
+        labels: {
+          style: {
+            colors: $strok_color,
+          }
+        },
+        axisTicks: {
+          show: false,
+        },
+         //categories: ['01', '05', '09', '13', '17', '21', '26', '31'],
+        categories: [<?php if(isset($current_date)){for($i=0; $i<count($current_date); $i++){echo "\"".\Carbon\carbon::parse($current_date[$i])->format('d')."\"".',';}} ?>],
+        axisBorder: {
+          show: false,
+        },
+        tickPlacement: 'on',
+      },
+      yaxis: {
+        tickAmount: 5,
+        labels: {
+          style: {
+            color: $strok_color,
+          },
+          formatter: function (val) {
+            return val > 999 ? (val / 1000).toFixed(1) + 'k' : val;
+          }
+        }
+      },
+      tooltip: {
+        x: { show: false }
+      },
+      series: [{
+        name: "This Month",
+        //  data: [45000, 47000, 44800, 47500, 45500, 48000, 46500, 48600]
+        data: [<?php if(isset($current_amount)){for($i=0; $i<count($current_amount); $i++){echo "\"".($current_amount[$i])."\"".',';}} ?>]
+
+      },
+      {
+        name: "Last Month",
+        //  data: [46000, 48000, 45500, 46600, 44500, 46500, 45000, 47000]
+        data: [<?php if(isset($last_amount)){for($i=0; $i<count($last_amount); $i++){echo "\"".($last_amount[$i])."\"".',';}} ?>]
+
+      }
+      ],
+  
+    }
+  
+    var revenueChart = new ApexCharts(
+      document.querySelector("#revenue-chart"),
+      revenueChartoptions
+    );
+  
+    revenueChart.render();
 </script>
 @endsection
 

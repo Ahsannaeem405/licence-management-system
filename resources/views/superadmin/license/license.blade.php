@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Customer List</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.customer list')}}</h2>
 
                         </div>
                     </div>
@@ -42,11 +42,11 @@
                                                 <thead>
                                                     <tr>
                                                          
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th >Address</th>
-                                                        <th>Phone</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.th name')}}</th>
+                                                        <th>{{__('messages.th email')}}</th>
+                                                        <th>{{__('messages.th address')}}</th>
+                                                        <th>{{__('messages.th phone')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

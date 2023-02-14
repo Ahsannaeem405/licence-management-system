@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Add Service</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.add services')}}</h2>
 
                         </div>-
                     </div>
@@ -36,14 +36,14 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label>Service Name</label>
+                                                        <label>{{__('messages.service name')}}</label>
                                                         <div class="controls">
                                                             <input type="text" name="name" class="form-control" placeholder="Enter Service Name">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 ">
-                                                    <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">Submit</button>
+                                                    <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">{{__('messages.service name')}}</button>
                                                 </div>
                                             </div>
                                         </form>

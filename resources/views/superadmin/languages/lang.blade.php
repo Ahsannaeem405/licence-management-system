@@ -8,7 +8,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Multi Language</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.multi lang')}}</h2>
 
                         </div>
                     </div>
@@ -27,15 +27,15 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#inlineForm" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Language</button>
+                                        <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#inlineForm" style="float: right;"><i class="feather icon-plus"></i>&nbsp; {{__('messages.add lang')}}</button>
                                         <div class="table-responsive">
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Country</th>
-                                                        <th>Language</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.lang coun')}}</th>
+                                                        <th>{{__('messages.lang')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -83,17 +83,17 @@
                             <form action="{{route('superadmin-add-language')}}" method="POST">
                                 @csrf
                                 <div class="modal-body">
-                                    <label>Country</label>
+                                    <label>{{__('messages.lang coun')}}</label>
                                     <div class="form-group">
                                         <input type="text" name="country" placeholder="Enter Country Name" class="form-control">
                                     </div>
-                                    <label>Language</label>
+                                    <label>{{__('messages.lang')}}</label>
                                     <div class="form-group">
                                         <input type="text" name="language" placeholder="Enter Language" class="form-control">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">{{__('messages.frm submit')}}</button>
                                 </div>
                             </form>
                         </div>

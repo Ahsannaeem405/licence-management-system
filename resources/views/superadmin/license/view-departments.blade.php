@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Department Licenses</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.depart license')}}</h2>
 
                         </div>
                     </div>
@@ -42,10 +42,11 @@
                                                 <thead>
                                                     <tr>
                                                          
-                                                        <th>Department</th>
-                                                        <th>Description</th>
-                                                        <th>Created At</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.department')}}</th>
+                                                        <th>{{__('messages.descrip')}}</th>
+                                                        <th>{{__('messages.create')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>

@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Services</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.service')}}</h2>
 
                         </div>
                     </div>
@@ -28,14 +28,14 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('superadmin-add-service') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Service</a>
+                                        <a href="{{ route('superadmin-add-service') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; {{__('messages.add services')}}</a>
                                         <div class="table-responsive">
                                             <table class="table table-striped zero-configuration">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Name</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.th name')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

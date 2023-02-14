@@ -27,14 +27,22 @@ class SuperAdminController extends Controller
 {
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
-    {
+    {    // $graph_dates = User::where('role','client')
+        //    ->select( DB::raw('count(*) as total'),DB::raw("DATE_FORMAT(created_at, '%d') as date"),)
+        //    ->whereMonth('created_at',\Carbon\Carbon::now())
+        //    ->groupBy('date')
+        //    ->pluck('date');
         $total_customers = User::whereIn('role',['manager','tool-owner'])->count();
         $total_packages = Package::count();
         $total_license = License::count();
         $total_departments = Department::count();
-        // $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
-        // $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
-        // $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+
+        $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
+        $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
+        $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+        $current_amount = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('amount');
+        $last_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
+
         $free_package = Transaction::where('package_id','1')->pluck('package_id')->count();
         $plus_package = Transaction::where('package_id','2')->pluck('package_id')->count();
         $pro_package = Transaction::where('package_id','3')->pluck('package_id')->count();
@@ -42,6 +50,9 @@ class SuperAdminController extends Controller
         $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->count();
         $six_month_customers = User::whereMonth('created_at',\Carbon\Carbon::now()->subMonth(6))->count();
         $one_year_customers = User::whereYear('created_at',\Carbon\Carbon::now()->subYear())->count();
+
+        $free_jan = Transaction::where('package_id','1')->get();
+        // dd($free_jan);
         $data = [
             'total_customers',
             'total_packages',
@@ -53,6 +64,11 @@ class SuperAdminController extends Controller
             'new_customers',
             'six_month_customers',
             'one_year_customers',
+            'current_month',
+            'last_month',
+            'current_date',
+            'current_amount',
+            'last_amount',
         ];
         return view('superadmin.dashboard.dashboard',compact($data));
     }

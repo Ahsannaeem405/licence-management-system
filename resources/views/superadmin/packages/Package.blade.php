@@ -8,7 +8,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Package</h2>
+                            <h2 class="content-header-title float-left mb-0">{{{__('messages.packages')}}}</h2>
                         </div>
                     </div>
                 </div>
@@ -32,9 +32,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Package</th>
-                                                        <th>Price</th>
-                                                        <th>Action</th>
+                                                        <th>{{{__('messages.th package')}}}</th>
+                                                        <th>{{{__('messages.th price')}}}</th>
+                                                        <th>{{{__('messages.th action')}}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

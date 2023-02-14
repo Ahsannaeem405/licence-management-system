@@ -17,7 +17,7 @@ use App\Models\Service;
 use App\Models\PackageDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App;
+use Illuminate\Support\Facades\App;
 
 class SuperAdminController extends Controller
 {

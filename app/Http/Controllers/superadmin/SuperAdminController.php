@@ -23,20 +23,25 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 
 class SuperAdminController extends Controller
 {
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
-    {
+    {   
         $total_customers = User::whereIn('role',['manager','tool-owner'])->count();
         $total_packages = Package::count();
         $total_license = License::count();
         $total_departments = Department::count();
-        // $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
-        // $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
-        // $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+
+        $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
+        $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
+        $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
+        $current_amount = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('amount');
+        $last_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
+
         $free_package = Transaction::where('package_id','1')->pluck('package_id')->count();
         $plus_package = Transaction::where('package_id','2')->pluck('package_id')->count();
         $pro_package = Transaction::where('package_id','3')->pluck('package_id')->count();
@@ -118,6 +123,11 @@ class SuperAdminController extends Controller
             'new_customers',
             'six_month_customers',
             'one_year_customers',
+            'current_month',
+            'last_month',
+            'current_date',
+            'current_amount',
+            'last_amount',
         ];
         return view('superadmin.dashboard.dashboard',compact($data,'free_packages','plus_packages','pro_packages'));
     }

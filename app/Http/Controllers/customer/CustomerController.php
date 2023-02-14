@@ -16,41 +16,45 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerMail;
 use MyHelper;
+
 class CustomerController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth', 'verified']);
     }
     //------------------------------------ Customer-Dashboard Start ------------------------------------//
     public function dashboard()
     {
-        $total_department = Department::where('user_id',Auth::user()->id)->count();
-        $total_license = License::where('customer_id',Auth::user()->id)->count();
-        $total_subscription = Transaction::where('user_id',Auth::user()->id)->count();
+        $total_department = Department::where('user_id', Auth::user()->id)->count();
+        $total_license = License::where('customer_id', Auth::user()->id)->count();
+        $total_subscription = Transaction::where('user_id', Auth::user()->id)->count();
         $data = [
             'total_department',
             'total_license',
             'total_subscription',
         ];
-        return view('customer.dashboard.dashboard',compact($data));
+        return view('customer.dashboard.dashboard', compact($data));
     }
     //------------------------------------ Customer-Dashboard End ------------------------------------//
 
     //------------------------------------ Customer-Subscription Start ------------------------------------//
     public function subscripton()
     {
-        $packages=Package::all();
-        return view('customer.subscription.subcription' ,compact('packages'));
+        $packages = Package::all();
+        //dd($packages);
+        return view('customer.subscription.subcription', compact('packages'));
     }
     //------------------------------------ Customer-Subscription End ------------------------------------//
 
     //------------------------------------ Customer-Departments Start ------------------------------------//
     public function department()
     {
-        $departments = Department::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
-        return view('customer.department.department',compact('departments'));
+
+
+        $departments = Department::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        return view('customer.department.department', compact('departments'));
     }
 
     public function add_department()
@@ -60,59 +64,79 @@ class CustomerController extends Controller
 
     public function store_department(Request $request)
     {
-        $this->validate($request,[
-            'name' => ['required','string'],
-            'description' => ['required','string'],
+        $this->validate($request, [
+            'name' => ['required', 'string'],
+            'description' => ['required', 'string'],
         ]);
         $department = new Department();
-        $department->create([
-            'user_id' => Auth::user()->id,
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
-        return redirect()->route('customer-department')->with('success','Department added successfully');
+        $total_departments = Department::where('user_id', auth()->user()->id)->count();
+        if (auth()->user()->package_id == 1) {
+            if ($total_departments < 1) {
+                $department->create([
+                    'user_id' => Auth::user()->id,
+                    'name' => $request->name,
+                    'description' => $request->description,
+                ]);
+                return redirect()->route('customer-department')->with('success', 'Department added successfully');
+            } else {
+                return redirect()->route('customer-department')->with('error', 'You reached your limit');
+            }
+        } elseif (auth()->user()->package_id == 2) {
+            if ($total_departments < 10) {
+                $department->create([
+                    'user_id' => Auth::user()->id,
+                    'name' => $request->name,
+                    'description' => $request->description,
+                ]);
+                return redirect()->route('customer-department')->with('success', 'Department added successfully');
+            } else {
+                return redirect()->route('customer-department')->with('error', 'You reached your limit');
+            }
+        } elseif (auth()->user()->package_id == 3) {
+            if ($total_departments < 100) {
+                $department->create([
+                    'user_id' => Auth::user()->id,
+                    'name' => $request->name,
+                    'description' => $request->description,
+                ]);
+                return redirect()->route('customer-department')->with('success', 'Department added successfully');
+            } else {
+                return redirect()->route('customer-department')->with('error', 'You reached your limit');
+            }
+        }
     }
 
     public function edit_department($id)
     {
-        $department = Department::where('id',$id)->first();
-        if($department)
-        {
-            return view('customer.department.edit-department',compact('department'));
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+        $department = Department::where('id', $id)->first();
+        if ($department) {
+            return view('customer.department.edit-department', compact('department'));
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
 
     public function update_department(Request $request)
     {
-        $department = Department::where('id',$request->id)->first();
-        if($department)
-        {
+        $department = Department::where('id', $request->id)->first();
+        if ($department) {
             $department->name = $request->name;
             $department->description = $request->description;
             $department->save();
-            return redirect()->route('customer-department')->with('success','Department updated successfully');
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+            return redirect()->route('customer-department')->with('success', 'Department updated successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
 
     public function delete_department($id)
     {
-        $department = Department::where('id',$id)->first();
-        if($department)
-        {
+        $department = Department::where('id', $id)->first();
+        if ($department) {
             $department->delete();
-            return back()->with('success','Department deleted successfully');
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+            return back()->with('success', 'Department deleted successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
     //------------------------------------ Customer-Departments End ------------------------------------//
@@ -121,18 +145,21 @@ class CustomerController extends Controller
     public function license()
     {
         $licenses = License::all();
-        return view('customer.license.license',compact('licenses'));
+        return view('customer.license.license', compact('licenses'));
     }
 
     public function add_license()
     {
-        $departments = Department::all();
+        $departments = Department::where('user_id', auth()->user()->id)->get();
         $services = Service::all();
-        return view('customer.license.add-license',compact('departments','services'));
+        return view('customer.license.add-license', compact('departments', 'services'));
     }
 
     public function store_license(Request $request)
     {
+        $total_license = License::where('customer_id', auth()->user()->id)->count();
+
+
         $this->validate($request, [
             'title' => ['required', 'string', 'max:255'],
             'service' => ['required'],
@@ -141,20 +168,59 @@ class CustomerController extends Controller
             'issue' => ['required'],
             'expiry' => ['required'],
         ]);
-        $license = new License;
-        $license->create([
-            'title' => $request->title,
-            'customer_id' => Auth::user()->id,
-            'service_id' =>  $request->service,
-            'department_id' =>  $request->department,
-            'date_of_issue' => $request->issue,
-            'date_of_expiry' => $request->expiry,
-            'key' =>  $request->key,
-        ]);
-        return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
+        if (auth()->user()->package_id == 1) {
+            if ($total_license < 10) {
+                $license = new License;
+                $license->create([
+                    'title' => $request->title,
+                    'customer_id' => Auth::user()->id,
+                    'service_id' =>  $request->service,
+                    'department_id' =>  $request->department,
+                    'date_of_issue' => $request->issue,
+                    'date_of_expiry' => $request->expiry,
+                    'key' =>  $request->key,
+                ]);
+                return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
+            } else {
+                return redirect()->route('customer-license')->with('error', 'Limit reached');
+            }
+        } elseif (auth()->user()->package_id == 2) {
+            if ($total_license < 100) {
+                $license = new License;
+                $license->create([
+                    'title' => $request->title,
+                    'customer_id' => Auth::user()->id,
+                    'service_id' =>  $request->service,
+                    'department_id' =>  $request->department,
+                    'date_of_issue' => $request->issue,
+                    'date_of_expiry' => $request->expiry,
+                    'key' =>  $request->key,
+                ]);
+                return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
+            } else {
+                return redirect()->route('customer-license')->with('error', 'Limit reached');
+            }
+        } elseif (auth()->user()->package_id == 3) {
+            if ($total_license < 1000) {
+                $license = new License;
+                $license->create([
+                    'title' => $request->title,
+                    'customer_id' => Auth::user()->id,
+                    'service_id' =>  $request->service,
+                    'department_id' =>  $request->department,
+                    'date_of_issue' => $request->issue,
+                    'date_of_expiry' => $request->expiry,
+                    'key' =>  $request->key,
+                ]);
+                return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
+            } else {
+                return redirect()->route('customer-license')->with('error', 'Limit reached');
+            }
+        }
     }
 
-    public function edit_license(Request $request,$id)
+
+    public function edit_license(Request $request, $id)
     {
         $license = License::find($id);
         $departments = Department::all();
@@ -171,7 +237,7 @@ class CustomerController extends Controller
     {
         $license = License::find($request->id);
         $this->validate($request, [
-              
+
             'title' => ['required'],
             'service' =>  ['required'],
             'issue' => ['required'],
@@ -179,8 +245,7 @@ class CustomerController extends Controller
             'department' => ['required'],
             'key' => ['required'],
         ]);
-        if($license)
-        {
+        if ($license) {
             $license->title = $request->title;
             $license->service_id = $request->service;
             $license->date_of_issue = $request->issue;
@@ -189,41 +254,34 @@ class CustomerController extends Controller
             $license->key = $request->key;
             $license->save();
             return redirect()->route('customer-license')->with('success', 'License updated successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
-        else
-        {
-            return back()->with('error','Something went wrong');
-        }
-        
     }
 
     public function delete_license($id)
     {
         $license = License::find($id);
-        if($license)
-        {
+        if ($license) {
             $license->delete();
             return redirect()->route('customer-license')->with('success', 'License Deleted Successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
-        else
-        {
-            return back()->with('error','Something went wrong');
-        }
-        
     }
     //------------------------------------Customer-License End ------------------------------------//
 
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-        $users = User::whereIn('role',['manager','owner'])->get();
-        return view('customer.management.management',compact('users'));
+        $users = User::whereIn('role', ['manager', 'owner'])->get();
+        return view('customer.management.management', compact('users'));
     }
 
     public function add_management()
     {
         $departments = Department::all();
-        return view('customer.management.add-management',compact('departments'));
+        return view('customer.management.add-management', compact('departments'));
     }
 
     public function store_tool_owner(Request $request)
@@ -257,14 +315,14 @@ class CustomerController extends Controller
             'role' => $request->role,
         ];
         Mail::to($request->email)->send(new CustomerMail($details));
-        return redirect()->route('customer-management')->with('success', ''.$request->role.' added successfully mail sent');
+        return redirect()->route('customer-management')->with('success', '' . $request->role . ' added successfully mail sent');
     }
 
     public function edit_tool_owner(Request $request, $id)
     {
         $owner = User::find($id);
         $departments = Department::all();
-        return view('customer.management.edit-management', compact('owner','departments'));
+        return view('customer.management.edit-management', compact('owner', 'departments'));
     }
 
     public function update_tool_owner(Request $request)
@@ -276,12 +334,10 @@ class CustomerController extends Controller
             'role' => ['required'],
             'department' => ['required'],
         ]);
-        if ($owner) 
-        {
+        if ($owner) {
             $owner->name = $request->name;
             $owner->email = $request->email;
-            if ($request->password) 
-            {
+            if ($request->password) {
                 $owner->password = Hash::make($request->password);
             }
             $owner->address = $request->address;
@@ -290,9 +346,7 @@ class CustomerController extends Controller
             $owner->department_id = $request->department;
             $owner->save();
             return redirect()->route('customer-management')->with('success', 'Tool Owner updated successfully');
-        } 
-        else 
-        {
+        } else {
             return back()->with('error', 'User not found!');
         }
     }
@@ -308,8 +362,8 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Settings Start ------------------------------------//
     public function setting()
     {
-        $user = User::where('role','customer')->where('id',Auth::user()->id)->first();
-        return view('customer.settings.setting',compact('user'));
+        $user = User::where('role', 'customer')->where('id', Auth::user()->id)->first();
+        return view('customer.settings.setting', compact('user'));
     }
 
     public function update_customer_profile(Request $request)

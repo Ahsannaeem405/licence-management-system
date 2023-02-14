@@ -23,7 +23,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\App;
 
 class SuperAdminController extends Controller
@@ -139,6 +139,7 @@ class SuperAdminController extends Controller
         $subcription = User::where('role','customer')->where('active','1')->whereNotNull('package_id')
         ->with('package')
         ->get();
+      
         return view('superadmin.subscriptions.subcription',compact('subcription'));
     }
     //------------------------------------ Super-Admin Subscription End ------------------------------------//

@@ -8,6 +8,8 @@ use App\Models\Subsciption;
 use App\Models\User;
 use App\Models\setsession;
 use App\Models\Connect;
+use App\Models\Department;
+use App\Models\License;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -29,10 +31,38 @@ class StripePaymentController extends Controller
      */
     public function change_subscribe($id)
     {
+
+        $total_departments = Department::where('user_id',auth()->user()->id)->count();
+        $total_licence = License::where('customer_id',auth()->user()->id)->count();
+        if(auth()->user()->package_id==1){
+        if($total_departments<1){
+        if($total_licence<10){
+          
         $user=User::find(Auth::user()->id);
+
         $user->package_id=$id;
         $user->save();
         return back();
+        }else{
+            return back()->with('error','Your licence limit reached'); 
+        }
+    }
+    else{
+        return back()->with('error','Your department limit reached'); 
+    }
+    }elseif(auth()->user()->package_id==2){
+        $user=User::find(Auth::user()->id);
+
+        $user->package_id=$id;
+        $user->save();
+        return back();
+    }elseif(auth()->user()->package_id==3){
+        $user=User::find(Auth::user()->id);
+
+        $user->package_id=$id;
+        $user->save();
+        return back();
+    }
 
     }
     public function subscribe(Request $request)

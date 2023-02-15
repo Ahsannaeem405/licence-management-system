@@ -837,7 +837,7 @@
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5  py-3">
         <div class="container mt-4">
-            <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customers</h2>
+            <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">{{__('messages.customers')}}</h2>
             <div class="slider">
                 <div class="slide-track">
                     <div class="slide">

@@ -125,5 +125,6 @@ return [
     'features...'=>'Lapplication dispose dune variété de fonctionnalités avancées qui peuvent aider les utilisateurs à gérer et à suivre leurs licences de manière plus efficace et efficiente.',
     'increases efficiency'=>'Augmente lefficacité',
     'efficiency...'=>'Lapplication permet de gagner du temps et daugmenter lefficacité en automatisant le processus de suivi des licences, elle contribue également à réduire les erreurs humaines.',
+    'customers'=>'clients',
 ];
  

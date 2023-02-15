@@ -136,4 +136,5 @@ return [
     'features...'=>'The application has a variety of advanced features that can help users manage and track their licenses in a more efficient and effective way.',
     'increases efficiency'=>'Increases Efficiency',
     'efficiency...'=>'The application saves time and increases efficiency by automating the process of license tracking, it also helps in reducing human error.',
+    'customers'=>'Customers',
 ];

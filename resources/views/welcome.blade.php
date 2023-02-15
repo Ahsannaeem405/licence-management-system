@@ -315,7 +315,7 @@
     <!-- Benifits section -->
     <section class="section_our_solution py-md-5 py-3" id="benifits">
         <div class="container mt-4" data-aos="fade-left">
-            <h2 class="section_heading text-center position-relative mb-5 fw-bold">Benefits</h2>
+            <h2 class="section_heading text-center position-relative mb-5 fw-bold">{{__('messages.benefits')}}</h2>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="our_solution_category gap-3">
@@ -395,13 +395,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Streamlined license tracking </h3>
+                                    <h3 class="text_primary">{{__('messages.streamlined license tracking')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        With your application, users no longer have to
-                                        manually track and manage their licenses, which can save them a significant
-                                        amount of time and effort.
+                                        {{__('messages.with your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -481,12 +479,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">User-friendly interface </h3>
+                                    <h3 class="text_primary">{{__('messages.user-friendly interface')}} </h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        The application has an intuitive and easy-to-use interface,
-                                        which makes it simple for users to navigate and manage their licenses.
+                                        {{__('messages.interface...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -566,12 +563,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Powerful features</h3>
+                                    <h3 class="text_primary">{{__('messages.powerful features')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        The application has a variety of advanced features that can help
-                                        users manage and track their licenses in a more efficient and effective way.
+                                        {{__('messages.features...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -654,14 +650,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Free 3-month trial </h3>
+                                    <h3 class="text_primary">{{__('messages.free 3-month trial')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        Users can try the application for free for three months and
-                                        experience the benefits for themselves before committing to a subscription,
-                                        which
-                                        can give them a sense of confidence in the product.
+                                        {{__('messages.trial...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -741,14 +734,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Central location </h3>
+                                    <h3 class="text_primary">{{__('messages.central location')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        All the licenses are managed in one central location which gives
-                                        user an easy access to all the licenses and it also makes it easy to keep track
-                                        of all
-                                        the licenses.
+                                        {{__('messages.location...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -828,13 +818,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Increases Efficiency</h3>
+                                    <h3 class="text_primary">{{__('messages.increases efficiency')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        The application saves time and increases efficiency by
-                                        automating the process of license tracking, it also helps in reducing human
-                                        error.
+                                        {{__('messages.efficiency...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>

@@ -110,5 +110,20 @@ return [
     'about-p-2' => 'Notre application est conçue pour permettre aux utilisateurs de gérer, de suivre et de renouveler facilement toutes leurs licences dans un emplacement pratique et sécurisé. Notre interface conviviale et nos fonctionnalités puissantes permettent aux utilisateurs de rester au courant de leurs besoins en matière de licences, afin qu ils puissent se concentrer sur la gestion de leur entreprise.',
     'about-p-3' => 'Nous comprenons que la gestion des licences peut être une tâche longue et complexe, c "est pourquoi nous avons développé notre application pour qu "elle soit aussi efficace et efficiente que possible. Nous travaillons constamment pour améliorer et mettre à jour notre application afin de nous assurer qu elle réponde aux besoins changeants de nos clients.',
     //------------------------- Welcome About us Part -----------------------//
+    'benefits'=>'Avantages',
+    'streamlined license tracking'=>'Suivi simplifié des licences',
+    'with your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.'
+    =>'Avec votre application, les utilisateurs nont plus besoin de suivre et de gérer manuellement leurs licences, ce qui peut leur faire économiser beaucoup de temps et d efforts.',
+    'free 3-month trial'=>'Essai gratuit de 3 mois',
+    'trial...'=>'Les utilisateurs peuvent essayer l application gratuitement pendant trois mois et
+    expérimenter les avantages par eux-mêmes avant de sengager dans un abonnement, qui peut leur donner un sentiment de confiance dans le produit.',
+    'user-friendly interface'=>'Interface conviviale',
+    'interface...'=>'Lapplication dispose dune interface intuitive et facile à utiliser, ce qui permet aux utilisateurs de naviguer et de gérer facilement leurs licences.',
+    'central location'=>'Emplacement central',
+    'location...'=>'Toutes les licences sont gérées dans un emplacement central, ce qui permet à lutilisateur daccéder facilement à toutes les licences et facilite également le suivi de toutes les licences.',
+    'powerful features'=>'Fonctionnalités puissantes',
+    'features...'=>'Lapplication dispose dune variété de fonctionnalités avancées qui peuvent aider les utilisateurs à gérer et à suivre leurs licences de manière plus efficace et efficiente.',
+    'increases efficiency'=>'Augmente lefficacité',
+    'efficiency...'=>'Lapplication permet de gagner du temps et daugmenter lefficacité en automatisant le processus de suivi des licences, elle contribue également à réduire les erreurs humaines.',
 ];
  

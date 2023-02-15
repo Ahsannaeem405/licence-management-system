@@ -52,5 +52,10 @@ return [
      'old pass' => 'Old Password',
      'new pass'=> 'New Password',
      'conf new pass' => 'Confirm New Password',
+     'management'=>'Management',
+     'total subscriptions'=>'Total Subscriptions',
+     'total departments'=>'Total Departments',
+     'total license'=>'Total License',
+     'welcome'=>'Welcome',
 
 ];

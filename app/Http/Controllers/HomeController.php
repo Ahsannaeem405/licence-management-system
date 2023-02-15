@@ -64,5 +64,4 @@ class HomeController extends Controller
         $packages = Package::all();
         return view('welcome', compact('packages'));
     }
-
 }

@@ -25,7 +25,7 @@
                                            </div>
                                        </div>
                                        <div class="text-center">
-                                           <h1 class="mb-2 text-white">Welcome John,</h1>
+                                           <h1 class="mb-2 text-white">{{__('messages.welcome')}} {{ auth()->user()->name }}</h1>
                                            {{-- <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p> --}}
                                        </div>
                                    </div>
@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1">{{$total_subscription}}</h2>
-                                    <p class="mb-0">Total Subscriptions</p>
+                                    <p class="mb-0">{{__('messages.total subscriptions')}}</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="line-area-chart-3"></div>
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1">{{$total_department}}</h2>
-                                    <p class="mb-0">Total Departments</p>
+                                    <p class="mb-0">{{__('messages.total departments')}}</p>
                                 </div>
 
                                 <div class="card-content">
@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1">{{$total_license}}</h2>
-                                    <p class="mb-0">Total License</p>
+                                    <p class="mb-0">{{__('messages.total license')}}</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="line-area-chart-2"></div>
@@ -82,12 +82,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-12 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between pb-0">
                                     <h4 class="card-title">Departments</h4>
-                                    {{-- <div class="dropdown chart-dropdown">
+                                    <div class="dropdown chart-dropdown">
                                         <button class="btn btn-sm border-0 dropdown-toggle px-0" type="button" id="dropdownItem3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Last 7 Days
                                         </button>
@@ -96,7 +96,7 @@
                                             <a class="dropdown-item" href="#">Last Month</a>
                                             <a class="dropdown-item" href="#">Last Year</a>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body py-0">
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                </section>
                <!-- Dashboard Analytics end -->

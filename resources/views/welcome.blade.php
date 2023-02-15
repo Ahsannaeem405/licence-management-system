@@ -39,10 +39,7 @@
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 gap-md-1 gap-2 mb-lg-0">
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page"
-                                href="#how-it-work">How it
-                                Works
-                            </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page" href="#how-it-work">How it Works</a>
                         </li>
                         <li class="nav-item btn-2">
                             <a class="nav-link py-md-2 py-1 text-white px-0" href="#subscription">Pricing </a>

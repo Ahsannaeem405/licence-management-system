@@ -68,12 +68,5 @@ class HomeController extends Controller
         $packages = Package::all();
         return view('welcome', compact('packages'));
     }
-
-    // public function switchs_Lang($lang)
-    // {
-    //     if (array_key_exists($lang, Config::get('languages'))) {
-    //         Session::put('applocale', $lang);
-    //     }
-    //     return Redirect::back();
-    // }
+ 
 }

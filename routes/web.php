@@ -33,7 +33,7 @@ Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company')
 Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-payment')->middleware('auth');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::post('/subscription-login', [StripePaymentController::class, 'subscribe'])->name('login-subscription');
-// Route::get('lang/{lang}',[HomeController::class, 'switchs_Lang'])->name('switchs-lang');
+ 
 //------------------------------------------------- Super-Admin Start ----------------------------------------------//
 Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], function () {
     Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin-dashbaord');

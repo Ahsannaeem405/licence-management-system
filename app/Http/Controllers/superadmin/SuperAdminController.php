@@ -137,6 +137,7 @@ class SuperAdminController extends Controller
         $subcription = User::where('role','customer')->where('active','1')->whereNotNull('package_id')
         ->with('package')
         ->get();
+      
         return view('superadmin.subscriptions.subcription',compact('subcription'));
     }
     //------------------------------------ Super-Admin Subscription End ------------------------------------//

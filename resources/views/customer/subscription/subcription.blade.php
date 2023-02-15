@@ -44,7 +44,7 @@
                         @elseif ($details->status == 0)
                         <i class="fa fa-close text-danger"></i>
                         @endif
-                    </span>{{$details->point_name}} 
+                    </span>{{ $details->point_value }} {{ $details->point_name }} 
                 </li>
                 @endforeach
               </ul>

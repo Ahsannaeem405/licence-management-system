@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('package_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('package_id')->nullable()->constrained('packages')->references('id')->cascadeOnDelete();
+            $table->string('point_value')->nullable();
             $table->string('point_name')->nullable();
             $table->boolean('status')->nullable();
             $table->timestamps();

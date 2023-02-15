@@ -51,6 +51,11 @@ return [
     'old pass' => 'Contraseña anterior',
     'new pass'=> 'Nueva contraseña',
     'conf new pass' => 'Confirmar nueva contraseña',
+    'management'=>'gestión',
+    'total subscriptions'=>'Suscripciones totales',
+    'total departments'=>'Departamentos totales',
+    'total license'=>'Licencia Total',
+    'welcome'=>'Bienvenido',
     
     
 ];

@@ -21,9 +21,7 @@ use App\Models\PackageDetail;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 
 class SuperAdminController extends Controller

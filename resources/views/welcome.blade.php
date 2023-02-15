@@ -14,7 +14,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/asset/css/style.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/vendors.min.css') }}">
     <style>
         #video1,
         #video2,
@@ -39,29 +39,44 @@
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 gap-md-1 gap-2 mb-lg-0">
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page"
-                                href="#how-it-work">How it
-                                Works
-                            </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0 " aria-current="page" href="#how-it-work">{{__('messages.nav-works')}}</a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#subscription">Pricing </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#subscription">{{__('messages.nav-pricing')}}</a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#benifits">Benefits </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#benifits">{{__('messages.nav-benifits')}}</a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#product-slider">Customers </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#product-slider">{{__('messages.nav-customers')}}</a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">About Us </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#about-us">{{__('messages.nav-about')}}</a>
                         </li>
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">Contact Us</a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">{{__('messages.nav-contact')}}</a>
                         </li>
                         <li class="nav-item btn-2 btn_hover_0">
-                            <a class="nav-link  py-md-2 py-1  px-0" href="#">
-
+                            <div class="btn-group">
+                                <button type="button" class="btn btn_hover_0 text-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                @foreach (Config::get('languages') as $lang => $language)
+                                    @if ($lang != App::getLocale())
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('lang.switch',$lang)}}">
+                                                <span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
+                                                {{$language['display']}}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- <li class="nav-item btn-2 btn_hover_0"> --}}
+                            {{-- <a class="nav-link  py-md-2 py-1  px-0" href="#">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn_hover_0 text-white p-0 dropdown-toggle"
                                         data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -80,11 +95,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </a>
-                        </li>
+                            </a> --}}
+                        {{-- </li> --}}
 
                         <li class="nav-item btn-2">
-                            <a class="nav-link py-md-2 py-1 text-white px-0" href="{{ route('login') }}">Login </a>
+                            <a class="nav-link py-md-2 py-1 text-white px-0" href="{{ route('login') }}">{{__('messages.nav-login')}} </a>
                         </li>
                     </ul>
                 </div>
@@ -98,24 +113,17 @@
         </div>
         <div class="text-box text-white">
             <h3 class="heading-primary heading_header mb-md-5  mb-3">
-                Simplify your license management, amplify your efficiency
+                {{__('messages.banner-heading')}}
                 <span class="d-block"></span>
             </h3>
 
             <p class="banner-text mb-md-5 mb-3">
-                Say goodbye to manual license tracking and
-                hello to streamlined success with our License
-                Management Application. Our user-friendly
-                interface and powerful features make it easy to
-                manage and track all your licenses in one central
-                location, saving you time and increasing
-                efficiency. Sign up now and take advantage of
-                our free 3-month trial to experience the benefits for yourself.
+                {{__('messages.banner-paragraph')}}
             </p>
             <div class="text-center">
                 <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    Book a Demo
+                    {{__('messages.banner-button')}}
                 </button>
             </div>
         </div>
@@ -224,24 +232,21 @@
     <!-- how it work -->
     <section class="how-it-works py-md-5 py-3 overflow-hidden" id="how-it-work">
         <div class="container mt-4" data-aos="fade-left">
-            <h2 class="section_heading text-center position-relative mb-5 fw-bold">How It Work</h2>
-            <h5 class="text-center position-relative mb-5">Get Started with 3 easy steps</h5>
+            <h2 class="section_heading text-center position-relative mb-5 fw-bold">{{__('messages.work-heading')}}</h2>
+            <h5 class="text-center position-relative mb-5">{{__('messages.work-sub-heading')}}</h5>
             <div class="row align-items-center">
                 <div class="col-md-6 mt-2 mt-md-0 d-flex flex-column gap-4">
                     <div id="video1" class="box p-md-3 p-2 work-block-active">
-                        <h3>Choose Your Subscription</h3>
-                        <p class="mb-0">Find the perfect plan for your business:</p>
-                        <p class="mb-0">Compare our subscription options</p>
+                        <h3>{{__('messages.work-tab-1')}}</h3>
+                        <p class="mb-0">{{__('messages.work-tab-1-text')}}</p>
                     </div>
                     <div class="box p-md-3 p-2 work-block" id="video2">
-                        <h3>Create Your Account</h3>
-                        <p class="mb-0">Easily set up your account in minutes: Sign
-                            up now</p>
+                        <h3>{{__('messages.work-tab-1')}}</h3>
+                        <p class="mb-0">{{__('messages.work-tab-2-text')}}</p>
                     </div>
                     <div class="box p-md-3 p-2 work-block" id="video3">
-                        <h3> Manage Your Licences</h3>
-                        <p class="mb-0">Streamline licence management: Organize
-                            and monitor usage with ease</p>
+                        <h3> {{__('messages.work-tab-1')}}</h3>
+                        <p class="mb-0">{{__('messages.work-tab-3-text')}}</p>
                     </div>
                 </div>
                 <div class="col-md-6 mt-2 mt-md-0">
@@ -293,7 +298,7 @@
                                                 @elseif ($details->status == 0)
                                                     <i class="fas fa-close text-danger"></i>
                                                 @endif
-                                            </span>{{ $details->point_name }}
+                                            </span>{{$details->point_value}} {{$details->point_name}}
                                         </li>
                                     @endforeach
                                 </ul>
@@ -310,7 +315,7 @@
     <!-- Benifits section -->
     <section class="section_our_solution py-md-5 py-3" id="benifits">
         <div class="container mt-4" data-aos="fade-left">
-            <h2 class="section_heading text-center position-relative mb-5 fw-bold">Benefits</h2>
+            <h2 class="section_heading text-center position-relative mb-5 fw-bold">{{__('messages.benefits')}}</h2>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="our_solution_category gap-3">
@@ -390,13 +395,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Streamlined license tracking </h3>
+                                    <h3 class="text_primary">{{__('messages.streamlined license tracking')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        With your application, users no longer have to
-                                        manually track and manage their licenses, which can save them a significant
-                                        amount of time and effort.
+                                        {{__('messages.with your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -476,12 +479,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">User-friendly interface </h3>
+                                    <h3 class="text_primary">{{__('messages.user-friendly interface')}} </h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        The application has an intuitive and easy-to-use interface,
-                                        which makes it simple for users to navigate and manage their licenses.
+                                        {{__('messages.interface...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -561,12 +563,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Powerful features</h3>
+                                    <h3 class="text_primary">{{__('messages.powerful features')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        The application has a variety of advanced features that can help
-                                        users manage and track their licenses in a more efficient and effective way.
+                                        {{__('messages.features...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -649,14 +650,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Free 3-month trial </h3>
+                                    <h3 class="text_primary">{{__('messages.free 3-month trial')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        Users can try the application for free for three months and
-                                        experience the benefits for themselves before committing to a subscription,
-                                        which
-                                        can give them a sense of confidence in the product.
+                                        {{__('messages.trial...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -736,14 +734,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Central location </h3>
+                                    <h3 class="text_primary">{{__('messages.central location')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        All the licenses are managed in one central location which gives
-                                        user an easy access to all the licenses and it also makes it easy to keep track
-                                        of all
-                                        the licenses.
+                                        {{__('messages.location...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -823,13 +818,11 @@
                                     </svg>
                                 </div>
                                 <div class="solu_title">
-                                    <h3 class="text_primary">Increases Efficiency</h3>
+                                    <h3 class="text_primary">{{__('messages.increases efficiency')}}</h3>
                                 </div>
                                 <div class="solu_description">
                                     <p>
-                                        The application saves time and increases efficiency by
-                                        automating the process of license tracking, it also helps in reducing human
-                                        error.
+                                        {{__('messages.efficiency...')}}
                                     </p>
                                     {{-- <button type="button" class="read_more_btn bg_primary">Read More</button> --}}
                                 </div>
@@ -844,7 +837,7 @@
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5  py-3">
         <div class="container mt-4">
-            <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customers</h2>
+            <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">{{__('messages.customers')}}</h2>
             <div class="slider">
                 <div class="slide-track">
                     <div class="slide">
@@ -925,9 +918,8 @@
     <!-- about us -->
     <section id="about-us" class="about py-md-5 py-4 ">
         <div class="container mt-4 aos-init aos-animate" data-aos="fade-right">
-            <h2 class="section_heading text-center position-relative mb-5 fw-bold">About Us </h2>
-            <h6 class="text-center ">Experience the benefits of our license management application through the words of
-                satisfied customers</h6>
+            <h2 class="section_heading text-center position-relative mb-5 fw-bold">{{__('messages.about-heading')}}</h2>
+            <h6 class="text-center">{{__('messages.about-sub-heading')}}</h6>
             <div class="row gy-4 mt-2">
 
                 <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
@@ -942,29 +934,21 @@
                                 class="bi bi-diagram-3"></i>
                             <div>
 
-                                <p>Welcome to our license management application! We are a dedicated team of
-                                    professionals who are passionate about helping businesses and organizations
-                                    streamline and simplify their license management processes.</p>
+                                <p>{{__('messages.about-p-1')}}</p>
                             </div>
                         </li>
                         <li data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate"> <i
                                 class="bi bi-diagram-3"></i>
                             <div>
                                 {{-- <h5>Ullamco laboris nisi ut aliquip consequat</h5> --}}
-                                <p>Our application is designed to make it easy for users to manage, track, and renew
-                                    all of their licenses in one convenient and secure location. Our user-friendly
-                                    interface and powerful features allow users to stay on top of their licensing needs,
-                                    so they can focus on running their business.</p>
+                                <p>{{__('messages.about-p-2')}}</p>
                             </div>
                         </li>
                         <li data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate"> <i
                                 class="bi bi-fullscreen-exit"></i>
                             <div>
                                 {{-- <h5>Magnam soluta odio exercitationem reprehenderi</h5> --}}
-                                <p>We understand that managing licenses can be a time-consuming and complex task,
-                                    which is why we have developed our application to be as efficient and effective as
-                                    possible. We are constantly working to improve and update our application to
-                                    ensure that it meets the changing needs of our customers.</p>
+                                <p>{{__('messages.about-p-3')}}</p>
                             </div>
                         </li>
                         {{-- <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate"> <i
@@ -1220,17 +1204,12 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
                             aria-controls="flush-collapseOne">
-                            Q: What is your license management application?
+                            Q: {{__('messages.faq-q-1')}}
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse show"
                         aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body"> A: Our license management application is a software that helps
-                            businesses and
-                            organizations manage, track, and renew all of their licenses in one convenient
-                            and secure location. Our user-friendly interface and powerful features allow users
-                            to stay on top of their licensing needs, so they can focus on running their
-                            business.</div>
+                        <div class="accordion-body"> A: {{__('messages.faq-a-1')}}</div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -1238,16 +1217,13 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
                             aria-controls="flush-collapseTwo">
-                            Q: How does your application work?
+                            Q: {{__('messages.faq-q-2')}}
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingTwo" data-bs-parent="#flush-headingTwo">
                         <div class="accordion-body">
-                            A: Our application allows users to upload and store all of their licenses in one
-                            central location. Users can set reminders for renewal dates, track the status of
-                            their licenses, and easily renew them when necessary. The application also
-                            generates reports to help users stay compliant with licensing requirements.
+                            A: {{__('messages.faq-a-2')}}
                         </div>
                     </div>
                 </div>
@@ -1256,17 +1232,12 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            Q: How can your application help my business?
+                            Q: {{__('messages.faq-q-3')}}
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#flush-headingThree">
-                        <div class="accordion-body"> A: Our application can help your business by streamlining and
-                            simplifying the
-                            license management process. It can save you time and resources, and ensure
-                            that you stay compliant with all licensing requirements. Additionally, it can help
-                            you to avoid penalties and fines associated with expired or non-compliant
-                            licenses.</div>
+                        <div class="accordion-body"> A: {{__('messages.faq-a-3')}}</div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -1274,14 +1245,11 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapsefour" aria-expanded="false"
                             aria-controls="flush-collapsefour">
-                            Q: Can I use your application for licenses from multiple states or countries?
+                            Q: {{__('messages.faq-q-4')}}
                     </h2>
                     <div id="flush-collapsefour" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingfour" data-bs-parent="#flush-collapsefour">
-                        <div class="accordion-body"> A: Yes, our application can be used to manage licenses from
-                            multiple states or
-                            countries. It allows users to track and renew licenses from different locations in
-                            one central place.
+                        <div class="accordion-body"> A: {{__('messages.faq-a-4')}}
                         </div>
                     </div>
                 </div>
@@ -1290,16 +1258,12 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapsefive" aria-expanded="false"
                             aria-controls="flush-collapsefive">
-                            Q: How secure is your application?
+                            Q: {{__('messages.faq-q-5')}}
                         </button>
                     </h2>
                     <div id="flush-collapsefive" class="accordion-collapse collapse"
                         aria-labelledby="flush-collapsefive" data-bs-parent="#flush-collapsefive">
-                        <div class="accordion-body"> A: We take security very seriously and have implemented strict
-                            measures to
-                            protect the data stored on our application. All data is encrypted and stored on
-                            secure servers. Additionally, we comply with all industry-standard security
-                            protocols to ensure that our application is as secure as possible.
+                        <div class="accordion-body"> A: {{__('messages.faq-a-5')}}
                         </div>
                     </div>
                 </div>
@@ -1308,16 +1272,12 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapsesix" aria-expanded="false"
                             aria-controls="flush-collapsesix">
-                            Q: Do you offer customer support?
+                            Q: {{__('messages.faq-q-6')}}
                         </button>
                     </h2>
                     <div id="flush-collapsesix" class="accordion-collapse collapse"
                         aria-labelledby="flush-collapsesix" data-bs-parent="#flush-collapsesix">
-                        <div class="accordion-body">A: Yes, we offer customer support to our users. Our customer
-                            support team is
-                            available to assist you with any questions or issues you may have. They can help
-                            you to get started with the application, troubleshoot any problems you may
-                            encounter, and provide guidance on how to use the application's features.
+                        <div class="accordion-body">A: {{__('messages.faq-a-6')}}
                         </div>
                     </div>
                 </div>
@@ -1326,16 +1286,12 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseseven" aria-expanded="false"
                             aria-controls="flush-collapseseven">
-                            Q: Can I try your application before purchasing it?
+                            Q: {{__('messages.faq-q-7')}}
                         </button>
                     </h2>
                     <div id="flush-collapseseven" class="accordion-collapse collapse"
                         aria-labelledby="flush-collapseseven" data-bs-parent="#flush-collapseseven">
-                        <div class="accordion-body"> A: Yes, we offer a free trial of our license management
-                            application. During the
-                            trial, you will have access to all the features of the application and you can use it
-                            to manage your licenses. After the trial period, you can decide if you want to
-                            purchase the application.
+                        <div class="accordion-body"> A: {{__('messages.faq-a-7')}}
                         </div>
                     </div>
                 </div>
@@ -1344,14 +1300,12 @@
                         <button class="accordion-button fw-bold text_primary collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#flush-collapseeight" aria-expanded="false"
                             aria-controls="flush-collapseeight">
-                            Q: Is there any setup fee?
+                            Q: {{__('messages.faq-q-8')}}
                         </button>
                     </h2>
                     <div id="flush-collapseeight" class="accordion-collapse collapse"
                         aria-labelledby="flush-collapseeight" data-bs-parent="#flush-collapseeight">
-                        <div class="accordion-body">A: No, there is no setup fee for using our license management
-                            application. You
-                            can start using it right away after signing up.
+                        <div class="accordion-body">A: {{__('messages.faq-a-8')}}
                         </div>
                     </div>
                 </div>

@@ -471,18 +471,18 @@ class SuperAdminController extends Controller
         }
     }
     //------------------------------------ Super-Admin Multi Language End ------------------------------------//
-//----------------------------------------Localization-------------------------------------------------------//
+    //----------------------------------------Localization-------------------------------------------------------//
 
-public function switchLang($lang)
-{
-    if (array_key_exists($lang, Config::get('languages'))) 
-    {
-        Session::put('applocale', $lang);
-    }
-    return Redirect::back();
-}
+    // public function switchLang($lang)
+    // {
+    //     if (array_key_exists($lang, Config::get('languages'))) 
+    //     {
+    //         Session::put('applocale', $lang);
+    //     }
+    //     return Redirect::back();
+    // }
 
-//-----------------------------------------End Localization-------------------------------------------------
+    //-----------------------------------------End Localization-------------------------------------------------
     //------------------------------------ Super-Admin Analytics Start ------------------------------------//
     public function analytics()
     {

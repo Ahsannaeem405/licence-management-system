@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\DemoMail;
 use App\Models\Home;
 use App\Models\Package;
-
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Redirect;
 use App\Models\PackageDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,5 +64,4 @@ class HomeController extends Controller
         $packages = Package::all();
         return view('welcome', compact('packages'));
     }
- 
 }

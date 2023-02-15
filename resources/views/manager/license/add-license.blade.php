@@ -9,7 +9,7 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">License</h2>
+                        <h2 class="content-header-title float-left mb-0">{{__('messages.license')}}</h2>
                     </div>
                 </div>
             </div>
@@ -35,19 +35,19 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label> Title</label>
+                                                    <label>{{__('messages.title')}}</label>
                                                     <div class="controls">
                                                         <input type="text" name="title" class="form-control" placeholder="Enter Title" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label> Issue of Date</label>
+                                                    <label>{{__('messages.date i')}}</label>
                                                     <div class="controls">
                                                         <input type="date" name="issue" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Departments</label>
+                                                    <label>{{__('messages.department')}}</label>
                                                     <select class="form-control" name="department" readonly>
                                                         <option selected value="{{$department->id}}">{{$department->name}}</option>
                                                     </select>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Services</label>
+                                                    <label>{{__('messages.service')}}</label>
                                                     <select class="form-control" name="service" required>
                                                         <option selected disabled>Please Select Service</option>
                                                         @foreach($services as $service)
@@ -64,19 +64,19 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Expiry of Date</label>
+                                                    <label>{{__('messages.date e')}}</label>
                                                     <div class="controls">
                                                         <input type="date" name="expiry" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Key</label>
+                                                    <label>{{__('messages.key')}}</label>
                                                     <textarea type="text" class="form-control" name="key" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12 ">
-                                            <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">Submit</button>
+                                            <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">{{__('messages.submit')}}</button>
                                         </div>
                                     </form>
                                 </div>

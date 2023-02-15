@@ -8,7 +8,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">License</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.license')}}</h2>
 
                         </div>
                     </div>
@@ -27,19 +27,19 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('manager-add-license')}}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
+                                        <a href="{{ route('manager-add-license')}}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp;{{__('messages.add license')}}</a>
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Title</th>
-                                                        <th>Service</th>
-                                                        <th>Department</th>
-                                                        <th>Key</th>
-                                                        <th>Date of Issue</th>
-                                                        <th>Date of Expiry</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.title')}}</th>
+                                                        <th>{{__('messages.service')}}</th>
+                                                        <th>{{__('messages.department')}}</th>
+                                                        <th>{{__('messages.key')}}</th>
+                                                        <th>{{__('messages.date i')}}</th>
+                                                        <th>{{__('messages.date e')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

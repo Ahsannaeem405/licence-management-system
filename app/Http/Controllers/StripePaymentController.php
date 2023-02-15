@@ -35,25 +35,31 @@ class StripePaymentController extends Controller
         $total_departments= Department::where('user_id',auth()->user()->id)->count();
         $total_licence= License::where('customer_id',auth()->user()->id)->count();
 
-        if($id==1 && $total_departments <=1 && $total_licence<=10  ){
-
-        $user=User::find(Auth::user()->id);
-        $user->package_id=$id;
-        $user->save();
-        return back();
-    }elseif($id==2 && $total_departments <=10 && $total_licence<=100 ){
-        $user=User::find(Auth::user()->id);
-        $user->package_id=$id;
-        $user->save();
-        return back();
-    }elseif($id==3 && $total_departments <=100 && $total_licence<=1000){
-        $user=User::find(Auth::user()->id);
-        $user->package_id=$id;
-        $user->save();
-        return back();
-    }else{
-        return back()->with('error','You not able to change your pakage');
-    }
+        if($id==1 && $total_departments <=1 && $total_licence<=10  )
+        {
+            $user=User::find(Auth::user()->id);
+            $user->package_id=$id;
+            $user->save();
+            return back();
+        }
+        elseif($id==2 && $total_departments <=10 && $total_licence<=100 )
+        {
+            $user=User::find(Auth::user()->id);
+            $user->package_id=$id;
+            $user->save();
+            return back();
+        }
+        elseif($id==3 && $total_departments <=100 && $total_licence<=1000)
+        {
+            $user=User::find(Auth::user()->id);
+            $user->package_id=$id;
+            $user->save();
+            return back();
+        }
+        else
+        {
+            return back()->with('error','You not able to change your pakage');
+        }
     }
     public function subscribe(Request $request)
     {

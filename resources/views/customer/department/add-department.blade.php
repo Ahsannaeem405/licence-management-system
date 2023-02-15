@@ -7,7 +7,7 @@
                 <div class="col-md-12 col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title  ">Add Department</h4>
+                            <h4 class="card-title">{{__('messages.add department')}}</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -18,7 +18,7 @@
                                             <div class="col-12">
                                                 <div class="form-group row">
                                                     <div class="col-md-2">
-                                                        <span>Department Name</span>
+                                                        <span>{{__('messages.department name')}}</span>
                                                     </div>
                                                     <div class="col-md-10">
                                                         <input type="text" class="form-control" name="name" placeholder="">
@@ -28,7 +28,7 @@
                                             <div class="col-12">
                                                 <div class="form-group row">
                                                     <div class="col-md-2">
-                                                        <span>Description</span>
+                                                        <span>{{__('messages.description')}}</span>
                                                     </div>
                                                     <div class="col-md-10">
                                                         <textarea type="text" class="form-control" name="description"  ></textarea>
@@ -36,7 +36,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-12 ">
-                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">Submit</button>
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">{{__('messages.submit')}}</button>
                                             </div>
                                         </div>
                                     </div>

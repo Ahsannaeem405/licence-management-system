@@ -56,6 +56,64 @@ return [
     'total departments'=>'Departamentos totales',
     'total license'=>'Licencia Total',
     'welcome'=>'Bienvenido',
+    //----------------------Customer Subscription----------//
+    'subscription pack'=> 'Paquetes de suscripción',
+    //-----------------------Continue----------------------//
+
+    //------------------------Customer Department start-----------------//
+    'department'=> 'Departamento',
+    'add department'=> 'Ajouter un département',
+    'department name'=> 'Nombre de Departamento',
+    'description' => 'Descripción',
+    'submit' => 'Entregar',
+    //------------------ Customer Department End-------------------------//
+
+//-----------------------Customer License-------------------------------//
+'add license' => 'Agregar licencia',
+  'title'=> 'Título',
+  'key'=> 'Llave',
+  'date i'=>'Fecha de emisión',
+  'date e'=> 'Fecha de expiración',
+   //-----------------------Customer End License-------------------------------//
+     
+    //-----------------------Customer Add License----------------------------//
+    'license'=> 'Licencias',
+      //------------------------End Customer Add License----------------------------//
+
+    //------------------------ Customer Management----------------------------//
+    'management' => 'Gestión',
+    'role' =>'Role',
+    'add management' => 'Agregar administración',
+     //------------------------ Customer End Management----------------------------//
+
+  //--------------------------Customer Add Management---------------------------//
+  'add toolowner' => 'Agregar propietaria de administrar / herramienta',
+  //--------------------------Customer End Add Management---------------------------//
+
+  //--------------------------Manager sidebar---------------------------//
+ 
+  'company info'=> 'Información de la compañía',
+  //--------------------------Manager End sidebar---------------------------//
+
+
+   //--------------------------Manager Company Info---------------------------//
+   'company info'=> 'Información de la empresa',
+   'personal info' => 'Informacion personal',
+   'com det' => 'Detalles de la compañía',
+   'total dep' => 'Departamento total',
+   'total license' => 'Licencia total',
+
+    //--------------------------Manager End Company Info---------------------------//
+
+
+
+
+
+
+
+
+
+
     
     
 ];

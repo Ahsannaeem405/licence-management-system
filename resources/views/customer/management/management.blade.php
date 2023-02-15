@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Management</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.management')}}</h2>
 
                         </div>
                     </div>
@@ -25,18 +25,18 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('customer-add-management') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
+                                        <a href="{{ route('customer-add-management') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp;{{__('messages.add management')}}</a>
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Role</th>
-                                                        <th>Department</th>
-                                                        <th>Added By</th>
-                                                        <th>Action</th>
+                                                        <th>{{__('messages.th name')}}</th>
+                                                        <th>{{__('messages.th email')}}</th>
+                                                        <th>{{__('messages.role')}}</th>
+                                                        <th>{{__('messages.department')}}</th>
+                                                        <th>{{__('messages.th added')}}</th>
+                                                        <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
                                                 @php

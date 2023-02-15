@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             $table->text('receipt_url')->nullable();
-            $table->text('transactions_id')->nullable();
+            $table->text('stripe_id')->nullable();
             $table->text('amount')->nullable();
 
         });

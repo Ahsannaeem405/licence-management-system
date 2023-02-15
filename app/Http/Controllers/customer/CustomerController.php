@@ -104,6 +104,10 @@ class CustomerController extends Controller
                 return redirect()->route('customer-department')->with('error', 'You reached your limit');
             }
         }
+        else
+        {
+            return redirect()->route('customer-subcription')->with('error', 'Your subscription is not active');
+        }
     }
 
     public function edit_department($id)

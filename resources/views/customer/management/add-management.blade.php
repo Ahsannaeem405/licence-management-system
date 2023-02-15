@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Add Manage / Tool Owner</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.add toolowner')}}</h2>
                             
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Name</label>
+                                                        <label>{{{__('messages.th name')}}}</label>
                                                         <div class="controls">
                                                             <input type="text" name="name" class="form-control"
                                                                 data-validation-required-message="This field is required"
@@ -44,7 +44,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label> Phone#</label>
+                                                        <label>{{{__('messages.th phone')}}}</label>
                                                         <div class="controls">
                                                             <input type="text" name="phone" class="form-control"
                                                                 required data-validation-containsnumber-regex="(\d)+"
@@ -54,7 +54,7 @@
                                                     </div>
                                                      
                                                       <div class="form-group">
-                                                        <label>Password</label>
+                                                        <label>{{{__('messages.frm password')}}}</label>
                                                         <div class="controls">
                                                             <input type="password" name="password" class="form-control"
                                                                 data-validation-required-message="This field is required"
@@ -62,7 +62,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Role</label>
+                                                        <label>{{{__('messages.role')}}}</label>
                                                         <div class="controls">
                                                             <select name="role" class="form-control">
                                                                 <option selected disabled> Please Select Role</option>
@@ -74,7 +74,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label> Email</label>
+                                                        <label>{{{__('messages.th email')}}}</label>
                                                         <div class="controls">
                                                             <input type="email" name="email" class="form-control"
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
@@ -84,7 +84,7 @@
                                                     </div>
                                                    
                                                   <div class="form-group">
-                                                        <label>Address</label>
+                                                        <label>{{{__('messages.th address')}}}</label>
                                                         <div class="controls">
                                                             <input type="text" name="address" class="form-control"
                                                                 required data-validation-containsnumber-regex="^[a-zA-Z]+$"
@@ -93,7 +93,7 @@
                                                         </div>
                                                     </div> 
                                                    <div class="form-group">
-                                                        <label>Confirm-Password</label>
+                                                        <label>{{{__('messages.frm cnfrm password')}}}</label>
                                                         <div class="controls">
                                                             <input type="password" name="password_confirmation" class="form-control" 
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
@@ -102,7 +102,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Department</label>
+                                                        <label>{{{__('messages.department')}}}</label>
                                                         <div class="controls">
                                                             <select name="department" class="form-control">
                                                                 <option selected disabled> Please Select Department</option>
@@ -116,7 +116,7 @@
                                             </div>
 
                                             <div class="col-md-12 ">
-                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right" name="update">Submit</button>
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right" name="update">{{{__('messages.submit')}}}</button>
                                             </div>
                                         </form>
                                     </div>

@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Account Settings</h2>
+                            <h2 class="content-header-title float-left mb-0">{{__('messages.acc set')}}</h2>
 
                         </div>
                     </div>
@@ -27,14 +27,14 @@
                                     <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill"
                                         href="#account-vertical-general" aria-expanded="true">
                                         <i class="feather icon-globe mr-50 font-medium-3"></i>
-                                        General
+                                        {{__('messages.gen')}}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill"
                                         href="#account-vertical-password" aria-expanded="false">
                                         <i class="feather icon-lock mr-50 font-medium-3"></i>
-                                        Change Password
+                                        {{__('messages.change pass')}}
                                     </a>
                                 </li>
 
@@ -65,7 +65,7 @@
                                                                 class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                                                 <label
                                                                     class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
-                                                                    for="account-upload">Upload new photo</label>
+                                                                    for="account-upload">{{__('messages.upload file')}}</label>
                                                                 <input type="file" id="account-upload" name="image"
                                                                     hidden>
                                                                    
@@ -82,7 +82,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-name">Name</label>
+                                                                <label for="account-name">{{__('messages.frm name')}}</label>
                                                                 <input type="text" class="form-control" id="account-name"
                                                                     name="name" placeholder="Name" required
                                                                     data-validation-required-message="This name field is required"
@@ -93,7 +93,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-e-mail">Email</label>
+                                                                <label for="account-e-mail">{{__('messages.frm email')}}</label>
                                                                 <input type="email" class="form-control"
                                                                     id="account-e-mail" placeholder="Email" name="email"
                                                                     required
@@ -106,8 +106,7 @@
 
                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                         <button type="submit"
-                                                            class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
-                                                            changes</button>
+                                                            class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">{{__('messages.save changes')}}</button>
                                                         {{-- <button type="reset" class="btn btn-outline-warning">Cancel</button> --}}
                                                     </div>
                                                 </div>
@@ -121,7 +120,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-old-password">Old Password</label>
+                                                                    <label for="account-old-password">{{__('messages.old pass')}}</label>
                                                                     <input type="password" class="form-control"
                                                                         id="account-old-password" required
                                                                         placeholder="Old Password" name="old_password"
@@ -132,7 +131,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-new-password">New Password</label>
+                                                                    <label for="account-new-password">{{__('messages.new pass')}}</label>
                                                                     <input type="password"  
                                                                         id="account-new-password" class="form-control"
                                                                         placeholder="New Password" name="new_password" required
@@ -144,8 +143,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-retype-new-password">Confirm New
-                                                                        Password</label>
+                                                                    <label for="account-retype-new-password">{{__('messages.conf new pass')}}</label>
                                                                     <input type="password" name="new_password_confirmation"
                                                                         class="form-control" required
                                                                         id="account-retype-new-password"
@@ -159,8 +157,7 @@
                                                         <div
                                                             class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                             <button type="submit"
-                                                                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
-                                                                changes</button>
+                                                                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">{{__('messages.save changes')}}</button>
                                                             {{-- <button type="reset" class="btn btn-outline-warning">Cancel</button> --}}
                                                         </div>
                                                     </div>

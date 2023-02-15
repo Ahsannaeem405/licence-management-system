@@ -56,5 +56,55 @@ return [
     'total departments'=>'Nombre total de départements',
     'total license'=>'Licence totale',
     'welcome'=>'Bienvenu',
+    //----------------------Customer Subscription----------//
+    'subscription pack'=> 'Forfaits d abonnement',
+    //-----------------------Continue----------------------//
+
+    //------------------------Customer Department start-----------------//
+    'department'=> 'Département',
+    'add department'=> 'Ajouter un département',
+    'department name'=> 'Nom du département',
+    'description' => 'Description',
+    'submit' => 'Soumettre',
+    //------------------Customer Department End-------------------------//
+
+    //-----------------------Customer License-------------------------------//
+    'add license' => 'Ajouter une licence',
+    'title'=> 'Titre',
+    'key'=> 'Clé',
+    'date i'=> 'Fecha de emisión',
+    'date e'=> 'Date d expiration',
+     //-----------------------Customer End License-------------------------------//
+     
+    //-----------------------Customer Add License----------------------------//
+    'license'=> 'Licences',
+      //------------------------End Customer Add License----------------------------//
+
+    //------------------------ Customer Management----------------------------//
+    'management' => 'Gestion',
+    'role' =>'Rôle',
+    'add management' => 'Ajouter la gestion',
+     //------------------------ Customer End Management----------------------------//
+
+  //--------------------------Customer Add Management---------------------------//
+  'add toolowner' => 'Ajouter Gérer / Propriétaire de l outil',
+ //--------------------------Customer End Add Management---------------------------//
+
+  //--------------------------Manager sidebar---------------------------//
+  
+  'company info'=> 'Information d entreprise',
+  //--------------------------Manager End sidebar---------------------------//
+
+    //--------------------------Manager Company Info---------------------------//
+   'company info'=> 'Informations sur la société',
+  'personal info' => 'Informations personnelles',
+  'com det' => 'Détails de l entreprise',
+   'total dep' => 'Département total',
+   'total license' => 'Licence totale',
+    //--------------------------Manager End Company Info---------------------------//
+
+
+
+
 ];
  

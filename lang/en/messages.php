@@ -7,7 +7,7 @@ return [
     'transaction' => 'Transactions',
     'customer' => 'Customers',
     'license' => 'License',
-    'service' => 'Services',
+    'service' => 'Service',
     'multi lang' => 'Multi Language',
     'analytics' => 'Analytics',
     'account setting' => 'Account Settings',
@@ -38,8 +38,8 @@ return [
     'department'=> 'Department',
     'descrip'=> 'Description',
     'create'=> 'Created At',
-    'service'=> 'Services',
-    'add services'=> 'Add Services',
+    'service'=> 'Service',
+    'add services'=> 'Add Service',
     'service name' => 'Service Name',
     'lang coun'=> 'Country',
     'lang'=> 'Language',
@@ -57,5 +57,51 @@ return [
      'total departments'=>'Total Departments',
      'total license'=>'Total License',
      'welcome'=>'Welcome',
+       //----------------------customer Subscription----------//
+     'subscription pack'=> 'Subscription Packages',
+      //-----------------------Continue----------------------//
 
+    //------------------------Department start-----------------//
+    'department'=> 'Department',
+    'add department'=> 'Add Department',
+    'department name'=> 'Department Name',
+    'description' => 'Description',
+    'submit' => 'Submit',
+    //------------------Department End-------------------------//
+
+    //-----------------------Customer License-------------------------------//
+    'add license' => 'Add License',
+    'title'=> 'Title',
+    'key'=> 'Key',
+    'date i'=> 'Date of Issue',
+    'date e'=> 'Date of Expiry',
+     //-----------------------Customer End License-------------------------------//
+
+    //-----------------------Customer Add License----------------------------//
+    'license'=> 'Licenses',
+    //------------------------End Customer Add License----------------------------//
+
+    //------------------------ Customer Management----------------------------//
+    'management' => 'Management',
+    'role' =>'Role',
+    'add management' => 'Add Management',
+  //------------------------ Customer End Management----------------------------//
+
+  //--------------------------Customer Add Management---------------------------//
+  'add toolowner' => 'Add Manage / Tool Owner',
+   //--------------------------Customer End Add Management---------------------------//
+
+  //--------------------------Manager sidebar---------------------------//
+   
+  'company info'=> 'Company Info',
+  //--------------------------Manager End sidebar---------------------------//
+
+   //--------------------------Manager Company Info---------------------------//
+   'company info'=> 'Company Information',
+   'personal info' => 'Personal Information',
+   'com det' => 'Company Details',
+   'total dep' => 'Total Department',
+   'total license' => 'Total License',
+
+    //--------------------------Manager End Company Info---------------------------//
 ];

@@ -56,6 +56,20 @@ return [
     'total departments'=>'Departamentos totales',
     'total license'=>'Licencia Total',
     'welcome'=>'Bienvenido',
-    
-    
+    'benefits'=>'Beneficios',
+    'streamlined license tracking'=>'Seguimiento de licencias simplificado',
+    'with your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.'
+    =>'Con su aplicación, los usuarios ya no tienen que rastrear y administrar manualmente sus licencias, lo que puede ahorrarles una cantidad significativa de tiempo y esfuerzo.',
+    'free 3-month trial'=>'Prueba gratuita de 3 meses',
+    'trial...'=>'Los usuarios pueden probar la aplicación de forma gratuita durante tres meses y
+    experimentar los beneficios por sí mismos antes de comprometerse con una suscripción,
+    cual puede darles una sensación de confianza en el producto.',
+    'user-friendly interface'=>'Interfaz amigable',
+    'interface...'=>'La aplicación tiene una interfaz intuitiva y fácil de usar, lo que facilita que los usuarios naveguen y administren sus licencias.',
+    'central location'=>'Locacion central',
+    'location...'=>'Todas las licencias se administran en una ubicación central que brinda al usuario un fácil acceso a todas las licencias y también facilita el seguimiento de todas las licencias.',
+    'powerful features'=>'Funciones potentes',
+    'features...'=>'La aplicación tiene una variedad de funciones avanzadas que pueden ayudar a los usuarios a administrar y rastrear sus licencias de una manera más eficiente y efectiva.',
+    'increases efficiency'=>'Aumenta la eficiencia',
+    'efficiency...'=>'La aplicación ahorra tiempo y aumenta la eficiencia al automatizar el proceso de seguimiento de licencias, también ayuda a reducir el error humano.',
 ];

@@ -57,5 +57,20 @@ return [
      'total departments'=>'Total Departments',
      'total license'=>'Total License',
      'welcome'=>'Welcome',
-
+     'benefits'=>'Benefits',
+     'streamlined license tracking'=>'Streamlined license tracking',
+     'with your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.'
+    =>'With your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.',
+    'free 3-month trial'=>'Free 3-month trial',
+    'trial...'=>'Users can try the application for free for three months and
+    experience the benefits for themselves before committing to a subscription,
+    which can give them a sense of confidence in the product.',
+    'user-friendly interface'=>'User-friendly interface',
+    'interface...'=>'The application has an intuitive and easy-to-use interface, which makes it simple for users to navigate and manage their licenses.',
+    'central location'=>'Central location',
+    'location...'=>'All the licenses are managed in one central location which gives user an easy access to all the licenses and it also makes it easy to keep track of all the licenses.',
+    'powerful features'=>'Powerful features',
+    'features...'=>'The application has a variety of advanced features that can help users manage and track their licenses in a more efficient and effective way.',
+    'increases efficiency'=>'Increases Efficiency',
+    'efficiency...'=>'The application saves time and increases efficiency by automating the process of license tracking, it also helps in reducing human error.',
 ];

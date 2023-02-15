@@ -14,7 +14,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/asset/css/style.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/vendors.min.css') }}">
     <style>
         #video1,
         #video2,
@@ -60,8 +60,26 @@
                             <a class="nav-link py-md-2 py-1 text-white px-0" href="#contact">Contact Us</a>
                         </li>
                         <li class="nav-item btn-2 btn_hover_0">
-                            <a class="nav-link  py-md-2 py-1  px-0" href="#">
-
+                            <div class="btn-group">
+                                <button type="button" class="btn btn_hover_0 text-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                @foreach (Config::get('languages') as $lang => $language)
+                                    @if ($lang != App::getLocale())
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('lang.switch',$lang)}}">
+                                                <span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
+                                                {{$language['display']}}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- <li class="nav-item btn-2 btn_hover_0"> --}}
+                            {{-- <a class="nav-link  py-md-2 py-1  px-0" href="#">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn_hover_0 text-white p-0 dropdown-toggle"
                                         data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -80,8 +98,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </a>
-                        </li>
+                            </a> --}}
+                        {{-- </li> --}}
 
                         <li class="nav-item btn-2">
                             <a class="nav-link py-md-2 py-1 text-white px-0" href="{{ route('login') }}">Login </a>
@@ -293,7 +311,7 @@
                                                 @elseif ($details->status == 0)
                                                     <i class="fas fa-close text-danger"></i>
                                                 @endif
-                                            </span>{{ $details->point_name }}
+                                            </span>{{$details->point_value}} {{$details->point_name}}
                                         </li>
                                     @endforeach
                                 </ul>

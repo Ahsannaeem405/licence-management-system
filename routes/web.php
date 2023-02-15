@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\superadmin\SuperAdminController;
 use App\Http\Controllers\customer\CustomerController;
 use App\Http\Controllers\manager\ManagerController;
@@ -33,7 +34,7 @@ Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company')
 Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-payment')->middleware('auth');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::post('/subscription-login', [StripePaymentController::class, 'subscribe'])->name('login-subscription');
-// Route::get('lang/{lang}',[HomeController::class, 'switchs_Lang'])->name('switchs-lang');
+Route::get('lang/{lang}',[LanguageController::class, 'switchLang'])->name('lang.switch');
 //------------------------------------------------- Super-Admin Start ----------------------------------------------//
 Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], function () {
     Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin-dashbaord');
@@ -73,7 +74,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], 
     Route::POST('/update-admin-password/{id}', [SuperAdminController::class,'admin_update_password'])->name('superadmin-admin-password');
 }); 
     //-----------------------------------------Localization------------------------------------------//
-    Route::get('lang/{lang}',[SuperAdminController::class, 'switchLang'])->name('lang.switch');
+    // Route::get('lang/{lang}',[SuperAdminController::class, 'switchLang'])->name('lang.switch');
 //------------------------------------------------- Super-Admin End ----------------------------------------------//
 
 //------------------------------------------------- Customer Start ----------------------------------------------//

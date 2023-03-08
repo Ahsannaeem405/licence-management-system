@@ -17,11 +17,11 @@ class LanguageManager
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    { 
+    {
         if (Session()->has('applocale') AND array_key_exists(Session()->get('applocale'), config('languages'))) {
             if(Auth::check())
             {
-                $language = Auth::user()->language;
+                $language = Auth::user()->language ? Auth::user()->language : config('app.fallback_locale');
                 App::setLocale($language);
             }
             else
@@ -29,11 +29,13 @@ class LanguageManager
                 App::setLocale(Session()->get('applocale'));
             }
         }
-        else 
-        { 
+        else
+        {
             // This is optional as Laravel will automatically set the fallback language if there is none specified
             App::setLocale(config('app.fallback_locale'));
         }
+
+
         return $next($request);
     }
 }

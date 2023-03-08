@@ -36,7 +36,7 @@
                     <div class="card bg-authentication rounded-0 mb-0">
                         <div class="row m-0">
                             <div class="col-lg-6 d-lg-block d-none text-center align-self-center pl-0 pr-3 py-0">
-                                <a href="{{route('home')}}"> 
+                                <a href="{{route('home')}}">
                                     <img class="mb-2" src="{{asset('assets/app-assets/images/logo/layer.png')}}" alt="logo)" style="width: 40px;">
                                     <div class="d-inline-block">
                                         <h2 class="brand-text mb-0" style="color: #000677;">GesCle</h2>
@@ -144,7 +144,7 @@
             </section>
             <!-- Modal -->
             <div class="modal fade text-left" id="terms_conditions" tabindex="-1" role="dialog" aria-labelledby="terms_conditions33" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="terms_conditions33"> </h4>

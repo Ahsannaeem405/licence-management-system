@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string('active')->nullable();
             $table->string('verification_code')->nullable();
             $table->tinyInteger('is_verified')->default(0);
+            $table->string('language')->default('en');
+            $table->string('currency')->default('$');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -35,7 +35,7 @@ class CustomerController extends Controller
         $total_managers = User::where('add_by',Auth::user()->id)->count();
         $total_license = License::where('customer_id', Auth::user()->id)->count();
         $total_subscription = Transaction::where('user_id', Auth::user()->id)->count();
-        $top_license = License::latest()->take(5)->get();
+        $top_license = License::where('customer_id',auth()->user()->id)->latest()->take(5)->get();
         $data = [
             'total_department',
             'total_license',

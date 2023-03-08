@@ -387,6 +387,7 @@ class CustomerController extends Controller
     {
         $users = User::whereIn('role', ['manager', 'owner'])->where('company_id',auth()->user()->id)->get();
         // $users = User::whereIn('role', ['manager', 'owner'])->where('add_by', auth()->user()->id)->get();
+
         return view('customer.management.management', compact('users'));
     }
 

@@ -20,8 +20,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('payment:cron')->everyMinute();
-        $schedule->command('Renew-License:cron')->everyMinute();
-        $schedule->command('Expiry-License:cron')->everyMinute();
+        $schedule->command('Renew-License:cron')->daily();
+        $schedule->command('Expiry-License:cron')->daily();
     }
 
     /**

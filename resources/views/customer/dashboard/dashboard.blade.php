@@ -114,14 +114,14 @@
                                 <h6>Recently Added Licences</h6>
                                 <div class="row">
                                     <div class="col-12">
-                                      {{-- @foreach ($top_license as $license )
+
+                                      @foreach ($top_license as $license )
                                         <div class="wrapper border-bottom p-1">
                                             <small class="recent-license">{{$license->title}}</small>
-                                            <small>Customer</small>
-                                            <small class="recent-license-date">20-Feb-2023</small>
+                                            <small class="recent-license-date"> {{ \Carbon\Carbon::parse($license->created_at)->format('Y-m-d') }}</small>
                                         </div>
-                                      @endforeach --}}
-                                        <div class="wrapper border-bottom p-1">
+                                      @endforeach
+                                        {{-- <div class="wrapper border-bottom p-1">
                                           <small class="recent-license">License</small>
                                           <small>Customer</small>
                                           <small class="recent-license-date">21-Feb-2023</small>
@@ -145,7 +145,7 @@
                                             <small class="recent-license">License</small>
                                             <small>Customer</small>
                                             <small class="recent-license-date">24-Feb-2023</small>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

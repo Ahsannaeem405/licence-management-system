@@ -104,11 +104,11 @@ class ManagerController extends Controller
             'role' => ['required'],
             'department' => ['required'],
         ]);
-        if ($owner) 
+        if ($owner)
         {
             $owner->name = $request->name;
             $owner->email = $request->email;
-            if ($request->password) 
+            if ($request->password)
             {
                 $owner->password = Hash::make($request->password);
             }
@@ -118,8 +118,8 @@ class ManagerController extends Controller
             $owner->department_id = $request->department;
             $owner->save();
             return redirect()->route('manager-management')->with('success', 'Tool Owner updated successfully');
-        } 
-        else 
+        }
+        else
         {
             return back()->with('error', 'User not found!');
         }
@@ -192,7 +192,7 @@ class ManagerController extends Controller
                 }
                 $license->create([
                     'title' => $request->title,
-                    'customer_id' => Auth::user()->id,
+                    'customer_id' => Auth::user()->add_by,
                     'description' => $request->description,
                     'price' => $request->price,
                     'purchase_date' => $request->purchase_date,
@@ -201,7 +201,7 @@ class ManagerController extends Controller
                     'renew_date' => $request->renew_date,
                     'renew_alert' => $request->renew_alert ? 1 : 0,
                     'expiry_alert' => $request->expiry_alert ? 1 : 0,
-                    'reffer_to' =>  $request->reffer,
+                    'reffer_to' =>  auth()->user()->id,
                     'department_id' =>  $request->department,
                     'date_of_issue' => $request->issue,
                     'date_of_expiry' => $request->expiry,
@@ -250,7 +250,7 @@ class ManagerController extends Controller
         {
             return back()->with('error','Something went wrong');
         }
-        
+
     }
 
     public function delete_license($id)
@@ -265,7 +265,7 @@ class ManagerController extends Controller
         {
             return back()->with('error','Something went wrong');
         }
-        
+
     }
     //------------------------------------ Manager-License End ------------------------------------//
 
@@ -286,5 +286,5 @@ class ManagerController extends Controller
         return MyHelper::update_password($request);
     }
     //------------------------------------ Manager-Setting End ------------------------------------//
-    
+
 }

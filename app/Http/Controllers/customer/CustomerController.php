@@ -60,6 +60,7 @@ class CustomerController extends Controller
     public function department()
     {
         $departments = Department::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+
         return view('customer.department.department', compact('departments'));
     }
 
@@ -160,12 +161,12 @@ class CustomerController extends Controller
     {
         $department = Department::where('id', $id)->first();
         $user = User::where('department_id',$department->id)->first();
-        if ($department && $department->id != $user->department_id  ) 
+        if ($department && $department->id != $user->department_id  )
         {
             $department->delete();
             return back()->with('success', 'Department deleted successfully');
-        } 
-        else 
+        }
+        else
         {
             return back()->with('error', 'Delete managers of this department first');
         }
@@ -175,7 +176,7 @@ class CustomerController extends Controller
     //------------------------------------ Customer-License Start ------------------------------------//
     public function license()
     {
-        $licenses = License::all();
+        $licenses = License::where('customer_id',auth()->user()->id)->get();
         return view('customer.license.license', compact('licenses'));
     }
 
@@ -201,7 +202,7 @@ class CustomerController extends Controller
     }
 
     public function add_license()
-    {    
+    {
         $departments = Department::where('user_id', auth()->user()->id)->get();
         // $services = Service::all();
         $users  = User::where('add_by',Auth::user()->id)->get();
@@ -373,12 +374,12 @@ class CustomerController extends Controller
     {
         $license = License::find($id);
         $user = User::where('id',$license->reffer_to)->first();
-        if($user) 
+        if($user)
         {
             $license->delete();
             return redirect()->route('customer-license')->with('success', 'License Deleted Successfully');
-        } 
-        else 
+        }
+        else
         {
             return back()->with('error', 'You are not able to delete this license');
         }
@@ -388,7 +389,7 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-        $users = User::whereIn('role', ['manager', 'owner'])->get();
+        $users = User::whereIn('role', ['manager', 'owner'])->where('add_by',auth()->user()->id)->get();
         return view('customer.management.management', compact('users'));
     }
 
@@ -415,7 +416,7 @@ class CustomerController extends Controller
 
     public function add_management()
     {
-        $departments = Department::all();
+        $departments = Department::where('user_id',auth()->user()->id)->get();
         return view('customer.management.add-management', compact('departments'));
     }
 

@@ -39,7 +39,8 @@ class SuperAdminController extends Controller
         $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
         $current_amount = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('amount');
         $last_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
-        $last_three_months =Transaction::whereMonth('created_at','>=',\Carbon\Carbon::now()->subMonth(3))->sum('amount');
+
+        $last_three_months =Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
         $last_three_months_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
 
         $free_package = Transaction::where('package_id','1')->pluck('package_id')->count();
@@ -211,8 +212,19 @@ class SuperAdminController extends Controller
             if ($request->password) {
                 $customer->password = Hash::make($request->password);
             }
+            if ($file = $request->hasfile('company_logo'))
+            {
+                $file = $request->file('company_logo');
+                $fileName = uniqid() . $file->getClientOriginalName();
+                $destinationPath = public_path().'/company-logo/';
+                $file->move($destinationPath, $fileName);
+                $request->company_logo = $fileName;
+                $customer->company_logo = $request->company_logo;
+            }
+
             $customer->address = $request->address;
             $customer->phone = $request->phone;
+            $customer->company_name = $request->company_name;
             $customer->save();
             return redirect()->route('superadmin-customers')->with('success', 'Customer Updated Successfully');
         } else {

@@ -134,6 +134,8 @@ Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], func
         Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
         Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
         Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
+        Route::get('/license-status/{id}', [CustomerController::class, 'license_status'])->name('customer-license-status');
+
     });
 
 

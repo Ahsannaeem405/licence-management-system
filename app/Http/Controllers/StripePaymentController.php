@@ -126,4 +126,5 @@ class StripePaymentController extends Controller
          return response()->json(['success'=>$request->input('refund')]);
 
     }
+
 }

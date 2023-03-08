@@ -42,7 +42,7 @@ Route::POST('/store-client',[HomeController::class,'store'])->name('store-client
 Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
 Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-payment')->middleware('auth');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
-Route::post('/subscription-login', [StripePaymentController::class, 'subscribe'])->name('login-subscription');
+Route::post('/subscription-login', [StripePaymentController::class, 'subscribe_user'])->name('login-subscription');
 Route::get('lang/{lang}',[LanguageController::class, 'switchLang'])->name('lang.switch');
 Route::get('user-visits',[HomeController::class,'visits'])->name('user-visits');
 Route::get('/verify-code',[VerifyController::class, 'verify'])->name('verify-code')->middleware('auth');
@@ -101,7 +101,6 @@ Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], func
 
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::post('/subscribe', [StripePaymentController::class, 'subscribe']);
-    Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
 
 
     Route::group(['middleware' => 'CustomerActive'], function () {
@@ -134,6 +133,10 @@ Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], func
         Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
         Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
         Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
+        Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
+
+        Route::get('/license-status/{id}', [CustomerController::class, 'license_status'])->name('customer-license-status');
+
     });
 
 

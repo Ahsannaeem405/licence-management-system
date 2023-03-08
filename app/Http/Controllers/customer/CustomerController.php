@@ -518,5 +518,18 @@ class CustomerController extends Controller
     {
         return MyHelper::update_password($request);
     }
+    public function license_status($id)
+    {
+       $license = License::find($id);
+       if($license->status == '1'){
+
+        $license->status = '0';
+
+       }else{
+        $license->status = '1';
+       }
+       $license->save();
+       return redirect()->back()->with('success','License Status Updated');
+    }
     //------------------------------------ Customer-Settings End ------------------------------------//
 }

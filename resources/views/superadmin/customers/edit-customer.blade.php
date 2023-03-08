@@ -10,7 +10,7 @@
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
                             <h2 class="content-header-title float-left mb-0">Update User</h2>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal" action="{{route('superadmin-update-customer',$admin->id)}}" method="POST" novalidate>
+                                        <form class="form-horizontal" enctype="multipart/form-data" action="{{route('superadmin-update-customer',$admin->id)}}" method="POST" novalidate>
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -54,7 +54,15 @@
                                                                 placeholder="Enter Numbers only" value="{{$admin->phone}}">
                                                         </div>
                                                     </div>
-                                                     
+
+                                                    <div class="form-group">
+                                                        <label>Company name</label>
+                                                        <div class="controls">
+                                                            <input type="text"  name="company_name" class="form-control"
+                                                                   required placeholder="Enter Company name" value="{{$admin->company_name}}">
+                                                        </div>
+                                                    </div>
+
                                                       <div class="form-group">
                                                         <label>Password</label>
                                                         <div class="controls">
@@ -76,7 +84,7 @@
                                                                 placeholder="@gmail.com" required value={{$admin->email }}>
                                                         </div>
                                                     </div>
-                                                   
+
                                                   <div class="form-group">
                                                         <label>Address</label>
                                                         <div class="controls">
@@ -85,17 +93,26 @@
                                                                 data-validation-containsnumber-message="The alpha field may only contain alphabetic characters."
                                                                 placeholder="Enter Address" value="{{$admin->address}}">
                                                         </div>
-                                                    </div> 
-                                                   <div class="form-group">
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label>Company Logo</label>
+                                                        <div class="controls">
+                                                            <input type="file"  name="company_logo" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
                                                         <label>Confirm-Password</label>
                                                         <div class="controls">
-                                                            <input type="password" name="password_confirmation" class="form-control" 
+                                                            <input type="password" name="password_confirmation" class="form-control"
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
                                                                 data-validation-containsnumber-message="The regex field format is invalid."
                                                                 placeholder="" required>
-                                                                
+
                                                         </div>
-                                                    </div> 
+                                                    </div>
 
                                                 </div>
                                             </div>

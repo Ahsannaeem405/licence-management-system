@@ -89,10 +89,10 @@
                                             </div>
                                         </div>
                                         <p class="mt-1 text-white bg-white text-dark"><i
-                                                class="fa-solid fa-building"></i><b>Renew Alerts</b>: {{ $active_license }}
+                                                class="fa-solid fa-building"></i><b>Renew Alerts</b>: {{ $renew_alerts }}
                                         </p>
                                         <p class="mt-0 text-white bg-white text-dark"><i
-                                                class="fa-solid fa-building"></i><b>Expiry Alerts</b>: {{ $active_license }}
+                                                class="fa-solid fa-building"></i><b>Expiry Alerts</b>: {{ $expiry_alerts }}
                                         </p>
                                         {{-- <p class="mb-0">{{ __('messages.total departments') }}</p> --}}
                                     </div>
@@ -117,7 +117,7 @@
                                         </p>
                                         <p class="mt-0 text-white bg-white text-dark"><i
                                                 class="fa-solid fa-building"></i><b>Active Expenses</b>:
-                                            {{ $active_license }}</p>
+                                            </p>
                                     </div>
                                     <div class="card-content">
                                         <div id="line-area-chart-2"></div>

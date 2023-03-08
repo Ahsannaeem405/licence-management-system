@@ -42,8 +42,9 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <h1 class="mb-2 text-white">{{ __('messages.welcome') }}
-                                                {{ auth()->user()->name }}</h1>
+
+                                            <p class="mb-2 text-white bg-white text-dark"><i class="fa-solid fa-building"></i><b>Total Departments</b>: {{ $total_department }}</p>
+                                            <p class="mb-2 text-white bg-white text-dark"><i class="fas fa-person"></i><b>Total Managers</b>: {{ $total_managers }}</p>
                                             {{-- <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p> --}}
                                         </div>
                                     </div>

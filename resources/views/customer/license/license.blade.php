@@ -61,6 +61,7 @@
                                                         <th>Date of Expiry</th>
                                                         <th>Renew Alert</th>
                                                         <th>Expiry Alert</th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -116,6 +117,23 @@
                                                                 </div>
                                                             </td>
                                                             @endif
+                                                            @if($license->status == 1)
+                                                            <td class="product-success">
+                                                                <div class="chip chip-warning">
+                                                                    <div class="chip-body" style="max-width: 100px; width:auto; padding:5px;">
+                                                                        <div class="chip-text"><strong>Active</strong></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            @else
+                                                            <td class="product-success">
+                                                                <div class="chip chip-warning">
+                                                                    <div class="chip-body" style="max-width: 100px; width:auto; padding:5px;">
+                                                                        <div class="chip-warning"><strong>DeActive</strong></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            @endif
                                                             <td>
                                                                 <span class="d-flex">
                                                                     <a href="{{route('customer-edit-license',$license->id)}}"><i class="fa fa-edit text-warning"></i></a>
@@ -123,7 +141,7 @@
                                                                         <input type="hidden" value="GET" name="_method">
                                                                         <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
                                                                     </form>
-                                                                </span> 
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -194,7 +212,7 @@
     });
 
     // This part will check the (checked) checkBoxes which are clicked  one by one and add it into array //
-    $('.mychecks').change(function(){ 
+    $('.mychecks').change(function(){
         var fav = [];
         $.each($("input[class='mychecks']:checked"), function(){
             if($(this).attr('data-id') != null)
@@ -206,14 +224,14 @@
         ($('#fav').attr('value',fav));
         $('#exp-fav').attr('value',fav);
         if(false == $(this).prop("checked"))
-        { 
+        {
             $("#select_all").prop('checked', false);
-            
+
         }
         if ($('.mychecks:checked').length == $('.mychecks').length )
         {
             $("#select_all").prop('checked', true);
-            
+
         }
     });
 

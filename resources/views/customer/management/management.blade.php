@@ -76,7 +76,8 @@
                                                                         <div class="chip-body"
                                                                             style="max-width: 100px; width:65px; padding:5px;">
                                                                             <div class="chip-text">
-                                                                                <strong>{{ $user->role }}</strong></div>
+                                                                                <strong>{{ $user->role }}</strong>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -86,7 +87,8 @@
                                                                         <div class="chip-body"
                                                                             style="max-width: 100px; width:65px; padding:5px;">
                                                                             <div class="chip-text">
-                                                                                <strong>{{ $user->role }}</strong></div>
+                                                                                <strong>{{ $user->role }}</strong>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -107,7 +109,8 @@
                                                                     <div class="chip-body"
                                                                         style="max-width: 100px; width:65px; padding:6px;">
                                                                         <div class="chip-text">
-                                                                            <strong> {{ \Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}</strong>
+                                                                            <strong>
+                                                                                {{ \Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}</strong>
                                                                         </div>
                                                                     </div>
                                                                 </div>

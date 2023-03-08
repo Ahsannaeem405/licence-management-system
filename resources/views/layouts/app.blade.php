@@ -12,7 +12,7 @@
     <title>Login Page</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/logo/layer.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
-    
+
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/vendors.min.css')}}">
     <!-- END: Vendor CSS-->
@@ -55,16 +55,16 @@
      <!-- BEGIN: Vendor JS-->
      <script src="{{asset('assets/app-assets/vendors/js/vendors.min.js')}}"></script>
      <!-- BEGIN Vendor JS-->
- 
+
      <!-- BEGIN: Page Vendor JS-->
      <!-- END: Page Vendor JS-->
- 
+
      <!-- BEGIN: Theme JS-->
      <script src="{{asset('assets/app-assets/js/core/app-menu.js')}}"></script>
      <script src="{{asset('assets/app-assets/js/core/app.js')}}"></script>
      <script src="{{asset('assets/app-assets/js/scripts/components.js')}}"></script>
      <!-- END: Theme JS-->
- 
+
      <!-- BEGIN: Page JS-->
      <!-- END: Page JS-->
     <!-- Toastr  -->
@@ -74,7 +74,7 @@
     "closeButton": true,
     "progressBar": true
     }
-    
+
     @if(Session::has('success'))
             toastr.success('{{ Session::get('success') }}');
         @elseif(Session::has('error'))
@@ -88,5 +88,5 @@
  </script>
  </body>
  <!-- END: Body-->
- 
+
  </html>

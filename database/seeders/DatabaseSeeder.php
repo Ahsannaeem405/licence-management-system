@@ -23,18 +23,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'superadmin',
         ]);
 
-        User::create([
-            'name' => 'customer',
-            'email' => 'customer@gmail.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'customer',
-        ]);
+
 
         $this->call([
             PackageSeeder::class,
             PackageDetailSeeder::class,
         ]);
-        
+
     }
 
         // \App\Models\User::factory(10)->create();

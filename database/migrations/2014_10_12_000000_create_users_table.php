@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('company_logo')->nullable();
             $table->string('company_name')->nullable();
             $table->foreignId('add_by')->nullable()->constrained('users')->references('id');
+            $table->foreignId('company_id')->nullable()->constrained('users')->references('id');
             $table->foreignId('package_id')->nullable()->constrained('packages')->references('id')->cascadeOnDelete();
             $table->string('active')->nullable();
             $table->string('verification_code')->nullable();

@@ -63,7 +63,7 @@ class VerifyController extends Controller
         {
             return redirect()->route('stripe-payment');
         }
-        
+
     }
 
     public function verify_code(Request $request)
@@ -82,7 +82,7 @@ class VerifyController extends Controller
         else
         {
             return back()->with('error','Invalid Verification Code');
-        }  
+        }
     }
 
     public function resend_code(Request $request)
@@ -101,6 +101,10 @@ class VerifyController extends Controller
     public function continue_free()
     {
         $user = User::where('id',Auth::user()->id)->first();
+        $next_payment = date("Y-m-d", strtotime("+3 month"));
+        $user->next_payment=$next_payment;
+        $user->active=1;
+        $user->pass=null;
         $user->is_verified=3;
         $user->save();
         Auth::logout();
@@ -108,5 +112,5 @@ class VerifyController extends Controller
         return redirect()->route('login')->with('success','successfully registerd continue to login.');
     }
 
-    
+
 }

@@ -27,8 +27,8 @@ class ManagerController extends Controller
     //------------------------------------ Manager-Info Start ------------------------------------//
     public function companyinfo()
     {
-        $department_id = User::where('id',Auth::user()->id)->value('department_id');
-        $company_id = Department::where('id',$department_id)->value('user_id');
+
+        $company_id = Department::where('id',Auth::user()->department_id)->value('user_id');
         $company = User::where('id',$company_id)->first();
         $total_department = Department::where('user_id',$company_id)->count();
         $total_license = License::where('department_id',$company_id)->count();
@@ -44,7 +44,11 @@ class ManagerController extends Controller
     //------------------------------------ Manager-Management Start ------------------------------------//
     public function management()
     {
-        $users = User::whereIn('role',['manager','owner'])->get();
+
+
+
+
+        $users = User::whereIn('role',['manager','owner'])->where('company_id',auth()->user()->company_id)->get();
         return view('manager.management.management',compact('users'));
     }
 
@@ -78,6 +82,7 @@ class ManagerController extends Controller
             'role' => $request->role,
             'department_id' => $request->department,
             'add_by' => Auth::user()->id,
+            'company_id' => Auth::user()->company_id,
         ]);
         $details = [
             'email' => $request->email,
@@ -136,6 +141,7 @@ class ManagerController extends Controller
     //------------------------------------ Manager-License Start ------------------------------------//
     public function license()
     {
+
         $licenses = License::where('reffer_to',Auth::user()->id)->get();
         return view('manager.license.license',compact('licenses'));
     }
@@ -192,7 +198,7 @@ class ManagerController extends Controller
                 }
                 $license->create([
                     'title' => $request->title,
-                    'customer_id' => Auth::user()->add_by,
+                    'customer_id' => Auth::user()->company_id,
                     'description' => $request->description,
                     'price' => $request->price,
                     'purchase_date' => $request->purchase_date,

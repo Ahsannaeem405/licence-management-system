@@ -389,7 +389,7 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-        $users = User::whereIn('role', ['manager', 'owner'])->where('add_by',auth()->user()->id)->get();
+        $users = User::whereIn('role', ['manager', 'owner'])->where('company_id',auth()->user()->id)->get();
         return view('customer.management.management', compact('users'));
     }
 
@@ -444,6 +444,7 @@ class CustomerController extends Controller
             'role' => $request->role,
             'department_id' => $request->department,
             'add_by' => Auth::user()->id,
+            'company_id' => Auth::user()->id,
         ]);
         $details = [
             'email' => $request->email,

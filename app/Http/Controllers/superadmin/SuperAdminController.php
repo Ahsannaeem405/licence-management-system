@@ -156,11 +156,13 @@ class SuperAdminController extends Controller
 
     public function add_customer()
     {
-        return view('superadmin.customers.add-customers');
+        $package = Package::all();
+        return view('superadmin.customers.add-customers',compact('package'));
     }
 
     public function store_customer(Request $request)
     {
+
 
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -168,6 +170,7 @@ class SuperAdminController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => 'required',
             'phone' => 'required',
+            'package_id'=>'required'
 
         ]);
 
@@ -180,6 +183,7 @@ class SuperAdminController extends Controller
             'phone' => $request->phone,
             'role' => 'customer',
             'add_by' => Auth::user()->id,
+            'package_id'=>$request->package_id
         ]);
         $details = [
             'email' => $request->email,

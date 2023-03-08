@@ -36,6 +36,7 @@ return [
     'frm address' => 'Address',
     'frm password' => 'Password',
     'frm cnfrm password' => 'Confirm-Password',
+    'Package'=>'package',
     'frm submit' => 'Submit',
     'customer list'=> 'Customer List',
     'depart license'=> 'Department Licenses',
@@ -70,7 +71,7 @@ return [
     'nav-contact' => 'Contact Us',
     'nav-login' => 'Login',
     //------------------------- Welcome Navbar Part -----------------------//
-    
+
     //------------------------- Welcome Banner Part -----------------------//
     'banner-heading' => 'Simplify your license management, amplify your efficiency',
     'banner-paragraph' => 'Say goodbye to manual license tracking and hello to streamlined success with our License Management Application. Our user-friendly interface and powerful features make it easy to manage and track all your licenses in one central location, saving you time and increasing efficiency. Sign up now and take advantage of our free 3-month trial to experience the benefits for yourself.',

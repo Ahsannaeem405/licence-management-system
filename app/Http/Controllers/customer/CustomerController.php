@@ -384,11 +384,10 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-<<<<<<< Updated upstream
+
         $users = User::whereIn('role', ['manager', 'owner'])->where('company_id',auth()->user()->id)->get();
-=======
-        $users = User::whereIn('role', ['manager', 'owner'])->where('add_by', auth()->user()->id)->get();
->>>>>>> Stashed changes
+
+
         return view('customer.management.management', compact('users'));
     }
 

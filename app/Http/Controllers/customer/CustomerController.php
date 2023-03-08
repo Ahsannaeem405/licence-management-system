@@ -38,6 +38,7 @@ class CustomerController extends Controller
         $top_license = License::where('customer_id', auth()->user()->id)->latest()->take(5)->get();
         $active_license = License::where('customer_id', auth()->user()->id)->where('status', '1')->count();
         $deactive_license = License::where('customer_id', auth()->user()->id)->where('status', '0')->count();
+        $renew_alerts = License::where('customer_id',auth()->user()->id)->where('renew_date');
         $data = [
             'total_department',
             'total_license',
@@ -384,11 +385,8 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-<<<<<<< Updated upstream
         $users = User::whereIn('role', ['manager', 'owner'])->where('company_id',auth()->user()->id)->get();
-=======
-        $users = User::whereIn('role', ['manager', 'owner'])->where('add_by', auth()->user()->id)->get();
->>>>>>> Stashed changes
+        // $users = User::whereIn('role', ['manager', 'owner'])->where('add_by', auth()->user()->id)->get();
         return view('customer.management.management', compact('users'));
     }
 

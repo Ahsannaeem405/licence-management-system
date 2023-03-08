@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\superadmin;
 
+use App\Http\Controllers\Auth\LoginController;
 use MyHelper;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
@@ -24,11 +25,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\App;
 
+
+
+
 class SuperAdminController extends Controller
 {
+
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
     {
+
         $total_customers = User::where('role','!=','superadmin')->count();
         $total_packages = Package::count();
         $total_license = License::count();
@@ -99,8 +105,10 @@ class SuperAdminController extends Controller
             // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
             $date = Carbon::create(date('Y'), $month);
 
+
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
+
 
             $transaksi = Transaction::where('package_id',3)
                 // the creation date must be between the start of the month and the end of the month
@@ -112,6 +120,8 @@ class SuperAdminController extends Controller
             // Save the count of transactions for the current month in the output array
             $pro_packages[$month] = $transaksi;
         }
+
+
             //dd($plus_packages);
         $data = [
             'total_customers',

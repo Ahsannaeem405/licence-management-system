@@ -22,7 +22,7 @@
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
                             <h2 class="content-header-title float-left mb-0">Transactions</h2>
-                            
+
                         </div>
                     </div>
                  </div>
@@ -33,7 +33,7 @@
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
                         </div> --}}
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="content-body">
                  <!-- Zero configuration table -->
@@ -55,18 +55,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                
+
                                                     @php
                                                         $x = 1;
                                                     @endphp
-                
+
                                                     @foreach ($transactions as $transaction)
                                                         <tr>
                                                             <td>{{ $x++ }}</td>
                                                             <td>{{ $transaction->user->name }}</td>
                                                             <td>{{ $transaction->package->name }}</td>
                                                             <td>{{ $transaction->package->price }}</td>
-                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d H:i:s',$transaction->package->created_at)->format('d-F-Y') }}</td>
+                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d H:i:s',$transaction->created_at)->format('d-F-Y') }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

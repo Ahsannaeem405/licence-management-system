@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    
+
     <title> GesCle</title>
     <link rel="apple-touch-icon" href="{{asset('assets/app-assets/images/logo/Layer.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/logo/Layer.png')}}">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/tether-theme-arrows.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/tether.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/shepherd-theme-default.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!-- END: Vendor CSS-->
     <style>
         .toast-error {

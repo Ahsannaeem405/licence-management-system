@@ -39,8 +39,8 @@ class CustomerController extends Controller
         $active_license = License::where('customer_id', auth()->user()->id)->where('status', '1')->count();
         $deactive_license = License::where('customer_id', auth()->user()->id)->where('status', '0')->count();
         $date = \Carbon\Carbon::now()->addDays(14)->format('Y-m-d');
-        $expiry_alerts = License::where('customer_id',auth()->user()->id)->where('date_of_expiry','<=',$date)->count();
-        $renew_alerts = License::where('customer_id',auth()->user()->id)->where('renew_date','<=',$date)->count();
+        $expiry_alerts = License::where('customer_id', auth()->user()->id)->where('date_of_expiry', '<=', $date)->count();
+        $renew_alerts = License::where('customer_id', auth()->user()->id)->where('renew_date', '<=', $date)->count();
         $data = [
             'total_department',
             'total_license',
@@ -389,7 +389,7 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
-        $users = User::whereIn('role', ['manager', 'owner'])->where('company_id',auth()->user()->id)->get();
+        $users = User::whereIn('role', ['manager', 'owner'])->where('company_id', auth()->user()->id)->get();
 
         return view('customer.management.management', compact('users'));
     }

@@ -43,8 +43,11 @@
                                         </div>
                                         <div class="text-center">
 
-                                            <p class="mb-2 text-white bg-white text-dark"><i class="fa-solid fa-building"></i><b>Total Departments</b>: {{ $total_department }}</p>
-                                            <p class="mb-2 text-white bg-white text-dark"><i class="fas fa-person"></i><b>Total Managers</b>: {{ $total_managers }}</p>
+                                            <p class="mb-2 text-white bg-white text-dark"><i
+                                                    class="fa-solid fa-building"></i> <b>Total Departments</b>:
+                                                {{ $total_department }}</p>
+                                            <p class="mb-2 text-white bg-white text-dark"><i class="fa-solid fa-people-group"></i> <b>Total Managers</b>: {{ $total_managers }}
+                                            </p>
                                             {{-- <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p> --}}
                                         </div>
                                     </div>
@@ -57,11 +60,17 @@
                                     <div class="card-header d-flex flex-column align-items-start pb-0">
                                         <div class="avatar bg-rgba-danger p-50 m-0">
                                             <div class="avatar-content">
-                                                <i class="feather icon-shopping-cart text-danger font-medium-5"></i>
+                                                <i class="feather icon-credit-card text-danger font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <h2 class="text-bold-700 mt-1">{{ $total_managers }}</h2>
-                                        <p class="mb-0">Total Managers</p>
+                                        <p class="mt-1 text-white bg-white text-dark"><i
+                                                class=""></i><b>Active Licenses</b>:
+                                            {{ $active_license }}</p>
+                                        <p class="mt-0 text-white bg-white text-dark"><i
+                                                class=""></i><b>Inactive Licenses</b>:
+                                            {{ $deactive_license }}</p>
+                                        {{-- <h2 class="text-bold-700 mt-1">{{ $total_managers }}</h2>
+                                        <p class="mb-0">Total Managers</p> --}}
                                     </div>
                                     <div class="card-content">
                                         <div id="line-area-chart-3"></div>
@@ -75,11 +84,16 @@
                                     <div class="card-header d-flex flex-column align-items-start pb-0">
                                         <div class="avatar bg-rgba-warning p-50 m-0">
                                             <div class="avatar-content">
-                                                <i class="feather icon-package text-warning font-medium-5"></i>
+                                                <i class="feather icon-alert-triangle text-warning font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <h2 class="text-bold-700 mt-1">{{ $total_department }}</h2>
-                                        <p class="mb-0">{{ __('messages.total departments') }}</p>
+                                        <p class="mt-1 text-white bg-white text-dark"><i
+                                                class=""></i><b>Renew Alerts</b>: {{ $renew_alerts }}
+                                        </p>
+                                        <p class="mt-0 text-white bg-white text-dark"><i
+                                                class=""></i><b>Expiry Alerts</b>: {{ $expiry_alerts }}
+                                        </p>
+                                        {{-- <p class="mb-0">{{ __('messages.total departments') }}</p> --}}
                                     </div>
 
                                     <div class="card-content">
@@ -97,8 +111,12 @@
                                                 <i class="feather icon-credit-card text-success font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <h2 class="text-bold-700 mt-1">{{ $total_license }}</h2>
-                                        <p class="mb-0">{{ __('messages.total license') }}</p>
+                                        <p class="mt-1 text-white bg-white text-dark"><i
+                                                class=""></i><b>All Licenses</b>: {{ $active_license }}
+                                        </p>
+                                        <p class="mt-0 text-white bg-white text-dark"><i
+                                                class=""></i><b>Active Expenses</b>:
+                                            </p>
                                     </div>
                                     <div class="card-content">
                                         <div id="line-area-chart-2"></div>

@@ -38,7 +38,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Company Logo *</label>
-                                    <input class="form-control" type="file" name="company_logo">
+                                    <input class="form-control" required type="file" name="company_logo">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -113,6 +113,6 @@ $(document).ready(function(){
         myaddress();
     });
 });
-    
+
 </script>
 @endsection

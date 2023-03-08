@@ -11,7 +11,7 @@ class MyHelper
 {
     public static function update_profile(Request $request)
     {
-    
+
         $user = User::where('id', Auth::user()->id)->first();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

@@ -49,6 +49,7 @@
                                                         <th>{{__('messages.th name')}}</th>
                                                         <th>{{__('messages.th email')}}</th>
                                                         <th>Role</th>
+                                                        <th>Company Name</th>
                                                         <th>{{__('messages.th address')}}</th>
                                                         <th>{{__('messages.th phone')}}</th>
                                                         <th>{{__('messages.th added')}}</th>
@@ -72,6 +73,7 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
+                                                            <td>{{ $customer->company_name }}</td>
                                                             <td>{{ $customer->address }}</td>
                                                             <td>{{ $customer->phone }}</td>
                                                             @if($customer->add_by)

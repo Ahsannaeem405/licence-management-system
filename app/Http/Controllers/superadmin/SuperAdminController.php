@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\superadmin;
- 
+
 use MyHelper;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
@@ -28,7 +28,7 @@ class SuperAdminController extends Controller
 {
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
-    {   
+    {
         $total_customers = User::where('role','!=','superadmin')->count();
         $total_packages = Package::count();
         $total_license = License::count();
@@ -56,17 +56,17 @@ class SuperAdminController extends Controller
         for ($month = 1; $month <= 12; $month++) {
             // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
             $date = Carbon::create(date('Y'), $month);
-        
+
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
-        
+
             $transaksi = Transaction::where('package_id',1)
                 // the creation date must be between the start of the month and the end of the month
                 ->where('created_at', '>=', $date)
                 ->where('created_at', '<=', $date_end)
                 // ->Where('status','!=','Menunggu')
                 ->sum('amount');
-       
+
             // Save the count of transactions for the current month in the output array
             $free_packages[$month] = $transaksi;
         }
@@ -77,17 +77,17 @@ class SuperAdminController extends Controller
         for ($month = 1; $month <= 12; $month++) {
             // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
             $date = Carbon::create(date('Y'), $month);
-        
+
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
-        
+
             $transaksi = Transaction::where('package_id',2)
                 // the creation date must be between the start of the month and the end of the month
                 ->where('created_at', '>=', $date)
                 ->where('created_at', '<=', $date_end)
                 // ->Where('status','!=','Menunggu')
                 ->sum('amount');
-       
+
             // Save the count of transactions for the current month in the output array
             $plus_packages[$month] = $transaksi;
         }
@@ -97,17 +97,17 @@ class SuperAdminController extends Controller
         for ($month = 1; $month <= 12; $month++) {
             // Create a Carbon object from the current year and the current month (equals 2019-01-01 00:00:00)
             $date = Carbon::create(date('Y'), $month);
-        
+
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
-        
+
             $transaksi = Transaction::where('package_id',3)
                 // the creation date must be between the start of the month and the end of the month
                 ->where('created_at', '>=', $date)
                 ->where('created_at', '<=', $date_end)
                 // ->Where('status','!=','Menunggu')
                 ->sum('amount');
-       
+
             // Save the count of transactions for the current month in the output array
             $pro_packages[$month] = $transaksi;
         }
@@ -184,6 +184,7 @@ class SuperAdminController extends Controller
         $details = [
             'email' => $request->email,
             'password' => $request->password,
+            'role' => 'customer',
         ];
         Mail::to($request->email)->send(new CustomerMail($details));
         return redirect()->route('superadmin-customers')->with('success', 'Customer Added Successfully');
@@ -253,7 +254,7 @@ class SuperAdminController extends Controller
     //         'price' =>  $request->price,
     //         'description' => $request->description,
     //     ]);
- 
+
     //     return redirect()->route('superadmin-package')->with('success', 'Admin Package save successfully');
     // }
 
@@ -398,7 +399,7 @@ class SuperAdminController extends Controller
     public function license()
     {
         $users = User::where('role','customer')->get();
-        
+
         return view('superadmin.license.license',compact('users'));
     }
 
@@ -407,7 +408,7 @@ class SuperAdminController extends Controller
         $departments = Department::where('user_id','=',$id)->get();
         return view('superadmin.license.view-departments',compact('departments'));
     }
-    
+
     public function license_view($id)
     {
         $license = license::where('department_id',$id)->get();
@@ -417,7 +418,7 @@ class SuperAdminController extends Controller
     public function delete_license($id)
     {
         $license = license::find($id);
-        
+
         $license->delete();
         return back()->with('success', 'License Deleted Successfully');
     }
@@ -488,7 +489,7 @@ class SuperAdminController extends Controller
 
     // public function switchLang($lang)
     // {
-    //     if (array_key_exists($lang, Config::get('languages'))) 
+    //     if (array_key_exists($lang, Config::get('languages')))
     //     {
     //         Session::put('applocale', $lang);
     //     }
@@ -509,7 +510,7 @@ class SuperAdminController extends Controller
         $user = User::where('role', 'superadmin')->where('id', Auth::user()->id)->first();
         return view('superadmin.settings.setting', compact('user'));
     }
-    
+
     public function admin_update_profile(Request $request)
     {
         return MyHelper::update_profile($request);
@@ -523,5 +524,5 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Account Setting End ------------------------------------//
 
 
-  
+
 }

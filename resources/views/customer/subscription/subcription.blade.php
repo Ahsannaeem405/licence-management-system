@@ -15,8 +15,8 @@
       <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
           <div class="col-12">
-            <h2 class="content-header-title float-left mb-0">{{__('messages.subscription pack')}}</h2>
-            
+            <h2 class="content-header-title float-left mb-0">Subcription Packages</h2>
+
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
           <div class="card h-100 subcard_shadow">
             <div class="card-body">
               <h5 class="card-title text_primary fw-bolder text-uppercase text-center">{{$package->package}} </h5>
-              <h6 class="card-price text-center">$ {{$package->price}}<span class="period">/month</span></h6>
+              <h6 class="card-price text-center">{{Auth::user()->currency}} {{$package->price}}<span class="period">/month</span></h6>
               <hr>
               <ul class="fa-ul">
                 @foreach($package->package_details as $details)

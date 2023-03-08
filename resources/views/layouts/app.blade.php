@@ -10,9 +10,9 @@
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Login Page</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/logo/Layer.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/app-assets/images/logo/layer.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
-
+    
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/vendors.min.css')}}">
     <!-- END: Vendor CSS-->
@@ -49,6 +49,7 @@
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+    @yield('css')
     @yield('content')
     @yield('js')
      <!-- BEGIN: Vendor JS-->
@@ -73,6 +74,7 @@
     "closeButton": true,
     "progressBar": true
     }
+    
     @if(Session::has('success'))
             toastr.success('{{ Session::get('success') }}');
         @elseif(Session::has('error'))

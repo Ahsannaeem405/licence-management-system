@@ -1,4 +1,16 @@
 @extends('superadmin.layouts.master')
+@section('css')
+<style>
+    table.dataTable thead tr {
+        background-color: #183153;
+        color: white;
+
+    }
+    table.dataTable tbody td {
+        border: 0.01px solid rgb(224, 224, 224);
+    }
+</style>
+@endsection
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">

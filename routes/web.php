@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\superadmin\SuperAdminController;
 use App\Http\Controllers\customer\CustomerController;
 use App\Http\Controllers\manager\ManagerController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\VerifyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StripePaymentController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -28,6 +31,12 @@ use GuzzleHttp\Middleware;
 |
 */
 
+Route::get('/cls', function() {
+    $run = Artisan::call('optimize:clear');
+    Session::flush();
+    return 'FINISHED';
+});
+
 Route::get('/',[HomeController::class,'welcome'])->name('home');
 Route::POST('/store-client',[HomeController::class,'store'])->name('store-client');
 Route::POST('mail-company',[HomeController::class,'mail'])->name('mail-company');
@@ -35,6 +44,14 @@ Route::get('/stripe-payment',[HomeController::class,'stripe'])->name('stripe-pay
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::post('/subscription-login', [StripePaymentController::class, 'subscribe'])->name('login-subscription');
 Route::get('lang/{lang}',[LanguageController::class, 'switchLang'])->name('lang.switch');
+Route::get('user-visits',[HomeController::class,'visits'])->name('user-visits');
+Route::get('/verify-code',[VerifyController::class, 'verify'])->name('verify-code')->middleware('auth');
+Route::post('/verification-code',[VerifyController::class, 'verify_code'])->name('send-verification-code');
+Route::post('/resend-verification-code/{id}',[VerifyController::class, 'resend_code'])->name('resend-verification-code');
+Route::get('/customer-profile',[VerifyController::class, 'customer_profile'])->name('customer-profile')->middleware('auth');
+Route::post('/store-customer-profile',[VerifyController::class, 'store_customer_profile'])->name('store-customer-profile');
+Route::get('/continue-free',[VerifyController::class, 'continue_free'])->name('continue-free')->middleware('auth');
+
 //------------------------------------------------- Super-Admin Start ----------------------------------------------//
 Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], function () {
     Route::get('/dashboard', [SuperAdminController::class, 'dashboard'])->name('superadmin-dashbaord');
@@ -45,6 +62,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], 
     Route::get('/edit-customer/{id}', [SuperAdminController::class, 'edit_customer'])->name('superadmin-edit-customer');
     Route::POST('/update-customer/{id}', [SuperAdminController::class, 'update_customer'])->name('superadmin-update-customer');
     Route::get('/delete-customer/{id}', [SuperAdminController::class, 'delete_customer'])->name('superadmin-delete-customer');
+    Route::get('/departments',[SuperAdminController::class, 'department'])->name('superadmin-departments');
     Route::get('/package', [SuperAdminController::class, 'Package'])->name('superadmin-package');
     // Route::get('/add-Package', [SuperAdminController::class, 'add_package'])->name('superadmin-add-package');
     // Route::POST('superadmin-store-package', [SuperAdminController::class, 'admin_store_package'])->name('superadmin-store-package');
@@ -87,23 +105,30 @@ Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], func
     Route::get('/edit-department/{id}', [CustomerController::class, 'edit_department'])->name('customer-edit-department');
     Route::post('/update-department/{id}', [CustomerController::class, 'update_department'])->name('customer-update-department');
     Route::get('/delete-department/{id}', [CustomerController::class, 'delete_department'])->name('customer-delete-department');
+    Route::post('/export-departments-list',[CustomerController::class, 'export_departments_list'])->name('export-departments');
+    Route::post('/share-departments-list',[CustomerController::class, 'share_departments_list'])->name('share-departments');
     Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');
     Route::get('/add-license', [CustomerController::class, 'add_license'])->name('customer-add-license');
     Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('customer-store-license');
     Route::get('/customer-edit-license/{id}', [CustomerController::class,'edit_license'])->name('customer-edit-license');
     Route::post('/customer-update-license/{id}', [CustomerController::class,'update_license'])->name('customer-update-license');
     Route::get('/customer-delete-license/{id}', [CustomerController::class, 'delete_license'])->name('customer-delete-license');
+    Route::post('/export-license-list',[CustomerController::class, 'export_license_list'])->name('export-license');
+    Route::post('/share-license-list',[CustomerController::class, 'share_license_list'])->name('share-license');
     Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
     Route::get('/add-management', [CustomerController::class, 'add_management'])->name('customer-add-management');
     Route::post('/store-management', [CustomerController::class, 'store_tool_owner'])->name('customer-store-management');
     Route::get('/edit-management/{id}', [CustomerController::class, 'edit_tool_owner'])->name('customer-edit-management');
     Route::post('/update-management/{id}', [CustomerController::class, 'update_tool_owner'])->name('customer-update-management');
     Route::get('/delete-management/{id}', [CustomerController::class, 'delete_tool_owner'])->name('customer-delete-management');
+    Route::post('/export-management-list',[CustomerController::class, 'export_management_list'])->name('export-management');
+    Route::post('/share-management-list',[CustomerController::class, 'share_management_list'])->name('share-management');
     Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
     Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
     Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
     Route::post('/subscribe', [StripePaymentController::class, 'subscribe']);
     Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
+
 });
 //------------------------------------------------- Customer End ----------------------------------------------//
 
@@ -112,6 +137,8 @@ Route::group(['prefix' => 'manager', 'middleware' => ['Manager','auth']], functi
     Route::get('/dashboard', [ManagerController::class, 'dashboard'])->name('manager-dashbaord');
     Route::get('/company-info', [ManagerController::class, 'companyinfo'])->name('manager-company-info');
     Route::get('/license', [ManagerController::class, 'license'])->name('manager-license');
+    Route::post('/export-manager-license-list',[ManagerController::class, 'export_manager_license_list'])->name('export-manager-license');
+    Route::post('/share-manager-license-list',[ManagerController::class, 'share_manager_license_list'])->name('share-manager-license');
     Route::get('/add-license', [ManagerController::class, 'add_license'])->name('manager-add-license');
     Route::get('/edit-license/{id}',[ManagerController::class, 'edit_license'])->name('manager-edit-license');
     Route::post('/store-license', [ManagerController::class, 'store_license'])->name('manager-store-license');
@@ -133,4 +160,5 @@ Route::group(['prefix' => 'manager', 'middleware' => 'Owner'], function () {
 
 //------------------------------------------------- Manager & Tool Owner End ----------------------------------------------//
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();

@@ -34,7 +34,7 @@ class StripePaymentController extends Controller
  
         $total_departments= Department::where('user_id',auth()->user()->id)->count();
         $total_licence= License::where('customer_id',auth()->user()->id)->count();
-
+        $transaction = Transaction::where('user_id',auth()->user()->id)->first();
         if($id==1 && $total_departments <=1 && $total_licence<=10  )
         {
             $user=User::find(Auth::user()->id);
@@ -58,7 +58,7 @@ class StripePaymentController extends Controller
         }
         else
         {
-            return back()->with('error','You not able to change your pakage');
+            return back()->with('error','You not able to change your package');
         }
     }
     public function subscribe(Request $request)
@@ -89,6 +89,7 @@ class StripePaymentController extends Controller
         $user->next_payment=$next_payment;
         $user->active=1;
         $user->pass=null;
+        $user->is_verified=3;
         $user->save();
 
 
@@ -96,7 +97,7 @@ class StripePaymentController extends Controller
         $trans->package_id = $request->pack_id;
         $trans->user_id = Auth::user()->id;
         $trans->receipt_url = $customer->receipt_url;
-        $trans->stripe_id = $customer->id;
+        $trans->transactions_id = $customer->id;
         $trans->amount= $request->amount;
         $trans->save();
         Auth::logout();

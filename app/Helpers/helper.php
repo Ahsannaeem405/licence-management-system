@@ -18,7 +18,7 @@ class MyHelper
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id . ''],
         ]);
         if ($file = $request->hasfile('image'))
-         {
+        {
             $file = $request->file('image');
             $fileName = uniqid() . $file->getClientOriginalName();
             $destinationPath = public_path().'/profiles-images/';
@@ -28,7 +28,17 @@ class MyHelper
         }
         $user->name = $request->name;
         $user->email = $request->email;
+        if($request->currency)
+        {
+            $user->currency = $request->currency;
+        }
         $user->save();
+        $employees = User::where('add_by',$user->id)->get();
+        foreach($employees as $employee)
+        {
+            $employee->currency = $user->currency;
+            $employee->save();
+        }
         return back()->with('success', 'Porfile updated successfully');
     }
 
@@ -59,6 +69,12 @@ class MyHelper
     {
         $total = Transaction::whereMonth('created_at', $month)->where('package_id', $package_id)->sum('amount');
         return $total;
-
     }
+
+    public static function get_addby($id)
+    {
+        $user = User::where('id',$id)->first();
+        return $user;
+    }
+
 }

@@ -66,15 +66,15 @@
                                                         </td>
                                                         @endif
                                                         <td>{{$user->department->name}}</td>
-                                                        @foreach ($user->addby as $addedby )
+                                                        
                                                         <td class="product-category">
                                                             <div class="chip chip-dark">
                                                                 <div class="chip-body" style="max-width: 100px; width:65px; padding:5px;">
-                                                                    <div class="chip-text"><strong>{{$addedby->name}}</strong></div>
+                                                                    <div class="chip-text"><strong>{{MyHelper::get_addby($user->add_by)->name}}</strong></div>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        @endforeach
+                                                        
                                                         <td>
                                                             <span class="d-flex">
                                                                 <a href="{{route('manager-edit-management',$user->id)}}"><i class="fa fa-edit text-warning"></i></a>

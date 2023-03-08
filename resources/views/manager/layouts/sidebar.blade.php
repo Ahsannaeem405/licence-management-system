@@ -14,15 +14,15 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
              <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a href="{{route('manager-dashbaord')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">{{__('messages.dashbaord')}}</span><span class="badge badge badge-warning badge-pill float-right mr-2"></span></a></li>
-                <li class=" nav-item"><a href="{{route('manager-company-info')}}"><i class="feather icon-info"></i><span class="menu-title" data-i18n="Email">{{__('messages.company info')}}</span></a></li>
+                <li class=" nav-item"><a href="{{route('manager-dashbaord')}}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2"></span></a></li>
+                <li class=" nav-item"><a href="{{route('manager-company-info')}}"><i class="feather icon-info"></i><span class="menu-title" data-i18n="Email">Company Info</span></a></li>
                 @if(Auth::user()->role == 'owner')
                 <li class="navigation-header text-white "><span>Manage</span></li>
                 <hr class="bg-white mx-2">
                 <li class=" nav-item"><a href="{{ route('manager-management') }}"><i class="fa fa-wrench"></i><span class="menu-title" data-i18n="Email">Management</span></a></li>
                 @endif
-                <li class=" nav-item"><a href="{{route('manager-license')}}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">{{__('messages.license')}}</span></a></li>
-                <li class=" nav-item"><a href="{{route('manager-setting')}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">{{__('messages.account setting')}}</span></a></li>
+                <li class=" nav-item"><a href="{{route('manager-license')}}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">License</span></a></li>
+                <li class=" nav-item"><a href="{{route('manager-setting')}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Account Settings</span></a></li>
             </ul> 
         </div>
     </div>

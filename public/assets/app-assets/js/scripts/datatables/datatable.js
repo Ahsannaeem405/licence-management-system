@@ -13,7 +13,16 @@ $(document).ready(function() {
     *       js of zero configuration        *
     ****************************************/
 
-    $('.zero-configuration').DataTable();
+    $('.zero-configuration').DataTable({
+        columnDefs: 
+        [
+            { 
+                orderable: false, 
+                targets: 0, 
+            } 
+        ],
+        order: [[1, 'asc']],
+    });
 
     /********************************************
      *        js of Order by the grouping        *
@@ -91,6 +100,14 @@ $(document).ready(function() {
     ***************************************************************/
 
     $('.dataex-html5-selectors').DataTable( {
+        columnDefs: 
+        [
+            { 
+                orderable: false, 
+                targets: 0, 
+            } 
+        ],
+        order: [[1, 'asc']],
         dom: 'Bfrtip',
         buttons: [
             {

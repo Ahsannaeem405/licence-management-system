@@ -19,8 +19,8 @@
                 <li class="navigation-header text-white "><span>Manage</span></li>
                 <hr class="bg-white mx-2">
                 <li class=" nav-item"><a href="{{ route('customer-department') }}"><i class="fa fa-building-o"></i><span class="menu-title" data-i18n="Chat">{{__('messages.department')}}</span></a></li>
+                <li class=" nav-item"><a href="{{ route('customer-management') }}"><i class="fa fa-user"></i><span class="menu-title" data-i18n="Email">{{__('messages.management')}}</span></a></li>
                 <li class=" nav-item"><a href="{{ route('customer-license') }}"><i class="fa fa-address-card"></i><span class="menu-title" data-i18n="Email">{{__('messages.license')}}</span></a></li>
-                <li class=" nav-item"><a href="{{ route('customer-management') }}"><i class="fa fa-wrench"></i><span class="menu-title" data-i18n="Email">{{__('messages.management')}}</span></a></li>
                 {{-- <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Chat">Analytics</span></a></li> --}}
                 <li class=" nav-item"><a href="{{ route('customer-setting') }}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Email">{{__('messages.account setting')}}</span></a></li>
             </ul>

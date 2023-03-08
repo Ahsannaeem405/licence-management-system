@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerficationEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 
 class RegisterController extends Controller
 {
@@ -35,7 +39,7 @@ class RegisterController extends Controller
     protected function redirectTo()
     {
         
-        return '/stripe-payment';
+        return '/verify-code';
     }
 
     /**
@@ -72,6 +76,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $code = random_int(100000, 999999);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -79,8 +84,14 @@ class RegisterController extends Controller
             'package_id' => decrypt($data['package_id']),
             'role' => 'customer',
             'phone' => $data['phone'],
+            'verification_code' => $code,
         ]);
-        event(new Registered($user));
+        $details = [
+            'verification_code' => $code,
+        ];
+        Mail::to($data['email'])->send(new VerficationEmail($details));
+        // $id = Auth::id();
+        // session()->put('user_id',$id);
         return $user;
     }
 }

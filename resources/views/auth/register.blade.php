@@ -1,4 +1,27 @@
 @extends('layouts.app')
+@section('css')
+<style>
+
+#password-strength.weak {
+    font-weight: bold;
+    font-size: 12px;
+    color: #dc3545; /* red */
+}
+
+#password-strength.good {
+    font-weight: bold;
+    font-size: 12px;
+    color: #ffc107; /* yellow */
+}
+
+#password-strength.strong {
+    font-weight: bold;
+    font-size: 12px;
+    color: #28a745; /* green */
+}
+
+</style>
+@endsection
 @section('content')
   <!-- BEGIN: Content-->
   <div class="app-content content">
@@ -53,6 +76,7 @@
                                                 </div>
                                                 <div class="form-label-group">
                                                     <input type="password" id="inputPassword" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password *" required>
+                                                    <div id="password-strength"></div>
                                                     <label for="inputPassword">Password*</label>
                                                     @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -132,7 +156,7 @@
                             <div>
                                 <h2>Terms and Conditions</h2>
                                 <h5>Welcome to License Management !</h5>
-                                <p>These terms and conditions outline the rules and regulations for the use of GesCle's Website, located at <a href="https://license.sapphost.com/">https://license.sapphost.com/</a>.</p>
+                                <p>These terms and conditions outline the rules and regulations for the use of GesCle's Website, located at <a href="https://license.sapphost.com/public/">https://license.sapphost.com/</a>.</p>
                                 <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use License Management if you do not agree to take all of the terms and conditions stated on this page.</p>
                                 <p>The following terminology applies to these Terms and Conditions, All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
                                 <h5>Cookies</h5>
@@ -162,4 +186,55 @@
     </div>
 </div>
 <!-- END: Content-->
+@endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#inputPassword').on('keyup', function() {
+        var password = $(this).val();
+        var strength = checkPasswordStrength(password);
+        var strengthClass = 'weak';
+        var strengthText = 'Weak password  ******';
+
+        if (strength >= 2) {
+            strengthClass = 'good';
+            strengthText = 'Good Password ****';
+        }
+
+        if (strength >= 3) {
+            strengthClass = 'strong';
+            strengthText = 'Strong Password **';
+        }
+
+        $('#password-strength').removeClass().addClass(strengthClass).html(strengthText);
+    });
+
+    function checkPasswordStrength(password) {
+        var strength = 0;
+
+        if (password.length < 6) {
+            return strength;
+        }
+
+        if (password.match(/[a-z]/)) {
+            strength++;
+        }
+
+        if (password.match(/[A-Z]/)) {
+            strength++;
+        }
+
+        if (password.match(/[0-9]/)) {
+            strength++;
+        }
+
+        if (password.match(/[$@#&!]/)) {
+            strength++;
+        }
+
+        return strength;
+    }
+});
+</script>
 @endsection

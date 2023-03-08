@@ -34,6 +34,7 @@
                                           <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Point</th>
+                                            <th scope="col">Value</th>
                                             <th scope="col">Status</th>
                                           </tr>
                                         </thead>
@@ -43,8 +44,11 @@
                                           <tr>
                                             <th scope="row">{{$loop->index+1}}</th>
                                             <td>
-                                                <input type="text" name="point_name[]" value="{{$details->point_name}}">
+                                                <input type="text" class="form-control" name="point_name[]" value="{{$details->point_name}}">
                                                 <input type="hidden" name="detail_id[]" value="{{$details->id}}">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="point_value[]" value="{{$details->point_value}}">
                                             </td>
                                             <td>
                                                 <input type="checkbox" name="status[{{$loop->index}}]" value="1" {{$details->status == '1' ? 'checked' : ''}}>

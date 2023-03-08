@@ -1,4 +1,15 @@
 @extends('superadmin.layouts.master')
+@section('css')
+<style>
+    table.dataTable thead tr {
+        background-color: #183153;
+        color: white;
+    }
+    table.dataTable tbody td {
+        border: 0.01px solid rgb(224, 224, 224);
+    }
+</style>
+@endsection
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -37,9 +48,11 @@
                                                         <th>#</th>
                                                         <th>{{__('messages.th name')}}</th>
                                                         <th>{{__('messages.th email')}}</th>
+                                                        <th>Role</th>
                                                         <th>{{__('messages.th address')}}</th>
                                                         <th>{{__('messages.th phone')}}</th>
                                                         <th>{{__('messages.th added')}}</th>
+                                                        <th>Date</th>
                                                         <th>{{__('messages.th action')}}</th>
                                                     </tr>
                                                 </thead>
@@ -52,17 +65,33 @@
                                                             <td>{{$x++}}</td>
                                                             <td>{{ $customer->name }}</td>
                                                             <td>{{ $customer->email }}</td>
-                                                            <td>{{ $customer->address }}</td>
-                                                            <td>{{ $customer->phone }}</td>
-                                                            @foreach ($customer->addby as $addedby )
                                                             <td class="product-category">
-                                                                <div class="chip chip-dark">
+                                                                <div class="chip chip-primary">
                                                                     <div class="chip-body" style="max-width: 100px; width:auto; padding:5px;">
-                                                                        <div class="chip-text"><strong>{{$addedby->name}}</strong></div>
+                                                                        <div class="chip-text"><strong>{{$customer->role}}</strong></div>
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            @endforeach
+                                                            <td>{{ $customer->address }}</td>
+                                                            <td>{{ $customer->phone }}</td>
+                                                            @if($customer->add_by)
+                                                            <td class="product-category">
+                                                                <div class="chip chip-dark">
+                                                                    <div class="chip-body" style="max-width: 100px; width:auto; padding:5px;">
+                                                                        <div class="chip-text"><strong>{{MyHelper::get_addby($customer->add_by)->name}}</strong></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            @else
+                                                            <td class="product-category">
+                                                                <div class="chip chip-danger">
+                                                                    <div class="chip-body" style="max-width: 100px; width:auto; padding:5px;">
+                                                                        <div class="chip-text"><strong>N/A</strong></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            @endif
+                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d H:i:s',$customer->created_at)->format('d-F-Y') }}</td>
                                                             <td>
                                                                 <span class="d-flex">
                                                                     <a href="{{route('superadmin-edit-customer',$customer->id)}}"><i class="fa fa-edit text-warning"></i></a>&nbsp;

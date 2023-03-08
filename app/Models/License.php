@@ -25,6 +25,8 @@ class License extends Model
     {
         return $this->belongsTo(User::class,'customer_id','id');
     }
-  
-  
+    public function get_license_user()
+    {
+        return $this->belongsTo(User::class,'reffer_to','id');
+    }
 }

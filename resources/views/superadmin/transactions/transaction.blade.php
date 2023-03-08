@@ -6,7 +6,6 @@
         color: white;
 
     }
-
     table.dataTable tbody td {
         border: 0.01px solid rgb(224, 224, 224);
     }
@@ -49,10 +48,10 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <td>User Name</td>
-                                                        <td>package</td>
-                                                        <td>price</td>
-                                                        <td>created_at</td>
+                                                        <th>User Name</th>
+                                                        <th>package</th>
+                                                        <th>price</th>
+                                                        <th>created_at</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -63,14 +62,11 @@
                 
                                                     @foreach ($transactions as $transaction)
                                                         <tr>
-                                                            <th>{{ $x++ }}</th>
-                                                            <th>{{ $transaction->user->name }}</th>
-                                                            <th>{{ $transaction->package->package }}
-                                                            </th>
-                                                            <th>{{ $transaction->package->price }}
-                                                            </th>
-                                                            <th>{{ $transaction->package->created_at }}
-                                                            </th>
+                                                            <td>{{ $x++ }}</td>
+                                                            <td>{{ $transaction->user->name }}</td>
+                                                            <td>{{ $transaction->package->name }}</td>
+                                                            <td>{{ $transaction->package->price }}</td>
+                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d H:i:s',$transaction->package->created_at)->format('d-F-Y') }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

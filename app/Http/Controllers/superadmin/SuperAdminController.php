@@ -29,7 +29,7 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
     public function dashboard()
     {   
-        $total_customers = User::whereIn('role',['manager','tool-owner'])->count();
+        $total_customers = User::where('role','!=','superadmin')->count();
         $total_packages = Package::count();
         $total_license = License::count();
         $total_departments = Department::count();
@@ -39,6 +39,8 @@ class SuperAdminController extends Controller
         $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
         $current_amount = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('amount');
         $last_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
+        $last_three_months =Transaction::whereMonth('created_at','>=',\Carbon\Carbon::now()->subMonth(3))->sum('amount');
+        $last_three_months_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
 
         $free_package = Transaction::where('package_id','1')->pluck('package_id')->count();
         $plus_package = Transaction::where('package_id','2')->pluck('package_id')->count();
@@ -123,6 +125,8 @@ class SuperAdminController extends Controller
             'one_year_customers',
             'current_month',
             'last_month',
+            'last_three_months',
+            'last_three_months_amount',
             'current_date',
             'current_amount',
             'last_amount',
@@ -134,11 +138,11 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Subscription Start ------------------------------------//
     public function subscription()
     {
-        $subcription = User::where('role','customer')->where('active','1')->whereNotNull('package_id')
-        ->with('package')
-        ->get();
-      
-        return view('superadmin.subscriptions.subcription',compact('subcription'));
+        // $subcription = User::where('role','customer')->where('active','1')->whereNotNull('package_id')
+        // ->with('package')
+        // ->get();
+        $subcriptions = Transaction::all();
+        return view('superadmin.subscriptions.subcription',compact('subcriptions'));
     }
     //------------------------------------ Super-Admin Subscription End ------------------------------------//
 
@@ -146,7 +150,7 @@ class SuperAdminController extends Controller
     public function customer()
     {
 
-        $customers = User::where('role','customer')->get();
+        $customers = User::where('role','!=','superadmin')->get();
         return view('superadmin.customers.customers', compact('customers'));
     }
 
@@ -280,6 +284,7 @@ class SuperAdminController extends Controller
                 {
                     $package_detail = PackageDetail::where('id',$request->detail_id[$i])->first();
                     $package_detail->point_name = $request->point_name[$i];
+                    $package_detail->point_value = $request->point_value[$i];
                     if(isset($request->status[$i]))
                     {
                         $package_detail->status = 1;
@@ -379,6 +384,14 @@ class SuperAdminController extends Controller
         return view('superadmin.transactions.transaction' ,compact('transactions'));
     }
     //------------------------------------ Super-Admin Transaction End ------------------------------------//
+
+    //------------------------------------ Super-Admin Departments Start ------------------------------------//
+    public function department()
+    {
+        $departments = Department::all();
+        return view('superadmin.departments.department',compact('departments'));
+    }
+    //------------------------------------ Super-Admin Departments End ------------------------------------//
 
     //------------------------------------ Super-Admin License Start ------------------------------------//
 

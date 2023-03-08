@@ -38,7 +38,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>{{__('messages.frm name')}}</label>
+                                                        <label>{{__('messages.frm name')}} *</label>
                                                         <div class="controls">
                                                             <input type="text" name="name" class="form-control " 
                                                                 data-validation-required-message="This field is required"
@@ -47,7 +47,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label> {{__('messages.frm phone')}}</label>
+                                                        <label> {{__('messages.frm phone')}}*</label>
                                                         <div class="controls">
                                                             <input type="text" name="phone"  class="form-control  " 
                                                                 required data-validation-containsnumber-regex="(\d)+"
@@ -58,7 +58,7 @@
                                                     </div>
                                                      
                                                       <div class="form-group">
-                                                        <label>{{__('messages.frm password')}}</label>
+                                                        <label>{{__('messages.frm password')}}*</label>
                                                         <div class="controls">
                                                             <input type="password" name="password" class="form-control " name="password"
                                                                 data-validation-required-message="This field is required"
@@ -71,7 +71,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label> {{__('messages.frm email')}}</label>
+                                                        <label> {{__('messages.frm email')}}*</label>
                                                         <div class="controls">
                                                             <input type="email" name="email" class="form-control"
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
@@ -82,7 +82,7 @@
                                                     </div>
                                                    
                                                   <div class="form-group">
-                                                        <label>{{__('messages.frm address')}}</label>
+                                                        <label>{{__('messages.frm address')}}*</label>
                                                         <div class="controls">
                                                             <input type="text" name="address"  class="form-control "
                                                                 required data-validation-containsnumber-regex="^[a-zA-Z]+$"
@@ -92,7 +92,7 @@
                                                         </div>
                                                     </div> 
                                                     <div class="form-group">
-                                                        <label>{{__('messages.frm cnfrm password')}}</label>
+                                                        <label>{{__('messages.frm cnfrm password')}}*</label>
                                                         <div class="controls">
                                                             <input type="password" name="password_confirmation" class="form-control"
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"

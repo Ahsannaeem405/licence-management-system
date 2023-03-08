@@ -22,6 +22,15 @@
             cursor: pointer;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .toast-error {
+     background-color: #E54040 !important;
+     }
+     .toast-success {
+         background-color: #2BD92B !important;
+     }
+     </style>
 
 </head>
 
@@ -837,7 +846,7 @@
     <!-- customor logos -->
     <section id="product-slider" class="py-md-5  py-3">
         <div class="container mt-4">
-            <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">{{__('messages.customers')}}</h2>
+            <h2 class="section_heading text-center position-relative mb-md-5 mb-3 fw-bold">Customers</h2>
             <div class="slider">
                 <div class="slide-track">
                     <div class="slide">
@@ -1399,7 +1408,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-5 col-lg-4 ml-lg-0 d-flex justify-content-center text-center text-md-end">
+                    <div class="col-md-5 col-lg-4 ml-lg-0 d-flex justify-content-end text-center text-md-end">
 
                         <a class="btn btn-outline-light btn-floating m-1" href="#" class="text-white"
                             role="button"><i class="fab fa-facebook-f"></i></a>
@@ -1418,8 +1427,6 @@
         </div>
     </footer>
     <!-- Button trigger modal -->
-
-    <script></script>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -1430,7 +1437,24 @@
 <script src="{{ asset('assets/asset/js/ani-particals.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+<!-- Toastr  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<script>
+   toastr.options = {
+   "closeButton": true,
+   "progressBar": true
+   }
+   @if(Session::has('success'))
+           toastr.success('{{ Session::get('success') }}');
+       @elseif(Session::has('error'))
+           toastr.error('{{ Session::get('error') }}');
+       @endif
+   @if($errors->any())
+       @foreach ($errors->all() as $error)
+           toastr.error('{{$error}}');
+       @endforeach
+   @endif
+</script>
 </html>
 <script>
     $(document).ready(function() {
@@ -1509,4 +1533,19 @@
 <!-- aos animation -->
 <script>
     AOS.init();
+</script>
+<script>
+    var myip;
+        $.getJSON("https://api.ipify.org/?format=json", function(e) {
+            myip = e.ip;
+            $.ajax({
+            type:'get',
+            url:"{{route('user-visits')}}",
+            data:{ip:myip},
+            success:function(data)
+            {
+                // alert(data.success);
+            }
+        });
+    });
 </script>

@@ -3,9 +3,13 @@
 return [
     'dashbaord' => 'Tableau de bord',
     'subscription' => 'Abonnements',
+    'th-user-name' => 'Nom du client',
+    'th-package-name' => 'Nom du paquet',
+    'th-price' => 'Prix',
     'packages' => 'Paquets',
     'transaction' => 'Transactions',
     'customer' => 'Clientes',
+    'department' => 'Départements',
     'license' => 'Licence',
     'service' => 'Prestations de service',
     'multi lang' => 'Multi langue',
@@ -56,65 +60,15 @@ return [
     'total departments'=>'Nombre total de départements',
     'total license'=>'Licence totale',
     'welcome'=>'Bienvenu',
-    //----------------------Customer Subscription----------//
-    'subscription pack'=> 'Forfaits d abonnement',
-    //-----------------------Continue----------------------//
-
-    //------------------------Customer Department start-----------------//
-    'department'=> 'Département',
-    'add department'=> 'Ajouter un département',
-    'department name'=> 'Nom du département',
-    'description' => 'Description',
-    'submit' => 'Soumettre',
-    //------------------Customer Department End-------------------------//
-
-    //-----------------------Customer License-------------------------------//
-    'add license' => 'Ajouter une licence',
-    'title'=> 'Titre',
-    'key'=> 'Clé',
-    'date i'=> 'Fecha de emisión',
-    'date e'=> 'Date d expiration',
-     //-----------------------Customer End License-------------------------------//
-     
-    //-----------------------Customer Add License----------------------------//
-    'license'=> 'Licences',
-      //------------------------End Customer Add License----------------------------//
-
-    //------------------------ Customer Management----------------------------//
-    'management' => 'Gestion',
-    'role' =>'Rôle',
-    'add management' => 'Ajouter la gestion',
-     //------------------------ Customer End Management----------------------------//
-
-  //--------------------------Customer Add Management---------------------------//
-  'add toolowner' => 'Ajouter Gérer / Propriétaire de l outil',
- //--------------------------Customer End Add Management---------------------------//
-
-  //--------------------------Manager sidebar---------------------------//
-  
-  'company info'=> 'Information d entreprise',
-  //--------------------------Manager End sidebar---------------------------//
-
-    //--------------------------Manager Company Info---------------------------//
-   'company info'=> 'Informations sur la société',
-  'personal info' => 'Informations personnelles',
-  'com det' => 'Détails de l entreprise',
-   'total dep' => 'Département total',
-   'total license' => 'Licence totale',
-    //--------------------------Manager End Company Info---------------------------//
-
-
-
-
 
     //------------------------- Welcome Navbar Part -----------------------//
-    'nav-works' => 'How it works',
-    'nav-pricing' => 'Pricing',
-    'nav-benifits' => 'Benifits',
-    'nav-customers' => 'Customers',
-    'nav-about' => 'About Us',
-    'nav-contact' => 'Contact Us',
-    'nav-login' => 'Login',
+    'nav-works' => 'Comment marche',
+    'nav-pricing' => 'Tarification',
+    'nav-benifits' => 'Avantages',
+    'nav-customers' => 'Clientes',
+    'nav-about' => 'Propos de nous',
+    'nav-contact' => 'Contactez-nous',
+    'nav-login' => 'Connexion',
     //------------------------- Welcome Navbar Part -----------------------//
     
     //------------------------- Welcome Banner Part -----------------------//
@@ -175,6 +129,5 @@ return [
     'features...'=>'Lapplication dispose dune variété de fonctionnalités avancées qui peuvent aider les utilisateurs à gérer et à suivre leurs licences de manière plus efficace et efficiente.',
     'increases efficiency'=>'Augmente lefficacité',
     'efficiency...'=>'Lapplication permet de gagner du temps et daugmenter lefficacité en automatisant le processus de suivi des licences, elle contribue également à réduire les erreurs humaines.',
-    'customers'=>'clients',
 ];
  

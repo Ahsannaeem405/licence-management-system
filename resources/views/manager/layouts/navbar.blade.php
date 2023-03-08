@@ -29,7 +29,7 @@
                             </div>
                             <span>
                                 @isset(Auth::user()->image)
-                                <img class="round" src="{{asset('profiles-images')}}/{{Auth::user()->image}}" alt="avatar" height="40" width="40">
+                                <img class="round" src="{{asset('profile-images')}}/{{Auth::user()->image}}" alt="avatar" height="40" width="40">
                                 @else
                                 <img class="round" src="{{asset('assets/app-assets/images/portrait/small/avatar-s-12.jpg')}}" alt="avatar" height="40" width="40">
                                 @endisset
@@ -39,7 +39,6 @@
                             <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}"><i class="feather icon-power"></i> Logout</a>
                         </div>
                     </li>
-                    
                 </ul>
             </div>
         </div>

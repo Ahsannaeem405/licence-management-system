@@ -144,7 +144,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">{{{__('messages.company info')}}}</h2>
+                            <h2 class="content-header-title float-left mb-0">Company Information</h2>
 
                         </div>
                     </div>
@@ -165,39 +165,61 @@
                                             <div class="col-sm-4 bg-c-lite-green user-profile">
                                                 <div class="card-block text-center text-white">
                                                     <div class="m-b-25">
-                                                        @isset($company->image)
-                                                        <img src="{{asset('profiles-images')}}/{{$company->image}}" class="img-radius" alt="User-Profile-Image">
+                                                        @isset($company->company_logo)
+                                                        <img src="{{asset('company-logo')}}/{{$company->company_logo}}" class="img-radius" alt="User-Profile-Image">
                                                         @else
                                                         <img src="{{asset('User-avatar.png')}}" class="img-radius" alt="User-Profile-Image">
                                                         @endisset
                                                     </div>
-                                                    <h6 class="f-w-600">{{$company->name}}</h6>
+                                                    <h6 class="f-w-600">{{$company->company_name}}</h6>
                                                 </div>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="card-block">
-                                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">{{{__('messages.personal info')}}}</h6>
+                                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Personal Information</h6>
                                                     <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <p class="m-b-10 f-w-600">{{{__('messages.frm email')}}}</p>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-10 f-w-600">Email</p>
                                                             <h6 class="text-muted f-w-400">{{$company->email}}</h6>
                                                         </div>
-                                                        <div class="col-sm-6">
-                                                            <p class="m-b-10 f-w-600">{{{__('messages.frm phone')}}}</p>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-10 f-w-600">Phone</p>
                                                             <h6 class="text-muted f-w-400">{{$company->phone}}</h6>
                                                         </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-10 f-w-600">Address</p>
+                                                            <h6 class="text-muted f-w-400">{{$company->address}}</h6>
+                                                        </div>
                                                     </div>
-                                                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">{{{__('messages.com det')}}}</h6>
+                                                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Company Details</h6>
                                                     <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <p class="m-b-10 f-w-600">{{{__('messages.total dep')}}}</p>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-10 f-w-600">Total Departments</p>
                                                             <h6 class="text-muted f-w-400">{{$total_department}}</h6>
                                                         </div>
-                                                        <div class="col-sm-6">
-                                                            <p class="m-b-10 f-w-600">{{{__('messages.total license')}}}</p>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-10 f-w-600">Total License</p>
                                                             <h6 class="text-muted f-w-400">{{$total_license}}</h6>
                                                         </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-10 f-w-600">Your Department</p>
+                                                            <h6 class="text-muted f-w-400">{{Auth::user()->department->name}}</h6>
+                                                        </div>
                                                     </div>
+                                                    {{-- <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title=""
+                                                                data-original-title="facebook"
+                                                                data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a>
+                                                        </li>
+                                                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title=""
+                                                                data-original-title="twitter"
+                                                                data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a>
+                                                        </li>
+                                                        <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title=""
+                                                                data-original-title="instagram"
+                                                                data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a>
+                                                        </li>
+                                                    </ul> --}}
                                                 </div>
                                             </div>
                                         </div>

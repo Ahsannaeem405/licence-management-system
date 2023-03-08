@@ -77,6 +77,7 @@
                                     </a>
                                 </div>
                                 <div class="col-12">
+                                  <a href="{{route('superadmin-departments')}}">
                                     <div class="card">
                                         <div class="card-header flex-column align-items-start pb-0">
                                             <div class="d-flex">
@@ -92,6 +93,7 @@
                                             <div id="line-area-chart-4"></div>
                                         </div> --}}
                                     </div>
+                                  </a>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +123,13 @@
                                                     <span>{{$last_month}}</span>
                                                 </h2>
                                             </div>
-
+                                            <div>
+                                              <p class="mb-50 text-bold-600 ml-2">Three Month</p>
+                                              <h2 class="text-bold-400 ml-2">
+                                                  <sup class="font-medium-1">$</sup>
+                                                  <span>{{$last_three_months}}</span>
+                                              </h2>
+                                            </div>
                                         </div>
                                         <div id="revenue-chart"></div>
                                     </div>
@@ -560,6 +568,12 @@
         name: "Last Month",
         //  data: [46000, 48000, 45500, 46600, 44500, 46500, 45000, 47000]
         data: [<?php if(isset($last_amount)){for($i=0; $i<count($last_amount); $i++){echo "\"".($last_amount[$i])."\"".',';}} ?>]
+
+      },
+      {
+        name: "Three Month",
+        //  data: [46, 18, 55, 86, 44, 22, 20, 37]
+        data: [<?php if(isset($last_three_months_amount)){for($i=0; $i<count($last_three_months_amount); $i++){echo "\"".($last_three_months_amount[$i])."\"".',';}} ?>]
 
       }
       ],

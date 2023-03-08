@@ -1,4 +1,15 @@
 @extends('superadmin.layouts.master')
+@section('css')
+<style>
+    table.dataTable thead tr {
+        background-color: #183153;
+        color: white;
+    }
+    table.dataTable tbody td {
+        border: 0.01px solid rgb(224, 224, 224);
+    }
+</style>
+@endsection
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -37,20 +48,19 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                        <th>{{__('messages.th package')}}</th>
-                                                        <th>{{__('messages.th entity')}}</th>
-                                                        <th>{{__('messages.th price')}}</th>
-                                                        <th>{{__('messages.th description')}}</th>
-                                                         
+                                                        <th>{{__('messages.th-user-name')}}</th>
+                                                        <th>{{__('messages.th-package-name')}}</th>
+                                                        <th>{{__('messages.th-price')}}</th>
+                                                        <th>Date</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($subcription as $item)
+                                                    @foreach ($subcriptions as $subcription)
                                                     <tr>
-                                                        <td>{{$item->package->package}}</td>
-                                                        <td>{{$item->package->entity}}</td>
-                                                        <td>{{$item->package->price}}</td>
-                                                        <td>{{$item->package->description}}</td>
+                                                        <td>{{$subcription->user->name}}</td>
+                                                        <td>{{$subcription->package->name}}</td>
+                                                        <td>{{$subcription->amount}}</td>
+                                                        <td>{{\Carbon\carbon::createFromFormat('Y-m-d H:i:s',$subcription->created_at)->format('d-F-Y') }}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

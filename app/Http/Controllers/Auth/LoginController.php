@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 // use Illuminate\Contracts\Session\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
@@ -30,6 +31,8 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo(){
+        App::setLocale(Auth::user()->language);
+        Session::put('applocale', Auth::user()->language);
         if(Auth::User() && Auth::User()->role =='superadmin')
         {
              return '/superadmin/dashboard';

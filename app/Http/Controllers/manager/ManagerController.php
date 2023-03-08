@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerMail;
+use PDF;
 use MyHelper;
 class ManagerController extends Controller
 {
@@ -135,38 +136,78 @@ class ManagerController extends Controller
     //------------------------------------ Manager-License Start ------------------------------------//
     public function license()
     {
-        $licenses = License::all();
+        $licenses = License::where('reffer_to',Auth::user()->id)->get();
         return view('manager.license.license',compact('licenses'));
+    }
+
+    public function export_manager_license_list(Request $request)
+    {
+        $licenses = License::whereIn('id',explode(',',$request->id))->get();
+        $pdf = PDF::loadView('pdf.manager-license-list',compact('licenses'));
+        return $pdf->download('ManLicExportReport.pdf');
+    }
+
+    public function share_manager_license_list(Request $request)
+    {
+        $licenses = License::whereIn('id',explode(',',$request->id))->get();
+        $pdf = PDF::loadView('emails.manager-license-list',compact('licenses'));
+        Mail::send([], [], function ($message) use ($pdf,$request) {
+            $message->to($request->email)
+                    ->subject('Manager List PDF')
+                    ->attachData($pdf->output(), 'ManLicExportReport.pdf', [
+                        'mime' => 'application/pdf',
+                    ]);
+        });
+        return back()->with('success','Manager List Sent Successfully');
     }
 
     public function add_license()
     {
         $department_id = User::where('id',Auth::user()->id)->value('department_id');
         $department = Department::where('id',$department_id)->first();
-        $services = Service::all();
-        return view('manager.license.add-license',compact('services','department'));
+        // $users  = User::where('add_by',Auth::user()->id)->get();
+        // $services = Service::all();
+        return view('manager.license.add-license',compact('department'));
     }
 
     public function store_license(Request $request)
     {
         $this->validate($request, [
             'title' => ['required', 'string', 'max:255'],
-            'service' => ['required'],
+            'purchase_date' => ['required'],
+            'reffer' => ['required'],
             'department' => ['required'],
             'key' => ['required'],
-            'issue' => ['required'],
-            'expiry' => ['required'],
+            'additional_info' => ['string','max:2000'],
         ]);
         $license = new License;
-        $license->create([
-            'title' => $request->title,
-            'customer_id' => Auth::user()->id,
-            'service_id' =>  $request->service,
-            'department_id' =>  $request->department,
-            'date_of_issue' => $request->issue,
-            'date_of_expiry' => $request->expiry,
-            'key' =>  $request->key,
-        ]);
+        if ($file = $request->hasfile('attachment'))
+                {
+                    $file = $request->file('attachment');
+                    $fileName = uniqid() . $file->getClientOriginalName();
+                    $destinationPath = public_path().'/license-attachments/';
+                    $file->move($destinationPath, $fileName);
+                    $request->attachment = $fileName;
+                    $license->attachment = $request->attachment;
+                }
+                $license->create([
+                    'title' => $request->title,
+                    'customer_id' => Auth::user()->id,
+                    'description' => $request->description,
+                    'price' => $request->price,
+                    'purchase_date' => $request->purchase_date,
+                    'additional_info' => $request->additional_info,
+                    'license_owner' => $request->license_owner,
+                    'renew_date' => $request->renew_date,
+                    'renew_alert' => $request->renew_alert ? 1 : 0,
+                    'expiry_alert' => $request->expiry_alert ? 1 : 0,
+                    'reffer_to' =>  $request->reffer,
+                    'department_id' =>  $request->department,
+                    'date_of_issue' => $request->issue,
+                    'date_of_expiry' => $request->expiry,
+                    'key' =>  $request->key,
+                    'attachment' => $request->attachment,
+                ]);
         return redirect()->route('manager-license')->with('success', 'License added successfully');
     }
 

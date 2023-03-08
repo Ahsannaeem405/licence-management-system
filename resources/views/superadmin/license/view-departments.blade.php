@@ -1,4 +1,15 @@
 @extends('superadmin.layouts.master')
+@section('css')
+<style>
+    table.dataTable thead tr {
+        background-color: #183153;
+        color: white;
+    }
+    table.dataTable tbody td {
+        border: 0.01px solid rgb(224, 224, 224);
+    }
+</style>
+@endsection
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -41,7 +52,7 @@
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                         
+                                                        <th>#</th>
                                                         <th>{{__('messages.department')}}</th>
                                                         <th>{{__('messages.descrip')}}</th>
                                                         <th>{{__('messages.create')}}</th>
@@ -52,11 +63,11 @@
                                                 <tbody>
                                                     @foreach ($departments as $item)
                                                         <tr>
-                                                            <td>{{ $item->department_name }}</td>
+                                                            <td>{{$loop->index+1}}</td>
+                                                            <td>{{ $item->name }}</td>
                                                             <td>{{ $item->description }}</td>
                                                             <td>{{\Carbon\carbon::createFromFormat('Y-m-d h:i:s',$item->created_at)->format('d-F-Y') }}</td>
                                                             <td>
-                                                                
                                                                <span class="d-flex">
                                                                 <a href="{{route('superadmin-view-license',$item->id)}}"><i class="fa fa-eye"></i></a>
                                                             </span>

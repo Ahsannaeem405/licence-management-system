@@ -36,23 +36,37 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label> Title</label>
+                                                        <label>Title</label>
                                                         <div class="controls">
-                                                            <input type="text" name="title" class="form-control"
-                                                                data-validation-required-message="This field is required"
-                                                                 value="{{$license->title}}" required>
+                                                            <input type="text" name="title" class="form-control" value="{{$license->title}}" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description</label>
+                                                        <textarea type="text" class="form-control" name="description">{{$license->description}}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Price</label>
+                                                        <div class="controls">
+                                                            <input type="text" name="price" value="{{$license->price}}" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Purchase Date <font class="text-danger">*</font></label>
+                                                        <div class="controls">
+                                                            <input type="date" name="purchase_date" value="{{$license->purchase_date}}" class="form-control" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Issue of Date</label>
                                                         <div class="controls">
-                                                            <input type="date" name="issue" class="form-control"
-                                                                required data-validation-containsnumber-regex="(\d)+"
-                                                                data-validation-containsnumber-message="The numeric field may only contain numeric characters."
-                                                                value="{{$license->date_of_issue}}" required>
+                                                            <input type="date" name="issue" class="form-control" value="{{$license->date_of_issue}}" required>
                                                         </div>
                                                     </div>
-                                                   
+                                                   <div class="form-group">
+                                                        <label>Additional Information</label>
+                                                        <textarea type="text" class="form-control" name="additional_info">{{$license->additional_info}}</textarea>
+                                                    </div>
                                                     <div class="form-group">
                                                         <label>Departments</label>
                                                         <select class="form-control" name="department">
@@ -65,6 +79,19 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        <label>Manager List</label>
+                                                        <select class="form-control" name="reffer" required>
+                                                            <option selected disabled>Please Select Manger</option>
+                                                            @foreach($users as $user)
+                                                            <option value="{{$user->id}}" {{$user->id == $license->reffer_to ? 'selected' : ''}}>{{$user->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>License Owner</label>
+                                                        <textarea type="text" class="form-control" name="license_owner">{{$license->license_owner}}</textarea>
+                                                    </div>
+                                                    {{-- <div class="form-group">
                                                         <label>Services</label>
                                                         <select class="form-control" class="service" name="service">
                                                             <option selected disabled>Please Select Service</option>
@@ -72,28 +99,33 @@
                                                             <option value="{{$service->id}}" {{$service->id == $license->service_id ? 'selected' : ''}}>{{$service->name}}</option>
                                                             @endforeach
                                                         </select>
+                                                    </div> --}}
+                                                    <div class="form-group">
+                                                        <label>Attachment</label>
+                                                        <div class="controls">
+                                                            <input type="file" name="attachment" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Renew Date</label>
+                                                        <div class="controls">
+                                                            <input type="date" name="renew_date" value="{{$license->renew_date}}" min="{{ date('Y-m-d') }}" class="form-control" required>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Expiry of Date</label>
                                                         <div class="controls">
-                                                            <input type="date" name="expiry" class="form-control"
-                                                                data-validation-containsnumber-regex="^([0-9]+)$"
-                                                                data-validation-containsnumber-message="The regex field format is invalid."
-                                                                value="{{$license->date_of_expiry}}" required>
+                                                            <input type="date" name="expiry" min="{{ date('Y-m-d') }}" class="form-control" value="{{$license->date_of_expiry}}" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Key</label>
                                                         <textarea type="text" class="form-control" name="key" required> {{$license->key}} </textarea>
                                                     </div>
-
                                                 </div>
                                             </div>
-
                                             <div class="col-md-12 ">
-                                                <button type="submit" class="btn btn-primary mr-1 mb-1"
-                                                    style="float: right">Save</button>
-
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right">Save</button>
                                             </div>
                                         </form>
                                     </div>

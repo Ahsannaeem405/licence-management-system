@@ -3,11 +3,15 @@
 return [
     'dashbaord' => 'Dashboard',
     'subscription' => 'Subscriptions',
+    'th-user-name' => 'Customer Name',
+    'th-package-name' => 'Package Name',
+    'th-price' => 'Price',
     'packages' => 'Packages',
     'transaction' => 'Transactions',
     'customer' => 'Customers',
-    'license' => 'License',
-    'service' => 'Service',
+    'department' => 'Departments',
+    'license' => 'Licenses',
+    'service' => 'Services',
     'multi lang' => 'Multi Language',
     'analytics' => 'Analytics',
     'account setting' => 'Account Settings',
@@ -38,8 +42,8 @@ return [
     'department'=> 'Department',
     'descrip'=> 'Description',
     'create'=> 'Created At',
-    'service'=> 'Service',
-    'add services'=> 'Add Service',
+    'service'=> 'Services',
+    'add services'=> 'Add Services',
     'service name' => 'Service Name',
     'lang coun'=> 'Country',
     'lang'=> 'Language',
@@ -52,7 +56,7 @@ return [
     'old pass' => 'Old Password',
     'new pass'=> 'New Password',
     'conf new pass' => 'Confirm New Password',
-    'management'=>'Management',
+    'management'=>'Manager',
     'total subscriptions'=>'Total Subscriptions',
     'total departments'=>'Total Departments',
     'total license'=>'Total License',
@@ -115,58 +119,11 @@ return [
      'old pass' => 'Old Password',
      'new pass'=> 'New Password',
      'conf new pass' => 'Confirm New Password',
-     'management'=>'Management',
+     'management'=>'Manager',
      'total subscriptions'=>'Total Subscriptions',
      'total departments'=>'Total Departments',
      'total license'=>'Total License',
      'welcome'=>'Welcome',
-       //----------------------customer Subscription----------//
-     'subscription pack'=> 'Subscription Packages',
-      //-----------------------Continue----------------------//
-
-    //------------------------Department start-----------------//
-    'department'=> 'Department',
-    'add department'=> 'Add Department',
-    'department name'=> 'Department Name',
-    'description' => 'Description',
-    'submit' => 'Submit',
-    //------------------Department End-------------------------//
-
-    //-----------------------Customer License-------------------------------//
-    'add license' => 'Add License',
-    'title'=> 'Title',
-    'key'=> 'Key',
-    'date i'=> 'Date of Issue',
-    'date e'=> 'Date of Expiry',
-     //-----------------------Customer End License-------------------------------//
-
-    //-----------------------Customer Add License----------------------------//
-    'license'=> 'Licenses',
-    //------------------------End Customer Add License----------------------------//
-
-    //------------------------ Customer Management----------------------------//
-    'management' => 'Management',
-    'role' =>'Role',
-    'add management' => 'Add Management',
-  //------------------------ Customer End Management----------------------------//
-
-  //--------------------------Customer Add Management---------------------------//
-  'add toolowner' => 'Add Manage / Tool Owner',
-   //--------------------------Customer End Add Management---------------------------//
-
-  //--------------------------Manager sidebar---------------------------//
-   
-  'company info'=> 'Company Info',
-  //--------------------------Manager End sidebar---------------------------//
-
-   //--------------------------Manager Company Info---------------------------//
-   'company info'=> 'Company Information',
-   'personal info' => 'Personal Information',
-   'com det' => 'Company Details',
-   'total dep' => 'Total Department',
-   'total license' => 'Total License',
-
-    //--------------------------Manager End Company Info---------------------------//
      'benefits'=>'Benefits',
      'streamlined license tracking'=>'Streamlined license tracking',
      'with your application, users no longer have to manually track and manage their licenses, which can save them a significant amount of time and effort.'
@@ -183,5 +140,4 @@ return [
     'features...'=>'The application has a variety of advanced features that can help users manage and track their licenses in a more efficient and effective way.',
     'increases efficiency'=>'Increases Efficiency',
     'efficiency...'=>'The application saves time and increases efficiency by automating the process of license tracking, it also helps in reducing human error.',
-    'customers'=>'Customers',
 ];

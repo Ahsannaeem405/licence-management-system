@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">{{__('messages.add toolowner')}}</h2>
+                            <h2 class="content-header-title float-left mb-0">Add Manager / Tool Owner</h2>
                             
                         </div>
                     </div>
@@ -31,40 +31,33 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal" action="{{route('customer-store-management')}}" method="POST" novalidate>
+                                        <form class="form-horizontal" action="{{route('customer-store-management')}}" method="POST">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>{{{__('messages.th name')}}}</label>
+                                                        <label>Name</label>
                                                         <div class="controls">
-                                                            <input type="text" name="name" class="form-control"
-                                                                data-validation-required-message="This field is required"
-                                                                placeholder="Enter Name">
+                                                            <input type="text" name="name" value="{{old('name')}}" class="form-control" placeholder="Enter Name">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>{{{__('messages.th phone')}}}</label>
+                                                        <label> Phone#</label>
                                                         <div class="controls">
-                                                            <input type="text" name="phone" class="form-control"
-                                                                required data-validation-containsnumber-regex="(\d)+"
-                                                                data-validation-containsnumber-message="The numeric field may only contain numeric characters."
-                                                                placeholder="Enter Numbers only">
+                                                            <input type="text" name="phone" value="{{old('phone')}}" class="form-control" placeholder="Enter Numbers only">
                                                         </div>
                                                     </div>
                                                      
                                                       <div class="form-group">
-                                                        <label>{{{__('messages.frm password')}}}</label>
+                                                        <label>Password</label>
                                                         <div class="controls">
-                                                            <input type="password" name="password" class="form-control"
-                                                                data-validation-required-message="This field is required"
-                                                                placeholder="Password" >
+                                                            <input type="password" name="password" class="form-control" placeholder="Password" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>{{{__('messages.role')}}}</label>
+                                                        <label>Role</label>
                                                         <div class="controls">
-                                                            <select name="role" class="form-control">
+                                                            <select name="role" class="form-control" required>
                                                                 <option selected disabled> Please Select Role</option>
                                                                 <option value="manager">Manager</option>
                                                                 <option value="owner">Tool Owner</option>
@@ -74,37 +67,28 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>{{{__('messages.th email')}}}</label>
+                                                        <label> Email</label>
                                                         <div class="controls">
-                                                            <input type="email" name="email" class="form-control"
-                                                                data-validation-containsnumber-regex="^([0-9]+)$"
-                                                                data-validation-containsnumber-message="The regex field format is invalid."
-                                                                placeholder="@gmail.com" required>
+                                                            <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="@gmail.com" required>
                                                         </div>
                                                     </div>
                                                    
                                                   <div class="form-group">
-                                                        <label>{{{__('messages.th address')}}}</label>
+                                                        <label>Address</label>
                                                         <div class="controls">
-                                                            <input type="text" name="address" class="form-control"
-                                                                required data-validation-containsnumber-regex="^[a-zA-Z]+$"
-                                                                data-validation-containsnumber-message="The alpha field may only contain alphabetic characters."
-                                                                placeholder="Enter Address">
+                                                            <input type="text" name="address" value="{{old('address')}}" class="form-control" placeholder="Enter Address">
                                                         </div>
                                                     </div> 
                                                    <div class="form-group">
-                                                        <label>{{{__('messages.frm cnfrm password')}}}</label>
+                                                        <label>Confirm-Password</label>
                                                         <div class="controls">
-                                                            <input type="password" name="password_confirmation" class="form-control" 
-                                                                data-validation-containsnumber-regex="^([0-9]+)$"
-                                                                data-validation-containsnumber-message="The regex field format is invalid."
-                                                                placeholder="" required>
+                                                            <input type="password" name="password_confirmation" class="form-control" placeholder="Enter confirm password" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>{{{__('messages.department')}}}</label>
+                                                        <label>Department</label>
                                                         <div class="controls">
-                                                            <select name="department" class="form-control">
+                                                            <select name="department" class="form-control" required>
                                                                 <option selected disabled> Please Select Department</option>
                                                                 @foreach($departments as $department)
                                                                 <option value="{{$department->id}}">{{$department->name}}</option>
@@ -116,7 +100,7 @@
                                             </div>
 
                                             <div class="col-md-12 ">
-                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right" name="update">{{{__('messages.submit')}}}</button>
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1" style="float: right" name="update">Submit</button>
                                             </div>
                                         </form>
                                     </div>

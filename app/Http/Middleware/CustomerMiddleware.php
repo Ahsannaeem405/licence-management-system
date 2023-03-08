@@ -16,16 +16,33 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::User() && Auth::User()->role =='customer')
+        if(Auth::user() && Auth::User()->role =='customer')
         {
-            return $next($request);
+            if(Auth::user()->is_verified == 3)
+            {
+                return $next($request);
+            }
+            else if(Auth::user()->is_verified == 2)
+            {
+                return redirect('/stripe-payment')->with('error','Please Complete Your Payment');
+                
+            }
+            else if(Auth::user()->is_verified == 1)
+            {
+                return redirect('/customer-profile')->with('error','Please Complete Your Profile');
+            }
+            else if(Auth::user()->is_verified == 0)
+            {
+                return redirect('/verify-code')->with('error','Please Verify Your Email');
+            }
+
         }
         else
         {
-            Auth::logout();
-            Session::flush();
-            Session::flash('error','Something went wrong');
             return '/login';
+
+            // return redirect('verify-code')->with('error','Please verify email to proceed');
         }
+            
     }
 }

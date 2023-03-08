@@ -34,7 +34,6 @@ class PaymentCron extends Command
         $user=User::whereDate('next_payment',$date)->whereNull('pass')->get();
         foreach($user as $row)
         {
-            
             $add=new PaymentDeduct();
             $add->payment($row);
         }

@@ -1,4 +1,5 @@
  @include('customer.layouts.header')
+ @yield('css')
  @include('customer.layouts.navbar')
  @include('customer.layouts.sidebar')
  @yield('content')

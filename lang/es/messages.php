@@ -3,9 +3,13 @@
 return [
     'dashbaord' => 'Panel',
     'subscription' => 'Suscripciones',
+    'th-user-name' => 'Nombre del cliente',
+    'th-package-name' => 'Nombre del paquete',
+    'th-price' => 'Precio',
     'packages' => 'paquetes',
     'transaction' => 'transacción',
     'customer' => 'Clientes',
+    'department' => 'Departamentos',
     'license' => 'licencia',
     'service' => 'Servicios',
     'multi lang' => 'Multi lenguaje',
@@ -56,73 +60,15 @@ return [
     'total departments'=>'Departamentos totales',
     'total license'=>'Licencia Total',
     'welcome'=>'Bienvenido',
-    //----------------------Customer Subscription----------//
-    'subscription pack'=> 'Paquetes de suscripción',
-    //-----------------------Continue----------------------//
-
-    //------------------------Customer Department start-----------------//
-    'department'=> 'Departamento',
-    'add department'=> 'Ajouter un département',
-    'department name'=> 'Nombre de Departamento',
-    'description' => 'Descripción',
-    'submit' => 'Entregar',
-    //------------------ Customer Department End-------------------------//
-
-//-----------------------Customer License-------------------------------//
-'add license' => 'Agregar licencia',
-  'title'=> 'Título',
-  'key'=> 'Llave',
-  'date i'=>'Fecha de emisión',
-  'date e'=> 'Fecha de expiración',
-   //-----------------------Customer End License-------------------------------//
-     
-    //-----------------------Customer Add License----------------------------//
-    'license'=> 'Licencias',
-      //------------------------End Customer Add License----------------------------//
-
-    //------------------------ Customer Management----------------------------//
-    'management' => 'Gestión',
-    'role' =>'Role',
-    'add management' => 'Agregar administración',
-     //------------------------ Customer End Management----------------------------//
-
-  //--------------------------Customer Add Management---------------------------//
-  'add toolowner' => 'Agregar propietaria de administrar / herramienta',
-  //--------------------------Customer End Add Management---------------------------//
-
-  //--------------------------Manager sidebar---------------------------//
- 
-  'company info'=> 'Información de la compañía',
-  //--------------------------Manager End sidebar---------------------------//
-
-
-   //--------------------------Manager Company Info---------------------------//
-   'company info'=> 'Información de la empresa',
-   'personal info' => 'Informacion personal',
-   'com det' => 'Detalles de la compañía',
-   'total dep' => 'Departamento total',
-   'total license' => 'Licencia total',
-
-    //--------------------------Manager End Company Info---------------------------//
-
-
-
-
-
-
-
-
-
-
     
     //------------------------- Welcome Navbar Part -----------------------//
-    'nav-works' => 'How it work',
+    'nav-works' => 'Como funciona',
     'nav-pricing' => 'Precios',
     'nav-benifits' => 'Beneficios',
     'nav-customers' => 'Clientes',
     'nav-about' => 'Acerca de',
     'nav-contact' => 'Contacto Us',
-    'nav-login' => 'Login',
+    'nav-login' => 'Acceso',
     //------------------------- Welcome Navbar Part -----------------------//
     
     //------------------------- Welcome Banner Part -----------------------//
@@ -184,5 +130,4 @@ return [
     'features...'=>'La aplicación tiene una variedad de funciones avanzadas que pueden ayudar a los usuarios a administrar y rastrear sus licencias de una manera más eficiente y efectiva.',
     'increases efficiency'=>'Aumenta la eficiencia',
     'efficiency...'=>'La aplicación ahorra tiempo y aumenta la eficiencia al automatizar el proceso de seguimiento de licencias, también ayuda a reducir el error humano.',
-    'customers'=>'Clientes',
 ];

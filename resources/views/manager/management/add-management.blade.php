@@ -1,4 +1,4 @@
-@extends('customer.layouts.master')
+@extends('manager.layouts.master')
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">

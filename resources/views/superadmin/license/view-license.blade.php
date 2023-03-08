@@ -1,4 +1,15 @@
 @extends('superadmin.layouts.master')
+@section('css')
+<style>
+    table.dataTable thead tr {
+        background-color: #183153;
+        color: white;
+    }
+    table.dataTable tbody td {
+        border: 0.01px solid rgb(224, 224, 224);
+    }
+</style>
+@endsection
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -19,29 +30,19 @@
 
                 </div>
             </div>
-
             <div class="content-body">
                 <!-- Zero configuration table -->
                 <section id="basic-datatable">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-
-                                {{-- <div class="breadcrumb-wrapper col-12">
-                                    <ol class="breadcrumb float-right m-0">
-                                        <li class="breadcrumb-item"><a href="{{ url('/add-customers') }}"
-                                                class="btn btn-primary fa fa-plus"> Add Customer</a></li>
-                                    </ol>
-                                </div> --}}
-
                                 <div class="card-content">
                                     <div class="card-body card-dashboard pt-0">
-
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
-                                                         
+                                                        <th>#</th>
                                                         <th>Name</th>
                                                         <th>Date of Issue</th>
                                                         <th>Date of Expiry</th>
@@ -51,13 +52,12 @@
                                                 <tbody>
                                                     @foreach ($license as $item)
                                                         <tr>
+                                                            <td>{{$loop->index+1}}</td>
                                                             <td>{{ $item->title }}</td>
-                                                            <td class="key">{{ $item->key }}</td>
+                                                            {{-- <td class="key">{{ $item->key }}</td> --}}
                                                             <td>{{ \Carbon\carbon::createFromFormat('Y-m-d',$item->date_of_issue)->format('d-F-Y')}}</td>
                                                             <td>{{ \Carbon\carbon::createFromFormat('Y-m-d',$item->date_of_expiry)->format('d-F-Y')}}</td>
-
                                                             <td>
-                                                                
                                                                <span class="d-flex">
                                                                 <form action="{{route('license-delete',$item->id)}}" method="POST">
                                                                     <input type="hidden" value="GET" name="_method">
@@ -77,7 +77,6 @@
                     </div>
                 </section>
                 <!--/ Zero configuration table -->
-
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">{{__('messages.acc set')}}</h2>
+                            <h2 class="content-header-title float-left mb-0">Account Settings</h2>
 
                         </div>
                     </div>
@@ -27,14 +27,14 @@
                                     <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill"
                                         href="#account-vertical-general" aria-expanded="true">
                                         <i class="feather icon-globe mr-50 font-medium-3"></i>
-                                        {{__('messages.gen')}}
+                                        General
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill"
                                         href="#account-vertical-password" aria-expanded="false">
                                         <i class="feather icon-lock mr-50 font-medium-3"></i>
-                                        {{__('messages.change pass')}}
+                                        Change Password
                                     </a>
                                 </li>
 
@@ -65,7 +65,7 @@
                                                                 class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                                                 <label
                                                                     class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
-                                                                    for="account-upload">{{__('messages.upload file')}}</label>
+                                                                    for="account-upload">Upload new photo</label>
                                                                 <input type="file" id="account-upload" name="image"
                                                                     hidden>
                                                                    
@@ -77,42 +77,46 @@
                                                         </div>
                                                 </div>
                                                 <hr>
-
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-name">{{__('messages.frm name')}}</label>
-                                                                <input type="text" class="form-control" id="account-name"
-                                                                    name="name" placeholder="Name" required
-                                                                    data-validation-required-message="This name field is required"
-                                                                    value="{{ $user->name }}">
+                                                                <label for="account-name">Name</label>
+                                                                <input type="text" class="form-control" id="account-name" name="name" placeholder="Name" required value="{{ $user->name }}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-e-mail">{{__('messages.frm email')}}</label>
-                                                                <input type="email" class="form-control"
-                                                                    id="account-e-mail" placeholder="Email" name="email"
-                                                                    required
-                                                                    data-validation-required-message="This email field is required"
-                                                                    value="{{ $user->email }}">
+                                                                <label for="account-e-mail">Email</label>
+                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" name="email" value="{{ $user->email }}">
                                                             </div>
                                                         </div>
                                                     </div>
-
-
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="account-name">Currency</label>
+                                                                <select class="form-control" name="currency">
+                                                                    <option selected disabled>Please Select Currency</option>
+                                                                    <option value="$" {{Auth::user()->currency == "$" ? 'selected' : ''}}>Dollar - $</option>
+                                                                    <option value="€" {{Auth::user()->currency == "€" ? 'selected' : ''}}>Euro - €</option>
+                                                                    <option value="¥" {{Auth::user()->currency == "¥" ? 'selected' : ''}}>Yen - ¥</option>
+                                                                    <option value="₣" {{Auth::user()->currency == "₣" ? 'selected' : ''}}>Franc - ₣</option>
+                                                                    <option value="₹" {{Auth::user()->currency == "₹" ? 'selected' : ''}}>Rupee - ₹</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                        <button type="submit"
-                                                            class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">{{__('messages.save changes')}}</button>
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save changes</button>
                                                         {{-- <button type="reset" class="btn btn-outline-warning">Cancel</button> --}}
                                                     </div>
                                                 </div>
                                                 </form>
                                             </div>
-                                            <div class="tab-pane fade " id="account-vertical-password" role="tabpanel"
+                                            <div class="tab-pane fade" id="account-vertical-password" role="tabpanel"
                                                 aria-labelledby="account-pill-password" aria-expanded="false">
                                                 <form  action="{{ route('customer-update-password', $user->id) }}" method="POST" novalidate>
                                                     @csrf
@@ -120,7 +124,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-old-password">{{__('messages.old pass')}}</label>
+                                                                    <label for="account-old-password">Old Password</label>
                                                                     <input type="password" class="form-control"
                                                                         id="account-old-password" required
                                                                         placeholder="Old Password" name="old_password"
@@ -131,7 +135,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-new-password">{{__('messages.new pass')}}</label>
+                                                                    <label for="account-new-password">New Password</label>
                                                                     <input type="password"  
                                                                         id="account-new-password" class="form-control"
                                                                         placeholder="New Password" name="new_password" required
@@ -143,7 +147,8 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-retype-new-password">{{__('messages.conf new pass')}}</label>
+                                                                    <label for="account-retype-new-password">Confirm New
+                                                                        Password</label>
                                                                     <input type="password" name="new_password_confirmation"
                                                                         class="form-control" required
                                                                         id="account-retype-new-password"
@@ -157,7 +162,8 @@
                                                         <div
                                                             class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                             <button type="submit"
-                                                                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">{{__('messages.save changes')}}</button>
+                                                                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                                changes</button>
                                                             {{-- <button type="reset" class="btn btn-outline-warning">Cancel</button> --}}
                                                         </div>
                                                     </div>

@@ -90,44 +90,54 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], 
     Route::get('/admin-setting', [SuperAdminController::class, 'setting'])->name('superadmin-setting');
     Route::POST('/update-admin-profile/{id}', [SuperAdminController::class,'admin_update_profile'])->name('superadmin-profile-update');
     Route::POST('/update-admin-password/{id}', [SuperAdminController::class,'admin_update_password'])->name('superadmin-admin-password');
-}); 
+});
     //-----------------------------------------Localization------------------------------------------//
     // Route::get('lang/{lang}',[SuperAdminController::class, 'switchLang'])->name('lang.switch');
 //------------------------------------------------- Super-Admin End ----------------------------------------------//
 
 //------------------------------------------------- Customer Start ----------------------------------------------//
 Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], function () {
-    Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('customer-dashboard');
+
+
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
-    Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
-    Route::get('/add-department', [CustomerController::class, 'add_department'])->name('customer-add-department');
-    Route::post('/store-department', [CustomerController::class, 'store_department'])->name('customer-store-department');
-    Route::get('/edit-department/{id}', [CustomerController::class, 'edit_department'])->name('customer-edit-department');
-    Route::post('/update-department/{id}', [CustomerController::class, 'update_department'])->name('customer-update-department');
-    Route::get('/delete-department/{id}', [CustomerController::class, 'delete_department'])->name('customer-delete-department');
-    Route::post('/export-departments-list',[CustomerController::class, 'export_departments_list'])->name('export-departments');
-    Route::post('/share-departments-list',[CustomerController::class, 'share_departments_list'])->name('share-departments');
-    Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');
-    Route::get('/add-license', [CustomerController::class, 'add_license'])->name('customer-add-license');
-    Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('customer-store-license');
-    Route::get('/customer-edit-license/{id}', [CustomerController::class,'edit_license'])->name('customer-edit-license');
-    Route::post('/customer-update-license/{id}', [CustomerController::class,'update_license'])->name('customer-update-license');
-    Route::get('/customer-delete-license/{id}', [CustomerController::class, 'delete_license'])->name('customer-delete-license');
-    Route::post('/export-license-list',[CustomerController::class, 'export_license_list'])->name('export-license');
-    Route::post('/share-license-list',[CustomerController::class, 'share_license_list'])->name('share-license');
-    Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
-    Route::get('/add-management', [CustomerController::class, 'add_management'])->name('customer-add-management');
-    Route::post('/store-management', [CustomerController::class, 'store_tool_owner'])->name('customer-store-management');
-    Route::get('/edit-management/{id}', [CustomerController::class, 'edit_tool_owner'])->name('customer-edit-management');
-    Route::post('/update-management/{id}', [CustomerController::class, 'update_tool_owner'])->name('customer-update-management');
-    Route::get('/delete-management/{id}', [CustomerController::class, 'delete_tool_owner'])->name('customer-delete-management');
-    Route::post('/export-management-list',[CustomerController::class, 'export_management_list'])->name('export-management');
-    Route::post('/share-management-list',[CustomerController::class, 'share_management_list'])->name('share-management');
-    Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
-    Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
-    Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
     Route::post('/subscribe', [StripePaymentController::class, 'subscribe']);
-    Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
+
+
+    Route::group(['middleware' => 'CustomerActive'], function () {
+        Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('customer-dashboard');
+
+        Route::get('/department', [CustomerController::class, 'department'])->name('customer-department');
+        Route::get('/add-department', [CustomerController::class, 'add_department'])->name('customer-add-department');
+        Route::post('/store-department', [CustomerController::class, 'store_department'])->name('customer-store-department');
+        Route::get('/edit-department/{id}', [CustomerController::class, 'edit_department'])->name('customer-edit-department');
+        Route::post('/update-department/{id}', [CustomerController::class, 'update_department'])->name('customer-update-department');
+        Route::get('/delete-department/{id}', [CustomerController::class, 'delete_department'])->name('customer-delete-department');
+        Route::post('/export-departments-list',[CustomerController::class, 'export_departments_list'])->name('export-departments');
+        Route::post('/share-departments-list',[CustomerController::class, 'share_departments_list'])->name('share-departments');
+        Route::get('/license', [CustomerController::class, 'license'])->name('customer-license');
+        Route::get('/add-license', [CustomerController::class, 'add_license'])->name('customer-add-license');
+        Route::POST('/store-license', [CustomerController::class, 'store_license'])->name('customer-store-license');
+        Route::get('/customer-edit-license/{id}', [CustomerController::class,'edit_license'])->name('customer-edit-license');
+        Route::post('/customer-update-license/{id}', [CustomerController::class,'update_license'])->name('customer-update-license');
+        Route::get('/customer-delete-license/{id}', [CustomerController::class, 'delete_license'])->name('customer-delete-license');
+        Route::post('/export-license-list',[CustomerController::class, 'export_license_list'])->name('export-license');
+        Route::post('/share-license-list',[CustomerController::class, 'share_license_list'])->name('share-license');
+        Route::get('/management', [CustomerController::class, 'management'])->name('customer-management');
+        Route::get('/add-management', [CustomerController::class, 'add_management'])->name('customer-add-management');
+        Route::post('/store-management', [CustomerController::class, 'store_tool_owner'])->name('customer-store-management');
+        Route::get('/edit-management/{id}', [CustomerController::class, 'edit_tool_owner'])->name('customer-edit-management');
+        Route::post('/update-management/{id}', [CustomerController::class, 'update_tool_owner'])->name('customer-update-management');
+        Route::get('/delete-management/{id}', [CustomerController::class, 'delete_tool_owner'])->name('customer-delete-management');
+        Route::post('/export-management-list',[CustomerController::class, 'export_management_list'])->name('export-management');
+        Route::post('/share-management-list',[CustomerController::class, 'share_management_list'])->name('share-management');
+        Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
+        Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
+        Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
+        Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
+    });
+
+
+
 
 });
 //------------------------------------------------- Customer End ----------------------------------------------//

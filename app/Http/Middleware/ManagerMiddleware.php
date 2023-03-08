@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Closure;
@@ -22,6 +23,11 @@ class ManagerMiddleware
         {
             if(Auth::User()->role =='manager' || Auth::User()->role =='owner')
             {
+                $company=User::find(Auth::user()->company_id);
+                if ($company->active!=1){
+                    abort(403);
+                }
+
                 return $next($request);
             }
             else

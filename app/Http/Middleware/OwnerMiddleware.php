@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,12 @@ class OwnerMiddleware
     {
         if(Auth::User() && Auth::User()->role =='owner')
         {
+
+            $company=User::find(Auth::user()->company_id);
+            if ($company->active!=1){
+                abort(403);
+            }
+
             return $next($request);
         }
         else

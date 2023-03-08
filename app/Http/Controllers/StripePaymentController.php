@@ -23,7 +23,7 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     /**
      * success response method.
      *
@@ -31,7 +31,7 @@ class StripePaymentController extends Controller
      */
     public function change_subscribe($id)
     {
- 
+
         $total_departments= Department::where('user_id',auth()->user()->id)->count();
         $total_licence= License::where('customer_id',auth()->user()->id)->count();
         $transaction = Transaction::where('user_id',auth()->user()->id)->first();
@@ -63,6 +63,7 @@ class StripePaymentController extends Controller
     }
     public function subscribe(Request $request)
     {
+
         $time = date("Y-m-d");
         $next_payment = date("Y-m-d", strtotime("+3 month"));
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
@@ -103,7 +104,7 @@ class StripePaymentController extends Controller
         Auth::logout();
         Session::flush();
         return redirect()->route('login')->with('success','Successfully Registered Continue To Login');
-        
+
     }
 
     public function Refund(Request $request,$id)

@@ -37,7 +37,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\LanguageManager::class,
-            
+
         ],
 
         'api' => [
@@ -69,6 +69,7 @@ class Kernel extends HttpKernel
         'Customer' =>\App\Http\Middleware\CustomerMiddleware::class,
         'Manager' =>\App\Http\Middleware\ManagerMiddleware::class,
         'Owner' =>\App\Http\Middleware\OwnerMiddleware::class,
-        
+        'CustomerActive' =>\App\Http\Middleware\CustomerActive::class,
+
     ];
 }

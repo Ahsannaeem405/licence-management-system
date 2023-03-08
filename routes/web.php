@@ -101,6 +101,7 @@ Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], func
 
     Route::get('/subcription', [CustomerController::class, 'subscripton'])->name('customer-subcription');
     Route::post('/subscribe', [StripePaymentController::class, 'subscribe']);
+    Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
 
 
     Route::group(['middleware' => 'CustomerActive'], function () {
@@ -133,7 +134,6 @@ Route::group(['prefix' => 'customer', 'middleware' => ['Customer','auth']], func
         Route::get('/customer-setting', [CustomerController::class, 'setting'])->name('customer-setting');
         Route::post('/update-profile/{id}', [CustomerController::class, 'update_customer_profile'])->name('customer-update-profile');
         Route::post('/update-password/{id}', [CustomerController::class, 'update_customer_password'])->name('customer-update-password');
-        Route::get('/change_subscribe/{id}', [StripePaymentController::class, 'change_subscribe']);
     });
 
 

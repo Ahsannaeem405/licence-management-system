@@ -46,8 +46,16 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('customer-add-license') }}" class="btn btn-primary mb-2"
-                                            style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
+                                        @if (MyHelper::licence_allowed($package->id)->point_value <= $license)
+                                            <a href="{{ route('customer-add-license') }}"
+                                                class="btn btn-primary mb-2 d-none" style="float: right;"><i
+                                                    class="feather icon-plus"></i>&nbsp; Add
+                                                License</a>
+                                        @else
+                                            <a href="{{ route('customer-add-license') }}" class="btn btn-primary mb-2"
+                                                style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add
+                                                License</a>
+                                        @endif
                                         <div class="table-responsive">
                                             {{-- dataex-html5-selectors --}}
                                             <table class="table zero-configuration">

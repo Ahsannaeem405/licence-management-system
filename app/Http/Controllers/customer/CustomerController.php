@@ -59,7 +59,6 @@ class CustomerController extends Controller
                 ->whereYear('created_at', date('Y'))
                 ->groupBy('month_name')
                 ->where('department_id', $row->id)->get()->groupBy('month_name');
-            //dd($license);
 
             $array = array();
             $sum = array();
@@ -112,9 +111,12 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Departments Start ------------------------------------//
     public function department()
     {
+        $user = User::find(auth()->user()->id);
+        $package = Package::find($user->package_id);
+        $dep = Department::where('user_id', $user->id)->count();
         $departments = Department::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
-        return view('customer.department.department', compact('departments'));
+        return view('customer.department.department', compact('departments', 'dep', 'package'));
     }
 
     public function export_departments_list(Request $request)
@@ -227,7 +229,11 @@ class CustomerController extends Controller
     public function license()
     {
         $licenses = License::where('customer_id', auth()->user()->id)->get();
-        return view('customer.license.license', compact('licenses'));
+        $customer = User::find(auth()->user()->id);
+        $package = Package::find($customer->package_id);
+        $license = License::where('customer_id', $customer->id)->count();
+
+        return view('customer.license.license', compact('licenses', 'package', 'license'));
     }
 
     public function export_license_list(Request $request)
@@ -433,9 +439,13 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Managment Start ------------------------------------//
     public function management()
     {
+
+        $customer = User::find(auth()->user()->id);
+        $package = Package::find($customer->package_id);
+        $manager = User::where('add_by', $customer->id)->where('role', 'manager')->count();
         $users = User::whereIn('role', ['manager', 'owner'])->where('company_id', auth()->user()->id)->get();
 
-        return view('customer.management.management', compact('users'));
+        return view('customer.management.management', compact('users', 'package', 'manager'));
     }
 
     public function export_management_list(Request $request)
@@ -537,6 +547,7 @@ class CustomerController extends Controller
     {
         $owner = User::find($id);
         $license = License::where('customer_id', $owner->id)->first();
+
         if (!$license) {
             $owner->delete();
             return redirect()->route('customer-management')->with('success', 'Tool Owner deleted successfully');

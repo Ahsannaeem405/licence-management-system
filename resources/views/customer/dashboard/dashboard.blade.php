@@ -113,12 +113,10 @@
                                                 <i class="feather icon-credit-card text-success font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-1 text-white bg-white text-dark"><i class=""></i><b>All
+                                        <p class="mt-2 text-white bg-white text-dark"><i class=""></i><b>All
                                                 Licenses</b>: {{ $active_license }}
                                         </p>
-                                        <p class="mt-0 text-white bg-white text-dark"><i class=""></i><b>Active
-                                                Expenses</b>:
-                                        </p>
+
                                     </div>
                                     <div class="card-content">
                                         <div id="line-area-chart-2"></div>
@@ -232,7 +230,6 @@
     {{-- -------------------------------------- Budegt Distribution Chart ------------------------------- --}}
     <script>
         var curr = @json($curr);
-
         var options = {
             series: @json($sum_array),
             yaxis: {

@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Stripe;
-use App\Models\Subsciption;
-use App\Models\User;
-use App\Models\setsession;
 use App\Models\Connect;
-use App\Models\Department;
-use App\Models\License;
+use App\Models\setsession;
+use App\Models\Subsciption;
 use App\Models\Transaction;
+use App\Models\User;
+use App\Services\PaymentDeduct;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
 use Redirect;
 
 class StripePaymentController extends Controller
@@ -32,43 +29,31 @@ class StripePaymentController extends Controller
     public function change_subscribe($id)
     {
 
-        $total_departments= Department::where('user_id',auth()->user()->id)->count();
-        $total_licence= License::where('customer_id',auth()->user()->id)->count();
-        $transaction = Transaction::where('user_id',auth()->user()->id)->first();
-        if($id==1 && $total_departments <=1 && $total_licence<=10  )
-        {
-            $user=User::find(Auth::user()->id);
-            $user->package_id=$id;
-            $user->save();
-            return back();
+
+        $user = User::find(Auth::user()->id);
+        $user->package_id = $id;
+        $user->save();
+
+
+        $paymet = new PaymentDeduct();
+        $res = $paymet->payment($user);
+
+        if ($res) {
+
+            return back()->with('success', 'Successfully Subscribed Continue To Login');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
-        elseif($id==2 && $total_departments <=10 && $total_licence<=100 )
-        {
-            $user=User::find(Auth::user()->id);
-            $user->package_id=$id;
-            $user->save();
-            return back();
-        }
-        elseif($id==3 && $total_departments <=100 && $total_licence<=1000)
-        {
-            $user=User::find(Auth::user()->id);
-            $user->package_id=$id;
-            $user->save();
-            return back();
-        }
-        else
-        {
-            return back()->with('error','You not able to change your package');
-        }
+
+
     }
+
     public function subscribe(Request $request)
     {
 
-        $time = date("Y-m-d");
-        $next_payment = date("Y-m-d", strtotime("+3 month"));
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
-        $token= $stripe->tokens->create([
+        $token = $stripe->tokens->create([
 
             'card' => [
                 'number' => $request->card_number,
@@ -78,12 +63,49 @@ class StripePaymentController extends Controller
             ]
         ]);
 
-        $stripe= \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $stripe = \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = \Stripe\Customer::create([
             'source' => $token->id,
         ]);
 
+
+        $user = User::find(Auth::user()->id);
+        $user->package_id = $request->input('pack_id');
+        $user->stripe_id = $customer->id;
+        $user->save();
+
+
+        $paymet = new PaymentDeduct();
+        $res = $paymet->payment($user);
+        if ($res) {
+
+            return back()->with('success', 'Successfully Subscribed Continue To Login');
+        } else {
+            return back()->with('error', 'Something went wrong');
+        }
+
+    }
+
+
+    public function subscribe_user(Request $request)
+    {
+
+        $time = date("Y-m-d");
+        $next_payment = date("Y-m-d", strtotime("+3 month"));
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $token= $stripe->tokens->create([
+            'card' => [
+                'number' => $request->card_number,
+                'exp_month' => $request->card_expiry_month,
+                'exp_year' => $request->card_expiry_year,
+                'cvc' => $request->card_cvc,
+            ]
+        ]);
+        $stripe= \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $customer = \Stripe\Customer::create([
+            'source' => $token->id,
+        ]);
         $user=User::find(Auth::user()->id);
         $user->package_id=$request->input('pack_id');
         $user->stripe_id=$customer->id;
@@ -92,8 +114,6 @@ class StripePaymentController extends Controller
         $user->pass=null;
         $user->is_verified=3;
         $user->save();
-
-
         $trans= new Transaction();
         $trans->package_id = $request->pack_id;
         $trans->user_id = Auth::user()->id;
@@ -104,26 +124,24 @@ class StripePaymentController extends Controller
         Auth::logout();
         Session::flush();
         return redirect()->route('login')->with('success','Successfully Registered Continue To Login');
-
     }
 
-    public function Refund(Request $request,$id)
+    public function Refund(Request $request, $id)
     {
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        if($id !=null)
-        {
-            $data=$stripe->refunds->create([
-              'charge' => $id,
+        if ($id != null) {
+            $data = $stripe->refunds->create([
+                'charge' => $id,
             ]);
 
-            $user=Subsciption::where('stripe_refund_id',$id)->first();
-            $ref=Subsciption::find($user->id);
-            $ref->refund_status=1;
+            $user = Subsciption::where('stripe_refund_id', $id)->first();
+            $ref = Subsciption::find($user->id);
+            $ref->refund_status = 1;
             $ref->update();
-            return response()->json(['success'=>true,'data'=>$data]);
+            return response()->json(['success' => true, 'data' => $data]);
 
         }
-         return response()->json(['success'=>$request->input('refund')]);
+        return response()->json(['success' => $request->input('refund')]);
 
     }
 

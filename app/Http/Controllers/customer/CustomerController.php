@@ -526,7 +526,7 @@ class CustomerController extends Controller
         $license->status = '0';
 
        }else{
-        $license->status = '0';
+        $license->status = '1';
        }
        $license->save();
        return redirect()->back()->with('success','License Status Updated');

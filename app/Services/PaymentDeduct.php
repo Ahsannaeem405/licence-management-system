@@ -39,21 +39,27 @@ class PaymentDeduct
             $trans = new Transaction();
             $trans->package_id = $get_user->pack_id;
             $trans->user_id = $get_user->id;
-            $trans->receipt_url = $charge->receipt_url;
-            $trans->stripe_id = $charge->id;
+//            $trans->receipt_url = $charge->receipt_url;
+//            $trans->transactions_id = $charge->id;
             $trans->amount = $Package->price;
             $trans->save();
             \Log::info($next_date_payment);
             \Log::info($user);
 
+            return true;
+
 
         } catch (\Exception $e) {
             \Log::info($e);
+
             $update = User::find($get_user->id);
             $user->active = null;
             $user->stripe_id = null;
             $user->pass = 1;
             $user->update();
+
+
+            return  false;
 
 
         }

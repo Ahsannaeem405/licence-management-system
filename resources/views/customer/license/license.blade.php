@@ -140,24 +140,28 @@
                                                             @endif
                                                             @if ($license->status == 1)
                                                                 <td class="product-success">
-                                                                    <a href="{{ url('customer/license-status') }}/{{ $license->id }}">
+                                                                    <a
+                                                                        href="{{ url('customer/license-status') }}/{{ $license->id }}">
                                                                         <div class="chip chip-success">
                                                                             <div class="chip-body"
                                                                                 style="max-width: 100px; width:auto; padding:5px;">
                                                                                 <div class="chip-text">
-                                                                                    <strong>Active</strong></div>
+                                                                                    <strong>Active</strong>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </a>
                                                                 </td>
                                                             @else
                                                                 <td class="product-warning">
-                                                                    <a href="{{ url('customer/license-status') }}/{{ $license->id }}">
+                                                                    <a
+                                                                        href="{{ url('customer/license-status') }}/{{ $license->id }}">
                                                                         <div class="chip chip-warning">
                                                                             <div class="chip-body"
                                                                                 style="max-width: 100px; width:auto; padding:5px;">
                                                                                 <div class="chip-warning">
-                                                                                    <strong>InActive</strong></div>
+                                                                                    <strong>InActive</strong>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </a>

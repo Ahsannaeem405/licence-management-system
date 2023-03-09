@@ -46,7 +46,9 @@
                                             <p class="mb-2 text-white bg-white text-dark"><i
                                                     class="fa-solid fa-building"></i> <b>Total Departments</b>:
                                                 {{ $total_department }}</p>
-                                            <p class="mb-2 text-white bg-white text-dark"><i class="fa-solid fa-people-group"></i> <b>Total Managers</b>: {{ $total_managers }}
+                                            <p class="mb-2 text-white bg-white text-dark"><i
+                                                    class="fa-solid fa-people-group"></i> <b>Total Managers</b>:
+                                                {{ $total_managers }}
                                             </p>
                                             {{-- <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p> --}}
                                         </div>
@@ -63,11 +65,11 @@
                                                 <i class="feather icon-credit-card text-danger font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-1 text-white bg-white text-dark"><i
-                                                class=""></i><b>Active Licenses</b>:
+                                        <p class="mt-1 text-white bg-white text-dark"><i class=""></i><b>Active
+                                                Licenses</b>:
                                             {{ $active_license }}</p>
-                                        <p class="mt-0 text-white bg-white text-dark"><i
-                                                class=""></i><b>Inactive Licenses</b>:
+                                        <p class="mt-0 text-white bg-white text-dark"><i class=""></i><b>Inactive
+                                                Licenses</b>:
                                             {{ $deactive_license }}</p>
                                         {{-- <h2 class="text-bold-700 mt-1">{{ $total_managers }}</h2>
                                         <p class="mb-0">Total Managers</p> --}}
@@ -87,11 +89,11 @@
                                                 <i class="feather icon-alert-triangle text-warning font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-1 text-white bg-white text-dark"><i
-                                                class=""></i><b>Renew Alerts</b>: {{ $renew_alerts }}
+                                        <p class="mt-1 text-white bg-white text-dark"><i class=""></i><b>Renew
+                                                Alerts</b>: {{ $renew_alerts }}
                                         </p>
-                                        <p class="mt-0 text-white bg-white text-dark"><i
-                                                class=""></i><b>Expiry Alerts</b>: {{ $expiry_alerts }}
+                                        <p class="mt-0 text-white bg-white text-dark"><i class=""></i><b>Expiry
+                                                Alerts</b>: {{ $expiry_alerts }}
                                         </p>
                                         {{-- <p class="mb-0">{{ __('messages.total departments') }}</p> --}}
                                     </div>
@@ -111,12 +113,12 @@
                                                 <i class="feather icon-credit-card text-success font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-1 text-white bg-white text-dark"><i
-                                                class=""></i><b>All Licenses</b>: {{ $active_license }}
+                                        <p class="mt-1 text-white bg-white text-dark"><i class=""></i><b>All
+                                                Licenses</b>: {{ $active_license }}
                                         </p>
-                                        <p class="mt-0 text-white bg-white text-dark"><i
-                                                class=""></i><b>Active Expenses</b>:
-                                            </p>
+                                        <p class="mt-0 text-white bg-white text-dark"><i class=""></i><b>Active
+                                                Expenses</b>:
+                                        </p>
                                     </div>
                                     <div class="card-content">
                                         <div id="line-area-chart-2"></div>
@@ -188,16 +190,7 @@
     {{-- -------------------------------------- License Distribution Chart ------------------------------- --}}
     <script>
         var options = {
-            series: [{
-                name: 'Information Technology',
-                data: [1, 2, 3, 4, 5]
-            }, {
-                name: 'Computer Science',
-                data: [6, 7, 8, 9, 10]
-            }, {
-                name: 'Software Science',
-                data: [11, 12, 13, 14, 15]
-            }],
+            series: @json($main_result),
             chart: {
                 type: 'bar',
                 height: 300,
@@ -238,20 +231,17 @@
 
     {{-- -------------------------------------- Budegt Distribution Chart ------------------------------- --}}
     <script>
+        var curr = @json($curr);
+
         var options = {
-            series: [{
-                    name: "Information Technology",
-                    data: [1, 2, 3, 4, 5]
-                },
-                {
-                    name: "Computer Science",
-                    data: [6, 7, 8, 9, 10]
-                },
-                {
-                    name: 'Software Science',
-                    data: [11, 12, 13, 14, 15]
+            series: @json($sum_array),
+            yaxis: {
+                labels: {
+                    formatter: function(value) {
+                        return curr + value.toLocaleString();
+                    }
                 }
-            ],
+            },
             chart: {
                 height: 300,
                 type: 'line',

@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\App;
 class SuperAdminController extends Controller
 {
 
-    //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
+    //------------------------------------ Super-Admin x Start ------------------------------------//
     public function dashboard()
     {
 

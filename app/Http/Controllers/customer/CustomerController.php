@@ -20,6 +20,7 @@ use Illuminate\Mail\Message;
 use App\Mail\RenewAlert;
 use MyHelper;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -31,6 +32,7 @@ class CustomerController extends Controller
     //------------------------------------ Customer-Dashboard Start ------------------------------------//
     public function dashboard()
     {
+        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $total_department = Department::where('user_id', Auth::user()->id)->count();
         $total_managers = User::where('add_by', Auth::user()->id)->count();
         $total_license = License::where('customer_id', Auth::user()->id)->count();
@@ -41,6 +43,45 @@ class CustomerController extends Controller
         $date = \Carbon\Carbon::now()->addDays(14)->format('Y-m-d');
         $expiry_alerts = License::where('customer_id', auth()->user()->id)->where('date_of_expiry', '<=', $date)->count();
         $renew_alerts = License::where('customer_id', auth()->user()->id)->where('renew_date', '<=', $date)->count();
+
+        $department = Department::where('user_id', auth()->user()->id)->get();
+        $currency = User::find(auth()->user()->id);
+        $curr = $currency->currency;
+        $main_result = array();
+        $sum_array  = array();
+        foreach ($department as $key => $row) {
+
+            $license = License::select(
+                DB::raw("(COUNT(*)) as count"),
+                DB::raw("(SUM(price)) as sum"),
+                DB::raw("DATE_FORMAT(created_at,'%b') as month_name")
+            )
+                ->whereYear('created_at', date('Y'))
+                ->groupBy('month_name')
+                ->where('department_id', $row->id)->get()->groupBy('month_name');
+            //dd($license);
+
+            $array = array();
+            $sum = array();
+
+            for ($i = 0; $i < count($months); $i++) {
+
+                if (isset($license[$months[$i]])) {
+                    array_push($array, $license[$months[$i]][0]->count);
+                    array_push($sum, $license[$months[$i]][0]->sum);
+                } else {
+                    array_push($array, 0);
+                    array_push($sum, 0);
+                }
+            }
+
+            $main_result[$key]['name'] = $row->name;
+            $main_result[$key]['data'] = $array;
+            $sum_array[$key]['name'] = $row->name;
+            $sum_array[$key]['data'] = $sum;
+        }
+
+
         $data = [
             'total_department',
             'total_license',
@@ -50,7 +91,10 @@ class CustomerController extends Controller
             'active_license',
             'deactive_license',
             'expiry_alerts',
-            'renew_alerts'
+            'renew_alerts',
+            'main_result',
+            'sum_array',
+            'curr'
         ];
         return view('customer.dashboard.dashboard', compact($data));
     }
@@ -520,16 +564,15 @@ class CustomerController extends Controller
     }
     public function license_status($id)
     {
-       $license = License::find($id);
-       if($license->status == '1'){
+        $license = License::find($id);
+        if ($license->status == '1') {
 
-        $license->status = '0';
-
-       }else{
-        $license->status = '1';
-       }
-       $license->save();
-       return redirect()->back()->with('success','License Status Updated');
+            $license->status = '0';
+        } else {
+            $license->status = '1';
+        }
+        $license->save();
+        return redirect()->back()->with('success', 'License Status Updated');
     }
     //------------------------------------ Customer-Settings End ------------------------------------//
 }

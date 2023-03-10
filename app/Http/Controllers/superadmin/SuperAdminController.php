@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\mail\CustomerMail;
+use App\Mail\CustomerMail;
 use App\Models\Department;
 use App\Models\Package;
 use App\Models\License;
@@ -35,27 +35,27 @@ class SuperAdminController extends Controller
     public function dashboard()
     {
 
-        $total_customers = User::where('role','!=','superadmin')->count();
+        $total_customers = User::where('role', '!=', 'superadmin')->count();
         $total_packages = Package::count();
         $total_license = License::count();
         $total_departments = Department::count();
 
-        $current_month = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->sum('amount');
-        $last_month = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
-        $current_date = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('created_at');
-        $current_amount = Transaction::whereMonth('created_at',\Carbon\Carbon::now())->pluck('amount');
-        $last_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
+        $current_month = Transaction::whereMonth('created_at', \Carbon\Carbon::now())->sum('amount');
+        $last_month = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
+        $current_date = Transaction::whereMonth('created_at', \Carbon\Carbon::now())->pluck('created_at');
+        $current_amount = Transaction::whereMonth('created_at', \Carbon\Carbon::now())->pluck('amount');
+        $last_amount = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
 
-        $last_three_months =Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
-        $last_three_months_amount = Transaction::whereBetween('created_at',[\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
+        $last_three_months = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
+        $last_three_months_amount = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
 
-        $free_package = Transaction::where('package_id','1')->pluck('package_id')->count();
-        $plus_package = Transaction::where('package_id','2')->pluck('package_id')->count();
-        $pro_package = Transaction::where('package_id','3')->pluck('package_id')->count();
+        $free_package = Transaction::where('package_id', '1')->pluck('package_id')->count();
+        $plus_package = Transaction::where('package_id', '2')->pluck('package_id')->count();
+        $pro_package = Transaction::where('package_id', '3')->pluck('package_id')->count();
 
         $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->count();
-        $six_month_customers = User::whereMonth('created_at',\Carbon\Carbon::now()->subMonth(6))->count();
-        $one_year_customers = User::whereYear('created_at',\Carbon\Carbon::now()->subYear())->count();
+        $six_month_customers = User::whereMonth('created_at', \Carbon\Carbon::now()->subMonth(6))->count();
+        $one_year_customers = User::whereYear('created_at', \Carbon\Carbon::now()->subYear())->count();
         /////////////////////////////////////////////////////////////////Packges_chart//////////////////////////
         $data = [];
 
@@ -67,7 +67,7 @@ class SuperAdminController extends Controller
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
 
-            $transaksi = Transaction::where('package_id',1)
+            $transaksi = Transaction::where('package_id', 1)
                 // the creation date must be between the start of the month and the end of the month
                 ->where('created_at', '>=', $date)
                 ->where('created_at', '<=', $date_end)
@@ -88,7 +88,7 @@ class SuperAdminController extends Controller
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
 
-            $transaksi = Transaction::where('package_id',2)
+            $transaksi = Transaction::where('package_id', 2)
                 // the creation date must be between the start of the month and the end of the month
                 ->where('created_at', '>=', $date)
                 ->where('created_at', '<=', $date_end)
@@ -110,7 +110,7 @@ class SuperAdminController extends Controller
             $date_end = $date->copy()->endOfMonth();
 
 
-            $transaksi = Transaction::where('package_id',3)
+            $transaksi = Transaction::where('package_id', 3)
                 // the creation date must be between the start of the month and the end of the month
                 ->where('created_at', '>=', $date)
                 ->where('created_at', '<=', $date_end)
@@ -122,7 +122,7 @@ class SuperAdminController extends Controller
         }
 
 
-            //dd($plus_packages);
+        //dd($plus_packages);
         $data = [
             'total_customers',
             'total_packages',
@@ -142,7 +142,7 @@ class SuperAdminController extends Controller
             'current_amount',
             'last_amount',
         ];
-        return view('superadmin.dashboard.dashboard',compact($data,'free_packages','plus_packages','pro_packages'));
+        return view('superadmin.dashboard.dashboard', compact($data, 'free_packages', 'plus_packages', 'pro_packages'));
     }
     //------------------------------------ Super-Admin Dashboard Start ------------------------------------//
 
@@ -153,7 +153,7 @@ class SuperAdminController extends Controller
         // ->with('package')
         // ->get();
         $subcriptions = Transaction::all();
-        return view('superadmin.subscriptions.subcription',compact('subcriptions'));
+        return view('superadmin.subscriptions.subcription', compact('subcriptions'));
     }
     //------------------------------------ Super-Admin Subscription End ------------------------------------//
 
@@ -161,19 +161,18 @@ class SuperAdminController extends Controller
     public function customer()
     {
 
-        $customers = User::where('role','!=','superadmin')->get();
+        $customers = User::where('role', '!=', 'superadmin')->get();
         return view('superadmin.customers.customers', compact('customers'));
     }
 
     public function add_customer()
     {
         $package = Package::all();
-        return view('superadmin.customers.add-customers',compact('package'));
+        return view('superadmin.customers.add-customers', compact('package'));
     }
 
     public function store_customer(Request $request)
     {
-
 
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -181,9 +180,17 @@ class SuperAdminController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => 'required',
             'phone' => 'required',
-            'package_id'=>'required'
+            'package_id' => 'required',
+            'company_name' => 'required',
+            'company_logo' => 'required'
 
         ]);
+
+
+        $file = $request->file('company_logo');
+        $fileName = uniqid() . $file->getClientOriginalName();
+        $destinationPath = public_path() . '/company-logo/';
+        $file->move($destinationPath, $fileName);
 
         $admin = new User();
         $admin->create([
@@ -194,7 +201,10 @@ class SuperAdminController extends Controller
             'phone' => $request->phone,
             'role' => 'customer',
             'add_by' => Auth::user()->id,
-            'package_id'=>$request->package_id
+            'package_id' => $request->package_id,
+            'company_name' => $request->company_name,
+            'company_logo' => $fileName,
+            'is_verified' => 2
         ]);
         $details = [
             'email' => $request->email,
@@ -226,11 +236,10 @@ class SuperAdminController extends Controller
             if ($request->password) {
                 $customer->password = Hash::make($request->password);
             }
-            if ($file = $request->hasfile('company_logo'))
-            {
+            if ($file = $request->hasfile('company_logo')) {
                 $file = $request->file('company_logo');
                 $fileName = uniqid() . $file->getClientOriginalName();
-                $destinationPath = public_path().'/company-logo/';
+                $destinationPath = public_path() . '/company-logo/';
                 $file->move($destinationPath, $fileName);
                 $request->company_logo = $fileName;
                 $customer->company_logo = $request->company_logo;
@@ -305,26 +314,20 @@ class SuperAdminController extends Controller
         $pack->name = $request->name;
         $pack->price = $request->price;
         $pack->save();
-        if(isset($request->point_name))
-        {
-            for($i = 0; $i < count($request->point_name); $i++)
-                {
-                    $package_detail = PackageDetail::where('id',$request->detail_id[$i])->first();
-                    $package_detail->point_name = $request->point_name[$i];
-                    $package_detail->point_value = $request->point_value[$i];
-                    if(isset($request->status[$i]))
-                    {
-                        $package_detail->status = 1;
-                    }
-                    else
-                    {
-                        $package_detail->status = 0;
-
-                    }
-                    $package_detail->update();
+        if (isset($request->point_name)) {
+            for ($i = 0; $i < count($request->point_name); $i++) {
+                $package_detail = PackageDetail::where('id', $request->detail_id[$i])->first();
+                $package_detail->point_name = $request->point_name[$i];
+                $package_detail->point_value = $request->point_value[$i];
+                if (isset($request->status[$i])) {
+                    $package_detail->status = 1;
+                } else {
+                    $package_detail->status = 0;
                 }
+                $package_detail->update();
+            }
         }
-        return redirect()->route('superadmin-package')->with('success','Package Updated Successfully');
+        return redirect()->route('superadmin-package')->with('success', 'Package Updated Successfully');
     }
 
 
@@ -339,8 +342,8 @@ class SuperAdminController extends Controller
     //------------------------------------ Super-Admin Service Start ------------------------------------//
     public function service()
     {
-        $services = Service::orderBy('id','desc')->get();
-        return view('superadmin.service.service',compact('services'));
+        $services = Service::orderBy('id', 'desc')->get();
+        return view('superadmin.service.service', compact('services'));
     }
 
     public function add_service()
@@ -350,55 +353,46 @@ class SuperAdminController extends Controller
 
     public function store_service(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => ['required'],
         ]);
         $service = new Service();
         $service->create([
             'name' => $request->name,
         ]);
-        return redirect()->route('superadmin-service')->with('success','Service added successfully');
+        return redirect()->route('superadmin-service')->with('success', 'Service added successfully');
     }
 
     public function edit_service($id)
     {
-        $service = Service::where('id',$id)->first();
-        if($service)
-        {
-            return view('superadmin.service.edit-service',compact('service'));
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+        $service = Service::where('id', $id)->first();
+        if ($service) {
+            return view('superadmin.service.edit-service', compact('service'));
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
 
     public function update_service(Request $request)
     {
-        $service = Service::where('id',$request->id)->first();
-        if($service)
-        {
+        $service = Service::where('id', $request->id)->first();
+        if ($service) {
             $service->name = $request->name;
             $service->save();
-            return redirect()->route('superadmin-service')->with('success','Service updated successfully');
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+            return redirect()->route('superadmin-service')->with('success', 'Service updated successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
 
     public function delete_service($id)
     {
-        $service = Service::where('id',$id)->first();
-        if($service)
-        {
+        $service = Service::where('id', $id)->first();
+        if ($service) {
             $service->delete();
-            return back()->with('success','Service deleted successfully');
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+            return back()->with('success', 'Service deleted successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
 
@@ -408,7 +402,7 @@ class SuperAdminController extends Controller
     public function transaction()
     {
         $transactions = Transaction::all();
-        return view('superadmin.transactions.transaction' ,compact('transactions'));
+        return view('superadmin.transactions.transaction', compact('transactions'));
     }
     //------------------------------------ Super-Admin Transaction End ------------------------------------//
 
@@ -416,7 +410,7 @@ class SuperAdminController extends Controller
     public function department()
     {
         $departments = Department::all();
-        return view('superadmin.departments.department',compact('departments'));
+        return view('superadmin.departments.department', compact('departments'));
     }
     //------------------------------------ Super-Admin Departments End ------------------------------------//
 
@@ -424,21 +418,21 @@ class SuperAdminController extends Controller
 
     public function license()
     {
-        $users = User::where('role','customer')->get();
+        $users = User::where('role', 'customer')->get();
 
-        return view('superadmin.license.license',compact('users'));
+        return view('superadmin.license.license', compact('users'));
     }
 
     public function departments($id)
     {
-        $departments = Department::where('user_id','=',$id)->get();
-        return view('superadmin.license.view-departments',compact('departments'));
+        $departments = Department::where('user_id', '=', $id)->get();
+        return view('superadmin.license.view-departments', compact('departments'));
     }
 
     public function license_view($id)
     {
-        $license = license::where('department_id',$id)->get();
-        return view('superadmin.license.view-license',compact('license'));
+        $license = license::where('department_id', $id)->get();
+        return view('superadmin.license.view-license', compact('license'));
     }
 
     public function delete_license($id)
@@ -454,60 +448,54 @@ class SuperAdminController extends Controller
     public function lang()
     {
         $languages = Language::all();
-        return view('superadmin.languages.lang',compact('languages'));
+        return view('superadmin.languages.lang', compact('languages'));
     }
 
     public function add_language(Request $request)
     {
-        $this->validate($request,[
-            'language' => ['required','string'],
-            'country' => ['required','string'],
+        $this->validate($request, [
+            'language' => ['required', 'string'],
+            'country' => ['required', 'string'],
         ]);
         $language = new Language();
         $language->create([
             'language' => $request->language,
             'country' => $request->country,
         ]);
-        return back()->with('success','Language added successfully');
+        return back()->with('success', 'Language added successfully');
     }
 
     public function edit_language($id)
     {
-        $language = Language::where('id',$id)->first();
-        return view('superadmin.languages.edit-language',compact('language'));
+        $language = Language::where('id', $id)->first();
+        return view('superadmin.languages.edit-language', compact('language'));
     }
 
     public function update_language(Request $request)
     {
-        $this->validate($request,[
-            'language' => ['required','string'],
-            'country' => ['required','string'],
+        $this->validate($request, [
+            'language' => ['required', 'string'],
+            'country' => ['required', 'string'],
         ]);
-        $language = Language::where('id',$request->id)->first();
-        if($language)
-        {
+        $language = Language::where('id', $request->id)->first();
+        if ($language) {
             $language->country = $request->country;
             $language->language = $request->language;
             $language->save();
-            return redirect()->route('superadmin-multi-lang')->with('success','Language updated successfully');
-        }
-        else
-        {
-            return back()->with('error','Something went wrong');
+            return redirect()->route('superadmin-multi-lang')->with('success', 'Language updated successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
     }
 
     public function delete_language($id)
     {
-        $language = Language::where('id',$id)->first();
-        if($language)
-        {
+        $language = Language::where('id', $id)->first();
+        if ($language) {
             $language->delete();
-            return back()->with('success','Language deleted successfully');
-        }
-        else
-        {
-            return back()->With('error','Something went wrong');
+            return back()->with('success', 'Language deleted successfully');
+        } else {
+            return back()->With('error', 'Something went wrong');
         }
     }
     //------------------------------------ Super-Admin Multi Language End ------------------------------------//

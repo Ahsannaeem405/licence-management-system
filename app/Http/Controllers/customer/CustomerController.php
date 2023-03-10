@@ -442,7 +442,7 @@ class CustomerController extends Controller
 
         $customer = User::find(auth()->user()->id);
         $package = Package::find($customer->package_id);
-        $manager = User::where('add_by', $customer->id)->where('role', 'manager')->count();
+        $manager = User::where('add_by', $customer->id)->count();
         $users = User::whereIn('role', ['manager', 'owner'])->where('company_id', auth()->user()->id)->get();
 
         return view('customer.management.management', compact('users', 'package', 'manager'));

@@ -12,15 +12,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerMail;
+use App\Models\Package;
 use PDF;
 use MyHelper;
+
 class ManagerController extends Controller
 {
     //------------------------------------ Manager-Dashboard Start ------------------------------------//
     public function dashboard()
     {
-        $total_license = License::where('customer_id',Auth::user()->id)->count();
-        return view('manager.dashboard.dashboard',compact('total_license'));
+        $total_license = License::where('customer_id', Auth::user()->id)->count();
+        return view('manager.dashboard.dashboard', compact('total_license'));
     }
     //------------------------------------ Manager-Dashboard End ------------------------------------//
 
@@ -28,35 +30,34 @@ class ManagerController extends Controller
     public function companyinfo()
     {
 
-        $company_id = Department::where('id',Auth::user()->department_id)->value('user_id');
-        $company = User::where('id',$company_id)->first();
-        $total_department = Department::where('user_id',$company_id)->count();
-        $total_license = License::where('department_id',$company_id)->count();
+        $company_id = Department::where('id', Auth::user()->department_id)->value('user_id');
+        $company = User::where('id', $company_id)->first();
+        $total_department = Department::where('user_id', $company_id)->count();
+        $total_license = License::where('department_id', $company_id)->count();
         $data = [
             'company',
             'total_department',
             'total_license',
         ];
-        return view('manager.company.company-info',compact($data));
+        return view('manager.company.company-info', compact($data));
     }
     //------------------------------------ Manager-Info End ------------------------------------//
 
     //------------------------------------ Manager-Management Start ------------------------------------//
     public function management()
     {
-
-
-
-
-        $users = User::whereIn('role',['manager','owner'])->where('company_id',auth()->user()->company_id)->get();
-        return view('manager.management.management',compact('users'));
+        $customer = User::find(auth()->user()->company_id);
+        $package = Package::find($customer->package_id);
+        $managers_allowed = User::where('add_by',auth()->user()->customer_id)->count();
+        $users = User::whereIn('role', ['manager', 'owner'])->where('company_id', auth()->user()->company_id)->get();
+        return view('manager.management.management', compact('users','package','managers_allowed'));
     }
 
     public function add_management()
     {
-        $department_id = User::where('id',Auth::user()->id)->value('department_id');
-        $department = Department::where('id',$department_id)->first();
-        return view('manager.management.add-management',compact('department'));
+        $department_id = User::where('id', Auth::user()->id)->value('department_id');
+        $department = Department::where('id', $department_id)->first();
+        return view('manager.management.add-management', compact('department'));
     }
     public function store_tool_owner(Request $request)
     {
@@ -90,14 +91,14 @@ class ManagerController extends Controller
             'role' => $request->role,
         ];
         Mail::to($request->email)->send(new CustomerMail($details));
-        return redirect()->route('manager-management')->with('success', ''.$request->role.' added successfully mail sent');
+        return redirect()->route('manager-management')->with('success', '' . $request->role . ' added successfully mail sent');
     }
 
     public function edit_tool_owner(Request $request, $id)
     {
         $owner = User::find($id);
         $departments = Department::all();
-        return view('manager.management.edit-management', compact('owner','departments'));
+        return view('manager.management.edit-management', compact('owner', 'departments'));
     }
 
     public function update_tool_owner(Request $request)
@@ -109,12 +110,10 @@ class ManagerController extends Controller
             'role' => ['required'],
             'department' => ['required'],
         ]);
-        if ($owner)
-        {
+        if ($owner) {
             $owner->name = $request->name;
             $owner->email = $request->email;
-            if ($request->password)
-            {
+            if ($request->password) {
                 $owner->password = Hash::make($request->password);
             }
             $owner->address = $request->address;
@@ -123,9 +122,7 @@ class ManagerController extends Controller
             $owner->department_id = $request->department;
             $owner->save();
             return redirect()->route('manager-management')->with('success', 'Tool Owner updated successfully');
-        }
-        else
-        {
+        } else {
             return back()->with('error', 'User not found!');
         }
     }
@@ -141,39 +138,41 @@ class ManagerController extends Controller
     //------------------------------------ Manager-License Start ------------------------------------//
     public function license()
     {
-
-        $licenses = License::where('reffer_to',Auth::user()->id)->get();
-        return view('manager.license.license',compact('licenses'));
+        $user = User::find(auth()->user()->company_id);
+        $package = Package::find($user->package_id);
+        $licenses = License::where('reffer_to', Auth::user()->id)->get();
+        $license_added = License::where('customer_id', auth()->user()->company_id)->count();
+        return view('manager.license.license', compact('licenses', 'license_added', 'package'));
     }
 
     public function export_manager_license_list(Request $request)
     {
-        $licenses = License::whereIn('id',explode(',',$request->id))->get();
-        $pdf = PDF::loadView('pdf.manager-license-list',compact('licenses'));
+        $licenses = License::whereIn('id', explode(',', $request->id))->get();
+        $pdf = PDF::loadView('pdf.manager-license-list', compact('licenses'));
         return $pdf->download('ManLicExportReport.pdf');
     }
 
     public function share_manager_license_list(Request $request)
     {
-        $licenses = License::whereIn('id',explode(',',$request->id))->get();
-        $pdf = PDF::loadView('emails.manager-license-list',compact('licenses'));
-        Mail::send([], [], function ($message) use ($pdf,$request) {
+        $licenses = License::whereIn('id', explode(',', $request->id))->get();
+        $pdf = PDF::loadView('emails.manager-license-list', compact('licenses'));
+        Mail::send([], [], function ($message) use ($pdf, $request) {
             $message->to($request->email)
-                    ->subject('Manager List PDF')
-                    ->attachData($pdf->output(), 'ManLicExportReport.pdf', [
-                        'mime' => 'application/pdf',
-                    ]);
+                ->subject('Manager List PDF')
+                ->attachData($pdf->output(), 'ManLicExportReport.pdf', [
+                    'mime' => 'application/pdf',
+                ]);
         });
-        return back()->with('success','Manager List Sent Successfully');
+        return back()->with('success', 'Manager List Sent Successfully');
     }
 
     public function add_license()
     {
-        $department_id = User::where('id',Auth::user()->id)->value('department_id');
-        $department = Department::where('id',$department_id)->first();
+        $department_id = User::where('id', Auth::user()->id)->value('department_id');
+        $department = Department::where('id', $department_id)->first();
         // $users  = User::where('add_by',Auth::user()->id)->get();
         // $services = Service::all();
-        return view('manager.license.add-license',compact('department'));
+        return view('manager.license.add-license', compact('department'));
     }
 
     public function store_license(Request $request)
@@ -184,43 +183,42 @@ class ManagerController extends Controller
             'reffer' => ['required'],
             'department' => ['required'],
             'key' => ['required'],
-            'additional_info' => ['string','max:2000'],
+            'additional_info' => ['string', 'max:2000'],
         ]);
         $license = new License;
-        if ($file = $request->hasfile('attachment'))
-                {
-                    $file = $request->file('attachment');
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $destinationPath = public_path().'/license-attachments/';
-                    $file->move($destinationPath, $fileName);
-                    $request->attachment = $fileName;
-                    $license->attachment = $request->attachment;
-                }
-                $license->create([
-                    'title' => $request->title,
-                    'customer_id' => Auth::user()->company_id,
-                    'description' => $request->description,
-                    'price' => $request->price,
-                    'purchase_date' => $request->purchase_date,
-                    'additional_info' => $request->additional_info,
-                    'license_owner' => $request->license_owner,
-                    'renew_date' => $request->renew_date,
-                    'renew_alert' => $request->renew_alert ? 1 : 0,
-                    'expiry_alert' => $request->expiry_alert ? 1 : 0,
-                    'reffer_to' =>  auth()->user()->id,
-                    'department_id' =>  $request->department,
-                    'date_of_issue' => $request->issue,
-                    'date_of_expiry' => $request->expiry,
-                    'key' =>  $request->key,
-                    'attachment' => $request->attachment,
-                ]);
+        if ($file = $request->hasfile('attachment')) {
+            $file = $request->file('attachment');
+            $fileName = uniqid() . $file->getClientOriginalName();
+            $destinationPath = public_path() . '/license-attachments/';
+            $file->move($destinationPath, $fileName);
+            $request->attachment = $fileName;
+            $license->attachment = $request->attachment;
+        }
+        $license->create([
+            'title' => $request->title,
+            'customer_id' => Auth::user()->company_id,
+            'description' => $request->description,
+            'price' => $request->price,
+            'purchase_date' => $request->purchase_date,
+            'additional_info' => $request->additional_info,
+            'license_owner' => $request->license_owner,
+            'renew_date' => $request->renew_date,
+            'renew_alert' => $request->renew_alert ? 1 : 0,
+            'expiry_alert' => $request->expiry_alert ? 1 : 0,
+            'reffer_to' =>  auth()->user()->id,
+            'department_id' =>  $request->department,
+            'date_of_issue' => $request->issue,
+            'date_of_expiry' => $request->expiry,
+            'key' =>  $request->key,
+            'attachment' => $request->attachment,
+        ]);
         return redirect()->route('manager-license')->with('success', 'License added successfully');
     }
 
-    public function edit_license(Request $request,$id)
+    public function edit_license(Request $request, $id)
     {
         $license = License::find($id);
-        $department = Department::where('id',$license->department_id)->first();
+        $department = Department::where('id', $license->department_id)->first();
         $services = Service::all();
         $data = [
             'license',
@@ -241,8 +239,7 @@ class ManagerController extends Controller
             'department' => ['required'],
             'key' => ['required'],
         ]);
-        if($license)
-        {
+        if ($license) {
             $license->title = $request->title;
             $license->service_id = $request->service;
             $license->date_of_issue = $request->issue;
@@ -251,35 +248,28 @@ class ManagerController extends Controller
             $license->key = $request->key;
             $license->save();
             return redirect()->route('manager-license')->with('success', 'License updated successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
-        else
-        {
-            return back()->with('error','Something went wrong');
-        }
-
     }
 
     public function delete_license($id)
     {
         $license = License::find($id);
-        if($license)
-        {
+        if ($license) {
             $license->delete();
             return redirect()->route('manager-license')->with('success', 'License Deleted Successfully');
+        } else {
+            return back()->with('error', 'Something went wrong');
         }
-        else
-        {
-            return back()->with('error','Something went wrong');
-        }
-
     }
     //------------------------------------ Manager-License End ------------------------------------//
 
     //------------------------------------ Manager-Setting Start ------------------------------------//
     public function setting()
     {
-        $user = User::whereIn('role',['manager','owner'])->where('id',Auth::user()->id)->first();
-        return view('manager.settings.setting',compact('user'));
+        $user = User::whereIn('role', ['manager', 'owner'])->where('id', Auth::user()->id)->first();
+        return view('manager.settings.setting', compact('user'));
     }
 
     public function update_manager_profile(Request $request)

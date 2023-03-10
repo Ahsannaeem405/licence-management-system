@@ -545,12 +545,17 @@ class CustomerController extends Controller
 
     public function delete_tool_owner($id)
     {
+
         $owner = User::find($id);
-        $license = License::where('customer_id', $owner->id)->first();
+        $license = License::where('reffer_to', $owner->id)->first();
 
         if (!$license) {
             $owner->delete();
-            return redirect()->route('customer-management')->with('success', 'Tool Owner deleted successfully');
+            if ($owner->role == 'owner') {
+                return redirect()->route('customer-management')->with('success', 'Tool Owner deleted successfully');
+            } else {
+                return redirect()->route('customer-management')->with('success', 'Manager deleted successfully');
+            }
         } else {
             return back()->with('error', 'Delete License of this manager first');
         }

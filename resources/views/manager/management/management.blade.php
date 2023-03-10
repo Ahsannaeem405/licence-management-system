@@ -25,7 +25,11 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
+                                        @if(MyHelper::user_allowed($package->id)->point_value <= $managers_allowed)
+                                        <a href="{{ route('manager-add-management') }}" class="btn btn-primary mb-2 d-none" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
+                                        @else
                                         <a href="{{ route('manager-add-management') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
+                                        @endif
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>
@@ -66,7 +70,7 @@
                                                         </td>
                                                         @endif
                                                         <td>{{$user->department->name}}</td>
-                                                        
+
                                                         <td class="product-category">
                                                             <div class="chip chip-dark">
                                                                 <div class="chip-body" style="max-width: 100px; width:65px; padding:5px;">
@@ -74,7 +78,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        
+
                                                         <td>
                                                             <span class="d-flex">
                                                                 <a href="{{route('manager-edit-management',$user->id)}}"><i class="fa fa-edit text-warning"></i></a>
@@ -82,7 +86,7 @@
                                                                     <input type="hidden" value="GET" name="_method">
                                                                     <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
                                                                 </form>
-                                                            </span> 
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     @endforeach

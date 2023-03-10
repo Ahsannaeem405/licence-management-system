@@ -29,7 +29,7 @@
                 </div>
                 <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
                     <div class="form-group breadcrum-right">
-                       
+
                     </div>
                 </div>
             </div>
@@ -41,7 +41,11 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
+                                        @if(MyHelper::licence_allowed($package->id)->point_value <= $license_added )
+                                        <a href="{{ route('manager-add-license')}}" class="btn btn-primary mb-2 d-none" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
+                                        @else
                                         <a href="{{ route('manager-add-license')}}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
+                                        @endif
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>
@@ -122,7 +126,7 @@
                                                                         <input type="hidden" value="GET" name="_method">
                                                                         <button type="submit" class="show_confirm text-danger" style="border: none; background:transparent;"><i class="fa fa-trash"></i></button>
                                                                     </form>
-                                                                </span> 
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -192,7 +196,7 @@
     });
 
     // This part will check the (checked) checkBoxes which are clicked  one by one and add it into array //
-    $('.mychecks').change(function(){ 
+    $('.mychecks').change(function(){
         var fav = [];
         $.each($("input[class='mychecks']:checked"), function(){
             if($(this).attr('data-id') != null)
@@ -204,14 +208,14 @@
         ($('#fav').attr('value',fav));
         $('#exp-fav').attr('value',fav);
         if(false == $(this).prop("checked"))
-        { 
+        {
             $("#select_all").prop('checked', false);
-            
+
         }
         if ($('.mychecks:checked').length == $('.mychecks').length )
         {
             $("#select_all").prop('checked', true);
-            
+
         }
     });
 

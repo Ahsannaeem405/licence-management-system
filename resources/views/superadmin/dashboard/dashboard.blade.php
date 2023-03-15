@@ -18,7 +18,7 @@
                         <div class="col-lg-5 col-md-5 col-sm-12">
                           <div class="card" id="chart"></div>
                         </div>
-                        
+
                         <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="row">
                                 <div class="col-12">
@@ -32,7 +32,7 @@
                                                     <p class="mb-0">Customers</p>&nbsp;&nbsp;
                                                     <h4 class="text-bold-700">{{$total_customers}}</h4>
                                                 </div>
-                                                
+
                                             </div>
                                             {{-- <div class="card-content">
                                                 <div id="line-area-chart-1"></div>
@@ -87,7 +87,7 @@
                                                 <p class="mb-0">Departments</p>&nbsp;&nbsp;
                                                 <h4 class="text-bold-700">{{$total_departments}}</h4>
                                             </div>
-                                            
+
                                         </div>
                                         {{-- <div class="card-content">
                                             <div id="line-area-chart-4"></div>
@@ -231,7 +231,8 @@
 <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
 <script>
     var options = {
-          series: [{
+          series:
+              [{
             name: "Free",
             data: [<?php foreach($free_packages as $sum) {echo $sum.',';}?>]
           },
@@ -316,49 +317,49 @@
           series: [{
           name: 'Free',
           data: [
-          {{MyHelper::pointt(1, '1')}}, 
-          {{MyHelper::pointt(2, '1')}}, 
-          {{MyHelper::pointt(3, '1')}}, 
-          {{MyHelper::pointt(4, '1')}}, 
-          {{MyHelper::pointt(5, '1')}}, 
-          {{MyHelper::pointt(6, '1')}}, 
-          {{MyHelper::pointt(7, '1')}}, 
-          {{MyHelper::pointt(8, '1')}}, 
-          {{MyHelper::pointt(9, '1')}}, 
-          {{MyHelper::pointt(10, '1')}}, 
-          {{MyHelper::pointt(11, '1')}}, 
+          {{MyHelper::pointt(1, '1')}},
+          {{MyHelper::pointt(2, '1')}},
+          {{MyHelper::pointt(3, '1')}},
+          {{MyHelper::pointt(4, '1')}},
+          {{MyHelper::pointt(5, '1')}},
+          {{MyHelper::pointt(6, '1')}},
+          {{MyHelper::pointt(7, '1')}},
+          {{MyHelper::pointt(8, '1')}},
+          {{MyHelper::pointt(9, '1')}},
+          {{MyHelper::pointt(10, '1')}},
+          {{MyHelper::pointt(11, '1')}},
           {{MyHelper::pointt(12, '1')}},
         ]
         }, {
           name: 'Plus',
           data: [
-          {{MyHelper::pointt(1, '2')}}, 
-          {{MyHelper::pointt(2, '2')}}, 
-          {{MyHelper::pointt(3, '2')}}, 
-          {{MyHelper::pointt(4, '2')}}, 
-          {{MyHelper::pointt(5, '2')}}, 
-          {{MyHelper::pointt(6, '2')}}, 
-          {{MyHelper::pointt(7, '2')}}, 
-          {{MyHelper::pointt(8, '2')}}, 
-          {{MyHelper::pointt(9, '2')}}, 
-          {{MyHelper::pointt(10, '2')}}, 
-          {{MyHelper::pointt(11, '2')}}, 
+          {{MyHelper::pointt(1, '2')}},
+          {{MyHelper::pointt(2, '2')}},
+          {{MyHelper::pointt(3, '2')}},
+          {{MyHelper::pointt(4, '2')}},
+          {{MyHelper::pointt(5, '2')}},
+          {{MyHelper::pointt(6, '2')}},
+          {{MyHelper::pointt(7, '2')}},
+          {{MyHelper::pointt(8, '2')}},
+          {{MyHelper::pointt(9, '2')}},
+          {{MyHelper::pointt(10, '2')}},
+          {{MyHelper::pointt(11, '2')}},
           {{MyHelper::pointt(12, '2')}},
           ]
         }, {
           name: 'Pro',
           data: [
-          {{MyHelper::pointt(1, '3')}}, 
-          {{MyHelper::pointt(2, '3')}}, 
-          {{MyHelper::pointt(3, '3')}}, 
-          {{MyHelper::pointt(4, '3')}}, 
-          {{MyHelper::pointt(5, '3')}}, 
-          {{MyHelper::pointt(6, '3')}}, 
-          {{MyHelper::pointt(7, '3')}}, 
-          {{MyHelper::pointt(8, '3')}}, 
-          {{MyHelper::pointt(9, '3')}}, 
-          {{MyHelper::pointt(10, '3')}}, 
-          {{MyHelper::pointt(11, '3')}}, 
+          {{MyHelper::pointt(1, '3')}},
+          {{MyHelper::pointt(2, '3')}},
+          {{MyHelper::pointt(3, '3')}},
+          {{MyHelper::pointt(4, '3')}},
+          {{MyHelper::pointt(5, '3')}},
+          {{MyHelper::pointt(6, '3')}},
+          {{MyHelper::pointt(7, '3')}},
+          {{MyHelper::pointt(8, '3')}},
+          {{MyHelper::pointt(9, '3')}},
+          {{MyHelper::pointt(10, '3')}},
+          {{MyHelper::pointt(11, '3')}},
           {{MyHelper::pointt(12, '3')}},
           ]
         }],
@@ -414,7 +415,7 @@
     var $label_color = '#e7eef7';
     var $purple = '#df87f2';
     var $white = '#fff';
-    var sessionChartoptions = 
+    var sessionChartoptions =
     {
       chart: {
         type: 'donut',
@@ -447,7 +448,7 @@
     sessionChart.render();
 
     //------------------------ Customer Chart -------------------//
-    var customerChartoptions = 
+    var customerChartoptions =
     {
       chart: {
         type: 'pie',
@@ -489,7 +490,7 @@
     customerChart.render();
 
     //------------------------ Revenue Chart -------------------//
-    var revenueChartoptions = 
+    var revenueChartoptions =
     {
       chart: {
         height: 270,
@@ -508,7 +509,7 @@
         show: false,
       },
       colors: [$danger_light, $strok_color],
-  
+
       fill: {
         type: 'gradient',
         gradient: {
@@ -577,14 +578,14 @@
 
       }
       ],
-  
+
     }
-  
+
     var revenueChart = new ApexCharts(
       document.querySelector("#revenue-chart"),
       revenueChartoptions
     );
-  
+
     revenueChart.render();
 </script>
 @endsection

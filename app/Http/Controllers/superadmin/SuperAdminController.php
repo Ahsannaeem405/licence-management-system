@@ -46,14 +46,15 @@ class SuperAdminController extends Controller
         $current_amount = Transaction::whereMonth('created_at', \Carbon\Carbon::now())->pluck('amount');
         $last_amount = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth()->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
 
-        $last_three_months = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->sum('amount');
-        $last_three_months_amount = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth(3)->startOfMonth(), \Carbon\Carbon::now()->subMonth()->endOfMonth()])->pluck('amount');
+        $last_three_months = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth(2)->startOfMonth(), \Carbon\Carbon::now()->endOfMonth()])->sum('amount');
+        //dd( \Carbon\Carbon::now()->subMonth(2)->startOfMonth(), \Carbon\Carbon::now()->endOfMonth());
+        $last_three_months_amount = Transaction::whereBetween('created_at', [\Carbon\Carbon::now()->subMonth(2)->startOfMonth(), \Carbon\Carbon::now()->subMonth(2)->endOfMonth()])->pluck('amount');
 
         $free_package = Transaction::where('package_id', '1')->pluck('package_id')->count();
         $plus_package = Transaction::where('package_id', '2')->pluck('package_id')->count();
         $pro_package = Transaction::where('package_id', '3')->pluck('package_id')->count();
 
-        $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->count();
+        $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->where('role', '!=', 'superadmin')->count();
         $six_month_customers = User::whereMonth('created_at', \Carbon\Carbon::now()->subMonth(6))->count();
         $one_year_customers = User::whereYear('created_at', \Carbon\Carbon::now()->subYear())->count();
         /////////////////////////////////////////////////////////////////Packges_chart//////////////////////////
@@ -66,6 +67,7 @@ class SuperAdminController extends Controller
 
             // Make a copy of the start date and move to the end of the month (e.g. 2019-01-31 23:59:59)
             $date_end = $date->copy()->endOfMonth();
+            // dd($date_end);
 
             $transaksi = Transaction::where('package_id', 1)
                 // the creation date must be between the start of the month and the end of the month

@@ -96,8 +96,8 @@
                             <input class='form-control card-expiry-year' placeholder='YYYY' name="card_expiry_year" size='4' type='text' {{$package->id == 1 ? 'disabled':''}}>
                         </div>
                     </div>
-                    <input type="hidden" name="pack_id" value="{{$package->id}}" {{$package->id == 1 ? 'disabled':''}}>
-                    <input type="hidden" name="amount" value="{{$package->price}}" {{$package->id == 1 ? 'disabled':''}}>
+                    <input type="text" name="pack_id" value="{{$package->id}}" {{$package->id == 1 ? 'disabled':''}}>
+                    <input type="text" name="amount" value="{{$package->price}}" {{$package->id == 1 ? 'disabled':''}}>
                     <div class='form-row row'>
                         <div class='col-md-12 error form-group hide'>
                             <div class='alert-danger alert'>Please correct the errors and try again.</div>
@@ -135,7 +135,7 @@
         var $form = $(".require-validation");
 
         $('form.require-validation').bind('submit', function(e) {
-            
+
             var $form = $(".require-validation"),
                 inputSelector = ['input[type=email]', 'input[type=password]',
                     'input[type=text]', 'input[type=file]',

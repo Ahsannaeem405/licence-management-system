@@ -34,7 +34,7 @@
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form-horizontal" action="{{ route('superadmin-store') }}"
-                                            method="POST" novalidate>
+                                            method="POST" novalidate enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -81,6 +81,15 @@
 
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label>Company Logo*</label>
+                                                        <div class="controls">
+                                                            <input type="file" name="company_logo"
+                                                                class="form-control"
+                                                                placeholder="" required>
+
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                                 <div class="col-md-6">
@@ -110,6 +119,17 @@
                                                         <label>{{ __('messages.frm cnfrm password') }}*</label>
                                                         <div class="controls">
                                                             <input type="password" name="password_confirmation"
+                                                                class="form-control"
+                                                                data-validation-containsnumber-regex="^([0-9]+)$"
+                                                                data-validation-containsnumber-message="The regex field format is invalid."
+                                                                placeholder="" required>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Company Name*</label>
+                                                        <div class="controls">
+                                                            <input type="text" name="company_name"
                                                                 class="form-control"
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
                                                                 data-validation-containsnumber-message="The regex field format is invalid."

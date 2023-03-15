@@ -51,6 +51,7 @@ class StripePaymentController extends Controller
     public function subscribe(Request $request)
     {
 
+
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
         $token = $stripe->tokens->create([

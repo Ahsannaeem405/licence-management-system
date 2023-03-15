@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerficationEmail;
+use App\Models\Transaction;
 use App\Models\User;
+
 class VerifyController extends Controller
 {
     public function verify()
@@ -26,24 +28,22 @@ class VerifyController extends Controller
         $profile = User::where('id', Auth::user()->id)->first();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'address' => ['required','string'],
+            'address' => ['required', 'string'],
             'company_logo' => ['required'],
-            'company_name' => ['required','string'],
+            'company_name' => ['required', 'string'],
         ]);
-        if ($file = $request->hasfile('image'))
-        {
+        if ($file = $request->hasfile('image')) {
             $file = $request->file('image');
             $fileName = uniqid() . $file->getClientOriginalName();
-            $destinationPath = public_path().'/profiles-images/';
+            $destinationPath = public_path() . '/profiles-images/';
             $file->move($destinationPath, $fileName);
             $request->image = $fileName;
             $profile->image = $request->image;
         }
-        if ($file = $request->hasfile('company_logo'))
-        {
+        if ($file = $request->hasfile('company_logo')) {
             $file = $request->file('company_logo');
             $fileName = uniqid() . $file->getClientOriginalName();
-            $destinationPath = public_path().'/company-logo/';
+            $destinationPath = public_path() . '/company-logo/';
             $file->move($destinationPath, $fileName);
             $request->company_logo = $fileName;
             $profile->company_logo = $request->company_logo;
@@ -55,39 +55,31 @@ class VerifyController extends Controller
         $profile->billing_name = $request->billing_name;
         $profile->is_verified = 2;
         $profile->save();
-        if($profile->package_id ==1)
-        {
-            return redirect()->route('stripe-payment')->with('success','No fee will be charged for first 3 months, can cancel the subscription at any time. An alert mail will be sent 5 days before the end of free trail.');
-        }
-        else
-        {
+        if ($profile->package_id == 1) {
+            return redirect()->route('stripe-payment')->with('success', 'No fee will be charged for first 3 months, can cancel the subscription at any time. An alert mail will be sent 5 days before the end of free trail.');
+        } else {
             return redirect()->route('stripe-payment');
         }
-
     }
 
     public function verify_code(Request $request)
     {
         $code = Auth::user()->verification_code;
-        $user = User::where('id',Auth::user()->id)->first();
-        if($request->verification_code == $code)
-        {
-            if($user->is_verified == 0)
-            {
+        $user = User::where('id', Auth::user()->id)->first();
+        if ($request->verification_code == $code) {
+            if ($user->is_verified == 0) {
                 $user->is_verified = 1;
                 $user->save();
             }
-            return redirect()->route('customer-profile')->with('success','Email has been verified Successfully');
-        }
-        else
-        {
-            return back()->with('error','Invalid Verification Code');
+            return redirect()->route('customer-profile')->with('success', 'Email has been verified Successfully');
+        } else {
+            return back()->with('error', 'Invalid Verification Code');
         }
     }
 
     public function resend_code(Request $request)
     {
-        $user = User::where('id',$request->id)->first();
+        $user = User::where('id', $request->id)->first();
         $code = random_int(100000, 999999);
         $user->verification_code = $code;
         $user->save();
@@ -95,22 +87,25 @@ class VerifyController extends Controller
             'verification_code' => $code,
         ];
         Mail::to($user->email)->send(new VerficationEmail($details));
-        return back()->with('success','Verification Code has been resended');
+        return back()->with('success', 'Verification Code has been resended');
     }
 
     public function continue_free()
     {
-        $user = User::where('id',Auth::user()->id)->first();
+        $user = User::where('id', Auth::user()->id)->first();
         $next_payment = date("Y-m-d", strtotime("+3 month"));
-        $user->next_payment=$next_payment;
-        $user->active=1;
-        $user->pass=null;
-        $user->is_verified=3;
+        $user->next_payment = $next_payment;
+        $user->active = 1;
+        $user->pass = null;
+        $user->is_verified = 3;
         $user->save();
+        $trans = new Transaction();
+        $trans->user_id = $user->id;
+        $trans->package_id = $user->package_id;
+        $trans->amount  = 0;
+        $trans->save();
         Auth::logout();
         Session::flush();
-        return redirect()->route('login')->with('success','successfully registerd continue to login.');
+        return redirect()->route('login')->with('success', 'successfully registerd continue to login.');
     }
-
-
 }

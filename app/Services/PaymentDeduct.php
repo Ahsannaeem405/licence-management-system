@@ -11,8 +11,11 @@ class PaymentDeduct
     public function payment($user)
     {
 
+
         $get_user = User::find($user->id);
+
         $Package = Package::find($get_user->package_id);
+
         try {
 
             if ($get_user->package_id != 1) {
@@ -37,7 +40,7 @@ class PaymentDeduct
 
 
             $trans = new Transaction();
-            $trans->package_id = $get_user->pack_id;
+            $trans->package_id = $get_user->package_id;
             $trans->user_id = $get_user->id;
 //            $trans->receipt_url = $charge->receipt_url;
 //            $trans->transactions_id = $charge->id;

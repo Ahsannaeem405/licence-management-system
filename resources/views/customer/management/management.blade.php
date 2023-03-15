@@ -43,8 +43,12 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('customer-add-management') }}" class="btn btn-primary mb-2"
-                                            style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
+
+                                        @if(MyHelper::user_allowed($package->id)->point_value <= $manager)
+                                        <a href="{{ route('customer-add-management') }}" class="btn btn-primary mb-2 d-none" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
+                                        @else
+                                        <a href="{{ route('customer-add-management') }}" class="btn btn-primary mb-2" style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add Management</a>
+                                        @endif
                                         <div class="table-responsive">
                                             <table class="table zero-configuration">
                                                 <thead>

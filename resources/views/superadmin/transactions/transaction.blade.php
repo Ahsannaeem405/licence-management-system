@@ -49,9 +49,9 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>User Name</th>
-                                                        <th>package</th>
-                                                        <th>price</th>
-                                                        <th>created_at</th>
+                                                        <th>Package</th>
+                                                        <th>Price</th>
+                                                        <th>Created At</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

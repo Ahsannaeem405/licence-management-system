@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Package;
+use App\Models\PackageDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -17,25 +18,22 @@ class MyHelper
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id . ''],
         ]);
-        if ($file = $request->hasfile('image'))
-        {
+        if ($file = $request->hasfile('image')) {
             $file = $request->file('image');
             $fileName = uniqid() . $file->getClientOriginalName();
-            $destinationPath = public_path().'/profiles-images/';
+            $destinationPath = public_path() . '/profiles-images/';
             $file->move($destinationPath, $fileName);
             $request->image = $fileName;
             $user->image = $request->image;
         }
         $user->name = $request->name;
         $user->email = $request->email;
-        if($request->currency)
-        {
+        if ($request->currency) {
             $user->currency = $request->currency;
         }
         $user->save();
-        $employees = User::where('add_by',$user->id)->get();
-        foreach($employees as $employee)
-        {
+        $employees = User::where('add_by', $user->id)->get();
+        foreach ($employees as $employee) {
             $employee->currency = $user->currency;
             $employee->save();
         }
@@ -45,16 +43,14 @@ class MyHelper
 
     public static function update_password(Request $request)
     {
-        if(empty($request->old_password) || empty($request->new_password))
-        {
+        if (empty($request->old_password) || empty($request->new_password)) {
             return back()->with("error", "Old Password and New Password fields are Required");
         }
-        if($request->new_password != $request->new_password_confirmation)
-        {
+        if ($request->new_password != $request->new_password_confirmation) {
             return back()->with("error", "New Password Doesn't match with Confirm Password");
         }
         #Match The Old Password
-        if(!Hash::check($request->old_password, auth()->user()->password)){
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
             return back()->with("error", "Old Password Doesn't match!");
         }
 
@@ -73,8 +69,24 @@ class MyHelper
 
     public static function get_addby($id)
     {
-        $user = User::where('id',$id)->first();
+        $user = User::where('id', $id)->first();
         return $user;
     }
+    public static function user_allowed($id)
+    {
+        $package = PackageDetail::where('package_id', $id)->where('point_name', 'User')->first();
 
+        return $package;
+    }
+    public static function licence_allowed($id)
+    {
+        $package = PackageDetail::where('package_id', $id)->where('point_name', 'Licenses')->first();
+
+        return $package;
+    }
+    public static function department_allowed($id)
+    {
+        $package = PackageDetail::where('package_id', $id)->where('point_name', 'Department /Service (Manage multiple teams or departments)')->first();
+        return $package;
+    }
 }

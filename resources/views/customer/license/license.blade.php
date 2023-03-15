@@ -46,8 +46,16 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
-                                        <a href="{{ route('customer-add-license') }}" class="btn btn-primary mb-2"
-                                            style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add License</a>
+                                        @if (MyHelper::licence_allowed($package->id)->point_value <= $license)
+                                            <a href="{{ route('customer-add-license') }}"
+                                                class="btn btn-primary mb-2 d-none" style="float: right;"><i
+                                                    class="feather icon-plus"></i>&nbsp; Add
+                                                License</a>
+                                        @else
+                                            <a href="{{ route('customer-add-license') }}" class="btn btn-primary mb-2"
+                                                style="float: right;"><i class="feather icon-plus"></i>&nbsp; Add
+                                                License</a>
+                                        @endif
                                         <div class="table-responsive">
                                             {{-- dataex-html5-selectors --}}
                                             <table class="table zero-configuration">
@@ -140,24 +148,28 @@
                                                             @endif
                                                             @if ($license->status == 1)
                                                                 <td class="product-success">
-                                                                    <a href="{{ url('customer/license-status') }}/{{ $license->id }}">
+                                                                    <a
+                                                                        href="{{ url('customer/license-status') }}/{{ $license->id }}">
                                                                         <div class="chip chip-success">
                                                                             <div class="chip-body"
                                                                                 style="max-width: 100px; width:auto; padding:5px;">
                                                                                 <div class="chip-text">
-                                                                                    <strong>Active</strong></div>
+                                                                                    <strong>Active</strong>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </a>
                                                                 </td>
                                                             @else
                                                                 <td class="product-warning">
-                                                                    <a href="{{ url('customer/license-status') }}/{{ $license->id }}">
+                                                                    <a
+                                                                        href="{{ url('customer/license-status') }}/{{ $license->id }}">
                                                                         <div class="chip chip-warning">
                                                                             <div class="chip-body"
                                                                                 style="max-width: 100px; width:auto; padding:5px;">
                                                                                 <div class="chip-warning">
-                                                                                    <strong>InActive</strong></div>
+                                                                                    <strong>InActive</strong>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </a>

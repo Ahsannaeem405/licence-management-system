@@ -22,7 +22,7 @@ return [
     'th package' => 'Package',
     'th price' => 'Price',
     'th action' => 'Action',
-    'th add'=>'add Customer',
+    'th add'=>'Add Customer',
     'th name' => 'Name',
     'th email' => 'Email',
     'th address' => 'Address',

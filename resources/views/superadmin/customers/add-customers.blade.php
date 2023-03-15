@@ -10,7 +10,6 @@
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
                             <h2 class="content-header-title float-left mb-0">{{ __('messages.frm customer') }}</h2>
-
                         </div>-
                     </div>
                 </div>
@@ -69,7 +68,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>{{ __('messages.Package') }}*</label>
+                                                        <label>{{ 'Package' }}*</label>
                                                         <div class="controls">
 
                                                             <select class="form-control" name="package_id" id="" data-validation-required-message="This field is required" required>

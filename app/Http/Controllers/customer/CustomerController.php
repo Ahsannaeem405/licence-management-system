@@ -3,24 +3,19 @@
 namespace App\Http\Controllers\customer;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CustomerMail;
 use App\Models\Department;
-use Illuminate\Http\Request;
 use App\Models\License;
 use App\Models\Package;
-use App\Services\PaymentDeduct;
-use App\Models\User;
 use App\Models\Transaction;
-use App\Models\Service;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\CustomerMail;
-use App\Mail\SendDepartmentList;
-use Illuminate\Mail\Message;
-use App\Mail\RenewAlert;
 use MyHelper;
 use PDF;
-use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -29,6 +24,7 @@ class CustomerController extends Controller
     {
         $this->middleware(['auth', 'verified']);
     }
+
     //------------------------------------ Customer-Dashboard Start ------------------------------------//
     public function dashboard()
     {
@@ -48,7 +44,7 @@ class CustomerController extends Controller
         $currency = User::find(auth()->user()->id);
         $curr = $currency->currency;
         $main_result = array();
-        $sum_array  = array();
+        $sum_array = array();
         foreach ($department as $key => $row) {
 
             $license = License::select(
@@ -216,7 +212,7 @@ class CustomerController extends Controller
     {
         $department = Department::where('id', $id)->first();
         $user = User::where('department_id', $department->id)->first();
-        if ($department && $department->id != $user->department_id) {
+        if ($department && !$user) {
             $department->delete();
             return back()->with('success', 'Department deleted successfully');
         } else {
@@ -261,7 +257,7 @@ class CustomerController extends Controller
     {
         $departments = Department::where('user_id', auth()->user()->id)->get();
         // $services = Service::all();
-        $users  = User::where('add_by', Auth::user()->id)->get();
+        $users = User::where('add_by', Auth::user()->id)->get();
         return view('customer.license.add-license', compact('departments', 'users'));
     }
 
@@ -276,106 +272,36 @@ class CustomerController extends Controller
             'key' => ['required'],
             'additional_info' => ['nullable', 'string', 'max:2000'],
         ]);
-        if (auth()->user()->package_id == 1) {
-            if ($total_license < 10) {
-                $license = new License;
-                if ($file = $request->hasfile('attachment')) {
-                    $file = $request->file('attachment');
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $destinationPath = public_path() . '/license-attachments/';
-                    $file->move($destinationPath, $fileName);
-                    $request->attachment = $fileName;
-                    $license->attachment = $request->attachment;
-                }
-                $license->create([
-                    'title' => $request->title,
-                    'customer_id' => Auth::user()->id,
-                    'description' => $request->description,
-                    'price' => $request->price,
-                    'purchase_date' => $request->purchase_date,
-                    'additional_info' => $request->additional_info,
-                    'license_owner' => $request->license_owner,
-                    'renew_date' => $request->renew_date,
-                    'renew_alert' => $request->renew_alert ? 1 : 0,
-                    'expiry_alert' => $request->expiry_alert ? 1 : 0,
-                    'reffer_to' =>  $request->reffer,
-                    'department_id' =>  $request->department,
-                    'date_of_issue' => $request->issue,
-                    'date_of_expiry' => $request->expiry,
-                    'key' =>  $request->key,
-                    'attachment' => $request->attachment,
-                ]);
-                return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
-            } else {
-                return redirect()->route('customer-license')->with('error', 'Limit reached');
-            }
-        } elseif (auth()->user()->package_id == 2) {
-            if ($total_license < 100) {
-                $license = new License;
-                if ($file = $request->hasfile('attachment')) {
-                    $file = $request->file('attachment');
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $destinationPath = public_path() . '/license-attachments/';
-                    $file->move($destinationPath, $fileName);
-                    $request->attachment = $fileName;
-                    $license->attachment = $request->attachment;
-                }
-                $license->create([
-                    'title' => $request->title,
-                    'customer_id' => Auth::user()->id,
-                    'description' => $request->description,
-                    'price' => $request->price,
-                    'purchase_date' => $request->purchase_date,
-                    'additional_info' => $request->additional_info,
-                    'license_owner' => $request->license_owner,
-                    'renew_date' => $request->renew_date,
-                    'renew_alert' => $request->renew_alert ? 1 : 0,
-                    'expiry_alert' => $request->expiry_alert ? 1 : 0,
-                    'reffer_to' =>  $request->reffer,
-                    'department_id' =>  $request->department,
-                    'date_of_issue' => $request->issue,
-                    'date_of_expiry' => $request->expiry,
-                    'key' =>  $request->key,
-                    'attachment' => $request->attachment,
-                ]);
-                return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
-            } else {
-                return redirect()->route('customer-license')->with('error', 'Limit reached');
-            }
-        } elseif (auth()->user()->package_id == 3) {
-            if ($total_license < 1000) {
-                $license = new License;
-                if ($file = $request->hasfile('attachment')) {
-                    $file = $request->file('attachment');
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $destinationPath = public_path() . '/license-attachments/';
-                    $file->move($destinationPath, $fileName);
-                    $request->attachment = $fileName;
-                    $license->attachment = $request->attachment;
-                }
-                $license->create([
-                    'title' => $request->title,
-                    'customer_id' => Auth::user()->id,
-                    'description' => $request->description,
-                    'price' => $request->price,
-                    'purchase_date' => $request->purchase_date,
-                    'additional_info' => $request->additional_info,
-                    'license_owner' => $request->license_owner,
-                    'renew_date' => $request->renew_date,
-                    'renew_alert' => $request->renew_alert ? 1 : 0,
-                    'expiry_alert' => $request->expiry_alert ? 1 : 0,
-                    'reffer_to' =>  $request->reffer,
-                    'department_id' =>  $request->department,
-                    'date_of_issue' => $request->issue,
-                    'date_of_expiry' => $request->expiry,
-                    'key' =>  $request->key,
-                    'attachment' => $request->attachment,
-                ]);
-                return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
-            } else {
-                return redirect()->route('customer-license')->with('error', 'Limit reached');
-            }
+        $fileName = null;
+        $license = new License;
+        if ($file = $request->hasfile('attachment')) {
+            $file = $request->file('attachment');
+            $fileName = uniqid() . $file->getClientOriginalName();
+            $destinationPath = public_path() . '/license-attachments/';
+            $file->move($destinationPath, $fileName);
+
         }
+        $license->create([
+            'title' => $request->title,
+            'customer_id' => Auth::user()->id,
+            'description' => $request->description,
+            'price' => $request->price,
+            'purchase_date' => $request->purchase_date,
+            'additional_info' => $request->additional_info,
+            'license_owner' => $request->license_owner,
+            'renew_date' => $request->renew_date,
+            'renew_alert' => $request->renew_alert ? 1 : 0,
+            'expiry_alert' => $request->expiry_alert ? 1 : 0,
+            'reffer_to' => $request->reffer,
+            'department_id' => $request->department,
+            'date_of_issue' => $request->issue,
+            'date_of_expiry' => $request->expiry,
+            'key' => $request->key,
+            'attachment' => $fileName,
+        ]);
+        return redirect()->route('customer-license')->with('success', 'Customer License save successfully');
+
+
     }
 
 
@@ -384,7 +310,7 @@ class CustomerController extends Controller
         $license = License::find($id);
         $departments = Department::all();
         // $services = Service::all();
-        $users  = User::where('add_by', Auth::user()->id)->get();
+        $users = User::where('add_by', Auth::user()->id)->get();
         $data = [
             'license',
             'departments',
@@ -402,19 +328,43 @@ class CustomerController extends Controller
 
             'title' => ['required'],
             // 'service' =>  ['required'],
-            'reffer' =>  ['required'],
+            'reffer' => ['required'],
             'issue' => ['required'],
             'expiry' => ['required'],
             'department' => ['required'],
             'key' => ['required'],
         ]);
+
+
+        if ($file = $request->hasfile('attachment')) {
+            $file = $request->file('attachment');
+            $fileName = uniqid() . $file->getClientOriginalName();
+            $destinationPath = public_path() . '/license-attachments/';
+            $file->move($destinationPath, $fileName);
+            $license->attachment = $fileName;
+
+        }
+
+
         if ($license) {
             $license->title = $request->title;
-            // $license->service_id = $request->service;
             $license->reffer_to = $request->reffer;
+
+
+            $license->purchase_date = $request->purchase_date;
+            $license->additional_info = $request->additional_info;
+            $license->license_owner = $request->license_owner;
+            $license->renew_date = $request->renew_date;
+            $license->renew_alert = $request->renew_alert ? 1 : 0;
+            $license->expiry_alert = $request->expiry_alert ? 1 : 0;
+
             $license->date_of_issue = $request->issue;
             $license->date_of_expiry = $request->expiry;
             $license->department_id = $request->department;
+            $license->description = $request->description;
+            $license->price = $request->price;
+
+
             $license->key = $request->key;
             $license->save();
             return redirect()->route('customer-license')->with('success', 'License updated successfully');
@@ -492,9 +442,9 @@ class CustomerController extends Controller
         $owner = new User();
         $owner->create([
             'name' => $request->name,
-            'email' =>  $request->email,
-            'password' =>  Hash::make($request->password),
-            'address' =>  $request->address,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'address' => $request->address,
             'phone' => $request->phone,
             'role' => $request->role,
             'department_id' => $request->department,
@@ -578,6 +528,7 @@ class CustomerController extends Controller
     {
         return MyHelper::update_password($request);
     }
+
     public function license_status($id)
     {
         $license = License::find($id);

@@ -70,7 +70,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['SuperAdmin','auth']], 
     Route::get('/superadmin-view-package/{id}', [SuperAdminController::class, 'admin_view_package'])->name('superadmin-view-package');
     Route::POST('/superadmin-update-package/{id}', [SuperAdminController::class, 'admin_update_package'])->name('superadmin-update-package');
     // Route::get('/superadmin-delete-package/{id}', [SuperAdminController::class, 'admin_delete_package'])->name('superadmin-delete-package');
-    Route::get('/service',[SuperAdminController::class,'service'])->name('superadmin-service');
+//    Route::get('/service',[SuperAdminController::class,'service'])->name('superadmin-service');
     Route::get('/add-service',[SuperAdminController::class,'add_service'])->name('superadmin-add-service');
     Route::post('/store-service',[SuperAdminController::class,'store_service'])->name('superadmin-store-service');
     Route::get('/edit-service/{id}',[SuperAdminController::class,'edit_service'])->name('superadmin-edit-service');

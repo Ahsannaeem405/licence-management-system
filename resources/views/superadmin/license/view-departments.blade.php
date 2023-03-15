@@ -57,7 +57,7 @@
                                                         <th>{{__('messages.descrip')}}</th>
                                                         <th>{{__('messages.create')}}</th>
                                                         <th>{{__('messages.th action')}}</th>
-                                                        
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -66,7 +66,7 @@
                                                             <td>{{$loop->index+1}}</td>
                                                             <td>{{ $item->name }}</td>
                                                             <td>{{ $item->description }}</td>
-                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d h:i:s',$item->created_at)->format('d-F-Y') }}</td>
+                                                            <td>{{\Carbon\carbon::createFromFormat('Y-m-d H:i:s',$item->created_at)->format('d-F-Y') }}</td>
                                                             <td>
                                                                <span class="d-flex">
                                                                 <a href="{{route('superadmin-view-license',$item->id)}}"><i class="fa fa-eye"></i></a>
@@ -91,7 +91,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   @endsection
-  
+
 @section('js')
 <script type="text/javascript">
     $('.show_confirm').click(function(event) {
@@ -122,11 +122,11 @@
     });
     $('.open').click(function(){
         var copytext = $(this).attr('data-key');
-      
+
         copytext.select();
         navigator.clipboard.writeText(copytext.value);
     });
-    
+
 </script>
 
 @endsection

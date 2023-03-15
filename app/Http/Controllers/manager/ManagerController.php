@@ -21,7 +21,7 @@ class ManagerController extends Controller
     //------------------------------------ Manager-Dashboard Start ------------------------------------//
     public function dashboard()
     {
-        $total_license = License::where('customer_id', Auth::user()->id)->count();
+        $total_license = License::where('reffer_to', Auth::user()->id)->count();
         return view('manager.dashboard.dashboard', compact('total_license'));
     }
     //------------------------------------ Manager-Dashboard End ------------------------------------//
@@ -130,8 +130,20 @@ class ManagerController extends Controller
     public function delete_tool_owner($id)
     {
         $owner = User::find($id);
-        $owner->delete();
-        return redirect()->route('manager-management')->with('success', 'Tool Owner deleted successfully');
+        $license = License::where('reffer_to', $owner->id)->first();
+
+        if (!$license) {
+            $owner->delete();
+            if ($owner->role == 'owner') {
+                return redirect()->route('manager-management')->with('success', 'Tool Owner deleted successfully');
+            } else {
+                return redirect()->route('manager-management')->with('success', 'Manager deleted successfully');
+            }
+        } else {
+            return back()->with('error', 'Delete License of this manager first');
+        }
+
+
     }
     //------------------------------------ Manager-Management End ------------------------------------//
 
@@ -233,18 +245,40 @@ class ManagerController extends Controller
         $license = License::find($request->id);
         $this->validate($request, [
             'title' => ['required'],
-            'service' =>  ['required'],
             'issue' => ['required'],
             'expiry' => ['required'],
             'department' => ['required'],
             'key' => ['required'],
         ]);
+        if ($file = $request->hasfile('attachment')) {
+            $file = $request->file('attachment');
+            $fileName = uniqid() . $file->getClientOriginalName();
+            $destinationPath = public_path() . '/license-attachments/';
+            $file->move($destinationPath, $fileName);
+            $license->attachment = $fileName;
+
+        }
+
+
         if ($license) {
             $license->title = $request->title;
-            $license->service_id = $request->service;
+            $license->reffer_to = $request->reffer;
+
+
+            $license->purchase_date = $request->purchase_date;
+            $license->additional_info = $request->additional_info;
+            $license->license_owner = $request->license_owner;
+            $license->renew_date = $request->renew_date;
+            $license->renew_alert = $request->renew_alert ? 1 : 0;
+            $license->expiry_alert = $request->expiry_alert ? 1 : 0;
+
             $license->date_of_issue = $request->issue;
             $license->date_of_expiry = $request->expiry;
             $license->department_id = $request->department;
+            $license->description = $request->description;
+            $license->price = $request->price;
+
+
             $license->key = $request->key;
             $license->save();
             return redirect()->route('manager-license')->with('success', 'License updated successfully');

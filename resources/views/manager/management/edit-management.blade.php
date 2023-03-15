@@ -1,4 +1,4 @@
-@extends('customer.layouts.master')
+@extends('manager.layouts.master')
 @section('content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -10,7 +10,7 @@
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
                             <h2 class="content-header-title float-left mb-0">Update User</h2>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                                                                 placeholder="Enter Numbers only" value="{{$owner->phone}}">
                                                         </div>
                                                     </div>
-                                                     
+
                                                       <div class="form-group">
                                                         <label>Password</label>
                                                         <div class="controls">
@@ -74,7 +74,7 @@
                                                                 placeholder="@gmail.com" required value={{$owner->email }}>
                                                         </div>
                                                     </div>
-                                                   
+
                                                   <div class="form-group">
                                                         <label>Address</label>
                                                         <div class="controls">
@@ -83,17 +83,17 @@
                                                                 data-validation-containsnumber-message="The alpha field may only contain alphabetic characters."
                                                                 placeholder="Enter Address" value="{{$owner->address}}">
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                    <div class="form-group">
                                                         <label>Confirm-Password</label>
                                                         <div class="controls">
-                                                            <input type="password" name="password_confirmation" class="form-control" 
+                                                            <input type="password" name="password_confirmation" class="form-control"
                                                                 data-validation-containsnumber-regex="^([0-9]+)$"
                                                                 data-validation-containsnumber-message="The regex field format is invalid."
                                                                 placeholder="" required>
-                                                                
+
                                                         </div>
-                                                    </div> 
+                                                    </div>
 
                                                 </div>
                                             </div>

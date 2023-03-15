@@ -43,12 +43,21 @@
                                         </div>
                                         <div class="text-center">
 
-                                            <p class="mb-2 text-white bg-white text-dark"><i
-                                                    class="fa-solid fa-building"></i> <b>Total Departments</b>:
-                                                {{ $total_department }}</p>
-                                            <p class="mb-2 text-white bg-white text-dark"><i
-                                                    class="fa-solid fa-people-group"></i> <b>Total Managers</b>:
-                                                {{ $total_managers }}
+                                            <p class="mb-2 text-white bg-white text-dark">
+                                                <a href="{{url('customer/department')}}">
+                                                    <i class="fa-solid fa-building"></i> <b>Total Departments</b>:
+                                                    {{ $total_department }}
+
+                                                </a>
+
+                                            </p>
+                                            <p class="mb-2 text-white bg-white text-dark">
+                                                <a href="{{url('customer/management')}}">
+
+                                                    <i class="fa-solid fa-people-group"></i> <b>Total Managers</b>:{{ $total_managers }}
+
+                                                </a>
+
                                             </p>
                                             {{-- <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p> --}}
                                         </div>
@@ -65,12 +74,23 @@
                                                 <i class="feather icon-credit-card text-danger font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-1 text-white bg-white text-dark"><i class=""></i><b>Active
+                                        <p class="mt-1 text-white bg-white text-dark">
+
+                                            <a href="{{url('customer/license')}}">
+                                            <i class=""></i><b>Active
                                                 Licenses</b>:
-                                            {{ $active_license }}</p>
-                                        <p class="mt-0 text-white bg-white text-dark"><i class=""></i><b>Inactive
+                                            {{ $active_license }}
+                                        </a>
+                                        </p>
+
+                                        <p class="mt-0 text-white bg-white text-dark">
+                                                <a href="{{url('customer/license')}}">
+                                                    <i class=""></i><b>
+                                                Inactive
                                                 Licenses</b>:
-                                            {{ $deactive_license }}</p>
+                                            {{ $deactive_license }}
+                            </a>
+                                        </p>
                                         {{-- <h2 class="text-bold-700 mt-1">{{ $total_managers }}</h2>
                                         <p class="mb-0">Total Managers</p> --}}
                                     </div>
@@ -89,11 +109,18 @@
                                                 <i class="feather icon-alert-triangle text-warning font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-1 text-white bg-white text-dark"><i class=""></i><b>Renew
+                                        <p class="mt-1 text-white bg-white text-dark">
+                                            <a href="{{url('customer/license')}}">
+                                            <i class=""></i><b>Renew
                                                 Alerts</b>: {{ $renew_alerts }}
+                                            </a>
                                         </p>
-                                        <p class="mt-0 text-white bg-white text-dark"><i class=""></i><b>Expiry
+                                        <p class="mt-0 text-white bg-white text-dark">
+                                            <a href="{{url('customer/license')}}">
+
+                                            <i class=""></i><b>Expiry
                                                 Alerts</b>: {{ $expiry_alerts }}
+                                            </a>
                                         </p>
                                         {{-- <p class="mb-0">{{ __('messages.total departments') }}</p> --}}
                                     </div>
@@ -113,8 +140,12 @@
                                                 <i class="feather icon-credit-card text-success font-medium-5"></i>
                                             </div>
                                         </div>
-                                        <p class="mt-2 text-white bg-white text-dark"><i class=""></i><b>All
+                                        <p class="mt-2 text-white bg-white text-dark">
+                                            <a href="{{url('customer/license')}}">
+                                            <i class=""></i><b>All
                                                 Licenses</b>: {{ $active_license }}
+                                            </a>
+
                                         </p>
 
                                     </div>

@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal" novalidate action="{{route('customer-update-license',$license->id)}}" method="POST">
+                                        <form class="form-horizontal" novalidate action="{{route('customer-update-license',$license->id)}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -48,7 +48,7 @@
                                                     <div class="form-group">
                                                         <label>Price</label>
                                                         <div class="controls">
-                                                            <input type="text" name="price" value="{{$license->price}}" class="form-control">
+                                                            <input type="number" name="price" value="{{$license->price}}" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -122,6 +122,16 @@
                                                         <label for="">Key</label>
                                                         <textarea type="text" class="form-control" name="key" required> {{$license->key}} </textarea>
                                                     </div>
+
+
+                                                    <div class="form-group ">
+                                                        <div class="controls p-2">
+                                                            <input type="checkbox" name="renew_alert" {{$license->renew_alert ? 'checked' : null}} value="1">&nbsp;<label>Renew ALert</label>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input type="checkbox" name="expiry_alert" {{$license->expiry_alert ? 'checked' : null}} value="1">&nbsp;<label>Expiry Alert</label>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-12 ">

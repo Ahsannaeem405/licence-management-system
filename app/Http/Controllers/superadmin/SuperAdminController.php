@@ -35,7 +35,7 @@ class SuperAdminController extends Controller
     public function dashboard()
     {
 
-        $total_customers = User::where('role', '!=', 'superadmin')->count();
+        $total_customers = User::where('role', 'customer')->count();
         $total_packages = Package::count();
         $total_license = License::count();
         $total_departments = Department::count();
@@ -54,9 +54,9 @@ class SuperAdminController extends Controller
         $plus_package = Transaction::where('package_id', '2')->pluck('package_id')->count();
         $pro_package = Transaction::where('package_id', '3')->pluck('package_id')->count();
 
-        $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->where('role', '!=', 'superadmin')->count();
-        $six_month_customers = User::whereMonth('created_at', \Carbon\Carbon::now()->subMonth(6))->count();
-        $one_year_customers = User::whereYear('created_at', \Carbon\Carbon::now()->subYear())->count();
+        $new_customers = User::whereMonth('created_at', \Carbon\Carbon::now())->whereYear('created_at', \Carbon\Carbon::now())->where('role', 'customer')->count();
+        $six_month_customers = User::whereBetween('created_at',[ \Carbon\Carbon::now()->subMonth(6)->startOfMonth(), \Carbon\Carbon::now()->endOfMonth()])->where('role', 'customer')->count();
+        $one_year_customers = User::whereYear('created_at', \Carbon\Carbon::now())->where('role', 'customer')->count();
         /////////////////////////////////////////////////////////////////Packges_chart//////////////////////////
         $data = [];
 
@@ -163,7 +163,7 @@ class SuperAdminController extends Controller
     public function customer()
     {
 
-        $customers = User::where('role', '!=', 'superadmin')->get();
+        $customers = User::where('role', 'customer')->get();
         return view('superadmin.customers.customers', compact('customers'));
     }
 
@@ -260,6 +260,7 @@ class SuperAdminController extends Controller
     public function delete_customer($id)
     {
         $admin = User::find($id);
+        $added=User::where('add_by',$id)->delete();
         $admin->delete();
         return redirect()->route('superadmin-customers')->with('success', 'Customer Deleted Successfully');
     }
